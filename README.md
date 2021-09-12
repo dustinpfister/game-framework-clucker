@@ -1,18 +1,16 @@
-# js-javascript-example-game-framework
+# game-framework-clucker
 
-The aim with this JavaScript example is to create the first of what might be a few JavaScript examples that are game frameworks to which I will write at least [one blog post about](https://dustinpfister.github.io/2021/09/03/js-javascript-example-game-framework/). In my canvas example collection of posts I made a whole bunch of canvas examples, but each canvas example was for the most part its own independent thing. There are some good talking points to support this kind of approach to making canvas games, however I have found that I am pretty much done with making a canvas project from the ground up each time I start a new game prototype, let alone a complete project.
-
-There are many frameworks made all ready to choose from, but thus far I have found that I do not like the lack of control. So then if I want to have a framework, but maintain control, then it would seem that I just need to make my own framework.
+This is a basic game framework based off of what I have made for my [blog post on the topic of a basic game framework](https://dustinpfister.github.io/2021/09/03/js-javascript-example-game-framework/) which is just one of my many javascript examples series of posts. The example started to get at least a little complex to the point that writing a single blog post on the souce code would result in a blog post that is way to long. So I thought it would be a good idea to copy the source code for the framework, and then demos thus far into a stand alone reposatory and contineu working on it there.
 
 
-## Core Features of this framework
+## Core Features of this game framework
 
-This game framework has a number of core features that just about any game framework should have which include.
+I would like to keep this framework fairly basic and striped down to just a core set of features that I am actually going to use in one or more games that will be built on top of this foundation.
 
-* a state machine
-* a stack of canvas layer objects using a canvas module
-* create points to be used in rendering using the canvas module
-* an object pool module
+* A state machine
+* A canvas library that supports: layers, built in points collection system, built in draw methods, a plugin system
+* An object pool librray for creating a collection of display objects aka sprites
+* A general utility librray with various methods used for bounding box, distance, ect
 
 ## links
 
