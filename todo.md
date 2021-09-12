@@ -10,10 +10,36 @@
 
 
 
+## () 0.5.3 - canvasMod: createAnimation object
+* have a create animation object method
+* an animation object should have a name prop
+* an animation object should have a sheet index or name to use
+* an animation object should have an array of cell index values the compose the animation
+
+## () 0.5.2 - canvasMod: cell draw method
+* have a cell draw method that will take a spriteSheet index or name, cell index, x, y, w, and h values
+* the result of calling the cell draw method is to draw a given cell index of a given sprite sheet
+
+## () 0.5.1 - - canvasMod: createSpriteSheet object method
+* I will want a create sprite sheet method for canvasMod
+* a spriteSheet object should have a name prop
+* a spriteSheet object contains a ref to the image that it will use
+* a spriteSheet object will contain an array of cell info objects
+* a spriteSheet object should contain:
+    * an array of cell info objects where each object is x, y, w, and h values for a cell source index in the image
+    * or a functon that when called with a cellIndex will return such an object
+* the images prop should really be a property of a canvas stack object actually
+* when calling the createSpriteSheet object method I give an image index, and arguments that have to do with the state of cells
+* one system can be that I just given a cellWidth, and cellHeight to just index cells that way
+
 ## ( done 09/12/2021 ) 0.5.0 - image array part of stack
 * make the image array part of a canvas stack rather than that of the main sm object
 * update loader demo to work for this change
 * update chicken-cooker demo to work for this change
+
+
+
+
 
 ## ( done 09/11/2021 ) 0.4.10 - chicken-cooker image sets
 * (done) have more than one set of images for skinning the demo
