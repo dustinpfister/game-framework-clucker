@@ -19,11 +19,11 @@
 ## () 0.5.3 - canvasMod: built in methods for creating sprite sheets
 * have a canvasMod.createSpriteSheetGrid method that will create a sprite sheet using the typical method of doing so
 
-## () 0.5.2 - canvasMod: cell draw method
+## ( done 09/12/2021 ) 0.5.2 - canvasMod: cell draw method
 * (done) start out with a draw cell method in the spritesheet demo
 * (done) have a cell draw method that will take a spriteSheet index or name, cell index, x, y, w, and h values
 * (done) the result of calling the cell draw method is to draw a given cell index of a given sprite sheet
-* make this method built into canvasMod
+* (done) make this method built into canvasMod
 
 ## ( done 09/12/2021 ) 0.5.1 - - canvasMod: createSpriteSheet object method
 * (done) I will want a create sprite sheet method for canvasMod
