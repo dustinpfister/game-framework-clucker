@@ -23,12 +23,28 @@ gameFrame.smPushState(sm, {
     start: function(sm){
         // drawing background once
         canvasMod.draw(sm.layers, 'background', 0);
-        // creating a sprite sheet object
+
+        // creating a sprite sheet object with an array of objects like this
         var cellIndex = [
             { x: 0, y:0, w: 32, h: 32 },
             { x: 32, y:0, w: 32, h: 32 }
         ];
-        canvasMod.createSpriteSheet(sm.layers, 'testsheet', 0, cellIndex);
+        canvasMod.createSpriteSheet(sm.layers, 'sheet-test1', 0, cellIndex);
+
+        // creating a sprite sheet object with a function that will return
+        // an array of objects like above
+        var cellIndexFunction = function(image, spriteSheet, stack){
+            var cellCount = Math.floor(image.width / 32),
+            cellIndex = 0,
+            cells = [];
+            while( cellIndex < cellCount ){
+                cells.push({ x: 32 * cellIndex, y:0, w: 32, h: 32 });
+                cellIndex += 1;
+            }
+            return cells;
+        };
+        canvasMod.createSpriteSheet(sm.layers, 'sheet-test2', 0, cellIndexFunction);
+
 
 console.log(sm.layers.spriteSheets);
 
