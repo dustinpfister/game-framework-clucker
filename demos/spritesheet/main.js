@@ -29,6 +29,9 @@ gameFrame.smPushState(sm, {
             { x: 32, y:0, w: 32, h: 32 }
         ];
         canvasMod.createSpriteSheet(sm.layers, 'testsheet', 0, cellIndex);
+
+console.log(sm.layers.spriteSheets);
+
     },
     update: function(sm, secs){
 
