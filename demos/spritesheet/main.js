@@ -66,6 +66,7 @@ gameFrame.smPushState(sm, {
         // uisng built in method for doing so
         canvasMod.draw(layers, 'cell', 1, 'sheet-test1', 0, {x: 350, y: 150, w: 64, h: 64});
 
+        canvasMod.draw(layers, 'cell', 1, 'sheet-test1', 1, {x: 150, y: 150, w: 64, h: 64});
 
         //drawCell(layers, 1, 'sheet-test1', 0, {x: 350, y: 150, w: 64, h: 64})
         //ctx.drawImage(sm.layers.images[0], 0, 0, 32, 32, 200, 200, 64, 64);
