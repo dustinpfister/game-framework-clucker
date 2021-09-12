@@ -1,4 +1,4 @@
-# todo list for js-javascript-example-game-framework
+# game-framework-clucker todo list
 
 ## () 0.x.0 - Grid library
 * add a librray that can be used to create, update, and work with a simple 2d grid of tiles
