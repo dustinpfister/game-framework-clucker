@@ -5,16 +5,11 @@ This is a basic game framework based off of what I have made for my [blog post o
 
 ## Core Features of this game framework
 
-I would like to keep this framework fairly basic and striped down to just a core set of features that I am actually going to use in one or more games that will be built on top of this foundation.
+I would like to keep this framework fairly basic and striped down to just a core set of features that I am actually going to use in one or more games that will be built on top of this foundation. For now the framework has the follow features in place that seem to work okay.
 
 * A state machine
 * A canvas library that supports: layers, built in points collection system, built in draw methods, a plugin system
 * An object pool librray for creating a collection of display objects aka sprites
 * A general utility librray with various methods used for bounding box, distance, ect
 
-## links
-
-```
-Good explanation of What a framework is, compared to other terms
-https://stackoverflow.com/questions/4099975/difference-between-a-module-library-and-a-framework
-```
+I will be adding at least a few additional features, but for the most part I will just be further improving and expanding the features that are all ready in place.
