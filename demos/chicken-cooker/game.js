@@ -71,7 +71,7 @@
         obj.data.cellDir = 1; // 0 for facting left and 1 for facing right
         obj.data.cellIndex = 0;
         obj.data.imgSecs = 0;
-        obj.data.image = sm.images[0];
+        obj.data.image = sm.layers.images[0];
         obj.data.imgD = {sx: 0, sy: 0, sw: CHICKENS_CELL_SIZE, sh: CHICKENS_CELL_SIZE};
     };
     // update a chicken
@@ -79,7 +79,7 @@
     // 'live' chicken state
     chickenState.live = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'gray';
-        obj.data.image = sm.images[0];
+        obj.data.image = sm.layers.images[0];
         // get distance and angle to target position
         var d = utils.distance(obj.x, obj.y, obj.data.targetPos.x, obj.data.targetPos.y),
         a = Math.atan2(obj.data.targetPos.y - obj.y, obj.data.targetPos.x - obj.x);
@@ -129,7 +129,7 @@
     // 'cooked' chicken state
     chickenState.cooked = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'red';
-        obj.data.image = sm.images[1];
+        obj.data.image = sm.layers.images[1];
         obj.data.imgD.sx = 0;
         obj.data.delay -= secs;
         if(obj.data.delay <= 0){
