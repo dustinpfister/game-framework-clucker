@@ -59,10 +59,15 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
+
+
         // drawing images to the canvas
 
-        drawCell(layers, 1, 'sheet-test1', 0, {x: 350, y: 150, w: 64, h: 64})
+        // uisng built in method for doing so
+        canvasMod.draw(layers, 'cell', 1, 'sheet-test1', 0, {x: 350, y: 150, w: 64, h: 64});
 
+
+        //drawCell(layers, 1, 'sheet-test1', 0, {x: 350, y: 150, w: 64, h: 64})
         //ctx.drawImage(sm.layers.images[0], 0, 0, 32, 32, 200, 200, 64, 64);
         //ctx.drawImage(sm.layers.images[1], 100.5, 29.5);
     },
