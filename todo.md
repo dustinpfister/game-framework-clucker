@@ -10,16 +10,12 @@
 
 
 
-## () 0.5.0 - image array part of stack
+## ( done 09/12/2021 ) 0.5.0 - image array part of stack
 * make the image array part of a canvas stack rather than that of the main sm object
 * update loader demo to work for this change
 * update chicken-cooker demo to work for this change
 
-
-
-
-
-## ( done 09/11	/2021 ) 0.4.10 - chicken-cooker image sets
+## ( done 09/11/2021 ) 0.4.10 - chicken-cooker image sets
 * (done) have more than one set of images for skinning the demo
 
 ## ( done 09/07/2021 )  0.4.9 - chicken-cooker spawn rate
