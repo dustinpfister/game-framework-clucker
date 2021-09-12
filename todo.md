@@ -10,13 +10,17 @@
 
 
 
-## () 0.5.3 - canvasMod: createAnimation object
+## () 0.5.4 - canvasMod: createAnimation object
 * have a create animation object method
 * an animation object should have a name prop
 * an animation object should have a sheet index or name to use
 * an animation object should have an array of cell index values the compose the animation
 
+## () 0.5.3 - canvasMod: built in methods for creating sprite sheets
+* have a canvasMod.createSpriteSheetGrid method that will create a sprite sheet using the typical method of doing so
+
 ## () 0.5.2 - canvasMod: cell draw method
+* start out with a draw cell method in the spritesheet demo
 * have a cell draw method that will take a spriteSheet index or name, cell index, x, y, w, and h values
 * the result of calling the cell draw method is to draw a given cell index of a given sprite sheet
 
