@@ -1,0 +1,46 @@
+#canvas-app{
+    position: relative;
+}
+.canvas_layer {
+    position:absolute;
+  }
+
+@media (max-width: 599px) {
+  #canvas-app {
+    margin: -10px;
+    width: 240px;
+    height: 180px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .canvas_layer {
+    width: 240px;
+    height: 180px;
+  }
+}
+@media (min-width: 600px) and (max-width: 499px) {
+  #canvas-app {
+    margin: 0px;
+    width: 320px;
+    height: 240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .canvas_layer {
+    width: 320px;
+    height: 240px;
+  }
+}
+@media (min-width: 500px) {
+  #canvas-app {
+    margin: 0px;
+    width: 640px;
+    height: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .canvas_layer {
+    width: 640px;
+    height: 480px;
+  }
+}
