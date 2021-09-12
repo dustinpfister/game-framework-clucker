@@ -20,19 +20,17 @@
 * have a cell draw method that will take a spriteSheet index or name, cell index, x, y, w, and h values
 * the result of calling the cell draw method is to draw a given cell index of a given sprite sheet
 
-## () 0.5.1 - - canvasMod: createSpriteSheet object method
+## ( done 09/12/2021 ) 0.5.1 - - canvasMod: createSpriteSheet object method
 * (done) I will want a create sprite sheet method for canvasMod
-* I will want to start a spritesheet demo based of the loader demo
-
-* a spriteSheet object should have a name prop
-* a spriteSheet object contains a ref to the image that it will use
-* a spriteSheet object will contain an array of cell info objects
-* a spriteSheet object should contain:
-    * an array of cell info objects where each object is x, y, w, and h values for a cell source index in the image
-    * or a function that when called with a cellIndex will return such an object
-* the images prop should really be a property of a canvas stack object actually
-* when calling the createSpriteSheet object method I give an image index, and arguments that have to do with the state of cells
-* one system can be that I just given a cellWidth, and cellHeight to just index cells that way
+* (done) I will want to start a spritesheet demo based of the loader demo
+* (done) a spriteSheet object should have a name prop
+* (done) a spriteSheet object contains a ref to the image that it will use
+* (done) a spriteSheet object will contain an array of cell info objects
+* (done) a spriteSheet object should contain:
+    * (done) an array of cell info objects where each object is x, y, w, and h values for a cell source index in the image
+    * (done) or a function that when called with a cellIndex will return such an object
+* (done) the images prop should really be a property of a canvas stack object actually
+* (done) when calling the createSpriteSheet object method I give an image index, and arguments that have to do with the state of cells
 
 ## ( done 09/12/2021 ) 0.5.0 - image array part of stack
 * (done) make the image array part of a canvas stack rather than that of the main sm object
