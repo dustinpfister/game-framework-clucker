@@ -21,7 +21,9 @@
 * the result of calling the cell draw method is to draw a given cell index of a given sprite sheet
 
 ## () 0.5.1 - - canvasMod: createSpriteSheet object method
-* I will want a create sprite sheet method for canvasMod
+* (done) I will want a create sprite sheet method for canvasMod
+* I will want to start a spritesheet demo based of the loader demo
+
 * a spriteSheet object should have a name prop
 * a spriteSheet object contains a ref to the image that it will use
 * a spriteSheet object will contain an array of cell info objects
