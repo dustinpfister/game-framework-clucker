@@ -25,7 +25,7 @@ gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {},
     start: function(sm){
-        sm.layers.background = sm.images[2];
+        sm.layers.background = sm.layers.images[2];
         canvasMod.draw(sm.layers, 'background', 0);
     },
     update: function(sm, secs){
