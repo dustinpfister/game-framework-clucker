@@ -1,7 +1,7 @@
 # game-framework-clucker todo list
 
 ## () 0.x.0 - Grid library
-* add a librray that can be used to create, update, and work with a simple 2d grid of tiles
+* add a library that can be used to create, update, and work with a simple 2d grid of tiles
 
 ## () 0.x.0 - User Event system
 * add an event system based off of what I made for js-custom-event
@@ -27,7 +27,7 @@
 * a spriteSheet object will contain an array of cell info objects
 * a spriteSheet object should contain:
     * an array of cell info objects where each object is x, y, w, and h values for a cell source index in the image
-    * or a functon that when called with a cellIndex will return such an object
+    * or a function that when called with a cellIndex will return such an object
 * the images prop should really be a property of a canvas stack object actually
 * when calling the createSpriteSheet object method I give an image index, and arguments that have to do with the state of cells
 * one system can be that I just given a cellWidth, and cellHeight to just index cells that way
