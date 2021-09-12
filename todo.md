@@ -19,6 +19,10 @@
 ## () 0.5.3 - canvasMod: built in methods for creating sprite sheets
 * have a canvasMod.createSpriteSheetGrid method that will create a sprite sheet using the typical method of doing so
 
+## () - 0.5.3 - update chicken-cooker to use new sprite sheet system
+* create sprite sheet objects for chicken-cooker
+* use sprite sheet objects for drawing cells in place of custom system
+
 ## ( done 09/12/2021 ) 0.5.2 - canvasMod: cell draw method
 * (done) start out with a draw cell method in the spritesheet demo
 * (done) have a cell draw method that will take a spriteSheet index or name, cell index, x, y, w, and h values
