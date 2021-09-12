@@ -33,8 +33,8 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
         // drawing images to the canvas
-        ctx.drawImage(sm.images[0], 29.5, 29.5);
-        ctx.drawImage(sm.images[1], 100.5, 29.5);
+        ctx.drawImage(sm.layers.images[0], 29.5, 29.5);
+        ctx.drawImage(sm.layers.images[1], 100.5, 29.5);
     },
     events: {
         pointerStart: function(e, pos, sm){},
