@@ -7,7 +7,7 @@ var sm = gameFrame.smCreateMain({
     game: {},
     loader: {
         images: { // load 0.png, and 1.png at ./img
-            baseURL: '/demos/loader/img',
+            baseURL: '/demos/spritesheet/img',
             count: 2
         }
     }
@@ -33,7 +33,7 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
         // drawing images to the canvas
-        ctx.drawImage(sm.layers.images[0], 29.5, 29.5);
+        ctx.drawImage(sm.layers.images[0], 0, 0, 32, 32, 200, 200, 64, 64);
         ctx.drawImage(sm.layers.images[1], 100.5, 29.5);
     },
     events: {
