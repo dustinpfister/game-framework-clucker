@@ -21,7 +21,14 @@ gameFrame.smPushState(sm, {
         //}}
     },
     start: function(sm){
+        // drawing background once
         canvasMod.draw(sm.layers, 'background', 0);
+        // creating a sprite sheet object
+        var cellIndex = [
+            { x: 0, y:0, w: 32, h: 32 },
+            { x: 32, y:0, w: 32, h: 32 }
+        ];
+        canvasMod.createSpriteSheet(sm.layers, 'testsheet', 0, cellIndex);
     },
     update: function(sm, secs){
 
