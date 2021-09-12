@@ -33,9 +33,9 @@
 * one system can be that I just given a cellWidth, and cellHeight to just index cells that way
 
 ## ( done 09/12/2021 ) 0.5.0 - image array part of stack
-* make the image array part of a canvas stack rather than that of the main sm object
-* update loader demo to work for this change
-* update chicken-cooker demo to work for this change
+* (done) make the image array part of a canvas stack rather than that of the main sm object
+* (done) update loader demo to work for this change
+* (done) update chicken-cooker demo to work for this change
 
 
 
