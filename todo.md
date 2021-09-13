@@ -7,7 +7,11 @@
 * add an event system based off of what I made for js-custom-event
 
 
-
+## (   ) - 0.5.5 - chicken-cooker: 0.png - 3.png
+* use 0.png for a chick-walk sheet
+* use 1.png for a chick-rest sheet
+* use 2.png for a chick-cooked sheet
+* use 3.png for a background sheet
 
 ## (  ) - 0.5.4 - canvasMod: createAnimation object
 * have a create animation object method
