@@ -13,19 +13,6 @@ var sm = gameFrame.smCreateMain({
     }
 });
 
-/*
-var drawCell = function(stack, layerIndex, sheetKey, cellIndex, disp){
-    var layerObj = stack[layerIndex],
-    canvas = layerObj.canvas,
-    ctx = layerObj.ctx,
-    spriteSheet = stack.spriteSheets[sheetKey],
-    cellInfo = spriteSheet.cells[cellIndex];
-    // draw the cell
-    ctx.drawImage(spriteSheet.image, cellInfo.x, cellInfo.y, cellInfo.w, cellInfo.h, disp.x, disp.y, disp.w, disp.h);
-};
-*/
-
-
 sm.game.firePellets = poolMod.create({
     count: 8,
     secsCap: 0.25,

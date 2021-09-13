@@ -27,6 +27,7 @@
 * update chicken-cooker demo to use pool-imgd
 * have a pool-sprite method in mod-pool.js that will look for a sprite sheet reference
 * the plain pool method can be used to just pain a solid background
+* update spritesheet demo to use pool-sprite method
 
 ## (  ) - 0.5.4 - spritesheet demo: Object pool added, and new sheets
 * (done) use 0.png for a four cell fire pellets animation
