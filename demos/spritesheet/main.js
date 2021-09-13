@@ -49,8 +49,13 @@ gameFrame.smPushState(sm, {
             return cells;
         };
         canvasMod.createSpriteSheet(sm.layers, 'sheet-test2', 0, cellIndexFunction);
+
+
+canvasMod.createSpriteSheetGrid(sm.layers, 'sheet-test3', 0, 32, 32);
+
         // sheets look good
         console.log(sm.layers.spriteSheets);
+
     },
     update: function(sm, secs){},
     draw: function(sm, layers){

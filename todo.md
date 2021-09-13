@@ -21,7 +21,7 @@
 
 ## (  ) - 0.5.3 - canvasMod: built in methods for creating sprite sheets
 * have a canvasMod.createSpriteSheetGrid method that will create a sprite sheet
-* createSpriteSheetGrid just takes a cellWidth and cellHight argument to create the array of cell objects that way
+* createSpriteSheetGrid just takes a cellWidth and cellHeight argument to create the array of cell objects that way
 * update spritesheet demo to use new canvasMod.createSpriteSheetGrid method
 
 ## ( done 09/13/2021 ) - 0.5.3 - update chicken-cooker to use new sprite sheet system
