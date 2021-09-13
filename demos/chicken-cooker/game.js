@@ -5,26 +5,6 @@
 
 
 /********* ********** ********** **********
- HARD CODED VALUES
-********** ********** ********** *********/
-
-
-
-
-    var CHICKENS_COUNT = 30,
-    CHICKENS_RADIUS_START = 400,
-    CHICKENS_RADIUS = 200,
-    CHICKENS_PPS_MIN = 64,
-    CHICKENS_PPS_MAX = 256,
-    CHICKENS_SIZE = 96,
-
-    // this will need to be adjusted when using a higher res sprit sheet
-    CHICKENS_CELL_SIZE = 128;
-
-
-
-
-/********* ********** ********** **********
  HELPERS
 ********** ********** ********** *********/
     
@@ -38,8 +18,8 @@
     // get a position from the center of a canvas with the given radius and angle in radians
     var getPosFromCenter = function(canvas, radius, a){
         return {
-            x: canvas.width / 2 + Math.cos(a) * radius - CHICKENS_SIZE / 2,
-            y: canvas.height / 2 + Math.sin(a) * radius -CHICKENS_SIZE / 2
+            x: canvas.width / 2 + Math.cos(a) * radius - sm.CHICKENS_SIZE / 2,
+            y: canvas.height / 2 + Math.sin(a) * radius - sm.CHICKENS_SIZE / 2
         };
     };
 
@@ -58,15 +38,15 @@
         obj.data.state = 'live'; // 'live' or 'cooked' state
         obj.data.fillStyle = 'gray';
         // set start position
-        var startPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS_START, rndRadian());
+        var startPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS_START, rndRadian());
         obj.x = startPos.x;
         obj.y = startPos.y;
-        obj.w = CHICKENS_SIZE;
-        obj.h = CHICKENS_SIZE;
+        obj.w = sm.CHICKENS_SIZE;
+        obj.h = sm.CHICKENS_SIZE;
         // set speed
-        obj.pps = CHICKENS_PPS_MIN + Math.round(( CHICKENS_PPS_MAX - CHICKENS_PPS_MIN) * Math.random());
+        obj.pps = sm.CHICKENS_PPS_MIN + Math.round(( sm.CHICKENS_PPS_MAX - sm.CHICKENS_PPS_MIN) * Math.random());
         // set first target
-        obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
+        obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
         // set delay
         obj.data.delay = 3;
         // image data
@@ -74,7 +54,7 @@
         obj.data.cellIndex = 0;
         obj.data.imgSecs = 0;
         obj.data.image = sm.layers.images[0];
-        obj.data.imgD = {sx: 0, sy: 0, sw: CHICKENS_CELL_SIZE, sh: CHICKENS_CELL_SIZE};
+        obj.data.imgD = {sx: 0, sy: 0, sw: sm.CHICKENS_CELL_SIZE, sh: sm.CHICKENS_CELL_SIZE};
     };
     // update a chicken
     var chickenState = {};
@@ -101,7 +81,7 @@
                 }else{
                     obj.data.cellIndex = obj.data.cellIndex === 4 ? 5 : 4;
                 }
-                obj.data.imgD.sx = CHICKENS_CELL_SIZE * obj.data.cellIndex;
+                obj.data.imgD.sx = sm.CHICKENS_CELL_SIZE * obj.data.cellIndex;
             }
         }else{
             // set delay and switch to rest state
@@ -114,17 +94,17 @@
         // else subtract from delay, and get a new target pos of delay <= 0
         obj.data.delay -= secs;
         // cell 3
-        obj.data.imgD.sx = CHICKENS_CELL_SIZE * 2;
+        obj.data.imgD.sx = sm.CHICKENS_CELL_SIZE * 2;
         if(obj.data.cellDir === 1){
-            obj.data.imgD.sx = CHICKENS_CELL_SIZE * 3;
+            obj.data.imgD.sx = sm.CHICKENS_CELL_SIZE * 3;
         }
         if(obj.data.delay <= 0){
-            obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
+            obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
             obj.data.state = 'live';
         }
         var over = poolMod.getOverlaping(obj, sm.game.chickens);
         if(over.length > 0){
-            obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, CHICKENS_RADIUS, rndRadian());
+            obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
             obj.data.state = 'live';
         }
     };
@@ -154,7 +134,7 @@
     // create chicken pool helper
     var createChickenPool = function(){
         return poolMod.create({
-            count: CHICKENS_COUNT,
+            count: sm.CHICKENS_COUNT,
             secsCap: 0.25,
             disableLifespan: true,
             spawn: onSpawnedChicken,
