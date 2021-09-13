@@ -7,19 +7,29 @@
 * add an event system based off of what I made for js-custom-event
 
 
-## (   ) - 0.5.5 - chicken-cooker: 0.png - 3.png
+## (   ) - 0.x.x - chicken-cooker: 0.png - 3.png
 * use 0.png for a chick-walk sheet
 * use 1.png for a chick-rest sheet
 * use 2.png for a chick-cooked sheet
 * use 3.png for a background sheet
 
-## (  ) - 0.5.4 - canvasMod: createAnimation object
+## (  ) - 0.x.x - canvasMod: createAnimation object
 * have a create animation object method
 * an animation object should have a name prop
 * an animation object should have a ref to the spriteSheet object to use
 * an animation object should have an array of cell index values in the spriteSheet the compose the animation
 * an animation object has a cellIndex prop that is the current index in the cell index array to use
 * update sprite sheet demo to use the create animation object method
+
+
+
+
+## (  ) - 0.5.4 - spritesheet demo: Object pool added, and new sheets
+* use 0.png for a four cell fire pellets animation
+* use 1.png for a ship animation sheet grid where the x axis is wing sweep and the y axis is direction (2 * 8)
+* have an object pool that will be used for fire pellets
+* have an object pool that will be used for ships
+
 
 ## ( done 09/13/2021 ) - 0.5.3 - canvasMod: built in methods for creating sprite sheets
 * (done) have a canvasMod.createSpriteSheetGrid method that will create a sprite sheet
