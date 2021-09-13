@@ -21,11 +21,7 @@
 * an animation object has a cellIndex prop that is the current index in the cell index array to use
 * update sprite sheet demo to use the create animation object method
 
-## (  ) - 0.5.6 - spritesheet demo: ships 
-* have an object pool that will be used for ships
-* I will need a system that involves using a heading and speed to get a cellIndex
-
-## (  ) - 0.5.5 - canvasMod: mod-pool.js plugin pool methods
+## (  ) - 0.x.x - canvasMod: mod-pool.js plugin pool methods
 * call the current pool method pool-imgd
 * update chicken-cooker demo to use pool-imgd
 * have a pool-sprite method in mod-pool.js that will look for a sprite sheet reference
@@ -33,6 +29,11 @@
 * update spritesheet demo to use pool-sprite method
 
 
+
+
+
+## (  ) - 0.5.5 - spritesheet-ships demo 
+* start a new spritesheet-ships demo based off of the spritesheets demo 
 
 
 
