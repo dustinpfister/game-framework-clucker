@@ -48,13 +48,14 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(sm.layers, 'background', 0);
 
 
+        var s = sm.CHICKENS_CELL_SIZE;
         var cellIndex = [
-            { x: 0, y:0, w: 128, h: 128 },
-            { x: 32, y:0, w: 128, h: 128 },
-            { x: 32, y:0, w: 128, h: 128 },
-            { x: 32, y:0, w: 128, h: 128 },
-            { x: 32, y:0, w: 128, h: 128 },
-            { x: 32, y:0, w: 128, h: 128 }
+            { x: 0, y: 0, w: s, h: s },
+            { x: 32, y: 0, w: s, h: s },
+            { x: 64, y: 0, w: s, h: s },
+            { x: 96, y: 0, w: s, h: s },
+            { x: 128, y: 0, w: s, h: s },
+            { x: 160, y: 0, w: s, h: s }
         ];
         canvasMod.createSpriteSheet(sm.layers, 'chick-walk-rest', 0, cellIndex);
 
