@@ -23,13 +23,13 @@
 * create sprite sheet objects for chicken-cooker
 * use sprite sheet objects for drawing cells in place of custom system
 
-## ( done 09/12/2021 ) 0.5.2 - canvasMod: cell draw method
+## ( done 09/12/2021 ) - 0.5.2 - canvasMod: cell draw method
 * (done) start out with a draw cell method in the spritesheet demo
 * (done) have a cell draw method that will take a spriteSheet index or name, cell index, x, y, w, and h values
 * (done) the result of calling the cell draw method is to draw a given cell index of a given sprite sheet
 * (done) make this method built into canvasMod
 
-## ( done 09/12/2021 ) 0.5.1 - - canvasMod: createSpriteSheet object method
+## ( done 09/12/2021 ) - 0.5.1 - - canvasMod: createSpriteSheet object method
 * (done) I will want a create sprite sheet method for canvasMod
 * (done) I will want to start a spritesheet demo based of the loader demo
 * (done) a spriteSheet object should have a name prop
@@ -41,7 +41,7 @@
 * (done) the images prop should really be a property of a canvas stack object actually
 * (done) when calling the createSpriteSheet object method I give an image index, and arguments that have to do with the state of cells
 
-## ( done 09/12/2021 ) 0.5.0 - image array part of stack
+## ( done 09/12/2021 ) - 0.5.0 - image array part of stack
 * (done) make the image array part of a canvas stack rather than that of the main sm object
 * (done) update loader demo to work for this change
 * (done) update chicken-cooker demo to work for this change
@@ -50,45 +50,45 @@
 
 
 
-## ( done 09/11/2021 ) 0.4.10 - chicken-cooker image sets
+## ( done 09/11/2021 ) - 0.4.10 - chicken-cooker image sets
 * (done) have more than one set of images for skinning the demo
 
-## ( done 09/07/2021 )  0.4.9 - chicken-cooker spawn rate
+## ( done 09/07/2021 ) - 0.4.9 - chicken-cooker spawn rate
 * have a spawn rate feature
 
-## ( done 09/07/2021 )  0.4.8 - more work on buttons and menus
+## ( done 09/07/2021 ) - 0.4.8 - more work on buttons and menus
 * (done) draw desc values for buttons
 
-## ( done 09/07/2021 )  0.4.7 - chicken-cooker purge methods for chickens pool
+## ( done 09/07/2021 ) - 0.4.7 - chicken-cooker purge methods for chickens pool
 * (done) have a poolMod.purge method
 * (done) have an on purge method for the chicken pool
 * (done) have just a score value for the game object
 * (done) display the score value of course
 * (done) each pureged chicken that is cooked will add to game.score
 
-## ( done 09/07/2021 )  0.4.6 - chicken-cooker fine grain methods in game.js
+## ( done 09/07/2021 ) - 0.4.6 - chicken-cooker fine grain methods in game.js
 * (done) have fine grain methods for spawn, and update for create chicken pool helper in game.js
 * (done) have an object of methods for each chicken state and call the methods in update chicken
 * (done) have a create blasts helper.
 
-## ( done 09/07/2021 )  0.4.5 - chicken-cooker more work
+## ( done 09/07/2021 ) - 0.4.5 - chicken-cooker more work
 * (done) have a way to set what state the sm should change to when loading is done in the loader object
 * (done) have a 'live', 'rest', and 'cooked' state for a chicken
 * (done) start a game.js file that can be used to create and return a game object
 
-## ( done 09/05/2021 )  0.4.4 - chicken-cooker on overlap with other chicken
+## ( done 09/05/2021 ) - 0.4.4 - chicken-cooker on overlap with other chicken
 * (done) check if a chicken is overlapping with another
 * (done) when one chicken is overlapping with another it will get a new target position
 
-## ( done 09/04/2021 )  0.4.3 - chicken-cooker both directions
+## ( done 09/04/2021 ) - 0.4.3 - chicken-cooker both directions
 * (done) have the live chicken sprite work with the right direction
 
-## ( done 09/04/2021 )  0.4.2 - chicken-cooker images
+## ( done 09/04/2021 ) - 0.4.2 - chicken-cooker images
 * (done) have 0.png be four cells for a chicken, can use the one from link to the past
 * (done) have 1.png be an image of a drum stick
 * (done) skin display objects with images
 
-## ( done 09/04/2021 )  0.4.1 - start a chicken-cooker demo
+## ( done 09/04/2021 ) - 0.4.1 - start a chicken-cooker demo
 * (done) start a new demo called chicken-cooker based off of the loader demo as a start point
 * (done) have a chickens object pool
 * (done) chickens will spawn in from outside of the canvas and then move into a radius inside the canvas
@@ -100,7 +100,7 @@
 * (done) any chicken that is in the blast radius will be set to cooked state
 * (done) after another delay in the cooked state the display object will no longer be active
 
-## ( done 09/03/2021 )  0.4.0 - Asset Loader started
+## ( done 09/03/2021 ) - 0.4.0 - Asset Loader started
 demos/loader:
 * (done) start a loader demo based off of menus demo
 * (done) the demo will need an images folder
@@ -115,7 +115,7 @@ gameframe.js:
 * (done) just go with a system where we have 0.png, 1.png, ect
 * (done) display a process bar while in load state
 
-## ( done 09/02/2021 )  0.3.0 - buttons started
+## ( done 09/02/2021 ) - 0.3.0 - buttons started
 gameframe.js:
 * (done) have a buttons property of a state object like that in orb match
 * (done) start a menus demo that will make use of buttons feature
