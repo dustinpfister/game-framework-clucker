@@ -21,6 +21,9 @@
 * an animation object has a cellIndex prop that is the current index in the cell index array to use
 * update sprite sheet demo to use the create animation object method
 
+## (  ) - 0.5.6 - spritesheet demo: ships 
+* have an object pool that will be used for ships
+* I will need a system that involves using a heading and speed to get a cellIndex
 
 ## (  ) - 0.5.5 - canvasMod: mod-pool.js plugin pool methods
 * call the current pool method pool-imgd
@@ -29,11 +32,14 @@
 * the plain pool method can be used to just pain a solid background
 * update spritesheet demo to use pool-sprite method
 
-## (  ) - 0.5.4 - spritesheet demo: Object pool added, and new sheets
+
+
+
+
+## ( done 09/13/2021 ) - 0.5.4 - spritesheet demo: Object pool added, and new sheets
 * (done) use 0.png for a four cell fire pellets animation
 * (done) use 1.png for a ship animation sheet grid where the x axis is wing sweep and the y axis is direction (2 * 8)
-* have an object pool that will be used for fire pellets
-* have an object pool that will be used for ships
+* (done) have an object pool that will be used for fire pellets
 
 ## ( done 09/13/2021 ) - 0.5.3 - canvasMod: built in methods for creating sprite sheets
 * (done) have a canvasMod.createSpriteSheetGrid method that will create a sprite sheet
@@ -43,9 +49,6 @@
 ## ( done 09/13/2021 ) - 0.5.3 - update chicken-cooker to use new sprite sheet system
 * (done) create a new chick-walk-rest sprite sheet object
 * (done) use new chick-walk-rest for drawing cells in place of custom system
-
-
-
 
 ## ( done 09/12/2021 ) - 0.5.2 - canvasMod: cell draw method
 * (done) start out with a draw cell method in the spritesheet demo
@@ -69,10 +72,6 @@
 * (done) make the image array part of a canvas stack rather than that of the main sm object
 * (done) update loader demo to work for this change
 * (done) update chicken-cooker demo to work for this change
-
-
-
-
 
 ## ( done 09/11/2021 ) - 0.4.10 - chicken-cooker image sets
 * (done) have more than one set of images for skinning the demo
