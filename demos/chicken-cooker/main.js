@@ -20,7 +20,21 @@ var sm = gameFrame.smCreateMain({
         }
     }
 });
-sm.game = gameMod.create();
+
+// hard coded sm level constants
+sm.CHICKENS_COUNT = 30;
+sm.CHICKENS_RADIUS_START = 400;
+sm.CHICKENS_RADIUS = 200;
+sm.CHICKENS_PPS_MIN = 64;
+sm.CHICKENS_PPS_MAX = 256;
+sm.CHICKENS_SIZE = 96;
+
+// this will need to be adjusted when using a higher res sprit sheet
+sm.CHICKENS_CELL_SIZE = 128;
+
+sm.game = gameMod.create({
+
+});
 
 
 

@@ -16,8 +16,10 @@
     CHICKENS_RADIUS = 200,
     CHICKENS_PPS_MIN = 64,
     CHICKENS_PPS_MAX = 256,
-    CHICKENS_SIZE = 128,
-    CHICKENS_CELL_SIZE = 128; // this will need to be adjusted when using a highher res sprit sheet
+    CHICKENS_SIZE = 96,
+
+    // this will need to be adjusted when using a higher res sprit sheet
+    CHICKENS_CELL_SIZE = 128;
 
 
 
@@ -217,7 +219,8 @@
 
 
     // create game state object
-    api.create = function(){
+    api.create = function(opt){
+        opt = opt || {};
         var game = {
             score: 0,
             spawn: {
