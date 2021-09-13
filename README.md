@@ -7,9 +7,34 @@ This is a basic game framework based off of what I have made for my [blog post o
 
 I would like to keep this framework fairly basic and striped down to just a core set of features that I am actually going to use in one or more games that will be built on top of this foundation. For now the framework has the follow features in place that seem to work okay.
 
-* A state machine
-* A canvas library that supports: layers, built in points collection system, built in draw methods, a plugin system
+### - A general utilities library
+
+A General utilities module is part of the framework. This library is a dumping ground for any and all methods that do not have some other location to which they would be placed better.
+
+* An http client
+* noop, distance, bounding box, and mathematical modulo
+* A Basic exp system
+
+### A Canvas Library
+
+Of course this is going to have to have some kind of canvas library, with at least the basic set of features that such a librray should have.
+
+* layers
+* built in points collection system
+* built in draw methods
+* a plugin system
+
+### An Object pool Library
+
+Just about any kind of game is going to involve a collection of display objects.
+
 * An object pool library for creating a collection of display objects aka sprites
-* A general utility library with various methods used for bounding box, distance, ect
+
+### game frame module
+
+There is then the game frame module where I have my state machine, main app loop, and built in states such as a loader state.
+
+* A state machine
+
 
 I will be adding at least a few additional features, but for the most part I will just be further improving and expanding the features that are all ready in place.
