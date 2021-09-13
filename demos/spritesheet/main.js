@@ -13,6 +13,7 @@ var sm = gameFrame.smCreateMain({
     }
 });
 
+/*
 var drawCell = function(stack, layerIndex, sheetKey, cellIndex, disp){
     var layerObj = stack[layerIndex],
     canvas = layerObj.canvas,
@@ -22,6 +23,28 @@ var drawCell = function(stack, layerIndex, sheetKey, cellIndex, disp){
     // draw the cell
     ctx.drawImage(spriteSheet.image, cellInfo.x, cellInfo.y, cellInfo.w, cellInfo.h, disp.x, disp.y, disp.w, disp.h);
 };
+*/
+
+
+sm.game.firePellets = poolMod.create({
+    count: 8,
+    secsCap: 0.25,
+    disableLifespan: true,
+    spawn: function(obj, pool){
+        obj.data.homeRadian = Math.PI * 2 / pool.objects.length * obj.i;
+        obj.data.deltaRadian = 0;
+        obj.data.radian = obj.data.homeRadian;
+        obj.data.radius = 200;
+    },
+    update: function (obj, pool, sm, secs){
+       obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
+       obj.data.radian += obj.data.deltaRadian;
+       obj.data.radian = utils.mod(obj.data.radian, Math.PI * 2);  
+       obj.lifespan = 1;
+       obj.x = 320 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
+       obj.y = 240 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
+    }
+})
 
 // a game state
 gameFrame.smPushState(sm, {
@@ -66,8 +89,13 @@ gameFrame.smPushState(sm, {
         // sheets look good
         console.log(sm.layers.spriteSheets);
 
+        poolMod.spawnAll(sm.game.firePellets, sm, {});
+
     },
-    update: function(sm, secs){},
+    update: function(sm, secs){
+
+        poolMod.update(sm.game.firePellets, secs, sm);
+    },
     draw: function(sm, layers){
         var canvas = layers[1].canvas,
         ctx = layers[1].ctx;
@@ -82,6 +110,9 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'cell', 1, 'fire-pellet', 0, {x: 150, y: 150, w: 64, h: 64});
 
         canvasMod.draw(layers, 'cell', 1, 'fire-pellet', 1, {x: 350, y: 150, w: 64, h: 64});
+
+        canvasMod.draw(layers, 'pool', 1, sm.game.firePellets);
+
 
         //drawCell(layers, 1, 'sheet-test1', 0, {x: 350, y: 150, w: 64, h: 64})
         //ctx.drawImage(sm.layers.images[0], 0, 0, 32, 32, 200, 200, 64, 64);

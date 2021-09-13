@@ -22,14 +22,17 @@
 * update sprite sheet demo to use the create animation object method
 
 
-
+## (  ) - 0.5.5 - canvasMod: mod-pool.js plugin pool methods
+* call the current pool method pool-imgd
+* update chicken-cooker demo to use pool-imgd
+* have a pool-sprite method in mod-pool.js that will look for a sprite sheet reference
+* the plain pool method can be used to just pain a solid background
 
 ## (  ) - 0.5.4 - spritesheet demo: Object pool added, and new sheets
-* use 0.png for a four cell fire pellets animation
-* use 1.png for a ship animation sheet grid where the x axis is wing sweep and the y axis is direction (2 * 8)
+* (done) use 0.png for a four cell fire pellets animation
+* (done) use 1.png for a ship animation sheet grid where the x axis is wing sweep and the y axis is direction (2 * 8)
 * have an object pool that will be used for fire pellets
 * have an object pool that will be used for ships
-
 
 ## ( done 09/13/2021 ) - 0.5.3 - canvasMod: built in methods for creating sprite sheets
 * (done) have a canvasMod.createSpriteSheetGrid method that will create a sprite sheet
