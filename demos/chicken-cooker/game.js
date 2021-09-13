@@ -54,7 +54,11 @@
         obj.data.cellIndex = 0;
         obj.data.imgSecs = 0;
         obj.data.image = sm.layers.images[0];
-        obj.data.imgD = {sx: 0, sy: 0, sw: sm.CHICKENS_CELL_SIZE, sh: sm.CHICKENS_CELL_SIZE};
+
+        //obj.data.imgD = {x: 0, y: 0, w: sm.CHICKENS_CELL_SIZE, h: sm.CHICKENS_CELL_SIZE};
+        // cell 0
+        obj.data.imgD = sm.layers.spriteSheets['chick-walk-rest'].cells[0];
+
     };
     // update a chicken
     var chickenState = {};
@@ -81,7 +85,8 @@
                 }else{
                     obj.data.cellIndex = obj.data.cellIndex === 4 ? 5 : 4;
                 }
-                obj.data.imgD.sx = sm.CHICKENS_CELL_SIZE * obj.data.cellIndex;
+                //obj.data.imgD.x = sm.CHICKENS_CELL_SIZE * obj.data.cellIndex;
+                obj.data.imgD = sm.layers.spriteSheets['chick-walk-rest'].cells[obj.data.cellIndex];
             }
         }else{
             // set delay and switch to rest state
@@ -94,9 +99,11 @@
         // else subtract from delay, and get a new target pos of delay <= 0
         obj.data.delay -= secs;
         // cell 3
-        obj.data.imgD.sx = sm.CHICKENS_CELL_SIZE * 2;
+        //obj.data.imgD.x = sm.CHICKENS_CELL_SIZE * 2;
+                obj.data.imgD = sm.layers.spriteSheets['chick-walk-rest'].cells[2];
         if(obj.data.cellDir === 1){
-            obj.data.imgD.sx = sm.CHICKENS_CELL_SIZE * 3;
+            //obj.data.imgD.x = sm.CHICKENS_CELL_SIZE * 3;
+                obj.data.imgD = sm.layers.spriteSheets['chick-walk-rest'].cells[3];
         }
         if(obj.data.delay <= 0){
             obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
@@ -112,7 +119,7 @@
     chickenState.cooked = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'red';
         obj.data.image = sm.layers.images[1];
-        obj.data.imgD.sx = 0;
+        obj.data.imgD = {x: 0, y: 0, w: sm.CHICKENS_CELL_SIZE, h: sm.CHICKENS_CELL_SIZE};
         obj.data.delay -= secs;
         if(obj.data.delay <= 0){
             //obj.active = false;
@@ -205,7 +212,7 @@
             score: 0,
             spawn: {
                secs: 0,
-               rate: 1.75,
+               rate: 0.25,
                maxActive: 7
             }
         };
