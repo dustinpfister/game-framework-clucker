@@ -20,7 +20,9 @@
 * an animation object should have an array of cell index values the compose the animation
 
 ## (  ) - 0.5.3 - canvasMod: built in methods for creating sprite sheets
-* have a canvasMod.createSpriteSheetGrid method that will create a sprite sheet using the typical method of doing so
+* have a canvasMod.createSpriteSheetGrid method that will create a sprite sheet
+* createSpriteSheetGrid just takes a cellWidth and cellHight argument to create the array of cell objects that way
+* update spritesheet demo to use new canvasMod.createSpriteSheetGrid method
 
 ## ( done 09/13/2021 ) - 0.5.3 - update chicken-cooker to use new sprite sheet system
 * (done) create a new chick-walk-rest sprite sheet object
