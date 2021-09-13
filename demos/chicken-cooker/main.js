@@ -34,6 +34,19 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(sm.layers, 'background', 0);
 
 
+        var cellIndex = [
+            { x: 0, y:0, w: 128, h: 128 },
+            { x: 32, y:0, w: 128, h: 128 },
+            { x: 32, y:0, w: 128, h: 128 },
+            { x: 32, y:0, w: 128, h: 128 },
+            { x: 32, y:0, w: 128, h: 128 },
+            { x: 32, y:0, w: 128, h: 128 }
+        ];
+        canvasMod.createSpriteSheet(sm.layers, 'chick-walk-rest', 0, cellIndex);
+
+
+        console.log(sm.layers.spriteSheets);
+
 
     },
     update: function(sm, secs){
