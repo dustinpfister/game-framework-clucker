@@ -31,12 +31,12 @@ sm.game.ships = poolMod.create({
     },
     update: function (obj, pool, sm, secs){
         // USING OLD IMGD METHOD FOR NOW
-       //obj.data.cellSecs += secs;
-       //if(obj.data.cellSecs > 0.1){
-       //    obj.data.cellIndex += 1;
-       //    obj.data.cellIndex %= 4;
-       //    obj.data.cellSecs = 0;
-       //}
+       obj.data.cellSecs += secs;
+       if(obj.data.cellSecs > 0.1){
+           obj.data.cellIndex += 1;
+           obj.data.cellIndex %= 4;
+           obj.data.cellSecs = 0;
+       }
        obj.data.imgD = sm.layers.spriteSheets['ship-type-one'].cells[obj.data.cellIndex];
 
        obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
