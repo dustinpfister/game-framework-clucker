@@ -1,27 +1,29 @@
 # game-framework-clucker todo list
 
-## () 0.x.0 - Grid library
+## (  ) - 0.x.0 - Grid library
 * add a library that can be used to create, update, and work with a simple 2d grid of tiles
 
-## () 0.x.0 - User Event system
+## (  ) - 0.x.0 - User Event system
 * add an event system based off of what I made for js-custom-event
 
 
 
 
-
-## () 0.5.4 - canvasMod: createAnimation object
+## (  ) - 0.5.4 - canvasMod: createAnimation object
 * have a create animation object method
 * an animation object should have a name prop
 * an animation object should have a sheet index or name to use
 * an animation object should have an array of cell index values the compose the animation
 
-## () 0.5.3 - canvasMod: built in methods for creating sprite sheets
+## (  ) - 0.5.3 - canvasMod: built in methods for creating sprite sheets
 * have a canvasMod.createSpriteSheetGrid method that will create a sprite sheet using the typical method of doing so
 
-## () - 0.5.3 - update chicken-cooker to use new sprite sheet system
+## (  ) - 0.5.3 - update chicken-cooker to use new sprite sheet system
 * create sprite sheet objects for chicken-cooker
 * use sprite sheet objects for drawing cells in place of custom system
+
+
+
 
 ## ( done 09/12/2021 ) - 0.5.2 - canvasMod: cell draw method
 * (done) start out with a draw cell method in the spritesheet demo

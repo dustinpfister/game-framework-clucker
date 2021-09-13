@@ -1,3 +1,7 @@
+
+
+
+
 // create an sm object
 var sm = gameFrame.smCreateMain({
     currentState: 'loader', 
@@ -16,8 +20,9 @@ var sm = gameFrame.smCreateMain({
         }
     }
 });
-
 sm.game = gameMod.create();
+
+
 
 
 // a game state
@@ -27,6 +32,9 @@ gameFrame.smPushState(sm, {
     start: function(sm){
         sm.layers.background = sm.layers.images[2];
         canvasMod.draw(sm.layers, 'background', 0);
+
+
+
     },
     update: function(sm, secs){
         gameMod.update(sm.game, sm, secs);
