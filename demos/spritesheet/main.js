@@ -32,7 +32,7 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(sm.layers, 'background', 0);
 
 
-
+/*
         // creating a sprite sheet object with an array of objects like this
         var cellIndex = [
             { x: 0, y:0, w: 32, h: 32 },
@@ -56,8 +56,12 @@ gameFrame.smPushState(sm, {
         };
         canvasMod.createSpriteSheet(sm.layers, 'sheet-test2', 0, cellIndexFunction);
 
+
         // however most of the time the built in create sprite sheet grid helper should work
         canvasMod.createSpriteSheetGrid(sm.layers, 'sheet-test3', 0, 32, 32);
+*/
+
+        canvasMod.createSpriteSheetGrid(sm.layers, 'fire-pellet', 0, 32, 32);
 
         // sheets look good
         console.log(sm.layers.spriteSheets);
@@ -75,9 +79,9 @@ gameFrame.smPushState(sm, {
         // drawing images to the canvas
 
         // uisng built in method for doing so
-        canvasMod.draw(layers, 'cell', 1, 'sheet-test3', 0, {x: 350, y: 150, w: 64, h: 64});
+        canvasMod.draw(layers, 'cell', 1, 'fire-pellet', 0, {x: 150, y: 150, w: 64, h: 64});
 
-        canvasMod.draw(layers, 'cell', 1, 'sheet-test3', 1, {x: 150, y: 150, w: 64, h: 64});
+        canvasMod.draw(layers, 'cell', 1, 'fire-pellet', 1, {x: 350, y: 150, w: 64, h: 64});
 
         //drawCell(layers, 1, 'sheet-test1', 0, {x: 350, y: 150, w: 64, h: 64})
         //ctx.drawImage(sm.layers.images[0], 0, 0, 32, 32, 200, 200, 64, 64);
