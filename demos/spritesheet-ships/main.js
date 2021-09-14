@@ -18,6 +18,11 @@ var randomHeading = function(){
     return Math.PI * 2 / 8 * Math.floor( 8 * Math.random());
 };
 
+var getHeading = function(dir){
+    dir = utils.mod(dir, 8);
+    return Math.PI * 2 / 8 * dir;
+};
+
 // set up the ships pool
 sm.game.ships = poolMod.create({
     count: 8,
@@ -34,9 +39,15 @@ sm.game.ships = poolMod.create({
         // random start location, and heading, and speed
         obj.x = Math.floor(640 * Math.random());
         obj.y = Math.floor(480 * Math.random());
-        obj.heading = randomHeading();
         obj.data.fast = Math.random() > 0.5 ? false: true;
         obj.pps = obj.data.fast ? 256 : 32;
+        // heading change feature
+        obj.data.hData = {
+            count: 3,
+            dir: Math.floor(Math.random() * 8),
+            delta: 1
+        };
+        obj.heading = getHeading(obj.data.hData.dir);
 
     },
     update: function (obj, pool, sm, secs){
@@ -47,8 +58,21 @@ sm.game.ships = poolMod.create({
         // USING OLD IMGD METHOD FOR NOW
         obj.data.imgD = sm.layers.spriteSheets['ship-type-one'].cells[obj.data.cellIndex];
         // move by pps and wrap
-        poolMod.moveByPPS(obj, secs);
-        poolMod.wrap(obj, {x: 0, y: 0, width: 640, height: 480});
+        var hd = obj.data.hData;
+        if(hd.count){
+            hd.count -= 1;
+            hd.dir += hd.delta;
+            hd.dir = utils.mod(hd.dir, 8);
+            obj.heading = getHeading(obj.data.hData.dir); 
+        }else{
+            poolMod.moveByPPS(obj, secs);
+            poolMod.wrap(obj, {x: 0, y: 0, width: 640, height: 480});
+            var roll = Math.random();
+            if(roll < 0.025){
+                hd.count = 1 + Math.floor(Math.random() * 5);
+                hd.delta = Math.random() > 0.5 ? -1 : 1;
+            }
+        }
     }
 });
 
