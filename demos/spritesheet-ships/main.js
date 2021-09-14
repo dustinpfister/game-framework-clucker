@@ -8,7 +8,7 @@ var sm = gameFrame.smCreateMain({
     loader: {
         images: {
             baseURL: '/demos/spritesheet-ships/img',
-            count: 1
+            count: 2
         }
     }
 });
@@ -81,6 +81,7 @@ gameFrame.smPushState(sm, {
     name: 'game',
     buttons: {},
     start: function(sm){
+        sm.layers.background = sm.layers.images[1];
         canvasMod.draw(sm.layers, 'background', 0);
         canvasMod.createSpriteSheetGrid(sm.layers, 'ship-type-one', 0, 32, 32);
         poolMod.spawnAll(sm.game.ships, sm, {});
