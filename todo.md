@@ -18,10 +18,10 @@
 
 
 
-## (  ) - 0.5.5 - spritesheet-ships demo
+## (  ) - 0.5.5 - spritesheet-ships demo: new spritesheet and heading prop used
 * (done) fixed a simple bug with canvasMod.createSpriteSheetGrid method
 * (done) start a new spritesheet-ships demo based off of the spritesheets demo 
-* edit 0.png so that we have a ship for each direction and speed
+* (done) edit 0.png so that we have a ship for each direction and speed
 * the heading prop of a ship pool object should be what sets the cell index
 
 

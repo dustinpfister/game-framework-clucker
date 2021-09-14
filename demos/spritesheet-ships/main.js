@@ -17,6 +17,9 @@ var sm = gameFrame.smCreateMain({
 sm.game.ships = poolMod.create({
     count: 8,
     secsCap: 0.25,
+    heading: Math.PI / 180 * 45,
+    w: 64,
+    h: 64,
     disableLifespan: true,
     spawn: function(obj, pool, sm, opt){
         // USING OLD IMGD METHOD FOR NOW
@@ -31,12 +34,23 @@ sm.game.ships = poolMod.create({
     },
     update: function (obj, pool, sm, secs){
         // USING OLD IMGD METHOD FOR NOW
-       obj.data.cellSecs += secs;
+       //obj.data.cellSecs += secs;
+/*
        if(obj.data.cellSecs > 0.1){
            obj.data.cellIndex += 1;
            obj.data.cellIndex %= 4;
            obj.data.cellSecs = 0;
        }
+*/
+
+       obj.heading = Math.PI + Math.atan2(240 - (obj.y + 32), 320 - (obj.x + 32));
+
+       var fast = true,
+       dir = Math.round( obj.heading / (Math.PI * 2) * 8 );
+       dir = dir >= 8 ? 7 : dir;
+       obj.data.cellIndex = 2 * dir + (fast ? 1: 0);
+
+
        obj.data.imgD = sm.layers.spriteSheets['ship-type-one'].cells[obj.data.cellIndex];
 
        obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
