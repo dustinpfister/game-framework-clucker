@@ -16,17 +16,21 @@
 
 
 
+## () - 0.5.6 - spritesheet-ships demo: random start positions, and speeds
+* have ships spawn at random start locations
+* have ships start at random headings
+* have two pps values for fast and slow
+* use 'wrapping' for when ships go out of bounds
 
 
-## (  ) - 0.5.5 - spritesheet-ships demo: new spritesheet and heading prop used
+
+
+
+## ( done 09/14/2021 ) - 0.5.5 - spritesheet-ships demo: new spritesheet and heading prop used
 * (done) fixed a simple bug with canvasMod.createSpriteSheetGrid method
 * (done) start a new spritesheet-ships demo based off of the spritesheets demo 
 * (done) edit 0.png so that we have a ship for each direction and speed
-* the heading prop of a ship pool object should be what sets the cell index
-
-
-
-
+* (done) the heading prop of a ship pool object should be what sets the cell index
 
 ## ( done 09/13/2021 ) - 0.5.4 - spritesheet demo: Object pool added, and new sheets
 * (done) use 0.png for a four cell fire pellets animation
