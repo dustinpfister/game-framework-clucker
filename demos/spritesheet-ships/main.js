@@ -33,7 +33,7 @@ sm.game.ships = poolMod.create({
         // random start location, and heading
         obj.x = Math.floor(640 * Math.random());
         obj.y = Math.floor(480 * Math.random());
-        obj.heading = Math.PI * 0; //randomHeading();
+        obj.heading = randomHeading();
         obj.data.fast = Math.random() > 0.5 ? true: false;
         obj.pps = obj.data.fast ? 128: 32;
         // other values
@@ -54,12 +54,15 @@ sm.game.ships = poolMod.create({
         obj.data.imgD = sm.layers.spriteSheets['ship-type-one'].cells[obj.data.cellIndex];
 
         poolMod.moveByPPS(obj, secs);
+        poolMod.wrap(obj, {x: 0, y: 0, width: 640, height: 480});
 // wrapping
+
+/*
         if(!utils.boundingBox(obj.x, obj.y, obj.w, obj.h, -32, -32, 640 + 32, 480 + 32)){
             obj.x = utils.mod(obj.x + 32, 640 + 64) - 32;
             obj.y = utils.mod(obj.y + 32, 480 + 64) - 32;
         }
-
+*/
         //obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
         //obj.data.radian += obj.data.deltaRadian;
         //obj.data.radian = utils.mod(obj.data.radian, Math.PI * 2);  
