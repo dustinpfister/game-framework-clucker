@@ -1,25 +1,11 @@
 # game-framework-clucker todo list
 
-## (  ) - 0.x.0 - Grid library
-* add a library that can be used to create, update, and work with a simple 2d grid of tiles
-
-## (  ) - 0.x.0 - User Event system
-* add an event system based off of what I made for js-custom-event
-
 
 ## (   ) - 0.x.x - chicken-cooker: 0.png - 3.png
 * use 0.png for a chick-walk sheet
 * use 1.png for a chick-rest sheet
 * use 2.png for a chick-cooked sheet
 * use 3.png for a background sheet
-
-## (  ) - 0.x.x - canvasMod: createAnimation object
-* have a create animation object method
-* an animation object should have a name prop
-* an animation object should have a ref to the spriteSheet object to use
-* an animation object should have an array of cell index values in the spriteSheet the compose the animation
-* an animation object has a cellIndex prop that is the current index in the cell index array to use
-* update sprite sheet demo to use the create animation object method
 
 ## (  ) - 0.x.x - canvasMod: mod-pool.js plugin pool methods
 * call the current pool method pool-imgd
@@ -37,6 +23,9 @@
 * (done) start a new spritesheet-ships demo based off of the spritesheets demo 
 * edit 0.png so that we have a ship for each direction and speed
 * the heading prop of a ship pool object should be what sets the cell index
+
+
+
 
 
 ## ( done 09/13/2021 ) - 0.5.4 - spritesheet demo: Object pool added, and new sheets
