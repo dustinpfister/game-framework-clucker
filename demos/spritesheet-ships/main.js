@@ -32,10 +32,12 @@ sm.game.ships = poolMod.create({
     h: 64,
     disableLifespan: true,
     spawn: function(obj, pool, sm, opt){
+
         // USING OLD IMGD METHOD FOR NOW
         obj.data.image = sm.layers.images[0];
         obj.data.cellIndex = 0;
         obj.data.cellSecs = 0;
+
         // random start location, and heading, and speed
         obj.x = Math.floor(640 * Math.random());
         obj.y = Math.floor(480 * Math.random());
@@ -92,7 +94,7 @@ gameFrame.smPushState(sm, {
     draw: function(sm, layers){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
-        canvasMod.draw(layers, 'pool', 1, sm.game.ships);
+        canvasMod.draw(layers, 'pool-sprite', 1, sm.game.ships);
     },
     events: {
         pointerStart: function(e, pos, sm){},
