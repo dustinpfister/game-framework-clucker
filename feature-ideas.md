@@ -9,9 +9,6 @@ comes to actual lined up revisions of the over all framework.
 ## (  ) - 0.x.x - User Event system
 * add an event system based off of what I made for js-custom-event
 
-## (  ) - 0.x.x - nodejs build tool
-* in the nodejs folder start a build tool
-
 ## (  ) - 0.x.x - object pool purge condition array
 * make to so that a purge condition can also be an array of conditions
 

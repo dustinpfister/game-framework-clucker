@@ -1,18 +1,49 @@
 # game-framework-clucker todo list
 
 
-## (   ) - 0.x.x - chicken-cooker: 0.png - 3.png
+
+
+## (  ) - 0.6.2 - /examples folder started
+* create a new /examples folder based off of the /demos folder
+* the build tool should create a copy of clucker.js as /examples/js/clucker/x.x.x/clucker.min.js
+* each demo should use a specfic version of clucker.min.js
+* create a /node/server-examples based off of /node/server-demo
+* if all goes well the /lib folder should no longer be needed if so remove it
+* if all goes well the /demos folder should no longer be needed if so remove it
+* if all goes well the /node/server-demo folder should no longer be needed if so remove it
+
+## (  ) - 0.6.1 - /src folder started
+* create a new /src folder based off of /lib that follows a pattren like this:
+```
+/src/[libName]/[x.x.x]/[fileName].js
+```
+* the nodejs build tool should use files located here over the older /lib folder
+
+## (  ) - 0.6.0 - start a nodejs build tool that creates a dist folder
+* in the nodejs folder start a build tool
+* the built tool should create a /dist/clucker.js from files in /lib
+* the built tool should create a /dist/clucker.min.js from files in /lib
+* clucker.js should create just one global token called Clucker
+* There should be a Clucker.ver prop that is the current version of Clucker
+
+
+
+
+
+
+## (   ) - 0.5.8 - chicken-cooker: 0.png - 3.png
 * use 0.png for a chick-walk sheet
 * use 1.png for a chick-rest sheet
 * use 2.png for a chick-cooked sheet
 * use 3.png for a background sheet
 
-## (  ) - 0.x.x - canvasMod: mod-pool.js plugin pool methods
+## (  ) - 0.5.7 - canvasMod: mod-pool.js plugin pool methods
 * call the current pool method pool-imgd
 * update chicken-cooker demo to use pool-imgd
 * have a pool-sprite method in mod-pool.js that will look for a sprite sheet reference
 * the plain pool method can be used to just pain a solid background
 * update spritesheet demo to use pool-sprite method
+
 
 
 
