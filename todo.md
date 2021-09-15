@@ -44,8 +44,7 @@
 
 ## (  ) - 0.5.8 - update chicken cooker
 * (done) had to add utils.logOnce to help with debugging
-* update chicken-cooker demo to use pool-sprite method over pool
-
+* (done) update chicken-cooker demo to use pool-sprite method over pool
 
 ## ( done 09/15/2021 ) - 0.5.7 - canvasMod: mod-pool.js plugin pool methods
 * (done) start a new 'pool-imgd' method that is the same as the 'pool' method
