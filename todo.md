@@ -31,19 +31,17 @@
 
 
 
-## (   ) - 0.5.10 - chicken-cooker: 0.png - 3.png
-* use 0.png for a chick-walk sheet
-* use 1.png for a chick-rest sheet
-* use 2.png for a chick-cooked sheet
-* use 3.png for a background sheet
-
 ## (   ) - 0.5.9 - image index array for sprite sheets
 * make it so that an array of image index values can be given for a sprite sheet
 * update pool-sprite method to look for a disp.data.imageIndex prop, and default the value to 0
 * update chicken-cooker demo to use all sheets for chickens
 
 ## (   ) - 0.5.9 - rework chicken-cooker to use three sprite sheets for chickens
-* have a chick-rest sheet
+* start a new skin-emme1-128-4 folder based off of skin-emme1-128
+* use 0.png for a chick-walk sheet
+* use 1.png for a chick-rest sheet
+* use 2.png for a chick-cooked sheet
+* use 3.png for a background sheet
 
 ## ( done 09/15/2021 ) - 0.5.8 - update chicken cooker to use pool-sprite method
 * (done) had to add utils.logOnce to help with debugging
