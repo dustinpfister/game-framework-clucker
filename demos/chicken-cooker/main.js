@@ -49,12 +49,10 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(sm.layers, 'background', 0);
 
         // create sprite sheets
-        //canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk-rest', 0, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
-        //canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
-
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', 0, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', 1, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 2, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
+        var size = sm.CHICKENS_CELL_SIZE;
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', 0, size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', 1, size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 2, size, size);
 
 
 
