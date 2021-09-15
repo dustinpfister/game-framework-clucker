@@ -43,6 +43,7 @@
 * (done) for now make it so that 'pool' just calls 'pool-imgd' so that demos do not break
 * (done) have a pool-sprite method in mod-pool.js that will look for a sprite sheet reference
 * (done) update spritesheet demo to use pool-sprite method over pool
+* (done) update chicken-cooker demo to use new canvasMod.createSpriteSheetGrid
 * update chicken-cooker demo to use pool-sprite method over pool
 
 
