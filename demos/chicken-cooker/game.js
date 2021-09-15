@@ -106,7 +106,7 @@
         obj.data.delay -= secs;
         // cell 3
         //obj.data.imgD.x = sm.CHICKENS_CELL_SIZE * 2;
-                obj.data.imgD = sm.layers.spriteSheets['chick-walk-rest'].cells[2];
+        obj.data.imgD = sm.layers.spriteSheets['chick-walk-rest'].cells[2];
         if(obj.data.cellDir === 1){
             //obj.data.imgD.x = sm.CHICKENS_CELL_SIZE * 3;
                 obj.data.imgD = sm.layers.spriteSheets['chick-walk-rest'].cells[3];
@@ -224,6 +224,13 @@
         };
         // chickens pool
         game.chickens = createChickenPool();
+
+        // set up the data objects before spawn
+        game.chickens.objects.forEach(function(obj){
+            obj.data.sheetKey = 'chick-walk-rest';
+            obj.data.cellIndex = 0;
+        });
+
         // blasts object pool
         game.blasts = createBlastsPool();
         return game;

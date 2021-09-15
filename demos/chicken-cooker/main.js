@@ -32,9 +32,7 @@ sm.CHICKENS_SIZE = 96;
 // this will need to be adjusted when using a higher res sprit sheet
 sm.CHICKENS_CELL_SIZE = 128;
 
-sm.game = gameMod.create({
-
-});
+sm.game = gameMod.create({});
 
 
 
