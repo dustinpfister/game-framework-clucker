@@ -31,11 +31,16 @@
 
 
 
-## (   ) - 0.5.8 - chicken-cooker: 0.png - 3.png
+## (   ) - 0.5.9 - chicken-cooker: 0.png - 3.png
 * use 0.png for a chick-walk sheet
 * use 1.png for a chick-rest sheet
 * use 2.png for a chick-cooked sheet
 * use 3.png for a background sheet
+
+## (   ) - 0.5.8 - image index array for sprite sheets
+* make it so that an array of image index values can be given for a sprite sheet
+* update pool-sprite method to look for a disp.data.imageIndex prop, and default the value to 0
+* update chicken-cooker demo to use all sheets for chickens
 
 ## (  ) - 0.5.7 - canvasMod: mod-pool.js plugin pool methods
 
