@@ -38,11 +38,12 @@
 * use 3.png for a background sheet
 
 ## (  ) - 0.5.7 - canvasMod: mod-pool.js plugin pool methods
-* call the current pool method pool-imgd
-* update chicken-cooker demo to use pool-imgd
+
+* start a new 'pool-imgd' method that is the same as the 'pool' method
+* for now make it so that 'pool' just calls 'pool-imgd' so that demos do not break
 * have a pool-sprite method in mod-pool.js that will look for a sprite sheet reference
-* the plain pool method can be used to just pain a solid background
-* update spritesheet demo to use pool-sprite method
+* update spritesheet demo to use pool-sprite method over pool
+* update chicken-cooker demo to use pool-sprite method over pool
 
 
 
