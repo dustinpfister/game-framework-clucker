@@ -36,9 +36,7 @@
     // what to do for a chicken that is to be spanwed in
     var onSpawnedChicken = function(obj, pool, sm, opt){
         obj.data.state = 'live'; // 'live' or 'cooked' state
-
-
-
+        obj.data.fillStyle = 'gray';
         // set start position
         var startPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS_START, rndRadian());
         obj.x = startPos.x;
@@ -51,18 +49,14 @@
         obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
         // set delay
         obj.data.delay = 3;
-
-        // 'pool-solid'
-        obj.data.fillStyle = 'gray';
-
-        // 'pool-sprite'
-        obj.data.cellIndex = 0;
-        obj.data.sheetKey = 'chick-walk-rest';
-
-        // 'pool-imgd'
+        // image data
         obj.data.cellDir = 1; // 0 for facting left and 1 for facing right
+        obj.data.cellIndex = 0;
         obj.data.imgSecs = 0;
         obj.data.image = sm.layers.images[0];
+
+        //obj.data.imgD = {x: 0, y: 0, w: sm.CHICKENS_CELL_SIZE, h: sm.CHICKENS_CELL_SIZE};
+        // cell 0
         obj.data.imgD = sm.layers.spriteSheets['chick-walk-rest'].cells[0];
 
     };

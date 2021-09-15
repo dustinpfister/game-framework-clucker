@@ -64,7 +64,7 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
 
-        canvasMod.draw(layers, 'pool-sprite', 1, sm.game.chickens);
+        canvasMod.draw(layers, 'pool-imgd', 1, sm.game.chickens);
 
         canvasMod.draw(layers, 'pool-imgd', 1, sm.game.blasts, {fillStyle: 'rgba(255, 255, 0, 0.5)' });
         canvasMod.draw(layers, 'print', 1, 'score: ' + sm.game.score, 10, 10, {fontSize: 20});
