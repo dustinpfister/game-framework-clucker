@@ -15,8 +15,11 @@ var sm = gameFrame.smCreateMain({
             //baseURL: '/demos/chicken-cooker/img/skin-mine1-32',
             //baseURL: '/demos/chicken-cooker/img/skin-emme1-32',
             //baseURL: '/demos/chicken-cooker/img/skin-emme1-128',
-            baseURL: '/demos/chicken-cooker/img/skin-emme1-128-color',
-            count: 3
+            //baseURL: '/demos/chicken-cooker/img/skin-emme1-128-color',
+
+            baseURL: '/demos/chicken-cooker/img/skin-emme1-128-4',
+
+            count: 4
         }
     }
 });
@@ -42,12 +45,18 @@ gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {},
     start: function(sm){
-        sm.layers.background = sm.layers.images[2];
+        sm.layers.background = sm.layers.images[3];
         canvasMod.draw(sm.layers, 'background', 0);
 
         // create sprite sheets
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk-rest', 0, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
+        //canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk-rest', 0, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
+        //canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
+
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', 0, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', 1, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 2, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
+
+
 
         console.log(sm.layers.spriteSheets);
 
