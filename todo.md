@@ -31,28 +31,28 @@
 
 
 
-## (   ) - 0.5.9 - chicken-cooker: 0.png - 3.png
+## (   ) - 0.5.10 - chicken-cooker: 0.png - 3.png
 * use 0.png for a chick-walk sheet
 * use 1.png for a chick-rest sheet
 * use 2.png for a chick-cooked sheet
 * use 3.png for a background sheet
 
-## (   ) - 0.5.8 - image index array for sprite sheets
+## (   ) - 0.5.9 - image index array for sprite sheets
 * make it so that an array of image index values can be given for a sprite sheet
 * update pool-sprite method to look for a disp.data.imageIndex prop, and default the value to 0
 * update chicken-cooker demo to use all sheets for chickens
 
-## (  ) - 0.5.7 - canvasMod: mod-pool.js plugin pool methods
+## (  ) - 0.5.8 - update chicken cooker
+* (done) had to add utils.logOnce to help with debugging
+* update chicken-cooker demo to use pool-sprite method over pool
 
+
+## ( done 09/15/2021 ) - 0.5.7 - canvasMod: mod-pool.js plugin pool methods
 * (done) start a new 'pool-imgd' method that is the same as the 'pool' method
 * (done) for now make it so that 'pool' just calls 'pool-imgd' so that demos do not break
 * (done) have a pool-sprite method in mod-pool.js that will look for a sprite sheet reference
 * (done) update spritesheet demo to use pool-sprite method over pool
 * (done) update chicken-cooker demo to use new canvasMod.createSpriteSheetGrid
-* update chicken-cooker demo to use pool-sprite method over pool
-
-
-
 
 ## ( done 09/14/2021 ) - 0.5.6 - spritesheet-ships demo: random start positions, and speeds
 * (done) have ships spawn at random start locations
