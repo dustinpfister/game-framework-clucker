@@ -104,12 +104,11 @@
     chickenState.rest = function(obj, pool, sm, secs){
         // else subtract from delay, and get a new target pos of delay <= 0
         obj.data.delay -= secs;
-        // cell 3
-        //obj.data.imgD.x = sm.CHICKENS_CELL_SIZE * 2;
-        obj.data.imgD = sm.layers.spriteSheets['chick-walk-rest'].cells[2];
+
+        // use rest cell index
+        obj.data.cellIndex = 2;
         if(obj.data.cellDir === 1){
-            //obj.data.imgD.x = sm.CHICKENS_CELL_SIZE * 3;
-                obj.data.imgD = sm.layers.spriteSheets['chick-walk-rest'].cells[3];
+            obj.data.cellIndex = 3;
         }
         if(obj.data.delay <= 0){
             obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
