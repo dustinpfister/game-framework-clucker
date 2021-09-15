@@ -123,8 +123,13 @@
     // 'cooked' chicken state
     chickenState.cooked = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'red';
-        obj.data.image = sm.layers.images[1];
-        obj.data.imgD = {x: 0, y: 0, w: sm.CHICKENS_CELL_SIZE, h: sm.CHICKENS_CELL_SIZE};
+
+        //obj.data.image = sm.layers.images[1];
+        //obj.data.imgD = {x: 0, y: 0, w: sm.CHICKENS_CELL_SIZE, h: sm.CHICKENS_CELL_SIZE};
+
+        obj.data.sheetKey = 'chick-cooked';
+        obj.data.cellIndex = 0;
+
         obj.data.delay -= secs;
         if(obj.data.delay <= 0){
             //obj.active = false;

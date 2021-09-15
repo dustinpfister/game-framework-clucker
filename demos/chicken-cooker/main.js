@@ -47,7 +47,7 @@ gameFrame.smPushState(sm, {
 
         // create sprite sheets
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk-rest', 0, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
-
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, sm.CHICKENS_CELL_SIZE, sm.CHICKENS_CELL_SIZE);
 
         console.log(sm.layers.spriteSheets);
 
