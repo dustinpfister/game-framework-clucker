@@ -33,10 +33,14 @@ sm.game.ships = poolMod.create({
     disableLifespan: true,
     spawn: function(obj, pool, sm, opt){
 
-        // USING OLD IMGD METHOD FOR NOW
-        obj.data.image = sm.layers.images[0];
+        // USING NEW pool-sprite METHOD by setting cellIndex and sheetKey        
         obj.data.cellIndex = 0;
-        obj.data.cellSecs = 0;
+        obj.data.sheetKey = 'ship-type-one';
+
+        // USING OLD IMGD METHOD FOR NOW
+        //obj.data.image = sm.layers.images[0];
+        //obj.data.cellIndex = 0;
+        //obj.data.cellSecs = 0;
 
         // random start location, and heading, and speed
         obj.x = Math.floor(640 * Math.random());
@@ -56,10 +60,16 @@ sm.game.ships = poolMod.create({
         // SETTING CELL INDEX BASED ON HEADING AND SPEED
         var dir = Math.round( obj.heading / (Math.PI * 2) * 8 );
         dir = dir >= 8 ? 7 : dir;
+
+        // USING NEW pool-sprite METHOD by setting cellIndex and sheetKey        
         obj.data.cellIndex = 2 * dir + (obj.data.fast ? 0 : 1);
-        // USING OLD IMGD METHOD FOR NOW
-        obj.data.imgD = sm.layers.spriteSheets['ship-type-one'].cells[obj.data.cellIndex];
+        obj.data.sheetKey = 'ship-type-one';
+
+        // USING OLD pool-imgd METHOD FOR NOW
+        //obj.data.imgD = sm.layers.spriteSheets['ship-type-one'].cells[obj.data.cellIndex];
         // move by pps and wrap
+
+
         var hd = obj.data.hData;
         if(hd.count){
             hd.count -= 1;
@@ -85,7 +95,9 @@ gameFrame.smPushState(sm, {
     start: function(sm){
         sm.layers.background = sm.layers.images[1];
         canvasMod.draw(sm.layers, 'background', 0);
+        // create sprite sheet
         canvasMod.createSpriteSheetGrid(sm.layers, 'ship-type-one', 0, 32, 32);
+        // spawn all
         poolMod.spawnAll(sm.game.ships, sm, {});
     },
     update: function(sm, secs){
