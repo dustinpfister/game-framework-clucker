@@ -42,7 +42,10 @@
 * update pool-sprite method to look for a disp.data.imageIndex prop, and default the value to 0
 * update chicken-cooker demo to use all sheets for chickens
 
-## (  ) - 0.5.8 - update chicken cooker
+## (   ) - 0.5.9 - rework chicken-cooker to use three sprite sheets for chickens
+* have a chick-rest sheet
+
+## ( done 09/15/2021 ) - 0.5.8 - update chicken cooker to use pool-sprite method
 * (done) had to add utils.logOnce to help with debugging
 * (done) update chicken-cooker demo to use pool-sprite method over pool
 
