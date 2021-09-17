@@ -27,14 +27,15 @@
 * There should be a Clucker.ver prop that is the current version of Clucker
 
 
+## (   ) - 0.5.11 - start chicken-cooker-fun-facts
+* start a chiken cooker fun facts demo based off of chicken-cooker-sheets
 
-
-
+## (   ) - 0.5.10 - start chicken-cooker-sheets demo
+* keep chicken-cooker demo simple and start a new chicken-cooker-sheets demo based off of it
 
 ## (   ) - 0.5.9 - image index array for sprite sheets
 * make it so that an array of image index values can be given for a sprite sheet
 * update pool-sprite method to look for a disp.data.imageIndex prop, and default the value to 0
-* update chicken-cooker demo to use all sheets for chickens
 
 ## ( done 09/15/2021 ) - 0.5.9 - rework chicken-cooker to use three sprite sheets for chickens
 * (done) start a new skin-emme1-128-4 folder based off of skin-emme1-128
