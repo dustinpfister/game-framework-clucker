@@ -12,7 +12,7 @@ var sm = gameFrame.smCreateMain({
         startState: 'gameTime',
         images: { // load images ./img
             baseURL: '/demos/chicken-cooker-sheets/img/ccsheets-32',
-            count: 4
+            count: 6
         }
     }
 });
@@ -43,8 +43,8 @@ gameFrame.smPushState(sm, {
 
         // create sprite sheets
         var size = sm.CHICKENS_CELL_SIZE;
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', 2, size, size);
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', 3, size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', 4, size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', 5, size, size);
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
 
 
