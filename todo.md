@@ -29,10 +29,10 @@
 ## (   ) - 0.5.11 - start chicken-cooker-fun-facts
 * start a chiken cooker fun facts demo based off of chicken-cooker-sheets
 
-## (   ) - 0.5.10 - start chicken-cooker-sheets demo
+## ( done 09/18/2021 ) - 0.5.10 - start chicken-cooker-sheets demo
 * (done) keep chicken-cooker demo simple and start a new chicken-cooker-sheets demo based off of it
-* expand chicken-cooker-sheets first skin folder to have at least one more set of images for chick-walk and chick-rest
-* make changes to pool-sprite draw method so that it will use a disp.data.imageIndex value
+* (done) expand chicken-cooker-sheets first skin folder to have at least one more set of images for chick-walk and chick-rest
+* (done) make changes to pool-sprite draw method so that it will use a disp.data.imageIndex value
 
 ## ( done 09/18/2021 ) - 0.5.9 - image index array for sprite sheets
 * (done) make it so that an array of image index values can be given for a sprite sheet
