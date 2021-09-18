@@ -11,7 +11,7 @@ var sm = gameFrame.smCreateMain({
     loader: {
         startState: 'gameTime',
         images: { // load images ./img
-            baseURL: '/demos/chicken-cooker-sheets/img/ccsheets-128',
+            baseURL: '/demos/chicken-cooker-sheets/img/ccsheets-32',
             count: 4
         }
     }
@@ -26,7 +26,7 @@ sm.CHICKENS_PPS_MAX = 256;
 sm.CHICKENS_SIZE = 64;
 
 // this will need to be adjusted when using a higher res sprit sheet
-sm.CHICKENS_CELL_SIZE = 128;
+sm.CHICKENS_CELL_SIZE = 32;
 
 sm.game = gameMod.create({});
 
