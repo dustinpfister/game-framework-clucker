@@ -195,7 +195,7 @@
                                 // use chick-cooked sheet
                                 chk.data.sheetKey = 'chick-cooked';
                                 chk.data.imageIndex = 0;
-                                chk.data.cellIndex = Math.floor(Math.random() * 2);;
+                                chk.data.cellIndex = Math.floor(Math.random() * 3);;
                                 chk.data.state = 'cooked';
                             }
                         }
