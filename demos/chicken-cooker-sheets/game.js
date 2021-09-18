@@ -60,6 +60,8 @@
         obj.data.cellIndex = 0;
         obj.data.sheetKey = 'chick-walk';
 
+        obj.data.imageIndex = Math.floor( Math.random() * 2);
+
     };
     // update a chicken
     var chickenState = {};
@@ -119,6 +121,8 @@
     // 'cooked' chicken state
     chickenState.cooked = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'red';
+
+        obj.data.imageIndex = 0;
 
         obj.data.sheetKey = 'chick-cooked';
         obj.data.cellIndex = 0;
