@@ -26,8 +26,13 @@
 * clucker.js should create just one global token called Clucker
 * There should be a Clucker.ver prop that is the current version of Clucker
 
-## (   ) - 0.5.11 - start chicken-cooker-fun-facts
+## (   ) - 0.5.12 - start chicken-cooker-fun-facts
 * start a chiken cooker fun facts demo based off of chicken-cooker-sheets
+
+## () - 0.5.11 - chicken-cooker-sheets: max Active count of chickens
+* have new values for setting max active chickens
+* have it so that the current max active count will slowly go up over time
+* killing too many chickens too fast will result in it going back down
 
 ## ( done 09/18/2021 ) - 0.5.10 - start chicken-cooker-sheets demo
 * (done) keep chicken-cooker demo simple and start a new chicken-cooker-sheets demo based off of it
