@@ -26,7 +26,6 @@
 * clucker.js should create just one global token called Clucker
 * There should be a Clucker.ver prop that is the current version of Clucker
 
-
 ## (   ) - 0.5.11 - start chicken-cooker-fun-facts
 * start a chiken cooker fun facts demo based off of chicken-cooker-sheets
 
