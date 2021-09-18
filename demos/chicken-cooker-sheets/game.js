@@ -122,10 +122,10 @@
     chickenState.cooked = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'red';
 
-        obj.data.imageIndex = 0;
+        //obj.data.sheetKey = 'chick-cooked';
+        //obj.data.imageIndex = 0;
+        //obj.data.cellIndex = 0;
 
-        obj.data.sheetKey = 'chick-cooked';
-        obj.data.cellIndex = 1;
 
         obj.data.delay -= secs;
         if(obj.data.delay <= 0){
@@ -192,6 +192,10 @@
                         if(chk.data.state === 'live' || chk.data.state === 'rest'){
                             if(utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)){
                                 chk.data.delay = 3;
+                                // use chick-cooked sheet
+                                chk.data.sheetKey = 'chick-cooked';
+                                chk.data.imageIndex = 0;
+                                chk.data.cellIndex = Math.floor(Math.random() * 2);;
                                 chk.data.state = 'cooked';
                             }
                         }
