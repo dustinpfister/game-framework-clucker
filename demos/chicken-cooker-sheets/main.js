@@ -47,11 +47,6 @@ gameFrame.smPushState(sm, {
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', [3, 5], size, size);
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
 
-
-
-        console.log(sm.layers.spriteSheets);
-
-
     },
     update: function(sm, secs){
         gameMod.update(sm.game, sm, secs);

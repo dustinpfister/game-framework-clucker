@@ -37,8 +37,6 @@
     var onSpawnedChicken = function(obj, pool, sm, opt){
         obj.data.state = 'live'; // 'live' or 'cooked' state
 
-
-
         // set start position
         var startPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS_START, rndRadian());
         obj.x = startPos.x;
@@ -85,11 +83,9 @@
             if(obj.data.imgSecs >= 1 / 12){
                 obj.data.imgSecs = 0;
                 if(obj.data.cellDir === 0){
-                    //obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
-obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
+                    obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
                 }else{
-                    //obj.data.cellIndex = obj.data.cellIndex === 4 ? 5 : 4;
-obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
+                    obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
                 }
             }
         }else{
@@ -229,6 +225,7 @@ obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
         game.chickens.objects.forEach(function(obj){
             obj.data.sheetKey = 'chick-walk';
             obj.data.cellIndex = 0;
+            obj.data.imageIndex = Math.floor( Math.random() * 2);
         });
 
         // blasts object pool
