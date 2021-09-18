@@ -34,7 +34,7 @@
 * keep chicken-cooker demo simple and start a new chicken-cooker-sheets demo based off of it
 
 ## (   ) - 0.5.9 - image index array for sprite sheets
-* make it so that an array of image index values can be given for a sprite sheet
+* (done) make it so that an array of image index values can be given for a sprite sheet
 * update pool-sprite method to look for a disp.data.imageIndex prop, and default the value to 0
 
 ## ( done 09/15/2021 ) - 0.5.9 - rework chicken-cooker to use three sprite sheets for chickens
