@@ -38,14 +38,14 @@ gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {},
     start: function(sm){
-        sm.layers.background = sm.layers.images[3];
+        sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
 
         // create sprite sheets
         var size = sm.CHICKENS_CELL_SIZE;
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', 0, size, size);
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', 1, size, size);
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 2, size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', 2, size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', 3, size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
 
 
 
