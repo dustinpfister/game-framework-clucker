@@ -223,9 +223,9 @@
             spawn: {
                secs: 0,
                rate: 0.25,
-               minActive: sm.CHICKENS_MIN_ACTIVE,
-               maxActive: sm.CHICKENS_COUNT,
-               currentActive: sm.CHICKENS_MIN_ACTIVE
+               minActive: sm.CHICKENS_MIN_ACTIVE,       // the fixed min active chickens
+               maxActive: sm.CHICKENS_COUNT,            // the fixed max active chickens
+               currentMaxActive: sm.CHICKENS_MIN_ACTIVE // the current max to allow
             }
         };
         // chickens pool
@@ -255,14 +255,16 @@
 
     api.update = function(game, sm, secs){
         game.spawn.secs += secs;
+        // spawn
         if(game.spawn.secs >= game.spawn.rate){
             game.spawn.secs = 0;
             var activeCount = poolMod.getActiveCount(sm.game.chickens);
             // if we are below current active
-            if(activeCount < game.spawn.currentActive){
+            if(activeCount < game.spawn.currentMaxActive){
                 poolMod.spawn(game.chickens, sm, {});
             }
         }
+        // update chicken and blast pools
         poolMod.update(game.chickens, secs, sm);
         poolMod.update(game.blasts, secs, sm);
     };
