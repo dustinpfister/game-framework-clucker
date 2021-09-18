@@ -125,7 +125,7 @@
         obj.data.imageIndex = 0;
 
         obj.data.sheetKey = 'chick-cooked';
-        obj.data.cellIndex = 0;
+        obj.data.cellIndex = 1;
 
         obj.data.delay -= secs;
         if(obj.data.delay <= 0){
