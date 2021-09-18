@@ -19,6 +19,7 @@ var sm = gameFrame.smCreateMain({
 
 // hard coded sm level constants
 sm.CHICKENS_COUNT = 30;
+sm.CHICKENS_MIN_ACTIVE = 3;
 sm.CHICKENS_RADIUS_START = 400;
 sm.CHICKENS_RADIUS = 200;
 sm.CHICKENS_PPS_MIN = 64;
