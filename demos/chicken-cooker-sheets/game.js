@@ -142,6 +142,19 @@
         }else{
             obj.x -= obj.pps * secs;
         }
+
+// update cells
+            obj.data.imgSecs += secs;
+            if(obj.data.imgSecs >= 1 / 12){
+                obj.data.imgSecs = 0;
+                if(obj.data.cellDir === 0){
+                    obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
+                }else{
+                    obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
+                }
+            }
+
+
         // purge if out
         if(obj.x < 0 || obj.x > 620){
             poolMod.purge(pool, obj, sm);
@@ -267,7 +280,7 @@
             score: 0,
             cpm: {  // cooked per minute
                 secs: 0,
-                counts: [60],
+                counts: [20],
                 avg: 0           
             },
             spawn: {
@@ -308,10 +321,18 @@
         // spawn
         if(game.spawn.secs >= game.spawn.rate){
             game.spawn.secs = 0;
+            // get active count
             var activeCount = poolMod.getActiveCount(sm.game.chickens);
             // if we are below current active
             if(activeCount < game.spawn.currentMaxActive){
                 poolMod.spawn(game.chickens, sm, {});
+            }
+            // if we are above current active
+            if(activeCount > game.spawn.currentMaxActive){
+                var activeObjects = poolMod.getActiveObjects(sm.game.chickens);
+                if(activeObjects.length >= 1){
+                    activeObjects[0].data.state = 'out';
+                }
             }
         }
         // update chicken and blast pools

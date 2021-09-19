@@ -30,6 +30,7 @@
 * start a chiken cooker fun facts demo based off of chicken-cooker-sheets
 
 ## ( done 09/19/2021 ) - 0.5.12 - chicken-cooker-sheets: purge out chickens that are over
+* have a poolMod.getActiveObjects method
 * in the event that the current active number of chickens > current max active we need to purge chickens
 * chickens purged out this way to not effect score or CPM
 * have the chickens walk off the canvas first
@@ -37,7 +38,7 @@
 ## ( done 09/19/2021 ) - 0.5.11 - chicken-cooker-sheets: max Active count of chickens
 * (done) have new values for setting max active chickens
 * (done) have and display a cookedPerMinute value
-* let the cooked per minute value be what will set the current max active value for spawning
+* (done) let the cooked per minute value be what will set the current max active value for spawning
 
 ## ( done 09/18/2021 ) - 0.5.10 - start chicken-cooker-sheets demo
 * (done) keep chicken-cooker demo simple and start a new chicken-cooker-sheets demo based off of it
