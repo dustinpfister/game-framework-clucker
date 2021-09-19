@@ -17,4 +17,47 @@ The end result can be allowing for more than one type of chicken, and/or having 
 
 In this demo I also aim to make a number of additional improvements over the basic chicken-cooker demo that this is based off of. As I make these kinds of changes I will se about adding them here.
 
+### Cooked Per Minute Count
+
+One major new feature that I am pretty sure I am going to want to have for this, and any additional demos based of of this is a kind of spped counter with cooked chickens. That is something like the speedomiter of a car, only we are talking cooked Chickens Per Minute \(CPM\) rather than MPH or KMPH. So in this demo I worked out some helpers, and additional changes to the game object to allow for this feature.
+
+```js
+    // CPM (Cooked Per Minute) call each time a cooked chicken is purged
+    var CPMCount = function(game, deltaCount){
+        var cpm = game.cpm;
+        var index = cpm.counts.length - 1;
+        index = index < 0 ? 0 : index;
+        var count = cpm.counts[index] === undefined ? 0 : cpm.counts[index];
+        count += deltaCount;
+        cpm.counts[index] = count;
+    };
+
+    // CPM (Cooked Per Minute)  update method to be called over time
+    var CPMupdate = function(game, secs){
+        var cpm = game.cpm,
+        len = cpm.counts.length,
+        dSecs = 1, // the sample duration time length in secs
+        maxSamples = 20; // max counts for dSecs amounts
+        cpm.avg = cpm.counts.reduce(function(acc, n){
+            return acc + n;
+        }, 0);
+        // update cpm.avg
+        cpm.avg = (cpm.avg * (60 / dSecs)) / len;
+        // format the number
+        cpm.avg = Number(cpm.avg.toFixed(2));
+        // add secs to cpm.secs
+        cpm.secs += secs;
+        if(cpm.secs >= dSecs){
+            cpm.counts.push(0);
+            cpm.secs = utils.mod(cpm.secs, dSecs);
+        }
+        // shift out old counts
+        if(len >= maxSamples){
+            cpm.counts.shift();
+        }
+    };
+```
+
+This cpm.avg value can then be used to adjust things when it comes to spawning of chickens.
+
 
