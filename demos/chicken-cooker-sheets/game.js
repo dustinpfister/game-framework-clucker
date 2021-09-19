@@ -329,9 +329,18 @@
             }
             // if we are above current active
             if(activeCount > game.spawn.currentMaxActive){
-                var activeObjects = poolMod.getActiveObjects(sm.game.chickens);
-                if(activeObjects.length >= 1){
-                    activeObjects[0].data.state = 'out';
+                var chicks_active = poolMod.getActiveObjects(sm.game.chickens);
+                // get all chickens that are active and in 'live' or 'rest' state
+                var chicks_liveRest = chicks_active.filter(function(chk){
+                    return chk.data.state === 'live' || chk.data.state === 'rest'
+                });
+                var toOutCount = chicks_liveRest.length - game.spawn.currentMaxActive;
+                if(toOutCount > 0){
+                    var i = 0;
+                    while(i < toOutCount){
+                        chicks_liveRest[i].data.state = 'out';
+                        i += 1;
+                    }
                 }
             }
         }
