@@ -8,7 +8,23 @@
  HELPERS
 ********** ********** ********** *********/
     
+    var CPMCount = function(game, deltaCount){
+        var cpm = game.cpm;
+        var index = cpm.counts.length;
+        var count = cpm.counts[index] === undefined ? 0 : cpm.counts[index];
+        count += deltaCount;
+        cpm.counts[index] = count;
+    };
 
+    // CPM update method to be called over time
+    var CPMupdate = function(game, secs){
+        var cpm = game.cpm,
+        len = cpm.counts.length;
+        cpm.avg = cpm.counts.reduce(function(acc, n){
+            return acc + n;
+        }, 0);
+        cpm = cpm.avg / len;
+    };
 
 
     // get a random radian
@@ -131,6 +147,7 @@
     var onPurgedChicken = function(obj, pool, sm){
          // if it is a cooked chicken add to score
          if(obj.data.state === 'cooked'){
+             CPMCount(sm.game, 1);
              sm.game.score += 1;
          };
     };
@@ -202,18 +219,6 @@
  CREATE METHOD
 ********** ********** ********** *********/
 
-    var CPMCount = function(game, deltaCount){
-        var cpm = game.cpm;
-        var index = cpm.counts.length;
-        var count = cpm.counts[index] === undefined ? 0 : cpm.counts[index];
-        count += deltaCount;
-        cpm.counts[index] = count;
-    };
-
-    // CPM update method to be called over time
-    var CPMupdate = function(game, secs){
-    };
-
     // create game state object
     api.create = function(opt){
         opt = opt || {};
@@ -271,6 +276,8 @@
         // update chicken and blast pools
         poolMod.update(game.chickens, secs, sm);
         poolMod.update(game.blasts, secs, sm);
+        // update Cooked Per Minute
+        CPMupdate(game, secs);
     };
 
 }(this['gameMod'] = {}));
