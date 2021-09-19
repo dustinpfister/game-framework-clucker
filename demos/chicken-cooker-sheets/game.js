@@ -275,7 +275,7 @@
             score: 0,
             cpm: {  // cooked per minute
                 secs: 0,
-                counts: [100],
+                counts: [],
                 avg: 0           
             },
             spawn: {
