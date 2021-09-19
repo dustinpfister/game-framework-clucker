@@ -43,23 +43,6 @@
         }
     };
 
-/*
-        var game = {
-            score: 0,
-            cpm: {  // cooked per minute
-                secs: 0,
-                counts: [0],
-                avg: 0           
-            },
-            spawn: {
-               secs: 0,
-               rate: 0.25,
-               minActive: sm.CHICKENS_MIN_ACTIVE,       // the fixed min active chickens
-               maxActive: sm.CHICKENS_COUNT,            // the fixed max active chickens
-               currentMaxActive: sm.CHICKENS_MIN_ACTIVE // the current max to allow
-            }
-        };
-*/
     // set current max active helper
     var maxActiveUpdate = function(game){
         var spawn = game.spawn,
