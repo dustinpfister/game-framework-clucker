@@ -33,9 +33,10 @@
 * (done) have an update walk cells helper
 * (done) call still cook 'out' state chickens
 * (done) adjust bounds for where 'out' state chikens purge
-* have a spawn bar at the top of the canvas 
-* the spawn bar will show currentMaxActive relative to maxActive as a white bar
-* the spawn bar will show active / currentMaxActive as a green bar within the white bar
+* (done) have a spawn bar at the top of the canvas 
+* (done) the spawn bar will show currentMaxActive relative to maxActive as a white bar
+* (done) the spawn bar will show active / currentMaxActive as a green bar within the white bar
+* spawn rate needs to start high, but go down
 
 ## ( done 09/19/2021 ) - 0.5.12 - chicken-cooker-sheets: purge out chickens that are over
 * (done) have a poolMod.getActiveObjects method
