@@ -130,21 +130,7 @@
             // move
             obj.x += Math.cos(a) * obj.pps * secs;
             obj.y += Math.sin(a) * obj.pps * secs;
-
-updateWalkCells(obj, secs);
-
-/*
-            // cell index
-            obj.data.imgSecs += secs;
-            if(obj.data.imgSecs >= 1 / 12){
-                obj.data.imgSecs = 0;
-                if(obj.data.cellDir === 0){
-                    obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
-                }else{
-                    obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
-                }
-            }
-*/
+            updateWalkCells(obj, secs);
         }else{
             // set delay and switch to rest state
             obj.data.delay = 3;
@@ -160,21 +146,8 @@ updateWalkCells(obj, secs);
         }else{
             obj.x -= obj.pps * secs;
         }
-
-// update cells
-updateWalkCells(obj, secs);
-/*
-            obj.data.imgSecs += secs;
-            if(obj.data.imgSecs >= 1 / 12){
-                obj.data.imgSecs = 0;
-                if(obj.data.cellDir === 0){
-                    obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
-                }else{
-                    obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
-                }
-            }
-*/
-
+        // update cells
+        updateWalkCells(obj, secs);
         // purge if out
         if(obj.x < 0 || obj.x > 620){
             poolMod.purge(pool, obj, sm);
@@ -204,9 +177,7 @@ updateWalkCells(obj, secs);
     // 'cooked' chicken state
     chickenState.cooked = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'red';
-        //obj.data.sheetKey = 'chick-cooked';
-        //obj.data.imageIndex = 0;
-        //obj.data.cellIndex = 0;
+        obj.data.sheetKey = 'chick-cooked';
         obj.data.delay -= secs;
         if(obj.data.delay <= 0){
             poolMod.purge(pool, obj, sm);
