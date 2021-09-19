@@ -30,7 +30,8 @@
 * start a chiken cooker fun facts demo based off of chicken-cooker-sheets
 
 ## (   ) - 0.5.13 - chicken-cooker-sheets: spawn bar
-* have an update walk cells helper
+* (done) have an update walk cells helper
+* call still cook 'out' state chickens
 * have a spawn bar at the top of the canvas that shows what the current state is with spawning
 
 ## ( done 09/19/2021 ) - 0.5.12 - chicken-cooker-sheets: purge out chickens that are over

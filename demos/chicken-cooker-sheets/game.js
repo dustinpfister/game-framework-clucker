@@ -270,7 +270,7 @@ updateWalkCells(obj, secs);
                 obj.y = obj.data.cy - obj.h / 2;
                 sm.game.chickens.objects.forEach(function(chk){
                     if(chk.active){
-                        if(chk.data.state === 'live' || chk.data.state === 'rest'){
+                        if(chk.data.state === 'live' || chk.data.state === 'rest' || chk.data.state === 'out'){
                             if(utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)){
                                 chk.data.delay = 3;
                                 // use chick-cooked sheet
