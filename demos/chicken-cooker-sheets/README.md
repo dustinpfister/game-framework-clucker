@@ -4,10 +4,17 @@ As of clucker 0.5.9 changes have been made to the canvas module that allow for s
 
 ## So the main focus is using more than one image per sprite sheet object
 
-The main thing about this demo is to give an array of image index values for a sprite sheet. As of this writing it is soemthing that I am doing for the chick-walk, and chick-rest sprite sheet objects
+The main thing about this demo is to give an array of image index values for a sprite sheet. As of this writing it is soemthing that I am doing for the 'chick-walk', and 'chick-rest' sprite sheet objects.
 
 ```js
 canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', [2, 4], size, size);
 canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', [3, 5], size, size);
 ```
+
+The end result can be allowing for more than one type of chicken, and/or having a whole lot of different sheets for the same chicken for the sake of having a wealth of animations for a single chicken.
+
+## Other features added to the 'chicken-cooker-*' line of demos
+
+In this demo I also aim to make a number of additional improvements over the basic chicken-cooker demo that this is based off of. As I make these kinds of changes I will se about adding them here.
+
 
