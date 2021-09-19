@@ -13,6 +13,14 @@ canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', [3, 5], size, size);
 
 The end result can be allowing for more than one type of chicken, and/or having a whole lot of different sheets for the same chicken for the sake of having a wealth of animations for a single chicken.
 
+## new features added to clucker
+
+## changes made to sprite sheet objects
+
+## added a get active objects poolMod method
+
+
+
 ## Other features added to the 'chicken-cooker-*' line of demos
 
 In this demo I also aim to make a number of additional improvements over the basic chicken-cooker demo that this is based off of. As I make these kinds of changes I will se about adding them here.
@@ -81,7 +89,7 @@ So yes I am uisng the CPM value as a way to set the current max active number of
 ```js
 ```
 
-### Setting chikens to out state in update method
+### Setting chickens to out state in update method
 
 ```js
     api.update = function(game, sm, secs){
