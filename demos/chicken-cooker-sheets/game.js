@@ -133,6 +133,21 @@
             obj.data.state = 'rest';
         }
     };
+    // chicken is heading out
+    chickenState.out = function(obj, pool, sm, secs){
+        obj.data.sheetKey = 'chick-walk';
+        obj.data.image = sm.layers.images[0];
+        if(obj.data.cellDir === 0){
+            obj.x += obj.pps * secs;
+        }else{
+            obj.x -= obj.pps * secs;
+        }
+        // purge if out
+        if(obj.x < 0 || obj.x > 620){
+            poolMod.purge(pool, obj, sm);
+        }
+        
+    };    
     // 'rest' chicken state
     chickenState.rest = function(obj, pool, sm, secs){
         // else subtract from delay, and get a new target pos of delay <= 0
@@ -252,7 +267,7 @@
             score: 0,
             cpm: {  // cooked per minute
                 secs: 0,
-                counts: [0],
+                counts: [60],
                 avg: 0           
             },
             spawn: {
