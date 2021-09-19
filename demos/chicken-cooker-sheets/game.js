@@ -8,22 +8,34 @@
  HELPERS
 ********** ********** ********** *********/
     
+    // CPM (Cooked Per Minute) call each time a cooked chicken is purged
     var CPMCount = function(game, deltaCount){
         var cpm = game.cpm;
-        var index = cpm.counts.length;
+        var index = cpm.counts.length - 1;
+        index = index < 0 ? 0 : index;
         var count = cpm.counts[index] === undefined ? 0 : cpm.counts[index];
         count += deltaCount;
         cpm.counts[index] = count;
     };
 
-    // CPM update method to be called over time
+    // CPM (Cooked Per Minute)  update method to be called over time
     var CPMupdate = function(game, secs){
         var cpm = game.cpm,
         len = cpm.counts.length;
         cpm.avg = cpm.counts.reduce(function(acc, n){
             return acc + n;
         }, 0);
-        cpm = cpm.avg / len;
+        cpm.avg = cpm.avg / len;
+        // add secs to cpm.secs
+        cpm.secs += secs;
+        if(cpm.secs >= 10){
+            cpm.counts.push(0);
+            cpm.secs = utils.mod(cpm.secs, 10);
+        }
+        // shift out old counts
+        if(len >= 3){
+            cpm.counts.shift();
+        }
     };
 
 
@@ -226,7 +238,7 @@
             score: 0,
             cpm: {  // cooked per minute
                 secs: 0,
-                counts: [],
+                counts: [0],
                 avg: 0           
             },
             spawn: {
