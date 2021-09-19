@@ -57,6 +57,7 @@
     var rndRadian = function(){
         return Math.PI * 2 * Math.random();
     };
+
     // get a position from the center of a canvas with the given radius and angle in radians
     var getPosFromCenter = function(canvas, radius, a){
         return {
@@ -65,6 +66,18 @@
         };
     };
 
+    // update walk cells helper
+    var updateWalkCells = function(obj, secs){
+        obj.data.imgSecs += secs;
+        if(obj.data.imgSecs >= 1 / 12){
+            obj.data.imgSecs = 0;
+            if(obj.data.cellDir === 0){
+                obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
+            }else{
+                obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
+            }
+        }
+    };
 
 
 
@@ -117,6 +130,10 @@
             // move
             obj.x += Math.cos(a) * obj.pps * secs;
             obj.y += Math.sin(a) * obj.pps * secs;
+
+updateWalkCells(obj, secs);
+
+/*
             // cell index
             obj.data.imgSecs += secs;
             if(obj.data.imgSecs >= 1 / 12){
@@ -127,6 +144,7 @@
                     obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
                 }
             }
+*/
         }else{
             // set delay and switch to rest state
             obj.data.delay = 3;
@@ -144,6 +162,8 @@
         }
 
 // update cells
+updateWalkCells(obj, secs);
+/*
             obj.data.imgSecs += secs;
             if(obj.data.imgSecs >= 1 / 12){
                 obj.data.imgSecs = 0;
@@ -153,7 +173,7 @@
                     obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
                 }
             }
-
+*/
 
         // purge if out
         if(obj.x < 0 || obj.x > 620){
