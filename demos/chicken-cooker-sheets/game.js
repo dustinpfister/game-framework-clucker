@@ -153,7 +153,7 @@
         // update cells
         updateWalkCells(obj, secs);
         // purge if out
-        if(obj.x < 0 || obj.x > 620){
+        if(obj.x < obj.w * -1 || obj.x > sm.layers[0].canvas.width){
             poolMod.purge(pool, obj, sm);
         }
         
@@ -275,7 +275,7 @@
             score: 0,
             cpm: {  // cooked per minute
                 secs: 0,
-                counts: [],
+                counts: [100],
                 avg: 0           
             },
             spawn: {
