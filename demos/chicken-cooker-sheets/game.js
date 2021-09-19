@@ -36,7 +36,6 @@
     // what to do for a chicken that is to be spanwed in
     var onSpawnedChicken = function(obj, pool, sm, opt){
         obj.data.state = 'live'; // 'live' or 'cooked' state
-
         // set start position
         var startPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS_START, rndRadian());
         obj.x = startPos.x;
@@ -49,19 +48,15 @@
         obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
         // set delay
         obj.data.delay = 3;
-
         obj.data.cellDir = 1; // 0 for facting left and 1 for facing right
         obj.data.imgSecs = 0;
-
         // 'pool-solid'
         obj.data.fillStyle = 'gray';
-
         // 'pool-sprite'
         obj.data.cellIndex = 0;
         obj.data.sheetKey = 'chick-walk';
-
+        // SETTING AN IMAGE INDEX FOR THE CHICK-WALK SHEET
         obj.data.imageIndex = Math.floor( Math.random() * 2);
-
     };
     // update a chicken
     var chickenState = {};
@@ -100,9 +95,7 @@
     chickenState.rest = function(obj, pool, sm, secs){
         // else subtract from delay, and get a new target pos of delay <= 0
         obj.data.delay -= secs;
-
         obj.data.sheetKey = 'chick-rest';
-
         // use rest cell index
         obj.data.cellIndex = 0;
         if(obj.data.cellDir === 1){
@@ -121,12 +114,9 @@
     // 'cooked' chicken state
     chickenState.cooked = function(obj, pool, sm, secs){
         obj.data.fillStyle = 'red';
-
         //obj.data.sheetKey = 'chick-cooked';
         //obj.data.imageIndex = 0;
         //obj.data.cellIndex = 0;
-
-
         obj.data.delay -= secs;
         if(obj.data.delay <= 0){
             poolMod.purge(pool, obj, sm);
