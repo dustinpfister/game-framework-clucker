@@ -29,6 +29,10 @@
         }, 0);
         // update cpm.avg
         cpm.avg = (cpm.avg * (60 / dSecs)) / len;
+        // look out for NaN
+        if(len === 0){
+            cpm.avg = 0;
+        }
         // format the number
         cpm.avg = Number(cpm.avg.toFixed(2));
         // add secs to cpm.secs
@@ -271,7 +275,7 @@
             score: 0,
             cpm: {  // cooked per minute
                 secs: 0,
-                counts: [20],
+                counts: [],
                 avg: 0           
             },
             spawn: {
