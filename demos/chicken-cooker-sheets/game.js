@@ -23,7 +23,7 @@
         var cpm = game.cpm,
         len = cpm.counts.length,
         dSecs = 5, // the sample duration time length in secs
-        maxSamples = 12; // max counts for dSecs amounts
+        maxSamples = 48; // max counts for dSecs amounts
         cpm.avg = cpm.counts.reduce(function(acc, n){
             return acc + n;
         }, 0);
