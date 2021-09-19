@@ -44,13 +44,17 @@ One major new feature that I am pretty sure I am going to want to have for this,
     var CPMupdate = function(game, secs){
         var cpm = game.cpm,
         len = cpm.counts.length,
-        dSecs = 1, // the sample duration time length in secs
-        maxSamples = 20; // max counts for dSecs amounts
+        dSecs = 5, // the sample duration time length in secs
+        maxSamples = 12; // max counts for dSecs amounts
         cpm.avg = cpm.counts.reduce(function(acc, n){
             return acc + n;
         }, 0);
         // update cpm.avg
         cpm.avg = (cpm.avg * (60 / dSecs)) / len;
+        // look out for NaN
+        if(len === 0){
+            cpm.avg = 0;
+        }
         // format the number
         cpm.avg = Number(cpm.avg.toFixed(2));
         // add secs to cpm.secs
@@ -87,6 +91,23 @@ So yes I am uisng the CPM value as a way to set the current max active number of
 ### The 'out' chicken state
 
 ```js
+    // chicken is heading out
+    chickenState.out = function(obj, pool, sm, secs){
+        obj.data.sheetKey = 'chick-walk';
+        obj.data.image = sm.layers.images[0];
+        if(obj.data.cellDir === 0){
+            obj.x += obj.pps * secs;
+        }else{
+            obj.x -= obj.pps * secs;
+        }
+        // update cells
+        updateWalkCells(obj, secs);
+        // purge if out
+        if(obj.x < 0 || obj.x > 620){
+            poolMod.purge(pool, obj, sm);
+        }
+        
+    };   
 ```
 
 ### Setting chickens to out state in update method
@@ -127,5 +148,22 @@ So yes I am uisng the CPM value as a way to set the current max active number of
         CPMupdate(game, secs);
         // update max active
         maxActiveUpdate(game); 
+    };
+```
+
+### update walk cells helper
+
+```
+    // update walk cells helper
+    var updateWalkCells = function(obj, secs){
+        obj.data.imgSecs += secs;
+        if(obj.data.imgSecs >= 1 / 12){
+            obj.data.imgSecs = 0;
+            if(obj.data.cellDir === 0){
+                obj.data.cellIndex = obj.data.cellIndex === 0 ? 1 : 0;
+            }else{
+                obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
+            }
+        }
     };
 ```
