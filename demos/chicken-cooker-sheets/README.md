@@ -75,3 +75,49 @@ So yes I am uisng the CPM value as a way to set the current max active number of
         spawn.currentMaxActive = spawn.minActive + deltaActive;
     };
 ```
+
+### The 'out' chicken state
+
+```js
+```
+
+### Setting chikens to out state in update method
+
+```js
+    api.update = function(game, sm, secs){
+        game.spawn.secs += secs;
+        // spawn
+        if(game.spawn.secs >= game.spawn.rate){
+            game.spawn.secs = 0;
+            // get active count
+            var activeCount = poolMod.getActiveCount(sm.game.chickens);
+            // if we are below current active
+            if(activeCount < game.spawn.currentMaxActive){
+                poolMod.spawn(game.chickens, sm, {});
+            }
+            // if we are above current active
+            if(activeCount > game.spawn.currentMaxActive){
+                var chicks_active = poolMod.getActiveObjects(sm.game.chickens);
+                // get all chickens that are active and in 'live' or 'rest' state
+                var chicks_liveRest = chicks_active.filter(function(chk){
+                    return chk.data.state === 'live' || chk.data.state === 'rest'
+                });
+                var toOutCount = chicks_liveRest.length - game.spawn.currentMaxActive;
+                if(toOutCount > 0){
+                    var i = 0;
+                    while(i < toOutCount){
+                        chicks_liveRest[i].data.state = 'out';
+                        i += 1;
+                    }
+                }
+            }
+        }
+        // update chicken and blast pools
+        poolMod.update(game.chickens, secs, sm);
+        poolMod.update(game.blasts, secs, sm);
+        // update Cooked Per Minute
+        CPMupdate(game, secs);
+        // update max active
+        maxActiveUpdate(game); 
+    };
+```
