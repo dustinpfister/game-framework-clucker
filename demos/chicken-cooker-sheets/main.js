@@ -62,6 +62,18 @@ gameFrame.smPushState(sm, {
 
         canvasMod.draw(layers, 'pool-solid', 1, sm.game.blasts, {fillStyle: 'rgba(255, 255, 0, 0.5)' });
 
+        // spawn bar
+        var w = 300;
+        var x = canvas.width / 2 - w / 2;
+        var per1 = 0, per2
+        ctx.fillStyle = 'gray';
+        ctx.fillRect(x, 10, w , 25);
+        ctx.fillStyle = 'white';
+        per1 = sm.game.spawn.currentMaxActive / sm.game.spawn.maxActive;
+        ctx.fillRect(x, 10, w * per1, 25)
+
+
+
         // printing score
         canvasMod.draw(layers, 'print', 1, 'score : ' + sm.game.score, 10, 10, {fontSize: 20});
         canvasMod.draw(layers, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, {fontSize: 20});
