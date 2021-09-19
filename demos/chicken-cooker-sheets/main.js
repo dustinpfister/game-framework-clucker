@@ -68,9 +68,12 @@ gameFrame.smPushState(sm, {
         var per1 = 0, per2
         ctx.fillStyle = 'gray';
         ctx.fillRect(x, 10, w , 25);
-        ctx.fillStyle = 'white';
         per1 = sm.game.spawn.currentMaxActive / sm.game.spawn.maxActive;
-        ctx.fillRect(x, 10, w * per1, 25)
+        per2 = per1 / sm.game.spawn.currentMaxActive * sm.game.spawn.activeCount;
+        ctx.fillStyle = 'white';
+        ctx.fillRect(x, 10, w * per1, 25);
+        ctx.fillStyle = 'lime';
+        ctx.fillRect(x, 10, w * per2, 25);
 
 
 
