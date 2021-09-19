@@ -19,7 +19,7 @@ var sm = gameFrame.smCreateMain({
 
 // hard coded sm level constants
 sm.CHICKENS_COUNT = 30;
-sm.CHICKENS_MIN_ACTIVE = 12;
+sm.CHICKENS_MIN_ACTIVE = 1;
 sm.CHICKENS_RADIUS_START = 400;
 sm.CHICKENS_RADIUS = 200;
 sm.CHICKENS_PPS_MIN = 64;
@@ -63,8 +63,9 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'pool-solid', 1, sm.game.blasts, {fillStyle: 'rgba(255, 255, 0, 0.5)' });
 
         // printing score
-        canvasMod.draw(layers, 'print', 1, 'score: ' + sm.game.score, 10, 10, {fontSize: 20});
-        canvasMod.draw(layers, 'print', 1, 'cpm: ' + sm.game.cpm.avg, 10, 30, {fontSize: 20});
+        canvasMod.draw(layers, 'print', 1, 'score : ' + sm.game.score, 10, 10, {fontSize: 20});
+        canvasMod.draw(layers, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, {fontSize: 20});
+        canvasMod.draw(layers, 'print', 1, 'max active: ' + sm.game.spawn.currentMaxActive, 10, 50, {fontSize: 20});
     },
     events: {
         pointerStart: function(e, pos, sm){

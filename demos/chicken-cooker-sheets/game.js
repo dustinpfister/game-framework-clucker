@@ -22,8 +22,8 @@
     var CPMupdate = function(game, secs){
         var cpm = game.cpm,
         len = cpm.counts.length,
-        dSecs = 1, // the sample duration time length in secs
-        maxSamples = 20; // max counts for dSecs amounts
+        dSecs = 5, // the sample duration time length in secs
+        maxSamples = 12; // max counts for dSecs amounts
         cpm.avg = cpm.counts.reduce(function(acc, n){
             return acc + n;
         }, 0);
@@ -43,6 +43,32 @@
         }
     };
 
+/*
+        var game = {
+            score: 0,
+            cpm: {  // cooked per minute
+                secs: 0,
+                counts: [0],
+                avg: 0           
+            },
+            spawn: {
+               secs: 0,
+               rate: 0.25,
+               minActive: sm.CHICKENS_MIN_ACTIVE,       // the fixed min active chickens
+               maxActive: sm.CHICKENS_COUNT,            // the fixed max active chickens
+               currentMaxActive: sm.CHICKENS_MIN_ACTIVE // the current max to allow
+            }
+        };
+*/
+    // set current max active helper
+    var maxActiveUpdate = function(game){
+        var spawn = game.spawn,
+        cpm = game.cpm,
+        avgCPM = cpm.avg > 200 ? 200 : cpm.avg,
+        per = avgCPM / 200,
+        deltaActive = Math.round((spawn.maxActive - spawn.minActive) * per);
+        spawn.currentMaxActive = spawn.minActive + deltaActive;
+    };
 
     // get a random radian
     var rndRadian = function(){
@@ -295,6 +321,8 @@
         poolMod.update(game.blasts, secs, sm);
         // update Cooked Per Minute
         CPMupdate(game, secs);
+        // update max active
+        maxActiveUpdate(game); 
     };
 
 }(this['gameMod'] = {}));

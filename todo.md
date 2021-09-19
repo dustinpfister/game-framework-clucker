@@ -31,7 +31,7 @@
 
 ## () - 0.5.11 - chicken-cooker-sheets: max Active count of chickens
 * (done) have new values for setting max active chickens
-* have and display a cookedPerMinute value
+* (done) have and display a cookedPerMinute value
 * let the cooked per minute value be what will set the current max active value for spawning
 
 ## ( done 09/18/2021 ) - 0.5.10 - start chicken-cooker-sheets demo
