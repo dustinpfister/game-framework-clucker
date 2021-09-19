@@ -281,6 +281,7 @@
             spawn: {
                secs: 0,
                rate: 0.25,
+               activeCount: 0,
                minActive: sm.CHICKENS_MIN_ACTIVE,       // the fixed min active chickens
                maxActive: sm.CHICKENS_COUNT,            // the fixed max active chickens
                currentMaxActive: sm.CHICKENS_MIN_ACTIVE // the current max to allow
@@ -317,7 +318,7 @@
         if(game.spawn.secs >= game.spawn.rate){
             game.spawn.secs = 0;
             // get active count
-            var activeCount = poolMod.getActiveCount(sm.game.chickens);
+            var activeCount = sm.game.spawn.activeCount = poolMod.getActiveCount(sm.game.chickens);
             // if we are below current active
             if(activeCount < game.spawn.currentMaxActive){
                 poolMod.spawn(game.chickens, sm, {});
