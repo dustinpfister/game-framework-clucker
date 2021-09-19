@@ -202,14 +202,28 @@
  CREATE METHOD
 ********** ********** ********** *********/
 
+    var CPMCount = function(game, deltaCount){
+        var cpm = game.cpm;
+        var index = cpm.counts.length;
+        var count = cpm.counts[index] === undefined ? 0 : cpm.counts[index];
+        count += deltaCount;
+        cpm.counts[index] = count;
+    };
 
-
+    // CPM update method to be called over time
+    var CPMupdate = function(game, secs){
+    };
 
     // create game state object
     api.create = function(opt){
         opt = opt || {};
         var game = {
             score: 0,
+            cpm: {  // cooked per minute
+                secs: 0,
+                counts: [],
+                avg: 0           
+            },
             spawn: {
                secs: 0,
                rate: 0.25,
