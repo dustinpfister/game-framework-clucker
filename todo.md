@@ -30,9 +30,9 @@
 * start a chiken cooker fun facts demo based off of chicken-cooker-sheets
 
 ## () - 0.5.11 - chicken-cooker-sheets: max Active count of chickens
-* have new values for setting max active chickens
-* have it so that the current max active count will slowly go up over time
-* killing too many chickens too fast will result in it going back down
+* (done) have new values for setting max active chickens
+* have and display a cookedPerMinute value
+* let the cooked per minute value be what will set the current max active value for spawning
 
 ## ( done 09/18/2021 ) - 0.5.10 - start chicken-cooker-sheets demo
 * (done) keep chicken-cooker demo simple and start a new chicken-cooker-sheets demo based off of it
