@@ -31,7 +31,8 @@
 
 ## (   ) - 0.5.13 - chicken-cooker-sheets: spawn bar
 * (done) have an update walk cells helper
-* call still cook 'out' state chickens
+* (done) call still cook 'out' state chickens
+* adjust bounds for where 'out' state chikens purge
 * have a spawn bar at the top of the canvas that shows what the current state is with spawning
 
 ## ( done 09/19/2021 ) - 0.5.12 - chicken-cooker-sheets: purge out chickens that are over
