@@ -21,19 +21,21 @@
     // CPM (Cooked Per Minute)  update method to be called over time
     var CPMupdate = function(game, secs){
         var cpm = game.cpm,
-        len = cpm.counts.length;
+        len = cpm.counts.length,
+        dSecs = 5, // the sample duration time length in secs
+        maxSamples = 8; // max counts for dSecs amounts
         cpm.avg = cpm.counts.reduce(function(acc, n){
             return acc + n;
         }, 0);
-        cpm.avg = cpm.avg / len;
+        cpm.avg = (cpm.avg * (60 / dSecs)) / len;
         // add secs to cpm.secs
         cpm.secs += secs;
-        if(cpm.secs >= 10){
+        if(cpm.secs >= dSecs){
             cpm.counts.push(0);
-            cpm.secs = utils.mod(cpm.secs, 10);
+            cpm.secs = utils.mod(cpm.secs, dSecs);
         }
         // shift out old counts
-        if(len >= 3){
+        if(len >= maxSamples){
             cpm.counts.shift();
         }
     };
