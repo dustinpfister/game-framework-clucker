@@ -22,12 +22,15 @@
     var CPMupdate = function(game, secs){
         var cpm = game.cpm,
         len = cpm.counts.length,
-        dSecs = 5, // the sample duration time length in secs
-        maxSamples = 8; // max counts for dSecs amounts
+        dSecs = 1, // the sample duration time length in secs
+        maxSamples = 20; // max counts for dSecs amounts
         cpm.avg = cpm.counts.reduce(function(acc, n){
             return acc + n;
         }, 0);
+        // update cpm.avg
         cpm.avg = (cpm.avg * (60 / dSecs)) / len;
+        // format the number
+        cpm.avg = Number(cpm.avg.toFixed(2));
         // add secs to cpm.secs
         cpm.secs += secs;
         if(cpm.secs >= dSecs){
