@@ -19,8 +19,8 @@
     var CPMupdate = function (game, secs) {
         var cpm = game.cpm,
         len = cpm.counts.length,
-        dSecs = 10, // the sample duration time length in secs
-        maxSamples = 6; // max counts for dSecs amounts
+        dSecs = sm.CPM_DSECS, // the sample duration time length in secs
+        maxSamples = sm.CPM_MAX_SAMPLES; // max counts for dSecs amounts
         cpm.avg = cpm.counts.reduce(function (acc, n) {
                 return acc + n;
             }, 0);
@@ -121,7 +121,7 @@
         a = Math.atan2(obj.data.targetPos.y - obj.y, obj.data.targetPos.x - obj.x);
         // set obj.data.cellDir based on var 'a'
         obj.data.cellDir = Math.abs(a) > Math.PI * 0.5 ? 1 : 0;
-        // if distance > min stop distance move to target positon
+        // if distance > min stop distance move to target position
         if (d > 10) {
             // move
             obj.x += Math.cos(a) * obj.pps * secs;
@@ -235,7 +235,7 @@
                     if (chk.active) {
                         if (chk.data.state === 'live' || chk.data.state === 'rest' || chk.data.state === 'out') {
                             if (utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)) {
-                                chk.data.delay = 1.5;
+                                chk.data.delay = sm.CHICKEN_COOKED_DELAY;
                                 // use chick-cooked sheet
                                 chk.data.sheetKey = 'chick-cooked';
                                 chk.data.imageIndex = 0;
