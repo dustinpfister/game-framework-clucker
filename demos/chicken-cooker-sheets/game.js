@@ -280,7 +280,7 @@
             },
             spawn: {
                secs: 0,
-               rate: 0.75,
+               rate: 0.125,
                activeCount: 0,
                minActive: sm.CHICKENS_MIN_ACTIVE,       // the fixed min active chickens
                maxActive: sm.CHICKENS_COUNT,            // the fixed max active chickens
