@@ -108,6 +108,8 @@
         obj.data.sheetKey = 'chick-walk';
         // SETTING AN IMAGE INDEX FOR THE CHICK-WALK SHEET
         obj.data.imageIndex = Math.floor(Math.random() * 2);
+        // alpha
+        obj.data.alpha = 1;
     };
     // update a chicken
     var chickenState = {};
@@ -177,6 +179,9 @@
         obj.data.delay -= secs;
         // cooked object slowly moves up
         obj.y -= 16 * secs;
+
+        obj.data.alpha = obj.data.delay / sm.CHICKEN_COOKED_DELAY;
+
         if (obj.data.delay <= 0) {
             poolMod.purge(pool, obj, sm);
         }
@@ -193,6 +198,7 @@
             CPMCount(sm.game, 1);
             sm.game.score += 1;
         };
+        obj.data.alpha = 1;
     };
     // create chicken pool helper
     var createChickenPool = function () {

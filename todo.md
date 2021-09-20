@@ -33,8 +33,8 @@
 ## (   ) - 0.5.15 - more sm object constants for CPM and other values
 * (done) have a sm.CPM_DSECS, and sm.CPM_MAX_SAMPLES and use them in the CPMupdate helper in game.js
 * (done) have a sm.CHICKEN_COOKED_DELAY constant and use it in the blast pool update method
-* have a sm.MAX_ACTIVE_CPM const and use it in the maxActiveUpdate helper
-* add changes to poll-sprite draw method to allow for setting global alpha by way of disp.data.alpha
+* (done) have a sm.MAX_ACTIVE_CPM const and use it in the maxActiveUpdate helper
+* add changes to pool-sprite draw method to allow for setting global alpha by way of disp.data.alpha
 
 ## ( done 09/20/2021 ) - 0.5.14 - chicken-cooker-sheets variable spawn rate, and span rate bar
 * (done) have a blue spawn rate bar below the main spawn rate bar
