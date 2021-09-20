@@ -290,18 +290,14 @@
      ********** ********** ********** *********/
 
     api.update = function (game, sm, secs) {
-
         // SPAWN
-
         // get and update sm.activeCount
         var activeCount = game.spawn.activeCount = poolMod.getActiveCount(game.chickens);
-
         // adjust spawn rate
         var per = activeCount / sm.CHICKENS_COUNT;
         per = per > 1 ? 1 : per;
         game.spawn.rate = sm.CHICKENS_SPAWN_RATE_SLOWEST - (sm.CHICKENS_SPAWN_RATE_SLOWEST - sm.CHICKENS_SPAWN_RATE_FASTEST) * per;
-
-        // adjust spawn rate
+        // spawn or not
         if (activeCount >= game.spawn.currentMaxActive) {
             game.spawn.secs = 0;
             // if we are above current active

@@ -230,11 +230,18 @@ Another feature of the chicken-cooker-sheets demo is the spawn bar. Outside of t
 
 ### Many changes to the update method of the game module
 
+A lot of changes needed to me made with the main update method of the game module
+
 ```js
     api.update = function (game, sm, secs) {
+        // SPAWN
         // get and update sm.activeCount
-        var activeCount = sm.game.spawn.activeCount = poolMod.getActiveCount(sm.game.chickens);
-        // spawn
+        var activeCount = game.spawn.activeCount = poolMod.getActiveCount(game.chickens);
+        // adjust spawn rate
+        var per = activeCount / sm.CHICKENS_COUNT;
+        per = per > 1 ? 1 : per;
+        game.spawn.rate = sm.CHICKENS_SPAWN_RATE_SLOWEST - (sm.CHICKENS_SPAWN_RATE_SLOWEST - sm.CHICKENS_SPAWN_RATE_FASTEST) * per;
+        // spawn or not
         if (activeCount >= game.spawn.currentMaxActive) {
             game.spawn.secs = 0;
             // if we are above current active
