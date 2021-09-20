@@ -66,7 +66,7 @@ gameFrame.smPushState(sm, {
         var w = 300;
         var x = canvas.width / 2 - w / 2;
         var per1 = 0,
-        per2;
+        per2, per3;
         // main spawn bar
         ctx.fillStyle = 'gray';
         ctx.fillRect(x, 10, w, 25);
@@ -77,6 +77,10 @@ gameFrame.smPushState(sm, {
         ctx.fillStyle = 'lime';
         ctx.fillRect(x, 10, w * per2, 25);
 
+        per3 = sm.game.spawn.secs / sm.game.spawn.rate;
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(x, 35, w * per3, 5);
+
         // printing score
         var printOptions = {
             fontSize: 20
@@ -84,6 +88,7 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'print', 1, 'score : ' + sm.game.score, 10, 10, printOptions);
         canvasMod.draw(layers, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, printOptions);
         canvasMod.draw(layers, 'print', 1, 'max active: ' + sm.game.spawn.currentMaxActive, 10, 50, printOptions);
+
     },
     events: {
         pointerStart: function (e, pos, sm) {
