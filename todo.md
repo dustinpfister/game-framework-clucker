@@ -30,12 +30,18 @@
 * start a chicken cooker fun facts demo based off of chicken-cooker-sheets
 
 
-
+## (   ) - 0.5.15 - more sm object constants for CPM and other values
+* have a sm.CPM_DSECS, and sm.CPM_MAX_SAMPLES and use them in the CPMupdate helper in game.js
+* have a sm.CHICKEN_COOKED_DELAY constant and use it in the blast pool update method
+* have a sm.MAX_ACTIVE_CPM const and use it in the maxActiveUpdate helper
+* add changes to poll-sprite draw method to allow for setting global alpha by way of disp.data.alpha
 
 ## ( done 09/20/2021 ) - 0.5.14 - chicken-cooker-sheets variable spawn rate, and span rate bar
 * (done) have a blue spawn rate bar below the main spawn rate bar
 * (done) in the event that current active chickens reaches current max, spawn.secs = 0 and bar stops
 * (done) spawn rate needs to start high, but go down
+* (done) cooked chicken slowly goes up
+* (done) reduce delay of cooked chicken until purge
 
 ## ( done 09/19/2021 ) - 0.5.13 - chicken-cooker-sheets: spawn bar
 * (done) have an update walk cells helper
