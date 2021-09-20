@@ -14,8 +14,8 @@ var sm = gameFrame.smCreateMain({
     });
 
 // CONSTANTS
-sm.CHICKENS_COUNT = 30;                   // the pool size for chickens
-sm.CHICKENS_MIN_ACTIVE = 1;               // the min amount of active chickens
+sm.CHICKENS_COUNT = 50;                   // the pool size for chickens
+sm.CHICKENS_MIN_ACTIVE = 3;               // the min amount of active chickens
 sm.CHICKENS_SPAWN_RATE_SLOWEST = 1.0;     // the slowest spawn rate
 sm.CHICKENS_SPAWN_RATE_FASTEST = 0.125;   // the highest spawn rate
 sm.CPM_DSECS = 5;                         // the duration in secs used for a sample to figure CPM
