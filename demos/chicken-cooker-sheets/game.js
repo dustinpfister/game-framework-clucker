@@ -290,15 +290,11 @@
      ********** ********** ********** *********/
 
     api.update = function (game, sm, secs) {
-
         // get and update sm.activeCount
         var activeCount = sm.game.spawn.activeCount = poolMod.getActiveCount(sm.game.chickens);
-
         // spawn
         if (activeCount >= game.spawn.currentMaxActive) {
-
             game.spawn.secs = 0;
-
             // if we are above current active
             if (activeCount > game.spawn.currentMaxActive) {
                 var chicks_active = poolMod.getActiveObjects(sm.game.chickens);
@@ -315,18 +311,12 @@
                     }
                 }
             }
-
         } else {
-
+            // we are below the current max active count, so spawn
             game.spawn.secs += secs;
-
             if (game.spawn.secs >= game.spawn.rate) {
                 game.spawn.secs = 0;
-                // if we are below current active
-                //if (activeCount < game.spawn.currentMaxActive) {
                 poolMod.spawn(game.chickens, sm, {});
-                //}
-
             }
         }
         // update chicken and blast pools

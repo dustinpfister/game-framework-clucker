@@ -79,6 +79,8 @@ Additional changes needed to be made to the create sprite sheet method of the ca
 
 ## added a get active objects poolMod method
 
+I added a new method to the object pool that will return an array of active display objects from a given object pool.
+
 ## fixed a bug in the loader of gameframe.js
 
 My state machine called game frame in the lib folder still needs a far about of work. While working on this demo I found and patched a bug with the loader for 0.5.14 of clucker. There is still a great deal more that I will want to change with the built in loader, as well as the library and framework over all. However for now it would seem that I have worked out a bug that was the result of checking the length of the images array, rather than the count of elements that are not undefined.
@@ -99,7 +101,7 @@ In this demo I also aim to make a number of additional improvements over the bas
 
 ### Cooked Per Minute Count
 
-One major new feature that I am pretty sure I am going to want to have for this, and any additional demos based of of this is a kind of spped counter with cooked chickens. That is something like the speedomiter of a car, only we are talking cooked Chickens Per Minute \(CPM\) rather than MPH or KMPH. So in this demo I worked out some helpers, and additional changes to the game object to allow for this feature.
+One major new feature that I am pretty sure I am going to want to have for this, and any additional demos based of of this is a kind of speed counter with cooked chickens. That is something like the speedometer of a car, only we are talking cooked Chickens Per Minute \(CPM\) rather than MPH or KMPH. So in this demo I worked out some helpers, and additional changes to the game object to allow for this feature.
 
 ```js
     // CPM (Cooked Per Minute) call each time a cooked chicken is purged
@@ -146,7 +148,7 @@ This cpm.avg value can then be used to adjust things when it comes to spawning o
 
 ### Setting current max active spawn value by CPM
 
-So yes I am uisng the CPM value as a way to set the current max active number of chickens
+So yes I am using the CPM value as a way to set the current max active number of chickens
 
 ```js
     // set current max active helper
@@ -161,6 +163,8 @@ So yes I am uisng the CPM value as a way to set the current max active number of
 ```
 
 ### The 'out' chicken state
+
+Have a new chicken state that happens when the current max active spawn value goes back down. The purpose for this state is to just have t chickens that are over the active max to leave the canvas. Once they leave the canvas they get purged. 
 
 ```js
     // chicken is heading out
@@ -182,48 +186,7 @@ So yes I am uisng the CPM value as a way to set the current max active number of
     };   
 ```
 
-### Setting chickens to out state in update method
-
-```js
-    api.update = function(game, sm, secs){
-        game.spawn.secs += secs;
-        // spawn
-        if(game.spawn.secs >= game.spawn.rate){
-            game.spawn.secs = 0;
-            // get active count
-            var activeCount = poolMod.getActiveCount(sm.game.chickens);
-            // if we are below current active
-            if(activeCount < game.spawn.currentMaxActive){
-                poolMod.spawn(game.chickens, sm, {});
-            }
-            // if we are above current active
-            if(activeCount > game.spawn.currentMaxActive){
-                var chicks_active = poolMod.getActiveObjects(sm.game.chickens);
-                // get all chickens that are active and in 'live' or 'rest' state
-                var chicks_liveRest = chicks_active.filter(function(chk){
-                    return chk.data.state === 'live' || chk.data.state === 'rest'
-                });
-                var toOutCount = chicks_liveRest.length - game.spawn.currentMaxActive;
-                if(toOutCount > 0){
-                    var i = 0;
-                    while(i < toOutCount){
-                        chicks_liveRest[i].data.state = 'out';
-                        i += 1;
-                    }
-                }
-            }
-        }
-        // update chicken and blast pools
-        poolMod.update(game.chickens, secs, sm);
-        poolMod.update(game.blasts, secs, sm);
-        // update Cooked Per Minute
-        CPMupdate(game, secs);
-        // update max active
-        maxActiveUpdate(game); 
-    };
-```
-
-### update walk cells helper
+### Update walk cells helper
 
 ```
     // update walk cells helper
@@ -239,3 +202,47 @@ So yes I am uisng the CPM value as a way to set the current max active number of
         }
     };
 ```
+
+### Setting chickens to out state in update method, and additional changes
+
+```js
+    api.update = function (game, sm, secs) {
+        // get and update sm.activeCount
+        var activeCount = sm.game.spawn.activeCount = poolMod.getActiveCount(sm.game.chickens);
+        // spawn
+        if (activeCount >= game.spawn.currentMaxActive) {
+            game.spawn.secs = 0;
+            // if we are above current active
+            if (activeCount > game.spawn.currentMaxActive) {
+                var chicks_active = poolMod.getActiveObjects(sm.game.chickens);
+                // get all chickens that are active and in 'live' or 'rest' state
+                var chicks_liveRest = chicks_active.filter(function (chk) {
+                        return chk.data.state === 'live' || chk.data.state === 'rest'
+                    });
+                var toOutCount = chicks_liveRest.length - game.spawn.currentMaxActive;
+                if (toOutCount > 0) {
+                    var i = 0;
+                    while (i < toOutCount) {
+                        chicks_liveRest[i].data.state = 'out';
+                        i += 1;
+                    }
+                }
+            }
+        } else {
+            // we are below the current max active count, so spawn
+            game.spawn.secs += secs;
+            if (game.spawn.secs >= game.spawn.rate) {
+                game.spawn.secs = 0;
+                poolMod.spawn(game.chickens, sm, {});
+            }
+        }
+        // update chicken and blast pools
+        poolMod.update(game.chickens, secs, sm);
+        poolMod.update(game.blasts, secs, sm);
+        // update Cooked Per Minute
+        CPMupdate(game, secs);
+        // update max active
+        maxActiveUpdate(game);
+    };
+```
+
