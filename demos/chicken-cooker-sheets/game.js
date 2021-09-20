@@ -179,9 +179,8 @@
         obj.data.delay -= secs;
         // cooked object slowly moves up
         obj.y -= 16 * secs;
-
+        // adjust alpha
         obj.data.alpha = obj.data.delay / sm.CHICKEN_COOKED_DELAY;
-
         if (obj.data.delay <= 0) {
             poolMod.purge(pool, obj, sm);
         }
