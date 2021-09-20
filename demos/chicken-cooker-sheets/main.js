@@ -1,21 +1,17 @@
-
-
-
-
 // create an sm object
 var sm = gameFrame.smCreateMain({
-    currentState: 'loader', 
-    width: 640,
-    height: 480,
-    game:{},
-    loader: {
-        startState: 'gameTime',
-        images: { // load images ./img
-            baseURL: '/demos/chicken-cooker-sheets/img/ccsheets-32',
-            count: 6
+        currentState: 'loader',
+        width: 640,
+        height: 480,
+        game: {},
+        loader: {
+            startState: 'gameTime',
+            images: { // load images ./img
+                baseURL: '/demos/chicken-cooker-sheets/img/ccsheets-32',
+                count: 6
+            }
         }
-    }
-});
+    });
 
 // hard coded sm level constants
 
@@ -36,14 +32,11 @@ sm.CHICKENS_CELL_SIZE = 32;
 
 sm.game = gameMod.create({});
 
-
-
-
 // a game state
 gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {},
-    start: function(sm){
+    start: function (sm) {
         sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
 
@@ -54,10 +47,10 @@ gameFrame.smPushState(sm, {
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
 
     },
-    update: function(sm, secs){
+    update: function (sm, secs) {
         gameMod.update(sm.game, sm, secs);
     },
-    draw: function(sm, layers){
+    draw: function (sm, layers) {
         var canvas = layers[1].canvas,
         ctx = layers[1].ctx;
         canvasMod.draw(layers, 'clear', 1);
@@ -65,14 +58,18 @@ gameFrame.smPushState(sm, {
 
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.chickens);
 
-        canvasMod.draw(layers, 'pool-solid', 1, sm.game.blasts, {fillStyle: 'rgba(255, 255, 0, 0.5)' });
+        canvasMod.draw(layers, 'pool-solid', 1, sm.game.blasts, {
+            fillStyle: 'rgba(255, 255, 0, 0.5)'
+        });
 
         // spawn bar
         var w = 300;
         var x = canvas.width / 2 - w / 2;
-        var per1 = 0, per2
+        var per1 = 0,
+        per2;
+        // main spawn bar
         ctx.fillStyle = 'gray';
-        ctx.fillRect(x, 10, w , 25);
+        ctx.fillRect(x, 10, w, 25);
         per1 = sm.game.spawn.currentMaxActive / sm.game.spawn.maxActive;
         per2 = per1 / sm.game.spawn.currentMaxActive * sm.game.spawn.activeCount;
         ctx.fillStyle = 'white';
@@ -80,20 +77,23 @@ gameFrame.smPushState(sm, {
         ctx.fillStyle = 'lime';
         ctx.fillRect(x, 10, w * per2, 25);
 
-
-
         // printing score
-        canvasMod.draw(layers, 'print', 1, 'score : ' + sm.game.score, 10, 10, {fontSize: 20});
-        canvasMod.draw(layers, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, {fontSize: 20});
-        canvasMod.draw(layers, 'print', 1, 'max active: ' + sm.game.spawn.currentMaxActive, 10, 50, {fontSize: 20});
+        var printOptions = {
+            fontSize: 20
+        };
+        canvasMod.draw(layers, 'print', 1, 'score : ' + sm.game.score, 10, 10, printOptions);
+        canvasMod.draw(layers, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, printOptions);
+        canvasMod.draw(layers, 'print', 1, 'max active: ' + sm.game.spawn.currentMaxActive, 10, 50, printOptions);
     },
     events: {
-        pointerStart: function(e, pos, sm){
+        pointerStart: function (e, pos, sm) {
             // spawn a blast
-            poolMod.spawn(sm.game.blasts, sm, { pos: pos });
+            poolMod.spawn(sm.game.blasts, sm, {
+                pos: pos
+            });
         },
-        pointerMove: function(e, pos, sm){},
-        pointerEnd: function(e, pos, sm){}
+        pointerMove: function (e, pos, sm) {},
+        pointerEnd: function (e, pos, sm) {}
     }
 });
 // start the state machine

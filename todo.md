@@ -33,9 +33,10 @@
 
 
 ## (   ) - 0.5.14 - chicken-cooker-sheets variable spawn rate, and span rate bar
-* spawn rate needs to start high, but go down
 * have a blue spawn rate bar below the main spawn rate bar
 * in the event that current active chickens reaches current max, spawn.secs = 0 and bar stops
+* spawn rate needs to start high, but go down
+
 
 ## ( done 09/19/2021 ) - 0.5.13 - chicken-cooker-sheets: spawn bar
 * (done) have an update walk cells helper
