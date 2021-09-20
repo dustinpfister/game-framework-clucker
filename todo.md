@@ -31,8 +31,8 @@
 
 
 ## (   ) - 0.5.15 - more sm object constants for CPM and other values
-* have a sm.CPM_DSECS, and sm.CPM_MAX_SAMPLES and use them in the CPMupdate helper in game.js
-* have a sm.CHICKEN_COOKED_DELAY constant and use it in the blast pool update method
+* (done) have a sm.CPM_DSECS, and sm.CPM_MAX_SAMPLES and use them in the CPMupdate helper in game.js
+* (done) have a sm.CHICKEN_COOKED_DELAY constant and use it in the blast pool update method
 * have a sm.MAX_ACTIVE_CPM const and use it in the maxActiveUpdate helper
 * add changes to poll-sprite draw method to allow for setting global alpha by way of disp.data.alpha
 

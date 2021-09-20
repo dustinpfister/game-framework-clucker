@@ -48,8 +48,8 @@
     var maxActiveUpdate = function (game) {
         var spawn = game.spawn,
         cpm = game.cpm,
-        avgCPM = cpm.avg > 100 ? 100 : cpm.avg,
-        per = avgCPM / 100,
+        avgCPM = cpm.avg > sm.MAX_ACTIVE_CPM ? sm.MAX_ACTIVE_CPM : cpm.avg,
+        per = avgCPM / sm.MAX_ACTIVE_CPM,
         deltaActive = Math.round((spawn.maxActive - spawn.minActive) * per);
         spawn.currentMaxActive = spawn.minActive + deltaActive;
     };
