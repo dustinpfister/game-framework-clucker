@@ -19,8 +19,8 @@
     var CPMupdate = function (game, secs) {
         var cpm = game.cpm,
         len = cpm.counts.length,
-        dSecs = 5, // the sample duration time length in secs
-        maxSamples = 48; // max counts for dSecs amounts
+        dSecs = 10, // the sample duration time length in secs
+        maxSamples = 6; // max counts for dSecs amounts
         cpm.avg = cpm.counts.reduce(function (acc, n) {
                 return acc + n;
             }, 0);
@@ -48,8 +48,8 @@
     var maxActiveUpdate = function (game) {
         var spawn = game.spawn,
         cpm = game.cpm,
-        avgCPM = cpm.avg > 200 ? 200 : cpm.avg,
-        per = avgCPM / 200,
+        avgCPM = cpm.avg > 100 ? 100 : cpm.avg,
+        per = avgCPM / 100,
         deltaActive = Math.round((spawn.maxActive - spawn.minActive) * per);
         spawn.currentMaxActive = spawn.minActive + deltaActive;
     };
@@ -294,7 +294,7 @@
         // get and update sm.activeCount
         var activeCount = game.spawn.activeCount = poolMod.getActiveCount(game.chickens);
         // adjust spawn rate
-        var per = activeCount / sm.CHICKENS_COUNT;
+        var per = game.spawn.currentMaxActive / sm.CHICKENS_COUNT;
         per = per > 1 ? 1 : per;
         game.spawn.rate = sm.CHICKENS_SPAWN_RATE_SLOWEST - (sm.CHICKENS_SPAWN_RATE_SLOWEST - sm.CHICKENS_SPAWN_RATE_FASTEST) * per;
         // spawn or not
