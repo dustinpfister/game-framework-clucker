@@ -15,21 +15,18 @@ var sm = gameFrame.smCreateMain({
 
 // hard coded sm level constants
 
-// chicken spawn constants
-sm.CHICKENS_COUNT = 30;
-sm.CHICKENS_MIN_ACTIVE = 1;
-sm.CHICKENS_SPAWN_RATE_SLOWEST = 1.0;
-sm.CHICKENS_SPAWN_RATE_FASTEST = 0.125;
-sm.CPM_DSECS = 5;
-sm.CPM_MAX_SAMPLES = 12;
-sm.CHICKEN_COOKED_DELAY = 1;
-sm.MAX_ACTIVE_CPM = 125;     // the CPM rate to get to to have the full effect on current max active
-
-
-sm.CHICKENS_RADIUS_START = 400;
-sm.CHICKENS_RADIUS = 200;
-sm.CHICKENS_PPS_MIN = 64;
-sm.CHICKENS_PPS_MAX = 256;
+sm.CHICKENS_COUNT = 30;                   // the pool size for chickens
+sm.CHICKENS_MIN_ACTIVE = 1;               // the min amount of active chickens
+sm.CHICKENS_SPAWN_RATE_SLOWEST = 1.0;     // the slowest spawn rate
+sm.CHICKENS_SPAWN_RATE_FASTEST = 0.125;   // the highest spawn rate
+sm.CPM_DSECS = 5;                         // the duration in secs used for a sample to figure CPM
+sm.CPM_MAX_SAMPLES = 12;                  // max count of samples for CPM
+sm.CHICKEN_COOKED_DELAY = 1;              // The delay that a cooked state chicken remains on the canvas
+sm.MAX_ACTIVE_CPM = 125;                  // the CPM rate to get to to have the full effect on current max active
+sm.CHICKENS_RADIUS_START = 400;           // the start radius for a chicken
+sm.CHICKENS_RADIUS = 200;                 // the inner bounds radius for a chicken
+sm.CHICKENS_PPS_MIN = 64;                 // min pixels per second for chicken speed
+sm.CHICKENS_PPS_MAX = 256;                // max pixels per second for chicken speed
 sm.CHICKENS_SIZE = 64;
 
 // this will need to be adjusted when using a higher res sprit sheet
