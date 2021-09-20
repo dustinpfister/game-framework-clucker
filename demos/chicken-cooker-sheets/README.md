@@ -238,7 +238,7 @@ A lot of changes needed to me made with the main update method of the game modul
         // get and update sm.activeCount
         var activeCount = game.spawn.activeCount = poolMod.getActiveCount(game.chickens);
         // adjust spawn rate
-        var per = activeCount / sm.CHICKENS_COUNT;
+        var per = game.spawn.currentMaxActive / sm.CHICKENS_COUNT;
         per = per > 1 ? 1 : per;
         game.spawn.rate = sm.CHICKENS_SPAWN_RATE_SLOWEST - (sm.CHICKENS_SPAWN_RATE_SLOWEST - sm.CHICKENS_SPAWN_RATE_FASTEST) * per;
         // spawn or not
