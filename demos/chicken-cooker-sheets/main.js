@@ -23,7 +23,7 @@ sm.CHICKENS_SPAWN_RATE_FASTEST = 0.125;
 sm.CPM_DSECS = 5;
 sm.CPM_MAX_SAMPLES = 12;
 sm.CHICKEN_COOKED_DELAY = 1;
-sm.MAX_ACTIVE_CPM = 200;
+sm.MAX_ACTIVE_CPM = 125;     // the CPM rate to get to to have the full effect on current max active
 
 
 sm.CHICKENS_RADIUS_START = 400;
