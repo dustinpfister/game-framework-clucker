@@ -18,8 +18,8 @@ var sm = gameFrame.smCreateMain({
 // chicken spawn constants
 sm.CHICKENS_COUNT = 30;
 sm.CHICKENS_MIN_ACTIVE = 1;
-sm.CHICKENS_SPAWN_RATE_SLOWEST = 1.75;
-sm.CHICKENS_SPAWN_RATE_FASTEST = 0.25;
+sm.CHICKENS_SPAWN_RATE_SLOWEST = 3;
+sm.CHICKENS_SPAWN_RATE_FASTEST = 0.5;
 
 sm.CHICKENS_RADIUS_START = 400;
 sm.CHICKENS_RADIUS = 200;
@@ -90,7 +90,7 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, printOptions);
         var spawn = sm.game.spawn;
         canvasMod.draw(layers, 'print', 1, 'active: ' + spawn.activeCount + '/' + spawn.currentMaxActive, 10, 50, printOptions);
-        canvasMod.draw(layers, 'print', 1, 'spawn rate: ' + spawn.rate, 10, 70, printOptions);
+        canvasMod.draw(layers, 'print', 1, 'spawn rate: ' + spawn.rate.toFixed(2), 10, 70, printOptions);
 
     },
     events: {
