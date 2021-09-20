@@ -19,6 +19,18 @@ The end result can be allowing for more than one type of chicken, and/or having 
 
 ## added a get active objects poolMod method
 
+## fixed a bug in the loader of gameframe.js
+
+My state machine called game frame in the lib folder still needs a far about of work. While working on this demo I found and patched a bug with the loader for 0.5.14 of clucker. There is still a great deal more that I will want to change with the built in loader, as well as the library and framework over all. However for now it would seem that I have worked out a bug that was the result of checking the length of the images array, rather than the count of elements that are not undefined.
+
+```js
+var loaded = sm.layers.images.reduce(function (acc, el) {
+    return el === undefined ? acc : acc + 1;
+}, 0);
+if (loaded === sm.loader.images.count) {
+    gameFrame.smSetState(sm, sm.loader.startState || 'game');
+}
+```
 
 
 ## Other features added to the 'chicken-cooker-*' line of demos
