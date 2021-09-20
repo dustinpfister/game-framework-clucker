@@ -175,6 +175,8 @@
         obj.data.fillStyle = 'red';
         obj.data.sheetKey = 'chick-cooked';
         obj.data.delay -= secs;
+        // cooked object slowly moves up
+        obj.y -= 16 * secs;
         if (obj.data.delay <= 0) {
             poolMod.purge(pool, obj, sm);
         }
@@ -233,7 +235,7 @@
                     if (chk.active) {
                         if (chk.data.state === 'live' || chk.data.state === 'rest' || chk.data.state === 'out') {
                             if (utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)) {
-                                chk.data.delay = 3;
+                                chk.data.delay = 1.5;
                                 // use chick-cooked sheet
                                 chk.data.sheetKey = 'chick-cooked';
                                 chk.data.imageIndex = 0;
