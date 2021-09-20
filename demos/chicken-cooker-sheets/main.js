@@ -13,8 +13,7 @@ var sm = gameFrame.smCreateMain({
         }
     });
 
-// hard coded sm level constants
-
+// CONSTANTS
 sm.CHICKENS_COUNT = 30;                   // the pool size for chickens
 sm.CHICKENS_MIN_ACTIVE = 1;               // the min amount of active chickens
 sm.CHICKENS_SPAWN_RATE_SLOWEST = 1.0;     // the slowest spawn rate
@@ -27,10 +26,8 @@ sm.CHICKENS_RADIUS_START = 400;           // the start radius for a chicken
 sm.CHICKENS_RADIUS = 200;                 // the inner bounds radius for a chicken
 sm.CHICKENS_PPS_MIN = 64;                 // min pixels per second for chicken speed
 sm.CHICKENS_PPS_MAX = 256;                // max pixels per second for chicken speed
-sm.CHICKENS_SIZE = 64;
-
-// this will need to be adjusted when using a higher res sprit sheet
-sm.CHICKENS_CELL_SIZE = 32;
+sm.CHICKENS_SIZE = 64;                    // the scaled size of chickens
+sm.CHICKENS_CELL_SIZE = 32;               // this will need to be adjusted when using a higher res sprite sheet
 
 sm.game = gameMod.create({});
 
