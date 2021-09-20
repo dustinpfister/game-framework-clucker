@@ -188,6 +188,8 @@ Have a new chicken state that happens when the current max active spawn value go
 
 ### Update walk cells helper
 
+In an effort to make things more fine grain I tool this logic that has to do with just updating a walk cycle, and moved it into a helper function. This method is also called in two locations now because of then new out chicken state.
+
 ```
     // update walk cells helper
     var updateWalkCells = function(obj, secs){
