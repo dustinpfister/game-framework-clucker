@@ -26,17 +26,24 @@
 * clucker.js should create just one global token called Clucker
 * There should be a Clucker.ver prop that is the current version of Clucker
 
-## (   ) - 0.5.14 - start chicken-cooker-fun-facts
-* start a chiken cooker fun facts demo based off of chicken-cooker-sheets
+## (   ) - 0.5.x - start chicken-cooker-fun-facts
+* start a chicken cooker fun facts demo based off of chicken-cooker-sheets
 
-## (   ) - 0.5.13 - chicken-cooker-sheets: spawn bar
+
+
+
+## (   ) - 0.5.14 - chicken-cooker-sheets variable spawn rate, and span rate bar
+* spawn rate needs to start high, but go down
+* have a blue spawn rate bar below the main spawn rate bar
+* in the event that current active chickens reaches current max, spawn.secs = 0 and bar stops
+
+## ( done 09/19/2021 ) - 0.5.13 - chicken-cooker-sheets: spawn bar
 * (done) have an update walk cells helper
 * (done) call still cook 'out' state chickens
-* (done) adjust bounds for where 'out' state chikens purge
+* (done) adjust bounds for where 'out' state chickens purge
 * (done) have a spawn bar at the top of the canvas 
 * (done) the spawn bar will show currentMaxActive relative to maxActive as a white bar
 * (done) the spawn bar will show active / currentMaxActive as a green bar within the white bar
-* spawn rate needs to start high, but go down
 
 ## ( done 09/19/2021 ) - 0.5.12 - chicken-cooker-sheets: purge out chickens that are over
 * (done) have a poolMod.getActiveObjects method
