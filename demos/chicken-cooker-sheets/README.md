@@ -203,7 +203,32 @@ Have a new chicken state that happens when the current max active spawn value go
     };
 ```
 
-### Setting chickens to out state in update method, and additional changes
+### spawn bar
+
+Another feature of the chicken-cooker-sheets demo is the spawn bar. Outside of types of chickens, many of the additional changes seems to centered around getting spawning just right for a kind of simple always going type kind of game for now.
+
+```js
+        // spawn bar
+        var w = 300;
+        var x = canvas.width / 2 - w / 2;
+        var per1 = 0,
+        per2,
+        per3;
+        // main spawn bar
+        ctx.fillStyle = 'gray';
+        ctx.fillRect(x, 10, w, 25);
+        per1 = sm.game.spawn.currentMaxActive / sm.game.spawn.maxActive;
+        per2 = per1 / sm.game.spawn.currentMaxActive * sm.game.spawn.activeCount;
+        ctx.fillStyle = 'white';
+        ctx.fillRect(x, 10, w * per1, 25);
+        ctx.fillStyle = 'lime';
+        ctx.fillRect(x, 10, w * per2, 25);
+        per3 = sm.game.spawn.secs / sm.game.spawn.rate;
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(x, 35, w * per3, 5);
+```
+
+### Many changes to the update method of the game module
 
 ```js
     api.update = function (game, sm, secs) {
