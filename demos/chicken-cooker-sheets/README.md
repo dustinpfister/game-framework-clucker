@@ -4,7 +4,7 @@ As of clucker 0.5.9 changes have been made to the canvas module that allow for s
 
 ## So the main focus is using more than one image per sprite sheet object
 
-The main thing about this demo is to give an array of image index values for a sprite sheet. As of this writing it is soemthing that I am doing for the 'chick-walk', and 'chick-rest' sprite sheet objects.
+The main thing about this demo is to give an array of image index values for a sprite sheet. As of this writing it is something that I am doing for the 'chick-walk', and 'chick-rest' sprite sheet objects.
 
 ```js
 canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', [2, 4], size, size);
@@ -15,7 +15,67 @@ The end result can be allowing for more than one type of chicken, and/or having 
 
 ## new features added to clucker
 
-## changes made to sprite sheet objects
+While I was working on this demo I found a lot of things that are missing in the framework that I think should be added. Also I ran into a bug or two of course that needed to be fixed.
+
+## Changes made to sprite sheet objects
+
+Additional changes needed to be made to the create sprite sheet method of the canvas module. In older versions of the sprite sheet object I had a single image reference as part of the sprite sheet object. For the new system I thought it might be better to just leave the image references in the image array of a canvas stack object, and then just store one or more index values for that array as an array in the sprite sheet object. This will then allow for me to set more than one index value in the images stack object for a sprite sheet, I can then just use an index value of the data property of a display object as a way to set what image index to use in this array of index values for images in the stack.
+
+```js
+    // create and append a sprite sheet object for a stack with 
+    // the given sheetKey, and imageIndices in stack.images. A cellIndex
+    // is an array of cellInfo objects, or a function that will 
+    // produce such an array
+    api.createSpriteSheet = function(stack, sheetKey, imageIndices, cellIndex){
+        var spriteSheet = {
+            name: sheetKey,
+            //image: null, //stack.images[imageIndices], // old image ref
+            imageIndices: null,
+            cells : []
+        };
+        // if imageIndices is a number
+        if(typeof imageIndices=== 'number'){
+            spriteSheet.imageIndices = [];
+            spriteSheet.imageIndices.push(imageIndices);
+        }
+        if(typeof imageIndices=== 'object'){
+            spriteSheet.imageIndices = imageIndices;
+        }
+        // if type is object, assume it is an array of cell objects
+        // just ref the object for now.
+        if(typeof cellIndex === 'object'){
+           spriteSheet.cells = cellIndex;
+        }
+        // if the given type is a function, assume the return value is the
+        // array of objects that is needed
+        if(typeof cellIndex === 'function'){
+           spriteSheet.cells = cellIndex.call(stack, spriteSheet.imageIndices, spriteSheet, stack);
+        }
+        stack.spriteSheets[sheetKey] = spriteSheet;
+    };
+    // built in method to help create a sprite sheet object in the typical grid layout
+    api.createSpriteSheetGrid = function(stack, sheetKey, imageIndices, cellWidth, cellHeight){
+        cellWidth = cellWidth === undefined ? 32: cellWidth;
+        cellHeight = cellHeight === undefined ? 32: cellHeight;
+        api.createSpriteSheet(stack, sheetKey, imageIndices, function(imageIndices, spriteSheet, stack){
+            var image = stack.images[imageIndices[0]];
+            var cw = Math.floor(image.width / cellWidth),
+            ch = Math.floor(image.height / cellHeight),
+            cellCount = cw * ch,
+            cellIndex = 0,
+            cx, 
+            cy,
+            cells = [];
+            while( cellIndex < cellCount ){
+                cx = cellIndex % cw;
+                cy = Math.floor(cellIndex / cw);
+                cells.push({ x: cellWidth * cx, y: cellHeight * cy, w: cellWidth, h: cellHeight });
+                cellIndex += 1;
+            }
+            return cells;
+        });
+    };
+```
 
 ## added a get active objects poolMod method
 
