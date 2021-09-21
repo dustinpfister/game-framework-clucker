@@ -26,8 +26,12 @@
 * clucker.js should create just one global token called Clucker
 * There should be a Clucker.ver prop that is the current version of Clucker
 
-## (   ) - 0.5.x - start chicken-cooker-fun-facts
-* start a chicken cooker fun facts demo based off of chicken-cooker-sheets
+## (   ) - 0.5.16 - start chicken-cooker-fun-facts
+* (done) start a chicken cooker fun facts demo based off of chicken-cooker-sheets
+* work out a new img/cc-fun-facts skin based on img/ccsheets.
+* 2.png will need to be the talk bubble image
+* 3.png will need to be an image sheet for a 'fun-facts' guy
+* bump down the other images
 
 
 ## ( done 09/20/2021 ) - 0.5.15 - more sm object constants for CPM and other values

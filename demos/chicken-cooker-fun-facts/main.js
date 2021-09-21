@@ -7,7 +7,7 @@ var sm = gameFrame.smCreateMain({
         loader: {
             startState: 'gameTime',
             images: { // load images ./img
-                baseURL: '/demos/chicken-cooker-sheets/img/ccsheets-32',
+                baseURL: '/demos/chicken-cooker-fun-facts/img/cc-fun-facts',
                 count: 6
             }
         }
