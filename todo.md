@@ -26,7 +26,11 @@
 * clucker.js should create just one global token called Clucker
 * There should be a Clucker.ver prop that is the current version of Clucker
 
-## (   ) - 0.5.16 - start chicken-cooker-fun-facts
+## ( done 09/20/2021 ) - 0.5.17 - chicken-cooker-fun-facts: draw fun facts guy
+* I will need a 'funfacts-guy' sheet work out things just for the base image first
+* start with a funFacts.disp.base object that will be for the base image
+
+## ( done 09/20/2021 ) - 0.5.16 - start chicken-cooker-fun-facts
 * (done) start a chicken cooker fun facts demo based off of chicken-cooker-sheets
 * (done) work out a new img/cc-fun-facts skin based on img/ccsheets.
 * (done) 2.png will need to be the talk bubble image
@@ -35,9 +39,7 @@
 * (done) I am thinking I should maybe start a local lib folder for game.js, and now a new fun-facts.js
 * (done) funFactsMod should be used in main.js, try to keep from making this part of game.js
 * (done) I will need a stand alone 'sprite' draw method in mod-pool.js
-
-* see about drawing a funFacts.obj.talk disp object using the 'funfacts-talk' sprite sheet
-
+* (done) see about drawing a funFacts.obj.talk disp object using the 'funfacts-talk' sprite sheet
 
 ## ( done 09/20/2021 ) - 0.5.15 - more sm object constants for CPM and other values
 * (done) have a sm.CPM_DSECS, and sm.CPM_MAX_SAMPLES and use them in the CPMupdate helper in game.js

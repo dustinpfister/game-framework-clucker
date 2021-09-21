@@ -9,8 +9,15 @@
 
         imageIndices = imageIndices || [2, 3];
      
-        var talkCell = [ { x: 0, y: 0, w: 256, h: 128 }]   
+        // sprite sheet for the talk bubble will just be one cell
+        var talkCell = [ { x: 0, y: 0, w: 256, h: 128 } ]   
         canvasMod.createSpriteSheet(sm.layers, 'funfacts-talk', imageIndices[0], talkCell);
+
+        // the format for the guy sheet is a little more complex
+        var guyCells = [
+            { x: 0, y: 0, w: 128, h: 128 } // cell 0 is the base image for the guy
+        ];
+        canvasMod.createSpriteSheet(sm.layers, 'funfacts-guy', imageIndices[1], guyCells);
 
     };
 
@@ -21,13 +28,27 @@
         };
         // talk bubble display obect
         funFacts.disp.talk = {
-            x: 100,
-            y: 100,
+            x: 0,
+            y: 0,
             w: 256,
             h: 128,
             active: true,
             data: {
                 sheetKey: 'funfacts-talk',
+                imageIndex: 0,
+                cellIndex: 0,
+                alpha: 1
+            }
+        };
+        // talk bubble display obect
+        funFacts.disp.base = {
+            x: 256,
+            y: 64,
+            w: 128,
+            h: 128,
+            active: true,
+            data: {
+                sheetKey: 'funfacts-guy',
                 imageIndex: 0,
                 cellIndex: 0,
                 alpha: 1

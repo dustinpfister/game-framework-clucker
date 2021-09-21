@@ -55,9 +55,10 @@ gameFrame.smPushState(sm, {
 
         // draw talk bubble
 
-console.log(sm.funFacts.disp.talk)
+console.log(sm.layers.spriteSheets)
 
-        canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.talk, {});  
+        canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.talk, {});
+        canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.base, {});  
 
         
 
