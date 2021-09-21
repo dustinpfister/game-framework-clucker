@@ -36,9 +36,10 @@
 * (done) I will need a 'funfacts-guy' sheet work out things just for the base image first
 * (done) start with a funFacts.disp.base object that will be for the base image
 * (done) I will want to have a funfacts.x and funFacts.y values that will be used to set the posiiton of all other dispay objects
-* I will want a setDispPositons helper that will set the x and y positons of all disp objects realtive to funFacts.x and funFacts.y
-* have it so that the guy slides in from the left to the right
-
+* (done) I will want a setDispPositons helper that will set the x and y positons of all disp objects realtive to funFacts.x and funFacts.y
+* (done) have it so that the guy slides in from the left to the right
+* after a set delay the guy will no longer be active and will move out of the canvas
+* for now have it so that he just shows up every few seconds
 
 ## ( done 09/20/2021 ) - 0.5.16 - start chicken-cooker-fun-facts
 * (done) start a chicken cooker fun facts demo based off of chicken-cooker-sheets
