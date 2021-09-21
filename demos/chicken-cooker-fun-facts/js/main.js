@@ -46,7 +46,9 @@ gameFrame.smPushState(sm, {
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
 
         // create fun facts sheets
-        funFactsMod.createSheets(sm);
+        funFactsMod.createSheets(sm, [2, 3]);
+
+        
 
     },
     update: function (sm, secs) {
