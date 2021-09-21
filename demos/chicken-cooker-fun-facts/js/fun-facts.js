@@ -2,6 +2,13 @@
 (function (api) {
 
     /********* ********** ********** **********
+      HELPERS
+    *********** ********** ********** ********/
+
+    var setDispPositons
+
+
+    /********* ********** ********** **********
       PUBLIC METHODS
     *********** ********** ********** ********/
 
@@ -27,6 +34,8 @@
     // create and return a fun facts object
     api.create = function(){
         var funFacts = {
+           x: 100,
+           y: 200,
            disp: {} // display objects
         };
         // talk bubble display obect
@@ -37,33 +46,40 @@
             h: 128,
             active: true,
             data: {
+                homeX: 0,
+                homeY: 0,
                 sheetKey: 'funfacts-talk',
                 imageIndex: 0,
                 cellIndex: 0,
                 alpha: 1
             }
         };
-        // talk bubble display obect
+        // base image object of the guy
         funFacts.disp.base = {
-            x: 256,
-            y: 64,
+            x: 0,
+            y: 0,
             w: 128,
             h: 128,
             active: true,
             data: {
+                homeX: 256,
+                homeY: 64,
                 sheetKey: 'funfacts-guy',
                 imageIndex: 0,
                 cellIndex: 0,
                 alpha: 1
             }
         };
+        // hair object for the guy
         funFacts.disp.hair = {
-            x: 256 + 32,
-            y: 32,
+            x: 0,
+            y: 0,
             w: 64,
             h: 64,
             active: true,
             data: {
+                homeX: 256 + 32,
+                homeY: 32,
                 sheetKey: 'funfacts-guy',
                 imageIndex: 0,
                 cellIndex: 1,
