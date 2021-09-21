@@ -8,7 +8,7 @@ var sm = gameFrame.smCreateMain({
             startState: 'gameTime',
             images: { // load images ./img
                 baseURL: '/demos/chicken-cooker-fun-facts/img/cc-fun-facts',
-                count: 6
+                count: 8
             }
         }
     });
@@ -41,8 +41,8 @@ gameFrame.smPushState(sm, {
 
         // create sprite sheets
         var size = sm.CHICKENS_CELL_SIZE;
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', [2, 4], size, size);
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', [3, 5], size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', [4, 6], size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', [5, 7], size, size);
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
 
     },
