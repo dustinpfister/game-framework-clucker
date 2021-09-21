@@ -58,7 +58,8 @@ gameFrame.smPushState(sm, {
 console.log(sm.layers.spriteSheets)
 
         canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.talk, {});
-        canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.base, {});  
+        canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.base, {});
+        canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.hair, {}); 
 
         
 

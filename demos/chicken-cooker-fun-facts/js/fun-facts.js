@@ -15,7 +15,10 @@
 
         // the format for the guy sheet is a little more complex
         var guyCells = [
-            { x: 0, y: 0, w: 128, h: 128 } // cell 0 is the base image for the guy
+            { x: 0, y: 0, w: 128, h: 128 }, // cell 0 is the base image for the guy
+            { x: 128, y: 0, w: 64, h: 64 }, // cell 1-3 hair
+            { x: 128 + 64, y: 0, w: 64, h: 64 },
+            { x: 128 + 128, y: 0, w: 64, h: 64 }
         ];
         canvasMod.createSpriteSheet(sm.layers, 'funfacts-guy', imageIndices[1], guyCells);
 
@@ -51,6 +54,19 @@
                 sheetKey: 'funfacts-guy',
                 imageIndex: 0,
                 cellIndex: 0,
+                alpha: 1
+            }
+        };
+        funFacts.disp.hair = {
+            x: 256 + 32,
+            y: 32,
+            w: 64,
+            h: 64,
+            active: true,
+            data: {
+                sheetKey: 'funfacts-guy',
+                imageIndex: 0,
+                cellIndex: 1,
                 alpha: 1
             }
         };
