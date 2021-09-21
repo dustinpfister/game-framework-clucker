@@ -40,7 +40,7 @@
     // create and return a fun facts object
     api.create = function(){
         var funFacts = {
-           x: 100,
+           x: -400 + 620,
            y: 290,
            disp: {} // display objects
         };
