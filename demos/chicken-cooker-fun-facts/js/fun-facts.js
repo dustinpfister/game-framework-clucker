@@ -5,7 +5,13 @@
       HELPERS
     *********** ********** ********** ********/
 
-    var setDispPositons
+    var setDispPositons = function(funFacts){
+         Object.keys(funFacts.disp).forEach(function(dispKey){
+             var disp = funFacts.disp[dispKey];
+             disp.x = funFacts.x + disp.data.homeX;
+             disp.y = funFacts.y + disp.data.homeY;
+         });
+    };
 
 
     /********* ********** ********** **********
@@ -86,6 +92,10 @@
                 alpha: 1
             }
         };
+
+        // set posiitons
+        setDispPositons(funFacts);
+
         return funFacts;
     };
 
