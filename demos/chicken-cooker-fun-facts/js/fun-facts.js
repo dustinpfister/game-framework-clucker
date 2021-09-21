@@ -5,6 +5,7 @@
       HELPERS
     *********** ********** ********** ********/
 
+    // set the position of the disp objects ( using data.homeX realtive to funFacts.x )
     var setDispPositons = function(funFacts){
          Object.keys(funFacts.disp).forEach(function(dispKey){
              var disp = funFacts.disp[dispKey];
@@ -12,7 +13,6 @@
              disp.y = funFacts.y + disp.data.homeY;
          });
     };
-
 
     /********* ********** ********** **********
       PUBLIC METHODS
