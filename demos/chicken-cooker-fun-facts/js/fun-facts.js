@@ -1,6 +1,11 @@
 
 (function (api) {
 
+    var FF_X_START = -400,
+    FF_X_DELTA = 620,
+    FF_PPS = 512;
+
+
     /********* ********** ********** **********
       HELPERS
     *********** ********** ********** ********/
@@ -40,8 +45,9 @@
     // create and return a fun facts object
     api.create = function(){
         var funFacts = {
-           x: -400 + 620,
+           x: FF_X_START,
            y: 290,
+           active: true,
            disp: {} // display objects
         };
         // talk bubble display obect
@@ -100,8 +106,15 @@
     };
 
     // update a fun facts object
-    api.update = function(funFacts){
-
+    api.update = function(funFacts, secs){
+        if(funFacts.active){
+            var homeX = FF_X_START + FF_X_DELTA;
+            if(funFacts.x < homeX){
+                funFacts.x += FF_PPS * secs;
+            }
+            funFacts.x = funFacts.x > homeX ? homeX: funFacts.x;
+            setDispPositons(funFacts);
+        }
     };
 
     return api;

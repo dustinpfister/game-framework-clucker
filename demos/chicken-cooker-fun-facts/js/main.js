@@ -57,15 +57,17 @@ gameFrame.smPushState(sm, {
 
 console.log(sm.layers.spriteSheets)
 
-        canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.talk, {});
-        canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.base, {});
-        canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.hair, {}); 
+
 
         
 
     },
     update: function (sm, secs) {
         gameMod.update(sm.game, sm, secs);
+
+        funFactsMod.update(sm.funFacts, secs);
+
+
     },
     draw: function (sm, layers) {
         var canvas = layers[1].canvas,
@@ -99,6 +101,13 @@ console.log(sm.layers.spriteSheets)
         per3 = sm.game.spawn.secs / sm.game.spawn.rate;
         ctx.fillStyle = 'blue';
         ctx.fillRect(x, 35, w * per3, 5);
+
+
+        // fun facts guy
+        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.talk, {});
+        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.base, {});
+        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.hair, {}); 
+
 
         // printing score
         var printOptions = {
