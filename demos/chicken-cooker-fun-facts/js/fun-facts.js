@@ -41,7 +41,7 @@
     api.create = function(){
         var funFacts = {
            x: 100,
-           y: 200,
+           y: 290,
            disp: {} // display objects
         };
         // talk bubble display obect
