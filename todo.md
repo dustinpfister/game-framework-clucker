@@ -32,10 +32,12 @@
 * (done) 2.png will need to be the talk bubble image
 * (done) 3.png will need to be an image sheet for a 'fun-facts' guy
 * (done) bump down the other images
+* (done) I am thinking I should maybe start a local lib folder for game.js, and now a new fun-facts.js
+* (done) funFactsMod should be used in main.js, try to keep from making this part of game.js
+* (done) I will need a stand alone 'sprite' draw method in mod-pool.js
 
-* work out system for creating the sprite sheets for 'fun-fatcs guy';
-* I am thinking I should maybe start a local lib folder for game.js, and now a new fun-facts.js
-* funFactsMod should be used in main.js, try to keep from making this part of game.js
+* see about drawing a funFacts.obj.talk disp object using the 'funfacts-talk' sprite sheet
+
 
 ## ( done 09/20/2021 ) - 0.5.15 - more sm object constants for CPM and other values
 * (done) have a sm.CPM_DSECS, and sm.CPM_MAX_SAMPLES and use them in the CPMupdate helper in game.js

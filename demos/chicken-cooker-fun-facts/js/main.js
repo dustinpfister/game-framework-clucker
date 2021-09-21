@@ -36,6 +36,10 @@ gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {},
     start: function (sm) {
+        // create sm.funFacts
+        sm.funFacts = funFactsMod.create();
+
+        // background
         sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
 
@@ -47,6 +51,13 @@ gameFrame.smPushState(sm, {
 
         // create fun facts sheets
         funFactsMod.createSheets(sm, [2, 3]);
+
+
+        // draw talk bubble
+
+console.log(sm.funFacts.disp.talk)
+
+        canvasMod.draw(sm.layers, 'sprite', 0, sm.funFacts.disp.talk, {});  
 
         
 
@@ -72,6 +83,7 @@ gameFrame.smPushState(sm, {
         var per1 = 0,
         per2,
         per3;
+
         // main spawn bar
         ctx.fillStyle = 'gray';
         ctx.fillRect(x, 10, w, 25);
