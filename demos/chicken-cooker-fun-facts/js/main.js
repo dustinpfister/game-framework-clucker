@@ -39,11 +39,14 @@ gameFrame.smPushState(sm, {
         sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
 
-        // create sprite sheets
+        // create chicken sprite sheets
         var size = sm.CHICKENS_CELL_SIZE;
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', [4, 6], size, size);
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', [5, 7], size, size);
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
+
+        // create fun facts sheets
+        funFactsMod.createSheets(sm);
 
     },
     update: function (sm, secs) {

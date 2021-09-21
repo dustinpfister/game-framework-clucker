@@ -28,11 +28,14 @@
 
 ## (   ) - 0.5.16 - start chicken-cooker-fun-facts
 * (done) start a chicken cooker fun facts demo based off of chicken-cooker-sheets
-* work out a new img/cc-fun-facts skin based on img/ccsheets.
-* 2.png will need to be the talk bubble image
-* 3.png will need to be an image sheet for a 'fun-facts' guy
-* bump down the other images
+* (done) work out a new img/cc-fun-facts skin based on img/ccsheets.
+* (done) 2.png will need to be the talk bubble image
+* (done) 3.png will need to be an image sheet for a 'fun-facts' guy
+* (done) bump down the other images
 
+* work out system for creating the sprite sheets for 'fun-fatcs guy';
+* I am thinking I should maybe start a local lib folder for game.js, and now a new fun-facts.js
+* funFactsMod should be used in main.js, try to keep from making this part of game.js
 
 ## ( done 09/20/2021 ) - 0.5.15 - more sm object constants for CPM and other values
 * (done) have a sm.CPM_DSECS, and sm.CPM_MAX_SAMPLES and use them in the CPMupdate helper in game.js
