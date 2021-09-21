@@ -3,7 +3,8 @@
 
     var FF_X_START = -400,
     FF_X_DELTA = 620,
-    FF_PPS = 512;
+    FF_PPS = 512,
+    FF_LEAVE_DELAY = 5; // amount of time until the guy will leave
 
 
     /********* ********** ********** **********
@@ -48,6 +49,7 @@
            x: FF_X_START,
            y: 290,
            active: true,
+           secs: 0,
            disp: {} // display objects
         };
         // talk bubble display obect
@@ -107,14 +109,35 @@
 
     // update a fun facts object
     api.update = function(funFacts, secs){
+        // if active
         if(funFacts.active){
             var homeX = FF_X_START + FF_X_DELTA;
             if(funFacts.x < homeX){
                 funFacts.x += FF_PPS * secs;
+                funFacts.secs = 0;
+            }else{
+                funFacts.secs += secs;
+                if(funFacts.secs >= FF_LEAVE_DELAY){
+                    funFacts.active = false;
+                }
             }
             funFacts.x = funFacts.x > homeX ? homeX: funFacts.x;
-            setDispPositons(funFacts);
+        }else{
+            // else if not active
+            if(funFacts.x > FF_X_START){
+
+                funFacts.x -= FF_PPS * secs;
+                funFacts.secs = 0;
+            }else{
+                funFacts.secs += secs;
+                if(funFacts.secs >= 1){
+                    funFacts.active = true;
+                }
+            }
+            funFacts.x = funFacts.x < FF_X_START ? FF_X_START: funFacts.x;
         }
+        // update positions
+        setDispPositons(funFacts);
     };
 
     return api;
