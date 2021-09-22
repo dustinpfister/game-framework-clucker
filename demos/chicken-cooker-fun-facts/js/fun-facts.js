@@ -4,7 +4,8 @@
     var FF_X_START = -400,
     FF_X_DELTA = 620,
     FF_PPS = 512,
-    FF_LEAVE_DELAY = 5; // amount of time until the guy will leave
+    FF_LEAVE_DELAY = 5,
+    SAY_WIDTH = 40; // amount of time until the guy will leave
 
 
     var TRIGGERS = {
@@ -14,7 +15,7 @@
                 return funFacts.idleSecs >= 10;
             },
             says: [
-                'This is chicken cooker fun facts, to play just click or tab the canvas to start cooking chickens'
+                'This is chicken cooker fun facts to play just click or touch the canvas to start cooking chickens'
             ]
         }
     };
@@ -50,6 +51,14 @@
         }
         return funFacts.currentTrigger;
     };
+
+    // break a say to a set number of lines
+    var wrapSay = function(str){
+        var patt = new RegExp(`(?![^\\n]{1,${SAY_WIDTH}}$)([^\\n]{1,${SAY_WIDTH}})\\s`, 'g');
+        return str.replace(patt, '$1\n').split('\n');
+    };
+
+console.log( wrapSay(TRIGGERS.idle.says[0]) );
 
     /********* ********** ********** **********
       PUBLIC METHODS
