@@ -53,12 +53,11 @@
     };
 
     // break a say to a set number of lines
+    // based off of this:  https://stackoverflow.com/questions/14484787/wrap-text-in-javascript
     var wrapSay = function(str){
         var patt = new RegExp(`(?![^\\n]{1,${SAY_WIDTH}}$)([^\\n]{1,${SAY_WIDTH}})\\s`, 'g');
         return str.replace(patt, '$1\n').split('\n');
     };
-
-console.log( wrapSay(TRIGGERS.idle.says[0]) );
 
     /********* ********** ********** **********
       PUBLIC METHODS
