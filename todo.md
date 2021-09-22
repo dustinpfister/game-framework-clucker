@@ -1,9 +1,12 @@
 # game-framework-clucker todo list
 
 
+## (  ) - 0.6.0 - Clucker r6 released
+* update readme.
+* create a /dist/clucker.js and clucker.min.js at this state
+* create a 0.6.0 tag
 
-
-## (  ) - 0.6.2 - /examples folder started
+## (  ) - 0.5.x - /examples folder started
 * create a new /examples folder based off of the /demos folder
 * the build tool should create a copy of clucker.js as /examples/js/clucker/x.x.x/clucker.min.js
 * each demo should use a specfic version of clucker.min.js
@@ -12,14 +15,14 @@
 * if all goes well the /demos folder should no longer be needed if so remove it
 * if all goes well the /node/server-demo folder should no longer be needed if so remove it
 
-## (  ) - 0.6.1 - /src folder started
+## (  ) - 0.5.x - /src folder started
 * create a new /src folder based off of /lib that follows a pattren like this:
 ```
 /src/[libName]/[x.x.x]/[fileName].js
 ```
 * the nodejs build tool should use files located here over the older /lib folder
 
-## (  ) - 0.6.0 - start a nodejs build tool that creates a dist folder
+## (  ) - 0.5.x - start a nodejs build tool that creates a dist folder
 * in the nodejs folder start a build tool
 * the built tool should create a /dist/clucker.js from files in /lib
 * the built tool should create a /dist/clucker.min.js from files in /lib
