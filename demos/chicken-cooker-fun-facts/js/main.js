@@ -95,9 +95,24 @@ gameFrame.smPushState(sm, {
 
 
         // fun facts guy
-        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.talk, {});
+        var talk = sm.funFacts.disp.talk;
         canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.base, {});
         canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.hair, {}); 
+        canvasMod.draw(sm.layers, 'sprite', 1, talk, {});
+
+        var lines = sm.funFacts.lines,
+        len = lines.length,
+        fontSize = 12,
+        x = talk.x + talk.w / 2,
+        y = talk.y + talk.h / 2 - fontSize * len / 2 - fontSize / 2;
+        
+        lines.forEach(function(line){
+            y += fontSize;
+            canvasMod.draw(layers, 'print', 1, line, x, y, {
+                align: 'center',
+                fontSize: fontSize
+            });
+        });
 
 
         // printing score
