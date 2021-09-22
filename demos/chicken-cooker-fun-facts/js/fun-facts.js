@@ -32,6 +32,25 @@
          });
     };
 
+    // check if funfacts guy should be set active
+    // and update funFacts.currentTrigger to the trigger that set
+    // him active
+    var triggerCheck = function(funFacts){
+        var triggerKeys = Object.keys(TRIGGERS),
+        trigger,
+        i = triggerKeys.length;
+        while(i--){
+            trigger = TRIGGERS[triggerKeys[i]];
+            if( trigger.condition(funFacts) ){
+                // update trigger ref
+                funFacts.active = true;
+                funFacts.currentTrigger = trigger;
+                return funFacts.currentTrigger;
+            }
+        }
+        return funFacts.currentTrigger;
+    };
+
     /********* ********** ********** **********
       PUBLIC METHODS
     *********** ********** ********** ********/
@@ -123,7 +142,6 @@
 
     // update a fun facts object
     api.update = function(sm, funFacts, secs){
-
         // if active
         if(funFacts.active){
             var homeX = FF_X_START + FF_X_DELTA;
@@ -138,37 +156,17 @@
             }
             funFacts.x = funFacts.x > homeX ? homeX: funFacts.x;
         }else{
-
-
             // else if not active
-
             if(funFacts.x > FF_X_START){
                 funFacts.x -= FF_PPS * secs;
                 funFacts.secs = 0;
                 funFacts.idleSecs = 0;
             }else{
                 funFacts.idleSecs += secs;
-
-                var triggerKeys = Object.keys(TRIGGERS),
-                trigger,
-                i = triggerKeys.length;
-                while(i--){
-                    trigger = TRIGGERS[triggerKeys[i]];
-                    if( trigger.condition(funFacts) ){
-                       // update trigger ref
-                       funFacts.active = true;
-                       funFacts.trigger = trigger;
-                       break;
-                    }
-                }
-                //if(funFacts.idleSecs >= 1){
-                //    funFacts.active = true;
-                //}
+                triggerCheck(funFacts);
             }
             funFacts.x = funFacts.x < FF_X_START ? FF_X_START: funFacts.x;
-
         }
-
         // update positions
         setDispPositons(funFacts);
     };
