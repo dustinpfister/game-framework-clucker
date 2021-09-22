@@ -38,12 +38,11 @@
 ## () - 0.5.x - chicken-cooker-fun-facts: draw.js
 * start a draw.js for chicken-cooker-fun-facts that will be a canvas plugin
 
-## (   ) - 0.5.18 - chicken-cooker-fun-facts: triggers, and first words
-* start a system for triggers that will cause the guy to show up
-* have an inactivity trigger
-* have a score trigger
+## ( done 09/22/2021 ) - 0.5.18 - chicken-cooker-fun-facts: triggers, and first words
+* (done) start a system for triggers that will cause the guy to show up
+* (done) have an inactivity trigger
 
-## ( done 09/20/2021 ) - 0.5.17 - chicken-cooker-fun-facts: draw fun facts guy
+## ( done 09/21/2021 ) - 0.5.17 - chicken-cooker-fun-facts: draw fun facts guy
 * (done) I will need a 'funfacts-guy' sheet work out things just for the base image first
 * (done) start with a funFacts.disp.base object that will be for the base image
 * (done) I will want to have a funfacts.x and funFacts.y values that will be used to set the posiiton of all other dispay objects
