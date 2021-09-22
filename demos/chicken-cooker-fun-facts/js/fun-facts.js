@@ -4,7 +4,7 @@
     var FF_X_START = -400,
     FF_X_DELTA = 620,
     FF_PPS = 512,
-    FF_LEAVE_DELAY = 1; // amount of time until the guy will leave
+    FF_LEAVE_DELAY = 5; // amount of time until the guy will leave
 
 
     var TRIGGERS = {
@@ -60,7 +60,7 @@
         var funFacts = {
            x: FF_X_START,
            y: 290,
-           active: true,
+           active: false,
            secs: 0,
            idleSecs: 0,
            triggers: TRIGGERS,
@@ -148,9 +148,22 @@
                 funFacts.idleSecs = 0;
             }else{
                 funFacts.idleSecs += secs;
-                if(funFacts.idleSecs >= 1){
-                    funFacts.active = true;
+
+                var triggerKeys = Object.keys(TRIGGERS),
+                trigger,
+                i = triggerKeys.length;
+                while(i--){
+                    trigger = TRIGGERS[triggerKeys[i]];
+                    if( trigger.condition(funFacts) ){
+                       // update trigger ref
+                       funFacts.active = true;
+                       funFacts.trigger = trigger;
+                       break;
+                    }
                 }
+                //if(funFacts.idleSecs >= 1){
+                //    funFacts.active = true;
+                //}
             }
             funFacts.x = funFacts.x < FF_X_START ? FF_X_START: funFacts.x;
 
