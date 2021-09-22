@@ -12,7 +12,7 @@
         idle: {
             key: 'idle',
             condition: function(funFacts){
-                return funFacts.idleSecs >= 15;
+                return funFacts.idleSecs >= 5;
             },
             says: [
                 'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens'
