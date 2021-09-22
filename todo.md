@@ -35,6 +35,9 @@
 ## () - 0.5.x - chicken-cooker-fun-facts: hand disp object
 ## () - 0.5.x - chicken-cooker-fun-facts: mouth disp object
 
+## () - 0.5.x - chicken-cooker-fun-facts: draw.js
+* start a draw.js for chicken-cooker-fun-facts that will be a canvas plugin
+
 ## (   ) - 0.5.18 - chicken-cooker-fun-facts: triggers, and first words
 * start a system for triggers that will cause the guy to show up
 * have an inactivity trigger

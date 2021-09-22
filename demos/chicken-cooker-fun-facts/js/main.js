@@ -52,20 +52,11 @@ gameFrame.smPushState(sm, {
         // create fun facts sheets
         funFactsMod.createSheets(sm, [2, 3]);
 
-
-        // draw talk bubble
-
-console.log(sm.layers.spriteSheets)
-
-
-
-        
-
     },
     update: function (sm, secs) {
         gameMod.update(sm.game, sm, secs);
 
-        funFactsMod.update(sm.funFacts, secs);
+        funFactsMod.update(sm, sm.funFacts, secs);
 
 
     },
@@ -118,6 +109,8 @@ console.log(sm.layers.spriteSheets)
         var spawn = sm.game.spawn;
         canvasMod.draw(layers, 'print', 1, 'active: ' + spawn.activeCount + '/' + spawn.currentMaxActive, 10, 50, printOptions);
         canvasMod.draw(layers, 'print', 1, 'spawn rate: ' + spawn.rate.toFixed(2), 10, 70, printOptions);
+        // fun facts info
+        canvasMod.draw(layers, 'print', 1, 'ff idle secs: ' + sm.funFacts.idleSecs.toFixed(2), 10, 90, printOptions);
 
     },
     events: {
@@ -126,6 +119,8 @@ console.log(sm.layers.spriteSheets)
             poolMod.spawn(sm.game.blasts, sm, {
                 pos: pos
             });
+            // set funFacts mod know whats up
+            funFactsMod.userAction(sm.funFacts, 'pointerStart', pos);
         },
         pointerMove: function (e, pos, sm) {},
         pointerEnd: function (e, pos, sm) {}

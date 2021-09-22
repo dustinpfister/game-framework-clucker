@@ -4,8 +4,20 @@
     var FF_X_START = -400,
     FF_X_DELTA = 620,
     FF_PPS = 512,
-    FF_LEAVE_DELAY = 5; // amount of time until the guy will leave
+    FF_LEAVE_DELAY = 1; // amount of time until the guy will leave
 
+
+    var TRIGGERS = {
+        idle: {
+            key: 'idle',
+            condition: function(funFacts){
+                return funFacts.idleSecs >= 10;
+            },
+            says: [
+                'This is chicken cooker fun facts, to play just click or tab the canvas to start cooking chickens'
+            ]
+        }
+    };
 
     /********* ********** ********** **********
       HELPERS
@@ -50,6 +62,8 @@
            y: 290,
            active: true,
            secs: 0,
+           idleSecs: 0,
+           triggers: TRIGGERS,
            disp: {} // display objects
         };
         // talk bubble display obect
@@ -108,7 +122,8 @@
     };
 
     // update a fun facts object
-    api.update = function(funFacts, secs){
+    api.update = function(sm, funFacts, secs){
+
         // if active
         if(funFacts.active){
             var homeX = FF_X_START + FF_X_DELTA;
@@ -123,21 +138,32 @@
             }
             funFacts.x = funFacts.x > homeX ? homeX: funFacts.x;
         }else{
-            // else if not active
-            if(funFacts.x > FF_X_START){
 
+
+            // else if not active
+
+            if(funFacts.x > FF_X_START){
                 funFacts.x -= FF_PPS * secs;
                 funFacts.secs = 0;
+                funFacts.idleSecs = 0;
             }else{
-                funFacts.secs += secs;
-                if(funFacts.secs >= 1){
+                funFacts.idleSecs += secs;
+                if(funFacts.idleSecs >= 1){
                     funFacts.active = true;
                 }
             }
             funFacts.x = funFacts.x < FF_X_START ? FF_X_START: funFacts.x;
+
         }
+
         // update positions
         setDispPositons(funFacts);
+    };
+
+    // let fun facts no some kind of user action happend
+    api.userAction = function(funFacts, type, opt){
+        // set idleSecs to 0
+        funFacts.idleSecs = 0;
     };
 
     return api;
