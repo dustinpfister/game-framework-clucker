@@ -40,13 +40,13 @@
 * have one or more says for each CPM
 
 ## () - 0.5.21 - chicken-cooker-fun-facts: New Trigger standard
-* rename condition prop of a trigger to activeCondition
+* (done) rename condition prop of a trigger to activeCondition
 * have a leaveCondition function for a trigger
 * have it so that any kind of user input will be the leaveCondition for the idle trigger
 * have more than one say for idle trigger
-* have an init method for a trigger
-* have an update method for a trigger
-* have a done method for a trigger
+* (done) have an init method for a trigger
+* (done) have an update method for a trigger
+* (done) have a done method for a trigger
 
 
 ## ( done 09/23/2021 ) - 0.5.20 - chicken-cooker-fun-facts: draw.js

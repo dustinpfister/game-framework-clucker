@@ -11,47 +11,51 @@
     var TRIGGERS = {
         idle: {
             key: 'idle',
-            activeCondition: function(funFacts){
+            activeCondition: function (funFacts) {
                 return funFacts.idleSecs >= 3;
+            },
+            leaveCondition: function (funFacts) {
+                return funFacts.secs >= 3;
             },
             says: [
                 'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens'
             ],
-            init: function(funFacts){
+            init: function (funFacts) {
                 console.log('idle trigger started');
             },
-            done: function(funFacts){
+            done: function (funFacts) {
                 console.log('idle trigger done');
+                funFacts.idleSecs = 0;
             },
-            update: function(){
+            update: function () {
                 console.log('tick');
             }
         }
     };
 
     /********* ********** ********** **********
-      HELPERS
-    *********** ********** ********** ********/
+    HELPERS
+     *********** ********** ********** ********/
 
     // set the position of the disp objects ( using data.homeX realtive to funFacts.x )
-    var setDispPositons = function(funFacts){
-         Object.keys(funFacts.disp).forEach(function(dispKey){
-             var disp = funFacts.disp[dispKey];
-             disp.x = funFacts.x + disp.data.homeX;
-             disp.y = funFacts.y + disp.data.homeY;
-         });
+    var setDispPositons = function (funFacts) {
+        Object.keys(funFacts.disp).forEach(function (dispKey) {
+            var disp = funFacts.disp[dispKey];
+            disp.x = funFacts.x + disp.data.homeX;
+            disp.y = funFacts.y + disp.data.homeY;
+        });
     };
 
     // check if funfacts guy should be set active
     // and update funFacts.currentTrigger to the trigger that set
     // him active
-    var triggerCheck = function(funFacts){
+    var triggerCheck = function (funFacts) {
         var triggerKeys = Object.keys(TRIGGERS),
         trigger,
         i = triggerKeys.length;
-        while(i--){
+        while (i--) {
             trigger = TRIGGERS[triggerKeys[i]];
-            if( trigger.activeCondition(funFacts) ){
+            if (trigger.activeCondition(funFacts)) {
                 // update trigger ref
                 funFacts.active = true;
                 funFacts.currentTrigger = trigger;
@@ -65,84 +69,174 @@
 
     // break a say to a set number of lines
     // based off of this:  https://stackoverflow.com/questions/14484787/wrap-text-in-javascript
-    var wrapSay = function(str){
+    var wrapSay = function (str) {
         var patt = new RegExp(`(?![^\\n]{1,${SAY_WIDTH}}$)([^\\n]{1,${SAY_WIDTH}})\\s`, 'g');
         return str.replace(patt, '$1\n').split('\n');
     };
 
     // animate helper
-    var animate = function(funFacts, secs, dispKey, ciStart, ciEnd, rate){
+    var animate = function (funFacts, secs, dispKey, ciStart, ciEnd, rate) {
         var disp = funFacts.disp[dispKey],
         ci = disp.data.cellIndex;
-        disp.data.secs = disp.data.secs === undefined ? 0 : disp.data.secs; 
+        disp.data.secs = disp.data.secs === undefined ? 0 : disp.data.secs;
         disp.data.secs += secs;
-        if( disp.data.secs >= rate){
+        if (disp.data.secs >= rate) {
             ci += 1;
-            disp.data.cellIndex = ci > ciEnd ? ciStart: ci;
+            disp.data.cellIndex = ci > ciEnd ? ciStart : ci;
             disp.data.secs = 0;
         }
     };
 
     // animate mouth short helper
-    var animateMouth = function(funFacts, secs){
+    var animateMouth = function (funFacts, secs) {
         animate(funFacts, secs, 'mouth', 15, 16, 1 / 8);
     };
 
     // animate hand short helper
-    var animateHand = function(funFacts, secs){
+    var animateHand = function (funFacts, secs) {
         animate(funFacts, secs, 'hand', 12, 13, 1 / 4);
     };
 
     /********* ********** ********** **********
-      PUBLIC METHODS
-    *********** ********** ********** ********/
+    PUBLIC METHODS
+     *********** ********** ********** ********/
 
-    api.createSheets = function(sm, imageIndices){
+    api.createSheets = function (sm, imageIndices) {
 
         imageIndices = imageIndices || [2, 3];
-     
+
         // sprite sheet for the talk bubble will just be one cell
-        var talkCell = [ { x: 0, y: 0, w: 256, h: 128 } ]   
+        var talkCell = [{
+                x: 0,
+                y: 0,
+                w: 256,
+                h: 128
+            }
+        ]
         canvasMod.createSpriteSheet(sm.layers, 'funfacts-talk', imageIndices[0], talkCell);
 
         // the format for the guy sheet is a little more complex
-        var guyCells = [
-            { x: 0, y: 0, w: 128, h: 128 }, // cell 0 is the base image for the guy
-            { x: 128, y: 0, w: 64, h: 64 }, // cell 1-3 hair
-            { x: 192, y: 0, w: 64, h: 64 },
-            { x: 256, y: 0, w: 64, h: 64 },
-            { x: 128, y: 64, w: 64, h: 64 }, // cells 4-5 reserved for brow animation
-            { x: 192, y: 64, w: 64, h: 64 },
-            { x: 256, y: 64, w: 64, h: 64 }, // cell 6 reserved for face fuzz cell
-            { x: 0, y: 128, w: 64, h: 64 },   // cells 7 - 11 are resrved for eye cells
-            { x: 64, y: 128, w: 64, h: 64 },
-            { x: 128, y: 128, w: 64, h: 64 },
-            { x: 192, y: 128, w: 64, h: 64 },
-            { x: 256, y: 128, w: 64, h: 64 },
-            { x: 0, y: 192, w: 64, h: 128 }, // cells 12 - 14 are for hand cells
-            { x: 64, y: 192, w: 64, h: 128 },
-            { x: 128, y: 192, w: 64, h: 128 },
-            { x: 192, y: 192, w: 64, h: 64 }, // cells 15 - 18 are for mouth cells 
-            { x: 256, y: 192, w: 64, h: 64 },
-            { x: 192, y: 256, w: 64, h: 64 },
-            { x: 256, y: 256, w: 64, h: 64 }
+        var guyCells = [{
+                x: 0,
+                y: 0,
+                w: 128,
+                h: 128
+            }, // cell 0 is the base image for the guy
+            {
+                x: 128,
+                y: 0,
+                w: 64,
+                h: 64
+            }, // cell 1-3 hair
+            {
+                x: 192,
+                y: 0,
+                w: 64,
+                h: 64
+            }, {
+                x: 256,
+                y: 0,
+                w: 64,
+                h: 64
+            }, {
+                x: 128,
+                y: 64,
+                w: 64,
+                h: 64
+            }, // cells 4-5 reserved for brow animation
+            {
+                x: 192,
+                y: 64,
+                w: 64,
+                h: 64
+            }, {
+                x: 256,
+                y: 64,
+                w: 64,
+                h: 64
+            }, // cell 6 reserved for face fuzz cell
+            {
+                x: 0,
+                y: 128,
+                w: 64,
+                h: 64
+            }, // cells 7 - 11 are resrved for eye cells
+            {
+                x: 64,
+                y: 128,
+                w: 64,
+                h: 64
+            }, {
+                x: 128,
+                y: 128,
+                w: 64,
+                h: 64
+            }, {
+                x: 192,
+                y: 128,
+                w: 64,
+                h: 64
+            }, {
+                x: 256,
+                y: 128,
+                w: 64,
+                h: 64
+            }, {
+                x: 0,
+                y: 192,
+                w: 64,
+                h: 128
+            }, // cells 12 - 14 are for hand cells
+            {
+                x: 64,
+                y: 192,
+                w: 64,
+                h: 128
+            }, {
+                x: 128,
+                y: 192,
+                w: 64,
+                h: 128
+            }, {
+                x: 192,
+                y: 192,
+                w: 64,
+                h: 64
+            }, // cells 15 - 18 are for mouth cells
+            {
+                x: 256,
+                y: 192,
+                w: 64,
+                h: 64
+            }, {
+                x: 192,
+                y: 256,
+                w: 64,
+                h: 64
+            }, {
+                x: 256,
+                y: 256,
+                w: 64,
+                h: 64
+            }
         ];
         canvasMod.createSpriteSheet(sm.layers, 'funfacts-guy', imageIndices[1], guyCells);
 
     };
 
     // create and return a fun facts object
-    api.create = function(){
+    api.create = function () {
         var funFacts = {
-           x: FF_X_START,
-           y: 290,
-           active: false,
-           secs: 0,
-           idleSecs: 0,
-           triggers: TRIGGERS,
-           currentTrigger:{},
-           lines:[],
-           disp: {} // display objects
+            x: FF_X_START,
+            y: 290,
+            active: false,
+            secs: 0,
+            idleSecs: 0,
+            triggers: TRIGGERS,
+            currentTrigger: {},
+            lines: [],
+            disp: {}
+            // display objects
         };
         // talk bubble display obect
         funFacts.disp.talk = {
@@ -235,19 +329,18 @@
         return funFacts;
     };
 
-
-
     // update a fun facts object
-    api.update = function(sm, funFacts, secs){
+    api.update = function (sm, funFacts, secs) {
         // if active
-        if(funFacts.active){
+        if (funFacts.active) {
             var homeX = FF_X_START + FF_X_DELTA;
-            if(funFacts.x < homeX){
+            if (funFacts.x < homeX) {
                 funFacts.x += FF_PPS * secs;
                 funFacts.secs = 0;
-            }else{
+            } else {
                 funFacts.secs += secs;
-                if(funFacts.secs >= FF_LEAVE_DELAY){
+                // use leave condition of trigger to know when the trigger is over
+                if (funFacts.currentTrigger.leaveCondition.call(funFacts, funFacts)) {
                     funFacts.active = false;
                 }
                 // animate mouth
@@ -257,23 +350,23 @@
                 var updateTrig = funFacts.currentTrigger.update || utils.noop;
                 updateTrig.call(funFacts, funFacts);
             }
-            funFacts.x = funFacts.x > homeX ? homeX: funFacts.x;
-        }else{
+            funFacts.x = funFacts.x > homeX ? homeX : funFacts.x;
+        } else {
             // else if not active
-            if(funFacts.x > FF_X_START){
+            if (funFacts.x > FF_X_START) {
                 funFacts.x -= FF_PPS * secs;
                 funFacts.secs = 0;
-                funFacts.idleSecs = 0;
-            }else{
-                 if(funFacts.x < FF_X_START){
-                      funFacts.x = FF_X_START;
+                //funFacts.idleSecs = 0;
+            } else {
+                if (funFacts.x < FF_X_START) {
+                    funFacts.x = FF_X_START;
                     // call done trigger method
                     var done = funFacts.currentTrigger.done || utils.noop;
                     done.call(funFacts, funFacts);
-                 }
+                }
                 funFacts.idleSecs += secs;
                 triggerCheck(funFacts);
-                if(funFacts.active){
+                if (funFacts.active) {
                     funFacts.lines = wrapSay(funFacts.currentTrigger.says[0]);
                 }
             }
@@ -286,7 +379,7 @@
     };
 
     // let fun facts no some kind of user action happend
-    api.userAction = function(funFacts, type, opt){
+    api.userAction = function (funFacts, type, opt) {
         // set idleSecs to 0
         funFacts.idleSecs = 0;
     };
