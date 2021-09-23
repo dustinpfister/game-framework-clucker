@@ -32,11 +32,16 @@
 
 ## () - 0.5.x - chicken-cooker-fun-facts: brow disp object
 ## () - 0.5.x - chicken-cooker-fun-facts: eyes disp object
-## () - 0.5.x - chicken-cooker-fun-facts: hand disp object
-## () - 0.5.x - chicken-cooker-fun-facts: mouth disp object
+
 
 ## () - 0.5.x - chicken-cooker-fun-facts: draw.js
 * start a draw.js for chicken-cooker-fun-facts that will be a canvas plugin
+
+## () - 0.5.19 - chicken-cooker-fun-facts: mouth, and hand disp object
+* start a mouth disp object for the fun facts guy
+* start a hand disp object for the fun facts guy
+* animate the mouth
+* animate the hand
 
 ## ( done 09/22/2021 ) - 0.5.18 - chicken-cooker-fun-facts: triggers, and first words
 * (done) start a system for triggers that will cause the guy to show up
