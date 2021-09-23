@@ -26,7 +26,8 @@
             },
             says: [
                 'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens',
-                'Did you know a chicken is a kind of bird?'
+                'Did you know a chicken is a kind of bird?',
+                'In real life the process of converting live chickens into food is a little more graphic'
             ],
             init: function (funFacts) {
                 console.log('idle trigger started');
