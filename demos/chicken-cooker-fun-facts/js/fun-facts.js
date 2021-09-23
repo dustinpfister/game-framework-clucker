@@ -81,9 +81,9 @@
         },
         says: [
             'You have a Chickens Per Minute speed of 50. Not Bad.',
-            'You have a Chickens Per Minute speed of 100. Not Bad.',
-            'You have a Chickens Per Minute speed of 200. Not Bad.',
-            'You have a Chickens Per Minute speed of 300. Not Bad.'
+            'Chickens Per Minute speed of 100 now. Order up!',
+            'Chickens Per Minute of 200 or more now. Keep it up.',
+            'You have a Chickens Per Minute speed of 300 or more now. You are one stone cold killer.'
         ],
         init: function (funFacts) {},
         done: function (funFacts) {},
