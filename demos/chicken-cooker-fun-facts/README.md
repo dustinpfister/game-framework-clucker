@@ -6,8 +6,44 @@ So for this I am going to need to work out a few custom systems when it comes to
 
 ## So the main focus is this fun fact system
 
-The main idea here is to work out a system where a guy will slide across the screen and say something and then leave for one of several types of reasons such as a timeout, or some kind of user action.
+The main idea here is to work out a system where a guy will slide across the screen and say something and then leave for one of several types of reasons such as a timeout, or some kind of user action. So then I will need some kind of standard when it comes to knowing when a trigger should fire and when the guy should leave.
 
+```js
+    // idle trigger
+    TRIGGERS.cpm = {
+        key: 'cpm',
+        activeCondition: function (funFacts) {
+            var game = funFacts.sm.game,
+            avg_cpm = game.cpm.avg;
+            if (funFacts.CPMValues === undefined || avg_cpm === 0) {
+                funFacts.CPMValues = [50, 100, 200, 300];
+                funFacts.bestCPM = 0;
+            }
+            funFacts.bestCPM = avg_cpm > funFacts.bestCPM ? avg_cpm : funFacts.bestCPM;
+            if (funFacts.CPMValues.length > 0) {
+                if (funFacts.bestCPM >= funFacts.CPMValues[0]) {
+                    funFacts.sayIndex = 4 - funFacts.CPMValues.length;
+                    funFacts.lines = wrapSay(funFacts.triggers.cpm.says[funFacts.sayIndex]);
+                    funFacts.CPMValues.shift();
+                    return true;
+                }
+            }
+            return false;
+        },
+        leaveCondition: function (funFacts) {
+            return funFacts.talkSecs >= 10;
+        },
+        says: [
+            'You have a Chickens Per Minute speed of 50. Not Bad.',
+            'Chickens Per Minute speed of 100 now. Order up!',
+            'Chickens Per Minute of 200 or more now. Keep it up.',
+            'You have a Chickens Per Minute speed of 300 or more now. You are one stone cold killer.'
+        ],
+        init: function (funFacts) {},
+        done: function (funFacts) {},
+        update: function (funFacts) {}
+    };
+```
 
 ## Changes made to clucker
 
