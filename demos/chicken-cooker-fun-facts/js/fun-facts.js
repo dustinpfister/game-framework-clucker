@@ -22,6 +22,9 @@
             },
             done: function(funFacts){
                 console.log('idle trigger done');
+            },
+            update: function(){
+                console.log('tick');
             }
         }
     };
@@ -250,9 +253,11 @@
                 // animate mouth
                 animateMouth(funFacts, secs);
                 animateHand(funFacts, secs);
+                // if the triiger has an update method call it here
+                var updateTrig = funFacts.currentTrigger.update || utils.noop;
+                updateTrig.call(funFacts, funFacts);
             }
             funFacts.x = funFacts.x > homeX ? homeX: funFacts.x;
-
         }else{
             // else if not active
             if(funFacts.x > FF_X_START){
