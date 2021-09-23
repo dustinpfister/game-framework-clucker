@@ -68,10 +68,7 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'stateButtons', 1, sm);
 
         // pools
-        canvasMod.draw(layers, 'pool-sprite', 1, sm.game.chickens);
-        canvasMod.draw(layers, 'pool-solid', 1, sm.game.blasts, {
-            fillStyle: 'rgba(255, 255, 0, 0.5)'
-        });
+        canvasMod.draw(layers, 'pool-cc', 1, sm);
 
         // spawn bar
         var w = 300;
