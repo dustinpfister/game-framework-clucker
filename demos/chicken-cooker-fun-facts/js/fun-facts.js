@@ -4,7 +4,7 @@
     var FF_X_START = -400,
     FF_X_DELTA = 620,
     FF_PPS = 512,
-    FF_IDLE_TRIGGER_TIME = 10,
+    FF_IDLE_TRIGGER_TIME = 15,
     SAY_WIDTH = 35; // amount of time until the guy will leave
 
     /********* ********** ********** **********
@@ -53,6 +53,25 @@
             }
             funFacts.lines = wrapSay(funFacts.triggers.idle.says[funFacts.sayIndex]);
         }
+    };
+
+    // idle trigger
+    TRIGGERS.cpm = {
+        key: 'cpm',
+        activeCondition: function (funFacts) {
+            var game = funFacts.sm.game,
+            avg_cpm = game.cpm.avg;
+            return avg_cpm >= 50;
+        },
+        leaveCondition: function (funFacts) {
+            return funFacts.talkSecs >= 10;
+        },
+        says: [
+            'You have a Chickens Per Minute speed of 50. Not Bad.'
+        ],
+        init: function (funFacts) {},
+        done: function (funFacts) {},
+        update: function (funFacts) {}
     };
 
     /********* ********** ********** **********
