@@ -241,6 +241,7 @@
                 }
                 // animate mouth
                 animateMouth(funFacts, secs);
+                animateHand(funFacts, secs);
             }
             funFacts.x = funFacts.x > homeX ? homeX: funFacts.x;
 
@@ -260,6 +261,7 @@
             funFacts.x = funFacts.x < FF_X_START ? FF_X_START: funFacts.x;
             // mouth closed
             funFacts.disp.mouth.data.cellIndex = 15;
+            funFacts.disp.hand.data.cellIndex = 12;
         }
         // update positions
         setDispPositons(funFacts);
