@@ -12,7 +12,7 @@
         idle: {
             key: 'idle',
             condition: function(funFacts){
-                return funFacts.idleSecs >= 10;
+                return funFacts.idleSecs >= 1;
             },
             says: [
                 'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens'
@@ -57,6 +57,24 @@
     var wrapSay = function(str){
         var patt = new RegExp(`(?![^\\n]{1,${SAY_WIDTH}}$)([^\\n]{1,${SAY_WIDTH}})\\s`, 'g');
         return str.replace(patt, '$1\n').split('\n');
+    };
+
+    // animate helper
+    var animate = function(funFacts, secs, dispKey, ciStart, ciEnd, rate){
+        var disp = funFacts.disp[dispKey],
+        ci = disp.data.cellIndex;
+        disp.data.secs = disp.data.secs === undefined ? 0 : disp.data.secs; 
+        disp.data.secs += secs;
+        if( disp.data.secs >= rate){
+            ci += 1;
+            disp.data.cellIndex = ci > ciEnd ? ciStart: ci;
+            disp.data.secs = 0;
+        }
+    };
+
+    // animate mouth short hand helper
+    var animateMouth = function(funFacts, secs){
+        animate(funFacts, secs, 'mouth', 15, 16, 1 / 8);
     };
 
     /********* ********** ********** **********
@@ -183,16 +201,7 @@
         return funFacts;
     };
 
-    var animateMouth = function(funFacts, secs){
-        var mouth = funFacts.disp.mouth,
-        ci = mouth.data.cellIndex;
-        mouth.data.secs += secs;
-        if( mouth.data.secs >= 1 / 8){
-            ci += 1;
-            mouth.data.cellIndex = ci > 16 ? 15: ci;
-            mouth.data.secs = 0;
-        }
-    };
+
 
     // update a fun facts object
     api.update = function(sm, funFacts, secs){
