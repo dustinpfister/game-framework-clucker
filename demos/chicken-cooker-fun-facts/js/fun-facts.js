@@ -61,7 +61,9 @@
         activeCondition: function (funFacts) {
             var game = funFacts.sm.game,
             avg_cpm = game.cpm.avg;
-            return avg_cpm >= 50;
+			
+			funFacts.bestCPM = avg_cpm > funFacts.bestCPM ? avg_cpm : funFacts.bestCPM;
+            return funFacts.bestCPM >= 50;
         },
         leaveCondition: function (funFacts) {
             return funFacts.talkSecs >= 10;
@@ -276,6 +278,7 @@
             idleSecs: 0,
             sayIndex: 0, // say index and say indices should be updated in an int method of a trigger
             sayIndices: [],
+            bestCPM: 0,
             triggers: TRIGGERS,
             currentTrigger: {},
             lines: [], // lines should be updated in init and update methods of triggers

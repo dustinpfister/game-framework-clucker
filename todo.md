@@ -36,8 +36,10 @@
 ## () - 0.5.x - chicken-cooker-fun-facts: eyes disp object
 
 ## () - 0.5.22 - chicken-cooker-fun-facts: CPM Trigger
-* start a CPM trigger that will trigger for certin CPM Rates
+* (done) start a CPM trigger that will trigger for certain CPM Rates
+* I will need a funFacts.bestCPM value to use to know if the trigger should go active or not
 * so the activeCondition is when the CPM goes above a figure like 50, 100, 200, ect
+* set funFacts.bestCPM back to 0 when game object cpm avg is 0
 * have one or more says for each CPM
 
 ## ( done 09/23/2021 ) - 0.5.21 - chicken-cooker-fun-facts: New Trigger standard
