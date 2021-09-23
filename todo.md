@@ -34,8 +34,22 @@
 ## () - 0.5.x - chicken-cooker-fun-facts: brow disp object
 ## () - 0.5.x - chicken-cooker-fun-facts: eyes disp object
 
+## () - 0.5.22 - chicken-cooker-fun-facts: CPM Trigger
+* start a CPM trigger that will trigger for certin CPM Rates
+* so the activeCondition is when the CPM goes above a figure like 50, 100, 200, ect
+* have one or more says for each CPM
 
-## () - 0.5.20 - chicken-cooker-fun-facts: draw.js
+## () - 0.5.21 - chicken-cooker-fun-facts: New Trigger standard
+* rename condition prop of a trigger to activeCondition
+* have a leaveCondition function for a trigger
+* have it so that any kind of user input will be the leaveCondition for the idle trigger
+* have more than one say for idle trigger
+* have an init method for a trigger
+* have an update method for a trigger
+* have a done method for a trigger
+
+
+## ( done 09/23/2021 ) - 0.5.20 - chicken-cooker-fun-facts: draw.js
 * (done) start a draw.js for chicken-cooker-fun-facts that will be a canvas plugin
 * (done) have a funfacts draw method
 * (done) have a info draw method
