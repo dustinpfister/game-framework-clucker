@@ -171,7 +171,7 @@
                 homeY: 64,
                 sheetKey: 'funfacts-guy',
                 imageIndex: 0,
-                cellIndex: 1,
+                cellIndex: 15,
                 alpha: 1
             }
         };
