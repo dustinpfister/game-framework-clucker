@@ -73,7 +73,8 @@ canvasMod.load({
         canvasMod.draw(stack, 'print', 1, 'spawn rate: ' + spawn.rate.toFixed(2), 10, 70, printOptions);
         // fun facts info
         canvasMod.draw(stack, 'print', 1, 'ff idle secs: ' + sm.funFacts.idleSecs.toFixed(2), 10, 90, printOptions);
-
+        canvasMod.draw(stack, 'print', 1, 'ff talk secs: ' + sm.funFacts.talkSecs.toFixed(2), 10, 110, printOptions);
+		
             }
         }
     ]
