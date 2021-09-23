@@ -144,6 +144,23 @@
             }
         };
 
+        // mouth object for the guy
+        funFacts.disp.mouth = {
+            x: 0,
+            y: 0,
+            w: 64,
+            h: 64,
+            active: true,
+            data: {
+                homeX: 256 + 32,
+                homeY: 64,
+                sheetKey: 'funfacts-guy',
+                imageIndex: 0,
+                cellIndex: 1,
+                alpha: 1
+            }
+        };
+
         // set posiitons
         setDispPositons(funFacts);
 
