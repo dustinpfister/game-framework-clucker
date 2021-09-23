@@ -61,15 +61,29 @@
         activeCondition: function (funFacts) {
             var game = funFacts.sm.game,
             avg_cpm = game.cpm.avg;
-			
-			funFacts.bestCPM = avg_cpm > funFacts.bestCPM ? avg_cpm : funFacts.bestCPM;
-            return funFacts.bestCPM >= 50;
+            if (funFacts.CPMValues === undefined || avg_cpm === 0) {
+                funFacts.CPMValues = [50, 100, 200, 300];
+                funFacts.bestCPM = 0;
+            }
+            funFacts.bestCPM = avg_cpm > funFacts.bestCPM ? avg_cpm : funFacts.bestCPM;
+            if (funFacts.CPMValues.length > 0) {
+                if (funFacts.bestCPM >= funFacts.CPMValues[0]) {
+                    funFacts.sayIndex = 4 - funFacts.CPMValues.length;
+                    funFacts.lines = wrapSay(funFacts.triggers.cpm.says[funFacts.sayIndex]);
+                    funFacts.CPMValues.shift();
+                    return true;
+                }
+            }
+            return false;
         },
         leaveCondition: function (funFacts) {
             return funFacts.talkSecs >= 10;
         },
         says: [
-            'You have a Chickens Per Minute speed of 50. Not Bad.'
+            'You have a Chickens Per Minute speed of 50. Not Bad.',
+            'You have a Chickens Per Minute speed of 100. Not Bad.',
+            'You have a Chickens Per Minute speed of 200. Not Bad.',
+            'You have a Chickens Per Minute speed of 300. Not Bad.'
         ],
         init: function (funFacts) {},
         done: function (funFacts) {},
