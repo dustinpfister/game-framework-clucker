@@ -32,6 +32,7 @@
 
 
 ## () - 0.5.x - chicken-cooker-fun-facts: brow disp object
+
 ## () - 0.5.x - chicken-cooker-fun-facts: eyes disp object
 
 ## () - 0.5.22 - chicken-cooker-fun-facts: CPM Trigger
@@ -41,8 +42,8 @@
 
 ## () - 0.5.21 - chicken-cooker-fun-facts: New Trigger standard
 * (done) rename condition prop of a trigger to activeCondition
-* have a leaveCondition function for a trigger
-* have it so that any kind of user input will be the leaveCondition for the idle trigger
+* (done) have a leaveCondition function for a trigger
+* (done) have it so that any kind of user input will be the leaveCondition for the idle trigger
 * have more than one say for idle trigger
 * (done) have an init method for a trigger
 * (done) have an update method for a trigger

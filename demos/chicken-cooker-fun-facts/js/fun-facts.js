@@ -15,10 +15,10 @@
         idle: {
             key: 'idle',
             activeCondition: function (funFacts) {
-                return funFacts.idleSecs >= 5;
+                return funFacts.idleSecs >= 1;
             },
             leaveCondition: function (funFacts) {
-                if (funFacts.idleSecs < 3) {
+                if (funFacts.idleSecs < 1) {
                     return true;
                 }
                 return false;
@@ -29,6 +29,7 @@
             ],
             init: function (funFacts) {
                 console.log('idle trigger started');
+                funFacts.lines = wrapSay(funFacts.triggers.idle.says[0]);
             },
             done: function (funFacts) {
                 console.log('idle trigger done');
@@ -375,7 +376,7 @@
                 funFacts.idleSecs += secs;
                 triggerCheck(funFacts);
                 if (funFacts.active) {
-                    funFacts.lines = wrapSay(funFacts.currentTrigger.says[0]);
+                    //funFacts.lines = wrapSay(funFacts.currentTrigger.says[0]);
                 }
             }
             // mouth closed
