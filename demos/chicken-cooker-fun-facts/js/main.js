@@ -61,55 +61,17 @@ gameFrame.smPushState(sm, {
 
     },
     draw: function (sm, layers) {
-        var canvas = layers[1].canvas,
-        ctx = layers[1].ctx;
-
+        // clear and draw any buttons
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
-
         // pools
         canvasMod.draw(layers, 'pool-cc', 1, sm);
-
         // spawn bar
         canvasMod.draw(layers, 'spawn-bar', 1, sm);
-
         // fun facts guy
         canvasMod.draw(layers, 'fun-facts-guy', 1, sm);
-/*
-        var talk = sm.funFacts.disp.talk;
-        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.base, {});
-        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.hair, {});
-        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.mouth, {});
-        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.hand, {}); 
-        canvasMod.draw(sm.layers, 'sprite', 1, talk, {});
-
-        var lines = sm.funFacts.lines,
-        len = lines.length,
-        fontSize = 12,
-        x = talk.x + talk.w / 2,
-        y = talk.y + talk.h / 2 - fontSize * len / 2 - fontSize / 2;
-        
-        lines.forEach(function(line){
-            y += fontSize;
-            canvasMod.draw(layers, 'print', 1, line, x, y, {
-                align: 'center',
-                fontSize: fontSize
-            });
-        });
-*/
-
-        // printing info
-        var printOptions = {
-            fontSize: 15
-        };
-        canvasMod.draw(layers, 'print', 1, 'score : ' + sm.game.score, 10, 10, printOptions);
-        canvasMod.draw(layers, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, printOptions);
-        var spawn = sm.game.spawn;
-        canvasMod.draw(layers, 'print', 1, 'active: ' + spawn.activeCount + '/' + spawn.currentMaxActive, 10, 50, printOptions);
-        canvasMod.draw(layers, 'print', 1, 'spawn rate: ' + spawn.rate.toFixed(2), 10, 70, printOptions);
-        // fun facts info
-        canvasMod.draw(layers, 'print', 1, 'ff idle secs: ' + sm.funFacts.idleSecs.toFixed(2), 10, 90, printOptions);
-
+        // info
+        canvasMod.draw(layers, 'info', 1, sm);
     },
     events: {
         pointerStart: function (e, pos, sm) {

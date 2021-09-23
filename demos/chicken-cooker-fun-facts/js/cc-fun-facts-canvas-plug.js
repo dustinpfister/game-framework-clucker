@@ -56,6 +56,25 @@ canvasMod.load({
                     });
                 });
             }
+        },
+        // info about the game
+        {
+            name: 'info',
+            method: function (stack, ctx, canvas, layerObj, sm) {
+
+        // printing info
+        var printOptions = {
+            fontSize: 15
+        };
+        canvasMod.draw(stack, 'print', 1, 'score : ' + sm.game.score, 10, 10, printOptions);
+        canvasMod.draw(stack, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, printOptions);
+        var spawn = sm.game.spawn;
+        canvasMod.draw(stack, 'print', 1, 'active: ' + spawn.activeCount + '/' + spawn.currentMaxActive, 10, 50, printOptions);
+        canvasMod.draw(stack, 'print', 1, 'spawn rate: ' + spawn.rate.toFixed(2), 10, 70, printOptions);
+        // fun facts info
+        canvasMod.draw(stack, 'print', 1, 'ff idle secs: ' + sm.funFacts.idleSecs.toFixed(2), 10, 90, printOptions);
+
+            }
         }
     ]
 });

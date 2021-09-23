@@ -36,11 +36,11 @@
 
 
 ## () - 0.5.20 - chicken-cooker-fun-facts: draw.js
-* start a draw.js for chicken-cooker-fun-facts that will be a canvas plugin
-* have a funfacts draw method
-* have a info draw method
-* have a spawnBar draw method
-* have a pools draw method
+* (done) start a draw.js for chicken-cooker-fun-facts that will be a canvas plugin
+* (done) have a funfacts draw method
+* (done) have a info draw method
+* (done) have a spawnBar draw method
+* (done) have a pools draw method
 
 ## ( done 09/23/2021 ) - 0.5.19 - chicken-cooker-fun-facts: mouth, and hand disp object
 * (done) update 3.png sheet of fun facts guy to include hand and mouth cells
