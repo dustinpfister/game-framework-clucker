@@ -4,7 +4,7 @@
     var FF_X_START = -400,
     FF_X_DELTA = 620,
     FF_PPS = 512,
-    FF_LEAVE_DELAY = 5,
+    FF_IDLE_TRIGGER_TIME = 15,
     SAY_WIDTH = 40; // amount of time until the guy will leave
 
     /********* ********** ********** **********
@@ -15,10 +15,10 @@
         idle: {
             key: 'idle',
             activeCondition: function (funFacts) {
-                return funFacts.idleSecs >= 1;
+                return funFacts.idleSecs >= FF_IDLE_TRIGGER_TIME;
             },
             leaveCondition: function (funFacts) {
-                if (funFacts.idleSecs < 1) {
+                if (funFacts.idleSecs < FF_IDLE_TRIGGER_TIME) {
                     return true;
                 }
                 return false;
