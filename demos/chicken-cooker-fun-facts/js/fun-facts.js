@@ -75,8 +75,23 @@
         var guyCells = [
             { x: 0, y: 0, w: 128, h: 128 }, // cell 0 is the base image for the guy
             { x: 128, y: 0, w: 64, h: 64 }, // cell 1-3 hair
-            { x: 128 + 64, y: 0, w: 64, h: 64 },
-            { x: 128 + 128, y: 0, w: 64, h: 64 }
+            { x: 192, y: 0, w: 64, h: 64 },
+            { x: 256, y: 0, w: 64, h: 64 },
+            { x: 128, y: 64, w: 64, h: 64 }, // cells 4-5 reserved for brow animation
+            { x: 192, y: 64, w: 64, h: 64 },
+            { x: 256, y: 64, w: 64, h: 64 }, // cell 6 reserved for face fuzz cell
+            { x: 0, y: 128, w: 64, h: 64 },   // cells 7 - 11 are resrved for eye cells
+            { x: 64, y: 128, w: 64, h: 64 },
+            { x: 128, y: 128, w: 64, h: 64 },
+            { x: 192, y: 128, w: 64, h: 64 },
+            { x: 256, y: 128, w: 64, h: 64 },
+            { x: 0, y: 192, w: 64, h: 128 }, // cells 12 - 14 are for hand cells
+            { x: 64, y: 192, w: 64, h: 128 },
+            { x: 128, y: 192, w: 64, h: 128 },
+            { x: 192, y: 192, w: 64, h: 64 }, // cells 15 - 18 are for mouth cells 
+            { x: 256, y: 192, w: 64, h: 64 },
+            { x: 192, y: 256, w: 64, h: 64 },
+            { x: 256, y: 256, w: 64, h: 64 }
         ];
         canvasMod.createSpriteSheet(sm.layers, 'funfacts-guy', imageIndices[1], guyCells);
 

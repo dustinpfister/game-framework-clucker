@@ -38,6 +38,8 @@
 * start a draw.js for chicken-cooker-fun-facts that will be a canvas plugin
 
 ## () - 0.5.19 - chicken-cooker-fun-facts: mouth, and hand disp object
+* (done) update 3.png sheet of fun facts guy to include hand and mouth cells
+* finish working out what the cells are for the sprite sheet object.
 * start a mouth disp object for the fun facts guy
 * start a hand disp object for the fun facts guy
 * animate the mouth
