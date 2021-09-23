@@ -1,22 +1,23 @@
 # chicken-cooker-fun-facts
 
-This is yet another chicken-cooker-\* demo based off of the souce code in chicken-cooker-sheets which in turn was based off of chicken-cooker. With this demo I wanted to start a system that has to do with a charicter appearing at the bottom of the canvas to mention some kind of fun fact about chickens, or the game. The idea is to just have a fun feature that would be nice for some kind of kiosk like project, or a tutorial system. 
+This is yet another chicken-cooker-\* demo based off of the source code in chicken-cooker-sheets which in turn was based off of chicken-cooker. With this demo I wanted to start a system that has to do with a character appearing at the bottom of the canvas to mention some kind of fun fact about chickens, or the game. The idea is to just have a fun feature that would be nice for some kind of kiosk like project, or a tutorial system. 
 
-So for this I am going to need to work out a few custom systems when it comes to having a spriyte sheets to handle what I have in mind for animation. In additional I think I will also want to work out a quick system for using an image to work as a sprite sheet for a custom font for this collection of demos for the clucker framework.
+So for this I am going to need to work out a few custom systems when it comes to having a sprite sheets to handle what I have in mind for animation. In additional I think I will also want to work out a quick system for using an image to work as a sprite sheet for a custom font for this collection of demos for the clucker framework.
 
 ## So the main focus is this fun fact system
 
+The main idea here is to work out a system where a guy will slide across the screen and say something and then leave for one of several types of reasons such as a timeout, or some kind of user action.
 
 
 ## Changes made to clucker
 
-While working on these demos I also find a number of things that need to change or addiitonal features that needed to be added to clucker.js. So with that said here are a few things that happened while working out this chicken cooker fun facts demo.
+While working on these demos I also find a number of things that need to change or additional features that needed to be added to clucker.js. So with that said here are a few things that happened while working out this chicken cooker fun facts demo.
 
 ## draw single sprite object method in mod-pool.js canvas plugin
 
 When starting to work out things with sprite sheets for the fun facts demo I ran into a problem. I did not want to use an object pool for creating the various parts of the fun facts guy. However I did still want to draw single sprite cells to various locations to draw the fun facts guy. So simply put I needed to have a way to just draw a single sprite sheet cell for a single stand alone object rather than a pool of objects.
 
-The solution for this was simple enough and I was able to do it without braking code by just pulling the logic that has to do with drarwing a single sprite object into its own stand alone draw method in the mod-pool.js canvas plugin.
+The solution for this was simple enough and I was able to do it without braking code by just pulling the logic that has to do with drawing a single sprite object into its own stand alone draw method in the mod-pool.js canvas plug-in.
 
 ```js
         // stand alone draw sprite method
