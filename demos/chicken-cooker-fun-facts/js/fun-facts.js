@@ -72,9 +72,14 @@
         }
     };
 
-    // animate mouth short hand helper
+    // animate mouth short helper
     var animateMouth = function(funFacts, secs){
         animate(funFacts, secs, 'mouth', 15, 16, 1 / 8);
+    };
+
+    // animate hand short helper
+    var animateHand = function(funFacts, secs){
+        animate(funFacts, secs, 'hand', 12, 13, 1 / 4);
     };
 
     /********* ********** ********** **********
