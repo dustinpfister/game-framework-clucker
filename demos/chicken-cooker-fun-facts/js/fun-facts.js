@@ -11,46 +11,47 @@
     TRIGGERS
      ********** ********** ********** *********/
 
-    var TRIGGERS = {
-        idle: {
-            key: 'idle',
-            activeCondition: function (funFacts) {
-                return funFacts.idleSecs >= FF_IDLE_TRIGGER_TIME;
-            },
-            leaveCondition: function (funFacts) {
-                if (funFacts.idleSecs < FF_IDLE_TRIGGER_TIME) {
-                    return true;
-                }
-                return false;
-                //return funFacts.talkSecs >= 30;
-            },
-            says: [
-                'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens',
-                'Did you know a chicken is a kind of bird?',
-                'In real life the process of converting live chickens into food is a little more graphic',
-                'Chickens can not fly they just fall with style',
-                'I could totally go for a chicken sandwich right now',
-                'Did you know that food is made from chickens? They MUST DIE FIRST THOUGH BUA HA HA HA!'
-            ],
-            init: function (funFacts) {
-                console.log('idle trigger started');
-                funFacts.sayIndex = 0;
-                funFacts.lines = []
-            },
-            done: function (funFacts) {
-                console.log('idle trigger done');
-                funFacts.idleSecs = 0;
-            },
-            update: function (funFacts) {
-                var says = funFacts.triggers.idle.says;
-                //console.log('tick');
-                funFacts.sayIndex = Math.floor(funFacts.talkSecs / 10);
-                if (funFacts.sayIndex >= says.length) {
-                    funFacts.sayIndex = 0;
-                    funFacts.talkSecs = 0;
-                }
-                funFacts.lines = wrapSay(funFacts.triggers.idle.says[funFacts.sayIndex]);
+    var TRIGGERS = {};
+
+    // idle trigger
+    TRIGGERS.idle = {
+        key: 'idle',
+        activeCondition: function (funFacts) {
+            return funFacts.idleSecs >= FF_IDLE_TRIGGER_TIME;
+        },
+        leaveCondition: function (funFacts) {
+            if (funFacts.idleSecs < FF_IDLE_TRIGGER_TIME) {
+                return true;
             }
+            return false;
+            //return funFacts.talkSecs >= 30;
+        },
+        says: [
+            'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens',
+            'Did you know a chicken is a kind of bird?',
+            'In real life the process of converting live chickens into food is a little more graphic',
+            'Chickens can not fly they just fall with style',
+            'I could totally go for a chicken sandwich right now',
+            'Did you know that food is made from chickens? They MUST DIE FIRST THOUGH BUA HA HA HA!'
+        ],
+        init: function (funFacts) {
+            console.log('idle trigger started');
+            funFacts.sayIndex = 0;
+            funFacts.lines = []
+        },
+        done: function (funFacts) {
+            console.log('idle trigger done');
+            funFacts.idleSecs = 0;
+        },
+        update: function (funFacts) {
+            var says = funFacts.triggers.idle.says;
+            //console.log('tick');
+            funFacts.sayIndex = Math.floor(funFacts.talkSecs / 10);
+            if (funFacts.sayIndex >= says.length) {
+                funFacts.sayIndex = 0;
+                funFacts.talkSecs = 0;
+            }
+            funFacts.lines = wrapSay(funFacts.triggers.idle.says[funFacts.sayIndex]);
         }
     };
 
