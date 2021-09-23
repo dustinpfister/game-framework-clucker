@@ -40,11 +40,11 @@
 * so the activeCondition is when the CPM goes above a figure like 50, 100, 200, ect
 * have one or more says for each CPM
 
-## () - 0.5.21 - chicken-cooker-fun-facts: New Trigger standard
+## ( done 09/23/2021 ) - 0.5.21 - chicken-cooker-fun-facts: New Trigger standard
 * (done) rename condition prop of a trigger to activeCondition
 * (done) have a leaveCondition function for a trigger
 * (done) have it so that any kind of user input will be the leaveCondition for the idle trigger
-* have more than one say for idle trigger
+* (done) have more than one say for idle trigger
 * (done) have an init method for a trigger
 * (done) have an update method for a trigger
 * (done) have a done method for a trigger
