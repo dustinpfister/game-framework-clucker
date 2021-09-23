@@ -15,13 +15,14 @@
         idle: {
             key: 'idle',
             activeCondition: function (funFacts) {
-                return funFacts.idleSecs >= 15;
+                return funFacts.idleSecs >= 5;
             },
             leaveCondition: function (funFacts) {
                 if (funFacts.idleSecs < 3) {
                     return true;
                 }
-                return funFacts.talkSecs >= 30;
+                return false;
+                //return funFacts.talkSecs >= 30;
             },
             says: [
                 'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens'
