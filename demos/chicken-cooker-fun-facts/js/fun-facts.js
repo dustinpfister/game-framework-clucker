@@ -7,6 +7,9 @@
     FF_LEAVE_DELAY = 5,
     SAY_WIDTH = 40; // amount of time until the guy will leave
 
+    /********* ********** ********** **********
+    TRIGGERS
+     ********** ********** ********** *********/
 
     var TRIGGERS = {
         idle: {
@@ -15,6 +18,9 @@
                 return funFacts.idleSecs >= 3;
             },
             leaveCondition: function (funFacts) {
+                if (funFacts.idleSecs < 3) {
+                    return true;
+                }
                 return funFacts.secs >= 3;
             },
             says: [
@@ -35,9 +41,9 @@
 
     /********* ********** ********** **********
     HELPERS
-     *********** ********** ********** ********/
+     ********** ********** ********** *********/
 
-    // set the position of the disp objects ( using data.homeX realtive to funFacts.x )
+    // set the position of the disp objects ( using data.homeX relative to funFacts.x )
     var setDispPositons = function (funFacts) {
         Object.keys(funFacts.disp).forEach(function (dispKey) {
             var disp = funFacts.disp[dispKey];
@@ -46,7 +52,7 @@
         });
     };
 
-    // check if funfacts guy should be set active
+    // check if fun facts guy should be set active
     // and update funFacts.currentTrigger to the trigger that set
     // him active
     var triggerCheck = function (funFacts) {
