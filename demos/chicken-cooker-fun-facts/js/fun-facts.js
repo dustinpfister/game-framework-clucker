@@ -200,6 +200,24 @@
             }
         };
 
+        // mouth object for the guy
+        funFacts.disp.hand = {
+            x: 0,
+            y: 0,
+            w: 64,
+            h: 128,
+            active: true,
+            data: {
+                homeX: 240,
+                homeY: 64,
+                sheetKey: 'funfacts-guy',
+                imageIndex: 0,
+                cellIndex: 12,
+                alpha: 1,
+                secs: 0
+            }
+        };
+
         // set posiitons
         setDispPositons(funFacts);
 
