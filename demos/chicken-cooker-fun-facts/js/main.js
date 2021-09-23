@@ -97,7 +97,8 @@ gameFrame.smPushState(sm, {
         // fun facts guy
         var talk = sm.funFacts.disp.talk;
         canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.base, {});
-        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.hair, {}); 
+        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.hair, {});
+        canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.mouth, {}); 
         canvasMod.draw(sm.layers, 'sprite', 1, talk, {});
 
         var lines = sm.funFacts.lines,

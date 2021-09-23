@@ -168,7 +168,7 @@
             active: true,
             data: {
                 homeX: 256 + 32,
-                homeY: 64,
+                homeY: 128 - 24,
                 sheetKey: 'funfacts-guy',
                 imageIndex: 0,
                 cellIndex: 15,
