@@ -25,7 +25,8 @@
                 //return funFacts.talkSecs >= 30;
             },
             says: [
-                'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens'
+                'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens',
+                'Did you know a chicken is a kind of bird?'
             ],
             init: function (funFacts) {
                 console.log('idle trigger started');
@@ -36,8 +37,15 @@
                 console.log('idle trigger done');
                 funFacts.idleSecs = 0;
             },
-            update: function () {
-                console.log('tick');
+            update: function (funFacts) {
+                var says = funFacts.triggers.idle.says;
+                //console.log('tick');
+                funFacts.sayIndex = Math.floor(funFacts.talkSecs / 10);
+                if (funFacts.sayIndex >= says.length) {
+                    funFacts.sayIndex = 0;
+                    funFacts.talkSecs = 0;
+                }
+                funFacts.lines = wrapSay(funFacts.triggers.idle.says[funFacts.sayIndex]);
             }
         }
     };
@@ -242,7 +250,7 @@
             active: false,
             talkSecs: 0,
             idleSecs: 0,
-            sayIndex: 0,    // say index and say indices should be updated in an int method of a trigger
+            sayIndex: 0, // say index and say indices should be updated in an int method of a trigger
             sayIndices: [],
             triggers: TRIGGERS,
             currentTrigger: {},
