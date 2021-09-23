@@ -19,6 +19,9 @@
             ],
             init: function(funFacts){
                 console.log('idle trigger started');
+            },
+            done: function(funFacts){
+                console.log('idle trigger done');
             }
         }
     };
@@ -49,7 +52,7 @@
                 // update trigger ref
                 funFacts.active = true;
                 funFacts.currentTrigger = trigger;
-                init = trigger.init || utils.noop;
+                var init = trigger.init || utils.noop;
                 init.call(funFacts, funFacts);
                 return funFacts.currentTrigger;
             }
@@ -257,13 +260,18 @@
                 funFacts.secs = 0;
                 funFacts.idleSecs = 0;
             }else{
+                 if(funFacts.x < FF_X_START){
+                      funFacts.x = FF_X_START;
+                    // call done trigger method
+                    var done = funFacts.currentTrigger.done || utils.noop;
+                    done.call(funFacts, funFacts);
+                 }
                 funFacts.idleSecs += secs;
                 triggerCheck(funFacts);
                 if(funFacts.active){
                     funFacts.lines = wrapSay(funFacts.currentTrigger.says[0]);
                 }
             }
-            funFacts.x = funFacts.x < FF_X_START ? FF_X_START: funFacts.x;
             // mouth closed
             funFacts.disp.mouth.data.cellIndex = 15;
             funFacts.disp.hand.data.cellIndex = 12;
