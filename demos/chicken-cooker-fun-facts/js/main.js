@@ -63,11 +63,12 @@ gameFrame.smPushState(sm, {
     draw: function (sm, layers) {
         var canvas = layers[1].canvas,
         ctx = layers[1].ctx;
+
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
 
+        // pools
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.chickens);
-
         canvasMod.draw(layers, 'pool-solid', 1, sm.game.blasts, {
             fillStyle: 'rgba(255, 255, 0, 0.5)'
         });
@@ -117,7 +118,7 @@ gameFrame.smPushState(sm, {
         });
 
 
-        // printing score
+        // printing info
         var printOptions = {
             fontSize: 15
         };
