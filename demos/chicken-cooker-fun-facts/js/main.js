@@ -37,7 +37,7 @@ gameFrame.smPushState(sm, {
     buttons: {},
     start: function (sm) {
         // create sm.funFacts
-        sm.funFacts = funFactsMod.create();
+        sm.funFacts = funFactsMod.create(sm);
 
         // background
         sm.layers.background = sm.layers.images[0];

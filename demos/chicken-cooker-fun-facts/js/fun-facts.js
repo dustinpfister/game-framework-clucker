@@ -225,8 +225,9 @@
     };
 
     // create and return a fun facts object
-    api.create = function () {
+    api.create = function (sm) {
         var funFacts = {
+            sm: sm,
             x: FF_X_START,
             y: 290,
             active: false,
