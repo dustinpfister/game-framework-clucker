@@ -71,6 +71,8 @@ gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'pool-cc', 1, sm);
 
         // spawn bar
+        canvasMod.draw(layers, 'spawn-bar', 1, sm);
+/*
         var w = 300;
         var x = canvas.width / 2 - w / 2;
         var per1 = 0,
@@ -90,6 +92,7 @@ gameFrame.smPushState(sm, {
         per3 = sm.game.spawn.secs / sm.game.spawn.rate;
         ctx.fillStyle = 'blue';
         ctx.fillRect(x, 35, w * per3, 5);
+*/
 
 
         // fun facts guy
