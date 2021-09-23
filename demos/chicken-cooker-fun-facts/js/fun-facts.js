@@ -11,12 +11,15 @@
     var TRIGGERS = {
         idle: {
             key: 'idle',
-            condition: function(funFacts){
+            activeCondition: function(funFacts){
                 return funFacts.idleSecs >= 3;
             },
             says: [
                 'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens'
-            ]
+            ],
+            init: function(funFacts){
+                console.log('idle trigger started');
+            }
         }
     };
 
@@ -42,10 +45,12 @@
         i = triggerKeys.length;
         while(i--){
             trigger = TRIGGERS[triggerKeys[i]];
-            if( trigger.condition(funFacts) ){
+            if( trigger.activeCondition(funFacts) ){
                 // update trigger ref
                 funFacts.active = true;
                 funFacts.currentTrigger = trigger;
+                init = trigger.init || utils.noop;
+                init.call(funFacts, funFacts);
                 return funFacts.currentTrigger;
             }
         }
