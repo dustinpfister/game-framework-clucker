@@ -15,13 +15,13 @@
         idle: {
             key: 'idle',
             activeCondition: function (funFacts) {
-                return funFacts.idleSecs >= 3;
+                return funFacts.idleSecs >= 15;
             },
             leaveCondition: function (funFacts) {
                 if (funFacts.idleSecs < 3) {
                     return true;
                 }
-                return funFacts.secs >= 3;
+                return funFacts.talkSecs >= 30;
             },
             says: [
                 'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens'
@@ -237,7 +237,7 @@
             x: FF_X_START,
             y: 290,
             active: false,
-            secs: 0,
+            talkSecs: 0,
             idleSecs: 0,
             triggers: TRIGGERS,
             currentTrigger: {},
@@ -343,9 +343,9 @@
             var homeX = FF_X_START + FF_X_DELTA;
             if (funFacts.x < homeX) {
                 funFacts.x += FF_PPS * secs;
-                funFacts.secs = 0;
+                funFacts.talkSecs = 0;
             } else {
-                funFacts.secs += secs;
+                funFacts.talkSecs += secs;
                 // use leave condition of trigger to know when the trigger is over
                 if (funFacts.currentTrigger.leaveCondition.call(funFacts, funFacts)) {
                     funFacts.active = false;
@@ -362,7 +362,7 @@
             // else if not active
             if (funFacts.x > FF_X_START) {
                 funFacts.x -= FF_PPS * secs;
-                funFacts.secs = 0;
+                funFacts.talkSecs = 0;
                 //funFacts.idleSecs = 0;
             } else {
                 if (funFacts.x < FF_X_START) {
