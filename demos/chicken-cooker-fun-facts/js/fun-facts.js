@@ -4,7 +4,7 @@
     var FF_X_START = -400,
     FF_X_DELTA = 620,
     FF_PPS = 512,
-    FF_LEAVE_DELAY = 10,
+    FF_LEAVE_DELAY = 5,
     SAY_WIDTH = 40; // amount of time until the guy will leave
 
 
@@ -12,7 +12,7 @@
         idle: {
             key: 'idle',
             condition: function(funFacts){
-                return funFacts.idleSecs >= 1;
+                return funFacts.idleSecs >= 10;
             },
             says: [
                 'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens'
@@ -168,11 +168,12 @@
             active: true,
             data: {
                 homeX: 256 + 32,
-                homeY: 128 - 24,
+                homeY: 128 - 20,
                 sheetKey: 'funfacts-guy',
                 imageIndex: 0,
                 cellIndex: 15,
-                alpha: 1
+                alpha: 1,
+                secs: 0
             }
         };
 
@@ -180,6 +181,17 @@
         setDispPositons(funFacts);
 
         return funFacts;
+    };
+
+    var animateMouth = function(funFacts, secs){
+        var mouth = funFacts.disp.mouth,
+        ci = mouth.data.cellIndex;
+        mouth.data.secs += secs;
+        if( mouth.data.secs >= 1 / 8){
+            ci += 1;
+            mouth.data.cellIndex = ci > 16 ? 15: ci;
+            mouth.data.secs = 0;
+        }
     };
 
     // update a fun facts object
@@ -195,8 +207,11 @@
                 if(funFacts.secs >= FF_LEAVE_DELAY){
                     funFacts.active = false;
                 }
+                // animate mouth
+                animateMouth(funFacts, secs);
             }
             funFacts.x = funFacts.x > homeX ? homeX: funFacts.x;
+
         }else{
             // else if not active
             if(funFacts.x > FF_X_START){
@@ -211,6 +226,8 @@
                 }
             }
             funFacts.x = funFacts.x < FF_X_START ? FF_X_START: funFacts.x;
+            // mouth closed
+            funFacts.disp.mouth.data.cellIndex = 15;
         }
         // update positions
         setDispPositons(funFacts);
