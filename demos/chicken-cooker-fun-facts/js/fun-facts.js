@@ -29,7 +29,8 @@
             ],
             init: function (funFacts) {
                 console.log('idle trigger started');
-                funFacts.lines = wrapSay(funFacts.triggers.idle.says[0]);
+                funFacts.sayIndex = 0;
+                funFacts.lines = wrapSay(funFacts.triggers.idle.says[funFacts.sayIndex]);
             },
             done: function (funFacts) {
                 console.log('idle trigger done');
@@ -241,9 +242,11 @@
             active: false,
             talkSecs: 0,
             idleSecs: 0,
+            sayIndex: 0,    // say index and say indices should be updated in an int method of a trigger
+            sayIndices: [],
             triggers: TRIGGERS,
             currentTrigger: {},
-            lines: [],
+            lines: [], // lines should be updated in init and update methods of triggers
             disp: {}
             // display objects
         };
