@@ -39,11 +39,11 @@
 
 ## () - 0.5.19 - chicken-cooker-fun-facts: mouth, and hand disp object
 * (done) update 3.png sheet of fun facts guy to include hand and mouth cells
-* finish working out what the cells are for the sprite sheet object.
-* start a mouth disp object for the fun facts guy
-* start a hand disp object for the fun facts guy
-* animate the mouth
-* animate the hand
+* (done) finish working out what the cells are for the sprite sheet object.
+* (done) start a mouth disp object for the fun facts guy
+* (done) start a hand disp object for the fun facts guy
+* (done) animate the mouth
+* (done) animate the hand
 
 ## ( done 09/22/2021 ) - 0.5.18 - chicken-cooker-fun-facts: triggers, and first words
 * (done) start a system for triggers that will cause the guy to show up
