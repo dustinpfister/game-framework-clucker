@@ -4,7 +4,7 @@
     var FF_X_START = -400,
     FF_X_DELTA = 620,
     FF_PPS = 512,
-    FF_LEAVE_DELAY = 5,
+    FF_LEAVE_DELAY = 10,
     SAY_WIDTH = 40; // amount of time until the guy will leave
 
 
@@ -12,7 +12,7 @@
         idle: {
             key: 'idle',
             condition: function(funFacts){
-                return funFacts.idleSecs >= 5;
+                return funFacts.idleSecs >= 1;
             },
             says: [
                 'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens'
