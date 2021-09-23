@@ -4,8 +4,8 @@
     var FF_X_START = -400,
     FF_X_DELTA = 620,
     FF_PPS = 512,
-    FF_IDLE_TRIGGER_TIME = 15,
-    SAY_WIDTH = 40; // amount of time until the guy will leave
+    FF_IDLE_TRIGGER_TIME = 10,
+    SAY_WIDTH = 35; // amount of time until the guy will leave
 
     /********* ********** ********** **********
     TRIGGERS
@@ -27,12 +27,15 @@
             says: [
                 'This is \"chicken cooker fun facts\" to play just click or touch the canvas to start cooking chickens',
                 'Did you know a chicken is a kind of bird?',
-                'In real life the process of converting live chickens into food is a little more graphic'
+                'In real life the process of converting live chickens into food is a little more graphic',
+                'Chickens can not fly they just fall with style',
+                'I could totally go for a chicken sandwich right now',
+                'Did you know that food is made from chickens? They MUST DIE FIRST THOUGH BUA HA HA HA!'
             ],
             init: function (funFacts) {
                 console.log('idle trigger started');
                 funFacts.sayIndex = 0;
-                funFacts.lines = wrapSay(funFacts.triggers.idle.says[funFacts.sayIndex]);
+                funFacts.lines = []
             },
             done: function (funFacts) {
                 console.log('idle trigger done');
