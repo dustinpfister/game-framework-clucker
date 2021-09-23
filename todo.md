@@ -17,6 +17,7 @@
 
 ## (  ) - 0.5.x - /src folder started
 * create a new /src folder based off of /lib that follows a pattren like this:
+
 ```
 /src/[libName]/[x.x.x]/[fileName].js
 ```
@@ -34,7 +35,7 @@
 ## () - 0.5.x - chicken-cooker-fun-facts: eyes disp object
 
 
-## () - 0.5.x - chicken-cooker-fun-facts: draw.js
+## () - 0.5.20 - chicken-cooker-fun-facts: draw.js
 * start a draw.js for chicken-cooker-fun-facts that will be a canvas plugin
 * have a funfacts draw method
 * have a info draw method
