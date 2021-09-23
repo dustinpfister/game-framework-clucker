@@ -33,6 +33,29 @@ canvasMod.load({
                 ctx.fillStyle = 'blue';
                 ctx.fillRect(x, 35, w * per3, 5);
             }
+        },
+        {
+            name: 'fun-facts-guy',
+            method: function (stack, ctx, canvas, layerObj, sm) {
+                var talk = sm.funFacts.disp.talk;
+                canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.base, {});
+                canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.hair, {});
+                canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.mouth, {});
+                canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.hand, {}); 
+                canvasMod.draw(sm.layers, 'sprite', 1, talk, {});
+                var lines = sm.funFacts.lines,
+                len = lines.length,
+                fontSize = 12,
+                x = talk.x + talk.w / 2,
+                y = talk.y + talk.h / 2 - fontSize * len / 2 - fontSize / 2;
+                lines.forEach(function(line){
+                    y += fontSize;
+                    canvasMod.draw(sm.layers, 'print', 1, line, x, y, {
+                        align: 'center',
+                        fontSize: fontSize
+                    });
+                });
+            }
         }
     ]
 });

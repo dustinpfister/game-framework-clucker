@@ -72,30 +72,10 @@ gameFrame.smPushState(sm, {
 
         // spawn bar
         canvasMod.draw(layers, 'spawn-bar', 1, sm);
-/*
-        var w = 300;
-        var x = canvas.width / 2 - w / 2;
-        var per1 = 0,
-        per2,
-        per3;
-
-        // main spawn bar
-        ctx.fillStyle = 'gray';
-        ctx.fillRect(x, 10, w, 25);
-        per1 = sm.game.spawn.currentMaxActive / sm.game.spawn.maxActive;
-        per2 = per1 / sm.game.spawn.currentMaxActive * sm.game.spawn.activeCount;
-        ctx.fillStyle = 'white';
-        ctx.fillRect(x, 10, w * per1, 25);
-        ctx.fillStyle = 'lime';
-        ctx.fillRect(x, 10, w * per2, 25);
-
-        per3 = sm.game.spawn.secs / sm.game.spawn.rate;
-        ctx.fillStyle = 'blue';
-        ctx.fillRect(x, 35, w * per3, 5);
-*/
-
 
         // fun facts guy
+        canvasMod.draw(layers, 'fun-facts-guy', 1, sm);
+/*
         var talk = sm.funFacts.disp.talk;
         canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.base, {});
         canvasMod.draw(sm.layers, 'sprite', 1, sm.funFacts.disp.hair, {});
@@ -116,7 +96,7 @@ gameFrame.smPushState(sm, {
                 fontSize: fontSize
             });
         });
-
+*/
 
         // printing info
         var printOptions = {
