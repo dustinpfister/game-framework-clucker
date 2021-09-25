@@ -13,6 +13,7 @@
 
 ## () - 0.5.25 - utils.wrapText
 * first update all demos to use at least 0.5.24
+* need to change references to gameFrame to Clucker.gameFrame for the built in loader in gameframe.js
 * create a utils.wrapText method based off of what I have for chicken-cooker-fun-facts
 * have chicken-cooker-fun-facts use 0.5.25 and new utils.wrapText method
 
