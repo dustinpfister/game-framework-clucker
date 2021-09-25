@@ -1,0 +1,29 @@
+{
+  "name": "game-framework-clucker",
+  "version": "0.5.23",
+  "description": "A game framework called clucker",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dustinpfister/game-framework-clucker.git"
+  },
+  "keywords": [
+    "game",
+    "framework"
+  ],
+  "author": "Dustin Pfister",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/dustinpfister/game-framework-clucker/issues"
+  },
+  "homepage": "https://github.com/dustinpfister/game-framework-clucker#readme",
+  "dependencies": {
+    "uglify-js": "^3.14.2"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "fileName": "clucker",
+  "dir_root": "./",
+  "dir_target": "./dist",
+  "sourceFiles": [
+     "./lib/utils/utils.js",
+     "./lib/object-pool/pool.js",
+     "./lib/canvas/canvas.js",
+     "./lib/canvas/plugins/points-circle.js",
+     "./lib/canvas/plugins/mod-pool.js",
+     "./lib/canvas/plugins/buttons.js",
+     "./lib/gameframe/gameframe.js"
+  ],
+  "top": "(function(){\n\n",
+  "bottom": "\n}());"
+}
