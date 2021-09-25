@@ -16,7 +16,7 @@
 * (done) need to change references to gameFrame to Clucker.gameFrame for the built in loader in gameframe.js
 * (done) update chicken-cooker-fun-facts to use 0.5.25+
 * update chicken-cooker-sheets to use 0.5.25+
-* update loader to use 0.5.25+
+* (done) update loader to use 0.5.25+
 * update menus to use 0.5.25+
 * update points to use 0.5.25+
 * (done) update spritesheet to use 0.5.25+

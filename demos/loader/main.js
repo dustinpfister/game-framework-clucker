@@ -1,6 +1,6 @@
 
 // create an sm object
-var sm = gameFrame.smCreateMain({
+var sm = Clucker.gameFrame.smCreateMain({
     currentState: 'loader', 
     width: 640,
     height: 480,
@@ -14,19 +14,19 @@ var sm = gameFrame.smCreateMain({
 });
 
 // a game state
-gameFrame.smPushState(sm, {
+Clucker.gameFrame.smPushState(sm, {
     name: 'game',
     buttons: {
         //back: { x: 100, y: 100, w: 64, h:64, disp: 'New Game', onClick: function(e, pos, sm, button){      
         //}}
     },
-    start: function(sm){
+    start: function(sm, canvasMod){
         canvasMod.draw(sm.layers, 'background', 0);
     },
     update: function(sm, secs){
 
     },
-    draw: function(sm, layers){
+    draw: function(sm, layers, canvasMod){
         var canvas = layers[1].canvas,
         ctx = layers[1].ctx;
         canvasMod.draw(layers, 'clear', 1);
@@ -43,5 +43,5 @@ gameFrame.smPushState(sm, {
     }
 });
 // start the state machine
-gameFrame.smSetState(sm, 'loader');
+Clucker.gameFrame.smSetState(sm, 'loader');
 sm.loop();
