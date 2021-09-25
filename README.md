@@ -26,9 +26,9 @@ to run with a version of node other than what will result of the /usr/bin/env no
 $ node14 ./node/server-demo/index.js
 ```
 
-### - Build a version of clucker
+### Build a version of clucker
 
-To build the current version set in package json the build script can be run with npm.
+To build the current version set in package json file the build script can be run with npm.
 
 ```
 $ npm run build

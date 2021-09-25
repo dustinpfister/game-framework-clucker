@@ -11,23 +11,11 @@
 
 ## () - 0.5.x - chicken-cooker-fun-facts: eyes disp object
 
-
-## (  ) - 0.5.x - /examples folder started
-* create a new /examples folder based off of the /demos folder
-* the build tool should create a copy of clucker.js as /examples/js/clucker/x.x.x/clucker.min.js
-* each demo should use a specfic version of clucker.min.js
-* create a /node/server-examples based off of /node/server-demo
-* if all goes well the /lib folder should no longer be needed if so remove it
-* if all goes well the /demos folder should no longer be needed if so remove it
-* if all goes well the /node/server-demo folder should no longer be needed if so remove it
-
-## (  ) - 0.5.x - /src folder started
-* create a new /src folder based off of /lib that follows a pattren like this:
-
-```
-/src/[libName]/[x.x.x]/[fileName].js
-```
-* the nodejs build tool should use files located here over the older /lib folder
+## ( done 09/25/2021 ) - 0.5.24 - Clucker methods
+* (done) - I will want a Clucker.createMain method
+* (done) - I will want a Clucker.pushState method
+* (done) - I will want a Clucker.setState method
+* (done) pass canvasMod as argument for draw methods, and start methods of states
 
 ## ( done 09/25/2021 ) - 0.5.23 - start a nodejs build tool that creates a dist folder
 * (done) in the nodejs folder start a build tool

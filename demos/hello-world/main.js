@@ -9,7 +9,8 @@ console.log('Using clucker v' +this['Clucker'].ver)
 
 
 // create an sm object
-var sm = Clucker.gameFrame.smCreateMain({
+//var sm = Clucker.gameFrame.smCreateMain({
+var sm = Clucker.createMain({
     currentState: 'game', // set starting state object to use
     width: 640,
     height: 480,
@@ -50,12 +51,12 @@ var sm = Clucker.gameFrame.smCreateMain({
 });
 
 // add at least one state object
-Clucker.gameFrame.smPushState(sm, {
+Clucker.pushState(sm, {
     name: 'game',
     // start hook will just fire once when the state object starts
-    start: function(sm){
+    start: function(sm, canvasMod){
         // draw background once
-        Clucker.canvasMod.draw(sm.layers, 'background', 0);
+        canvasMod.draw(sm.layers, 'background', 0);
 
         // spawn
         poolMod.spawnAll(sm.game.pool, sm, {});
@@ -77,10 +78,10 @@ Clucker.gameFrame.smPushState(sm, {
         poolMod.update(sm.game.pool, secs, sm);
     },
     // draw will be called after each update
-    draw: function(sm, layers){
-        Clucker.canvasMod.draw(layers, 'clear', 1);
-        Clucker.canvasMod.draw(layers, 'pool', 1, sm.game.pool);
-        Clucker.canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
+    draw: function(sm, layers, canvasMod){
+        canvasMod.draw(layers, 'clear', 1);
+        canvasMod.draw(layers, 'pool', 1, sm.game.pool);
+        canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
     },
     // events for this state
     events: {
@@ -101,5 +102,5 @@ Clucker.gameFrame.smPushState(sm, {
     }
 });
 // start the state machine
-Clucker.gameFrame.smSetState(sm, 'game');
+Clucker.setState(sm, 'game');
 sm.loop();
