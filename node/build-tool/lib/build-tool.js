@@ -30,6 +30,10 @@ api.readConf = (uri) => {
         // top and bottom strings
         opt.top = conf.top || '';
         opt.bottom = conf.bottom || '';
+
+
+
+
         return readFile( path.join(opt.dir_root, 'package.json') );
     })
     .then((packageText)=>{
@@ -40,6 +44,11 @@ api.readConf = (uri) => {
         }catch(e){}
         opt.version = pkg.version || opt.version;
         opt.author = pkg.author || '';
+
+
+opt.bottom = "\n}(this['Clucker'] = {ver:'" + opt.version + "'}));"
+
+
         // append version folder to dir_target
         if(opt.version){
             opt.dir_target = path.join(opt.dir_target, opt.version);

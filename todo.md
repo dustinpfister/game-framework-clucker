@@ -29,15 +29,13 @@
 ```
 * the nodejs build tool should use files located here over the older /lib folder
 
-## (  ) - 0.5.23 - start a nodejs build tool that creates a dist folder
-* in the nodejs folder start a build tool
-* the built tool should create a /dist/clucker.js from files in /lib
-* the built tool should create a /dist/clucker.min.js from files in /lib
-* clucker.js should create just one global token called Clucker
-* There should be a Clucker.ver prop that is the current version of Clucker
-
-
-
+## ( done 09/25/2021 ) - 0.5.23 - start a nodejs build tool that creates a dist folder
+* (done) in the nodejs folder start a build tool
+* (done) the built tool should create a /dist/0.5.23/clucker.js from files in /lib
+* (done) the built tool should create a /dist/0.5.23/clucker.min.js from files in /lib
+* (done) clucker.js should create just one global token called Clucker
+* (done) update hello world demo to use Clucker 0.5.23
+* (done) There should be a Clucker.ver prop that is the current version of Clucker
 
 ## ( done 09/23/2021 ) - 0.5.22 - chicken-cooker-fun-facts: CPM Trigger
 * (done) start a CPM trigger that will trigger for certain CPM Rates

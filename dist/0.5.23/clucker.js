@@ -1121,4 +1121,4 @@ try{
 
 
 
-}(this['Clucker'] = {}));
+}(this['Clucker'] = {ver:'0.5.23'}));

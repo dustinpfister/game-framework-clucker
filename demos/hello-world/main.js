@@ -5,7 +5,7 @@
 // {"active":false,"i":0,"x":0,"y":0,"w":32,"h":32,"heading":0,"pps":32,"lifespan":3,"data":{}}
 
 
-console.log(this['Clucker'])
+console.log('Using clucker v' +this['Clucker'].ver)
 
 
 // create an sm object
