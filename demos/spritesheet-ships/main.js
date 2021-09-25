@@ -1,6 +1,6 @@
 
 // create an sm object
-var sm = gameFrame.smCreateMain({
+var sm = Clucker.gameFrame.smCreateMain({
     currentState: 'loader', 
     width: 640,
     height: 480,
@@ -19,12 +19,12 @@ var randomHeading = function(){
 };
 
 var getHeading = function(dir){
-    dir = utils.mod(dir, 8);
+    dir = Clucker.utils.mod(dir, 8);
     return Math.PI * 2 / 8 * dir;
 };
 
 // set up the ships pool
-sm.game.ships = poolMod.create({
+sm.game.ships = Clucker.poolMod.create({
     count: 8,
     secsCap: 0.25,
     heading: 0,
@@ -74,11 +74,11 @@ sm.game.ships = poolMod.create({
         if(hd.count){
             hd.count -= 1;
             hd.dir += hd.delta;
-            hd.dir = utils.mod(hd.dir, 8);
+            hd.dir = Clucker.utils.mod(hd.dir, 8);
             obj.heading = getHeading(obj.data.hData.dir); 
         }else{
-            poolMod.moveByPPS(obj, secs);
-            poolMod.wrap(obj, {x: 0, y: 0, width: 640, height: 480});
+            Clucker.poolMod.moveByPPS(obj, secs);
+            Clucker.poolMod.wrap(obj, {x: 0, y: 0, width: 640, height: 480});
             var roll = Math.random();
             if(roll < 0.025){
                 hd.count = 1 + Math.floor(Math.random() * 5);
@@ -89,10 +89,10 @@ sm.game.ships = poolMod.create({
 });
 
 // a game state
-gameFrame.smPushState(sm, {
+Clucker.gameFrame.smPushState(sm, {
     name: 'game',
     buttons: {},
-    start: function(sm){
+    start: function(sm, canvasMod){
         sm.layers.background = sm.layers.images[1];
         canvasMod.draw(sm.layers, 'background', 0);
         // create sprite sheet
@@ -103,7 +103,7 @@ gameFrame.smPushState(sm, {
     update: function(sm, secs){
         poolMod.update(sm.game.ships, secs, sm);
     },
-    draw: function(sm, layers){
+    draw: function(sm, layers, canvasMod	){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.ships);
@@ -115,5 +115,5 @@ gameFrame.smPushState(sm, {
     }
 });
 // start the state machine
-gameFrame.smSetState(sm, 'loader');
+Clucker.gameFrame.smSetState(sm, 'loader');
 sm.loop();
