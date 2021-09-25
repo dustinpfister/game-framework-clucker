@@ -903,7 +903,7 @@ canvasMod.load({
     };
 
     var pushLoaderState = function (sm) {
-        gameFrame.smPushState(sm, {
+        Clucker.gameFrame.smPushState(sm, {
             name: 'loader',
             start: function (sm) {
                 canvasMod.draw(sm.layers, 'background', 0);
@@ -949,7 +949,7 @@ canvasMod.load({
                         return el === undefined ? acc : acc + 1;
                     }, 0);
                 if (loaded === sm.loader.images.count) {
-                    gameFrame.smSetState(sm, sm.loader.startState || 'game');
+                    Clucker.gameFrame.smSetState(sm, sm.loader.startState || 'game');
                 }
 
                 /*
