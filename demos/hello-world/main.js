@@ -28,7 +28,7 @@ var sm = gameFrame.smCreateMain({
             update: function (obj, pool, sm, secs){
                obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
                obj.data.radian += obj.data.deltaRadian;
-               obj.data.radian = utils.mod(obj.data.radian, Math.PI * 2);  
+               obj.data.radian = Clucker.utils.mod(obj.data.radian, Math.PI * 2);  
                obj.lifespan = 1;
                obj.x = 320 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
                obj.y = 240 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
