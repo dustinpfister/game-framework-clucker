@@ -5,7 +5,7 @@
 // {"active":false,"i":0,"x":0,"y":0,"w":32,"h":32,"heading":0,"pps":32,"lifespan":3,"data":{}}
 
 
-console.log(this['Clucker'])
+console.log(this['Clucker'].poolMod)
 
 
 // create an sm object
@@ -15,7 +15,7 @@ var sm = gameFrame.smCreateMain({
     height: 480,
     game: {
         text: 'Hello World',
-        pool: poolMod.create({
+        pool: Clucker.poolMod.create({
             count: 8,
             secsCap: 0.25,
             disableLifespan: true,

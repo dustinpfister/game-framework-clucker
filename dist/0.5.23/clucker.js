@@ -179,19 +179,6 @@ utils.logOnce = (function () {
     };
 }
     ());
-
-
-try{
-    // append to Clucker global if there, else stand alone as utils global
-    if(Clucker){
-        var poolMod = Clucker.poolMod = {};
-    }else{
-        var poolMod = {};
-    }
-}catch(e){
-    var poolMod = {};
-}
-
 poolMod = (function () {
     // Public API
     var api = {};
@@ -367,5 +354,12 @@ poolMod = (function () {
     return api;
 }
     ());
+
+try{
+    // append to Clucker global if there, else stand alone as utils global
+    if(Clucker){
+        Clucker.poolMod = poolMod;
+    }
+}catch(e){}
 
 }(this['Clucker'] = {}));
