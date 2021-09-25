@@ -1,3 +1,5 @@
+(function(Clucker){
+
 try{
     // append to Clucker global if there, else stand alone as utils global
     if(Clucker){
@@ -177,3 +179,5 @@ utils.logOnce = (function () {
     };
 }
     ());
+
+}(this['Clucker'] = {}));
