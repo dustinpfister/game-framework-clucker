@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- *  index.js
+ *  index.js of server-demo
  *
  *   start server to host the root of this project folder
  *

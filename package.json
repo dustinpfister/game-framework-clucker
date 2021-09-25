@@ -7,7 +7,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "./node/server-demo/index.js",
+    "build": "./node/build-tool/index.js"
   },
   "repository": {
     "type": "git",
