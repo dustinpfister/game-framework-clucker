@@ -36,7 +36,7 @@
         cpm.secs += secs;
         if (cpm.secs >= dSecs) {
             cpm.counts.push(0);
-            cpm.secs = utils.mod(cpm.secs, dSecs);
+            cpm.secs = Clucker.utils.mod(cpm.secs, dSecs);
         }
         // shift out old counts
         if (len >= maxSamples) {
@@ -119,7 +119,7 @@
         obj.data.sheetKey = 'chick-walk';
         obj.data.image = sm.layers.images[0];
         // get distance and angle to target position
-        var d = utils.distance(obj.x, obj.y, obj.data.targetPos.x, obj.data.targetPos.y),
+        var d = Clucker.utils.distance(obj.x, obj.y, obj.data.targetPos.x, obj.data.targetPos.y),
         a = Math.atan2(obj.data.targetPos.y - obj.y, obj.data.targetPos.x - obj.x);
         // set obj.data.cellDir based on var 'a'
         obj.data.cellDir = Math.abs(a) > Math.PI * 0.5 ? 1 : 0;
@@ -239,7 +239,7 @@
                 sm.game.chickens.objects.forEach(function (chk) {
                     if (chk.active) {
                         if (chk.data.state === 'live' || chk.data.state === 'rest' || chk.data.state === 'out') {
-                            if (utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)) {
+                            if (Clucker.utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)) {
                                 chk.data.delay = sm.CHICKEN_COOKED_DELAY;
                                 // use chick-cooked sheet
                                 chk.data.sheetKey = 'chick-cooked';

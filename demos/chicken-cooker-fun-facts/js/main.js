@@ -1,5 +1,5 @@
 // create an sm object
-var sm = gameFrame.smCreateMain({
+var sm = Clucker.gameFrame.smCreateMain({
         currentState: 'loader',
         width: 640,
         height: 480,
@@ -32,10 +32,10 @@ sm.CHICKENS_CELL_SIZE = 32;               // this will need to be adjusted when 
 sm.game = gameMod.create({});
 
 // a game state
-gameFrame.smPushState(sm, {
+Clucker.gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {},
-    start: function (sm) {
+    start: function (sm, canvasMod) {
         // create sm.funFacts
         sm.funFacts = funFactsMod.create(sm);
 
@@ -60,7 +60,7 @@ gameFrame.smPushState(sm, {
 
 
     },
-    draw: function (sm, layers) {
+    draw: function (sm, layers, canvasMod) {
         // clear and draw any buttons
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
@@ -87,5 +87,5 @@ gameFrame.smPushState(sm, {
     }
 });
 // start the state machine
-gameFrame.smSetState(sm, 'loader');
+Clucker.gameFrame.smSetState(sm, 'loader');
 sm.loop();

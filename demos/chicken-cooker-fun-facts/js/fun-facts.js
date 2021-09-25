@@ -170,7 +170,7 @@
                 h: 128
             }
         ]
-        canvasMod.createSpriteSheet(sm.layers, 'funfacts-talk', imageIndices[0], talkCell);
+        Clucker.canvasMod.createSpriteSheet(sm.layers, 'funfacts-talk', imageIndices[0], talkCell);
 
         // the format for the guy sheet is a little more complex
         var guyCells = [{
@@ -277,7 +277,7 @@
                 h: 64
             }
         ];
-        canvasMod.createSpriteSheet(sm.layers, 'funfacts-guy', imageIndices[1], guyCells);
+        Clucker.canvasMod.createSpriteSheet(sm.layers, 'funfacts-guy', imageIndices[1], guyCells);
 
     };
 
