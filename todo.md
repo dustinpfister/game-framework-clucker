@@ -11,6 +11,11 @@
 
 ## () - 0.5.x - chicken-cooker-fun-facts: eyes disp object
 
+## () - 0.5.25 - utils.wrapText
+* first update all demos to use at least 0.5.24
+* create a utils.wrapText method based off of what I have for chicken-cooker-fun-facts
+* have chicken-cooker-fun-facts use 0.5.25 and new utils.wrapText method
+
 ## ( done 09/25/2021 ) - 0.5.24 - Clucker methods
 * (done) - I will want a Clucker.createMain method
 * (done) - I will want a Clucker.pushState method

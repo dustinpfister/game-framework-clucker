@@ -1,6 +1,6 @@
 {
   "name": "game-framework-clucker",
-  "version": "0.5.24",
+  "version": "0.5.25",
   "description": "A game framework called clucker",
   "main": "index.js",
   "directories": {
