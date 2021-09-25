@@ -1,6 +1,6 @@
 
 // create an sm object
-var sm = gameFrame.smCreateMain({
+var sm = Clucker.gameFrame.smCreateMain({
     currentState: 'loader', 
     width: 640,
     height: 480,
@@ -13,7 +13,7 @@ var sm = gameFrame.smCreateMain({
     }
 });
 
-sm.game.firePellets = poolMod.create({
+sm.game.firePellets = Clucker.poolMod.create({
     count: 8,
     secsCap: 0.25,
     disableLifespan: true,
@@ -40,7 +40,7 @@ sm.game.firePellets = poolMod.create({
 
        obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
        obj.data.radian += obj.data.deltaRadian;
-       obj.data.radian = utils.mod(obj.data.radian, Math.PI * 2);  
+       obj.data.radian = Clucker.utils.mod(obj.data.radian, Math.PI * 2);  
        obj.lifespan = 1;
        obj.x = 320 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
        obj.y = 240 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
@@ -48,10 +48,10 @@ sm.game.firePellets = poolMod.create({
 })
 
 // a game state
-gameFrame.smPushState(sm, {
+Clucker.gameFrame.smPushState(sm, {
     name: 'game',
     buttons: {},
-    start: function(sm){
+    start: function(sm, canvasMod){
 
         // drawing background once
         canvasMod.draw(sm.layers, 'background', 0);
@@ -91,14 +91,14 @@ gameFrame.smPushState(sm, {
         // sheets look good
         console.log(sm.layers.spriteSheets);
 
-        poolMod.spawnAll(sm.game.firePellets, sm, {});
+        Clucker.poolMod.spawnAll(sm.game.firePellets, sm, {});
 
     },
     update: function(sm, secs){
 
-        poolMod.update(sm.game.firePellets, secs, sm);
+        Clucker.poolMod.update(sm.game.firePellets, secs, sm);
     },
-    draw: function(sm, layers){
+    draw: function(sm, layers, canvasMod){
 
         //var canvas = layers[1].canvas,
         //ctx = layers[1].ctx;
@@ -129,5 +129,5 @@ gameFrame.smPushState(sm, {
     }
 });
 // start the state machine
-gameFrame.smSetState(sm, 'loader');
+Clucker.gameFrame.smSetState(sm, 'loader');
 sm.loop();

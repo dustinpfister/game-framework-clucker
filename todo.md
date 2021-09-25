@@ -19,7 +19,7 @@
 * update loader to use 0.5.25+
 * update menus to use 0.5.25+
 * update points to use 0.5.25+
-* update spritesheet to use 0.5.25+
+* (done) update spritesheet to use 0.5.25+
 * (done) update spritesheet-ships to use 0.5.25+
 * create a utils.wrapText method based off of what I have for chicken-cooker-fun-facts
 * have chicken-cooker-fun-facts use new utils.wrapText method in 0.5.25
