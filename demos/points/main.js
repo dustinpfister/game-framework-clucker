@@ -29,7 +29,7 @@ var createTargetPoints = function(sm){
    i = 0,x, y,
    len = sm.game.homePoints[0].length;
    while(i < len){
-       var randomPoint = randomTargetPoint(sm.game.homePoints[0][i], sm.game.homePoints[0][i + 1], 5);
+       var randomPoint = randomTargetPoint(sm.game.homePoints[0][i], sm.game.homePoints[0][i + 1], 100);
        targets.push(randomPoint.x, randomPoint.y);
        i += 2;
    }
@@ -54,15 +54,34 @@ Clucker.gameFrame.smPushState(sm, {
         sm.game.homePoints = canvasMod.createPoints(sm.layers, 'box', x, y, w, h);
         sm.game.points = canvasMod.createPoints(sm.layers, 'box', x, y, w, h);
         sm.game.targetPoints = createTargetPoints(sm);
-console.log(sm.game.homePoints[0]);
-console.log(sm.game.targetPoints[0]);
     },
     // what to do on each update
     update: function(sm, secs){
          var i = 0, len = sm.game.homePoints[0].length;
          while(i < len){
+             var x = sm.game.points[0][i],
+             y = sm.game.points[0][i + 1],
+             tx = sm.game.targetPoints[0][i],
+             ty = sm.game.targetPoints[0][i + 1];
+
+             if(x < tx){
+                x += 1;
+             }
+             if(x > tx){
+                x -= 1;
+             }
+             if(y < ty){
+                y += 1;
+             }
+             if(y > ty){
+                y -= 1;
+             }
+
+sm.game.points[0][i] = x;
+sm.game.points[0][i + 1] = y;
+
              //sm.game.points[0][i] = sm.game.homePoints[0][i] - 40 + Math.round(80 * Math.random());
-             i += 1;
+             i += 2;
          }
     },
     // draw will be called after each update
