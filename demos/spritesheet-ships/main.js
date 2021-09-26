@@ -98,10 +98,10 @@ Clucker.gameFrame.smPushState(sm, {
         // create sprite sheet
         canvasMod.createSpriteSheetGrid(sm.layers, 'ship-type-one', 0, 32, 32);
         // spawn all
-        poolMod.spawnAll(sm.game.ships, sm, {});
+        Clucker.poolMod.spawnAll(sm.game.ships, sm, {});
     },
     update: function(sm, secs){
-        poolMod.update(sm.game.ships, secs, sm);
+        Clucker.poolMod.update(sm.game.ships, secs, sm);
     },
     draw: function(sm, layers, canvasMod	){
         canvasMod.draw(layers, 'clear', 1);

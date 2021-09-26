@@ -23,7 +23,7 @@
 * (done) update spritesheet-ships to use 0.5.25+
 * (done) create a utils.wrapText method based off of what I have for chicken-cooker-fun-facts
 * (done) have chicken-cooker-fun-facts use new utils.wrapText method in 0.5.25
-* fix problem where I still have a poolMod global for some reason
+* (done) fix problem where I still have a poolMod global for some reason
 
 ## ( done 09/25/2021 ) - 0.5.24 - Clucker methods
 * (done) - I will want a Clucker.createMain method
