@@ -7,7 +7,7 @@
 * create a 0.6.0 tag
 
 
-
+## () - 0.5.26 - Better Points demo
 
 ## ( done 09/26/2021 ) - 0.5.25 - utils.wrapText
 * (done) update chicken-cooker to use least 0.5.24
