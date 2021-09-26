@@ -48,6 +48,7 @@ utils.mod = function (x, m) {
 /********* ********** ********** *********/
 
 // wrap text to an array of substrings
+// based off of this: https://stackoverflow.com/questions/14484787/wrap-text-in-javascript
 utils.wrapText = function(str, width){
     var patt = new RegExp(`(?![^\\n]{1,${width}}$)([^\\n]{1,${width}})\\s`, 'g');
     return str.replace(patt, '$1\n').split('\n');
@@ -200,7 +201,7 @@ utils.logOnce = (function () {
     };
 }
     ());
-poolMod = (function () {
+var poolMod = (function () {
     // Public API
     var api = {};
     // get next inactive object in the given pool
@@ -377,7 +378,7 @@ poolMod = (function () {
     ());
 
 try{
-    // append to Clucker global if there, else stand alone as utils global
+    // append to Clucker global if there
     if(Clucker){
         Clucker.poolMod = poolMod;
     }

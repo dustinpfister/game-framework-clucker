@@ -15,14 +15,15 @@
 * (done) update chicken-cooker to use least 0.5.24
 * (done) need to change references to gameFrame to Clucker.gameFrame for the built in loader in gameframe.js
 * (done) update chicken-cooker-fun-facts to use 0.5.25+
-* update chicken-cooker-sheets to use 0.5.25+
+* (done) update chicken-cooker-sheets to use 0.5.25+
 * (done) update loader to use 0.5.25+
 * update menus to use 0.5.25+
-* update points to use 0.5.25+
+* (done) update points to use 0.5.25+
 * (done) update spritesheet to use 0.5.25+
 * (done) update spritesheet-ships to use 0.5.25+
 * (done) create a utils.wrapText method based off of what I have for chicken-cooker-fun-facts
 * (done) have chicken-cooker-fun-facts use new utils.wrapText method in 0.5.25
+* fix problem where I still have a poolMod global for some reason
 
 ## ( done 09/25/2021 ) - 0.5.24 - Clucker methods
 * (done) - I will want a Clucker.createMain method

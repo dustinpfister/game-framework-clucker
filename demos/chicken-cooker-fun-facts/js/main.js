@@ -1,3 +1,9 @@
+
+console.log(this['utils']);
+console.log(this['canvasMod']);
+console.log(this['poolMod']);
+console.log(this['gameFrame']);
+
 // create an sm object
 var sm = Clucker.gameFrame.smCreateMain({
         currentState: 'loader',
