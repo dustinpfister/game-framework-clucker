@@ -3,6 +3,12 @@
 When I have an idea for a new feature for this project I start out by writing it down here. I then draft out my todo list when it 
 comes to actual lined up revisions of the over all framework.
 
+## (  ) - 0.x.x - new chicken-cooker-weapons demo
+* start new chicken cooker demo where the focus is adding weapons
+* have a single target weapon called 'frying pan' that will only hit one target at a time
+* must hit a chicken with the 'frying pan' as there is no spash damage
+* have a 'napalm' weapon that does splash damage
+
 ## (  ) - 0.x.x - chicken-cooker-fun-facts: brow disp object
 * make changes to fun facts so that the eyebrows are animated
 
