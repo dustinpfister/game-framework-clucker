@@ -78,7 +78,7 @@ Clucker.gameFrame.smPushState(sm, {
     events: {
         pointerStart: function(e, pos, sm){
             // spawn a blast
-            poolMod.spawn(sm.game.blasts, sm, { pos: pos });
+            Clucker.poolMod.spawn(sm.game.blasts, sm, { pos: pos });
         },
         pointerMove: function(e, pos, sm){},
         pointerEnd: function(e, pos, sm){}

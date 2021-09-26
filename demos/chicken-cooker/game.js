@@ -114,7 +114,7 @@ obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
             obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
             obj.data.state = 'live';
         }
-        var over = poolMod.getOverlaping(obj, sm.game.chickens);
+        var over = Clucker.poolMod.getOverlaping(obj, sm.game.chickens);
         if(over.length > 0){
             obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
             obj.data.state = 'live';
@@ -129,7 +129,7 @@ obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
 
         obj.data.delay -= secs;
         if(obj.data.delay <= 0){
-            poolMod.purge(pool, obj, sm);
+            Clucker.poolMod.purge(pool, obj, sm);
         }
     };
     // main update chicken method
@@ -146,7 +146,7 @@ obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
     };
     // create chicken pool helper
     var createChickenPool = function(){
-        return poolMod.create({
+        return Clucker.poolMod.create({
             count: sm.CHICKENS_COUNT,
             secsCap: 0.25,
             disableLifespan: true,
@@ -168,7 +168,7 @@ obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
 
     // create blasts pool helper
     var createBlastsPool = function(){
-        return poolMod.create({
+        return Clucker.poolMod.create({
             count: 3,
             secsCap: 0.25,
             //disableLifespan: true,
@@ -250,13 +250,13 @@ obj.data.cellIndex = obj.data.cellIndex === 2 ? 3 : 2;
         game.spawn.secs += secs;
         if(game.spawn.secs >= game.spawn.rate){
             game.spawn.secs = 0;
-            var activeCount = poolMod.getActiveCount(sm.game.chickens);
+            var activeCount = Clucker.poolMod.getActiveCount(sm.game.chickens);
             if(activeCount < game.spawn.maxActive){
-                poolMod.spawn(game.chickens, sm, {});
+                Clucker.poolMod.spawn(game.chickens, sm, {});
             }
         }
-        poolMod.update(game.chickens, secs, sm);
-        poolMod.update(game.blasts, secs, sm);
+        Clucker.poolMod.update(game.chickens, secs, sm);
+        Clucker.poolMod.update(game.blasts, secs, sm);
     };
 
 }(this['gameMod'] = {}));
