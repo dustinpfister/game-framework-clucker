@@ -3,7 +3,7 @@ var sm = Clucker.gameFrame.smCreateMain({
     currentState: 'game', // set starting state object to use
     width: 640,
     height: 480,
-    fps: 20,
+    fps: 30,
     game: {
         points: [],
         targetPoints: [],
@@ -16,6 +16,8 @@ var sm = Clucker.gameFrame.smCreateMain({
     }
 });
 
+sm.TARGET_POINT_RADIUS = 50;
+
 // get a new random target point object with given x, y, and r values
 var randomTargetPoint = function(x, y, r){
     var radian = Math.PI * 2 * Math.random();
@@ -27,7 +29,7 @@ var randomTargetPoint = function(x, y, r){
 
 // new random traget helper with given sm object, and point index
 var newRandomTarget = function(sm, i){
-    return randomTargetPoint(sm.game.homePoints[0][i], sm.game.homePoints[0][i + 1], 10);
+    return randomTargetPoint(sm.game.homePoints[0][i], sm.game.homePoints[0][i + 1], sm.TARGET_POINT_RADIUS);
 };
 
 // create target points array for first time
@@ -102,7 +104,7 @@ Clucker.gameFrame.smPushState(sm, {
     // draw will be called after each update
     draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
-        canvasMod.draw(layers, 'points', 1, sm.game.points, 0, 0, {fill:'black'});
+        canvasMod.draw(layers, 'points', 1, sm.game.points, 0, 0, {fill: 'rgba(0,255,255,0.5)'});
         //canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
     },
     // events for this state
