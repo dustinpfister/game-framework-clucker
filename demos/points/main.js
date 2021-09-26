@@ -16,7 +16,7 @@ var sm = Clucker.gameFrame.smCreateMain({
     }
 });
 
-sm.TARGET_POINT_RADIUS = 50;
+sm.TARGET_POINT_RADIUS = 15;
 
 // get a new random target point object with given x, y, and r values
 var randomTargetPoint = function(x, y, r){
@@ -57,8 +57,8 @@ Clucker.gameFrame.smPushState(sm, {
         var canvas = sm.layers[0].canvas,
         x = canvas.width / 2,
         y = canvas.height / 2,
-        w = 400,
-        h = 400;
+        w = 500,
+        h = 500;
         // home points, and points
         sm.game.homePoints = canvasMod.createPoints(sm.layers, 'box', x, y, w, h);
         sm.game.points = canvasMod.createPoints(sm.layers, 'box', x, y, w, h);
