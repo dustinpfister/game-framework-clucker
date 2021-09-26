@@ -11,6 +11,51 @@ try{
     var utils = {};
 }
 
+
+
+
+/********* ********** ********** *********/
+//  MISCELLANEOUS METHODS
+/********* ********** ********** *********/
+
+// no operation ref
+utils.noop = function () {};
+
+// distance
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
+// bounding box
+utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+    return !(
+        y1 + h1 < y2 ||
+        y1 > y2 + h2 ||
+        x1 + w1 < x2 ||
+        x1 > x2 + w2);
+};
+
+// mathematical modulo
+utils.mod = function (x, m) {
+    return (x % m + m) % m;
+};
+
+
+
+
+/********* ********** ********** *********/
+//  TEXT
+/********* ********** ********** *********/
+
+// wrap text to an array of substrings
+utils.wrapText = function(str, width){
+    var patt = new RegExp(`(?![^\\n]{1,${width}}$)([^\\n]{1,${width}})\\s`, 'g');
+    return str.replace(patt, '$1\n').split('\n');
+};
+
+
+
+
 /********* ********** ********** *********/
 //  HTTP
  /********* ********** ********** *********/
@@ -69,31 +114,7 @@ utils.httpPNG = function(opt){
     });
 };
 
-/********* ********** ********** *********/
-//  MISCELLANEOUS METHODS
- /********* ********** ********** *********/
 
-// no operation ref
-utils.noop = function () {};
-
-// distance
-utils.distance = function (x1, y1, x2, y2) {
-    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-};
-
-// bounding box
-utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
-    return !(
-        y1 + h1 < y2 ||
-        y1 > y2 + h2 ||
-        x1 + w1 < x2 ||
-        x1 > x2 + w2);
-};
-
-// mathematical modulo
-utils.mod = function (x, m) {
-    return (x % m + m) % m;
-};
 
 
 /********* ********** ********** *********/
