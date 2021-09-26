@@ -148,7 +148,7 @@
         updateWalkCells(obj, secs);
         // purge if out
         if (obj.x < obj.w * -1 || obj.x > sm.layers[0].canvas.width) {
-            poolMod.purge(pool, obj, sm);
+            Clucker.poolMod.purge(pool, obj, sm);
         }
 
     };
@@ -166,7 +166,7 @@
             obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
             obj.data.state = 'live';
         }
-        var over = poolMod.getOverlaping(obj, sm.game.chickens);
+        var over = Clucker.poolMod.getOverlaping(obj, sm.game.chickens);
         if (over.length > 0) {
             obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
             obj.data.state = 'live';
@@ -182,7 +182,7 @@
         // adjust alpha
         obj.data.alpha = obj.data.delay / sm.CHICKEN_COOKED_DELAY;
         if (obj.data.delay <= 0) {
-            poolMod.purge(pool, obj, sm);
+            Clucker.poolMod.purge(pool, obj, sm);
         }
     };
     // main update chicken method
@@ -201,7 +201,7 @@
     };
     // create chicken pool helper
     var createChickenPool = function () {
-        return poolMod.create({
+        return Clucker.poolMod.create({
             count: sm.CHICKENS_COUNT,
             secsCap: 0.25,
             disableLifespan: true,
@@ -217,7 +217,7 @@
 
     // create blasts pool helper
     var createBlastsPool = function () {
-        return poolMod.create({
+        return Clucker.poolMod.create({
             count: 3,
             secsCap: 0.25,
             //disableLifespan: true,
@@ -299,7 +299,7 @@
     api.update = function (game, sm, secs) {
         // SPAWN
         // get and update sm.activeCount
-        var activeCount = game.spawn.activeCount = poolMod.getActiveCount(game.chickens);
+        var activeCount = game.spawn.activeCount = Clucker.poolMod.getActiveCount(game.chickens);
         // adjust spawn rate
         var per = game.spawn.currentMaxActive / sm.CHICKENS_COUNT;
         per = per > 1 ? 1 : per;
@@ -309,7 +309,7 @@
             game.spawn.secs = 0;
             // if we are above current active
             if (activeCount > game.spawn.currentMaxActive) {
-                var chicks_active = poolMod.getActiveObjects(sm.game.chickens);
+                var chicks_active = Clucker.poolMod.getActiveObjects(sm.game.chickens);
                 // get all chickens that are active and in 'live' or 'rest' state
                 var chicks_liveRest = chicks_active.filter(function (chk) {
                         return chk.data.state === 'live' || chk.data.state === 'rest'
@@ -328,12 +328,12 @@
             game.spawn.secs += secs;
             if (game.spawn.secs >= game.spawn.rate) {
                 game.spawn.secs = 0;
-                poolMod.spawn(game.chickens, sm, {});
+                Clucker.poolMod.spawn(game.chickens, sm, {});
             }
         }
         // update chicken and blast pools
-        poolMod.update(game.chickens, secs, sm);
-        poolMod.update(game.blasts, secs, sm);
+        Clucker.poolMod.update(game.chickens, secs, sm);
+        Clucker.poolMod.update(game.blasts, secs, sm);
         // update Cooked Per Minute
         CPMupdate(game, secs);
         // update max active

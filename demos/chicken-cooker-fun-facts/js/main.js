@@ -82,7 +82,7 @@ Clucker.gameFrame.smPushState(sm, {
     events: {
         pointerStart: function (e, pos, sm) {
             // spawn a blast
-            poolMod.spawn(sm.game.blasts, sm, {
+            Clucker.poolMod.spawn(sm.game.blasts, sm, {
                 pos: pos
             });
             // set funFacts mod know whats up
