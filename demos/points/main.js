@@ -3,7 +3,7 @@ var sm = Clucker.gameFrame.smCreateMain({
     currentState: 'game', // set starting state object to use
     width: 640,
     height: 480,
-    fps: 5,
+    fps: 20,
     game: {
         points: [],
         targetPoints: [],
@@ -16,6 +16,7 @@ var sm = Clucker.gameFrame.smCreateMain({
     }
 });
 
+// get a new random target point object with given x, y, and r values
 var randomTargetPoint = function(x, y, r){
     var radian = Math.PI * 2 * Math.random();
     return {
@@ -24,12 +25,18 @@ var randomTargetPoint = function(x, y, r){
     };
 };
 
+// new random traget helper with given sm object, and point index
+var newRandomTarget = function(sm, i){
+    return randomTargetPoint(sm.game.homePoints[0][i], sm.game.homePoints[0][i + 1], 10);
+};
+
+// create target points array for first time
 var createTargetPoints = function(sm){
    var targets = [],
    i = 0,x, y,
    len = sm.game.homePoints[0].length;
    while(i < len){
-       var randomPoint = randomTargetPoint(sm.game.homePoints[0][i], sm.game.homePoints[0][i + 1], 100);
+       var randomPoint = newRandomTarget(sm, i);
        targets.push(randomPoint.x, randomPoint.y);
        i += 2;
    }
@@ -77,8 +84,16 @@ Clucker.gameFrame.smPushState(sm, {
                 y -= 1;
              }
 
-sm.game.points[0][i] = x;
-sm.game.points[0][i + 1] = y;
+             sm.game.points[0][i] = x;
+             sm.game.points[0][i + 1] = y;
+
+             // get new random point
+             if(x === tx && y === ty){
+                 var randomPoint = newRandomTarget(sm, i);
+                 sm.game.targetPoints[0][i] = randomPoint.x;
+                 sm.game.targetPoints[0][i + 1] = randomPoint.y;
+             }
+
 
              //sm.game.points[0][i] = sm.game.homePoints[0][i] - 40 + Math.round(80 * Math.random());
              i += 2;
