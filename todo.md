@@ -6,6 +6,13 @@
 * create a /dist/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
+## () - 0.5.27 - new chicken-cooker-splash demo
+* start a new chicken-cooker-splash demo based off of chicken-cooker-fun-facts
+* make it so that chicken display objects have a stat object
+* this stat object contains hp, and hpMax properties
+* have a sm.DAMAGE\_SPLASH\_MAX const
+* use the distance from the center of a blash to find out how much damage to hit a chicken with
+* chickens should have small hp bars
 
 ## ( done 09/26/2021 ) - 0.5.26 - Better Points demo
 * (done) have a target points array
@@ -55,7 +62,6 @@
 * (done) have an init method for a trigger
 * (done) have an update method for a trigger
 * (done) have a done method for a trigger
-
 
 ## ( done 09/23/2021 ) - 0.5.20 - chicken-cooker-fun-facts: draw.js
 * (done) start a draw.js for chicken-cooker-fun-facts that will be a canvas plugin
