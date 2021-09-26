@@ -17,7 +17,7 @@
 * (done) update chicken-cooker-fun-facts to use 0.5.25+
 * (done) update chicken-cooker-sheets to use 0.5.25+
 * (done) update loader to use 0.5.25+
-* update menus to use 0.5.25+
+* (done) update menus to use 0.5.25+
 * (done) update points to use 0.5.25+
 * (done) update spritesheet to use 0.5.25+
 * (done) update spritesheet-ships to use 0.5.25+
