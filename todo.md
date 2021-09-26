@@ -21,8 +21,8 @@
 * update points to use 0.5.25+
 * (done) update spritesheet to use 0.5.25+
 * (done) update spritesheet-ships to use 0.5.25+
-* create a utils.wrapText method based off of what I have for chicken-cooker-fun-facts
-* have chicken-cooker-fun-facts use new utils.wrapText method in 0.5.25
+* (done) create a utils.wrapText method based off of what I have for chicken-cooker-fun-facts
+* (done) have chicken-cooker-fun-facts use new utils.wrapText method in 0.5.25
 
 ## ( done 09/25/2021 ) - 0.5.24 - Clucker methods
 * (done) - I will want a Clucker.createMain method
