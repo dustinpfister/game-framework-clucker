@@ -7,11 +7,9 @@
 * create a 0.6.0 tag
 
 
-## () - 0.5.x - chicken-cooker-fun-facts: brow disp object
 
-## () - 0.5.x - chicken-cooker-fun-facts: eyes disp object
 
-## () - 0.5.25 - utils.wrapText
+## ( done 09/26/2021 ) - 0.5.25 - utils.wrapText
 * (done) update chicken-cooker to use least 0.5.24
 * (done) need to change references to gameFrame to Clucker.gameFrame for the built in loader in gameframe.js
 * (done) update chicken-cooker-fun-facts to use 0.5.25+

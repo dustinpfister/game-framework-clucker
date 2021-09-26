@@ -47,7 +47,18 @@ The main idea here is to work out a system where a guy will slide across the scr
 
 ## Changes made to clucker
 
-While working on these demos I also find a number of things that need to change or additional features that needed to be added to clucker.js. So with that said here are a few things that happened while working out this chicken cooker fun facts demo.
+While working on these demos I also found a number of things that need to change or additional features that needed to be added to clucker.js. When I stoped working on this demo as of this writing I have made the demo work with clucker 0.5.25, to which a lot of chnages happend. So with that said here are a few things that happened while working out this chicken cooker fun facts demo.
+
+## Added a utils.wrapText method
+
+I started a section of methods in the utils librray that will be a number of methods that have to do with text. That is creating an array of substrings from a source string that will line up with a given max width of letters.
+
+```js
+utils.wrapText = function(str, width){
+    var patt = new RegExp(`(?![^\\n]{1,${width}}$)([^\\n]{1,${width}})\\s`, 'g');
+    return str.replace(patt, '$1\n').split('\n');
+};
+```
 
 ## draw single sprite object method in mod-pool.js canvas plugin
 

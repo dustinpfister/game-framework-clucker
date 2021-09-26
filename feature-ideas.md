@@ -3,6 +3,12 @@
 When I have an idea for a new feature for this project I start out by writing it down here. I then draft out my todo list when it 
 comes to actual lined up revisions of the over all framework.
 
+## (  ) - 0.x.x - chicken-cooker-fun-facts: brow disp object
+* make changes to fun facts so that the eyebrows are animated
+
+## (  ) - 0.x.x - chicken-cooker-fun-facts: eyes disp object
+* make changes to fun facts so that the eyes are animated
+
 ## (  ) - 0.x.x - Grid library
 * add a library that can be used to create, update, and work with a simple 2d grid of tiles
 
