@@ -1,5 +1,5 @@
 // create an sm object
-var sm = gameFrame.smCreateMain({
+var sm = Clucker.gameFrame.smCreateMain({
     currentState: 'mainMenu', 
     width: 640,
     height: 480,
@@ -7,37 +7,37 @@ var sm = gameFrame.smCreateMain({
 });
 
 // a main menu state
-gameFrame.smPushState(sm, {
+Clucker.gameFrame.smPushState(sm, {
     name: 'mainMenu',
     buttons: {
         newGame: { x: 100, y: 100, w: 64, h:64, desc: 'New Game', onClick: function(e, pos, sm, button){
-            gameFrame.smSetState(sm, 'game');
+            Clucker.gameFrame.smSetState(sm, 'game');
         }}
     },
-    start: function(sm){
+    start: function(sm, canvasMod){
         canvasMod.draw(sm.layers, 'background', 0);
     },
-    draw: function(sm, layers){
+    draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
     }
 });
 // a game state
-gameFrame.smPushState(sm, {
+Clucker.gameFrame.smPushState(sm, {
     name: 'game',
     buttons: {
         back: { x: 100, y: 100, w: 64, h:64, desc: 'Back', onClick: function(e, pos, sm, button){
-            gameFrame.smSetState(sm, 'mainMenu');
+            Clucker.gameFrame.smSetState(sm, 'mainMenu');
         }}
     },
-    start: function(sm){
+    start: function(sm, canvasMod){
         canvasMod.draw(sm.layers, 'background', 0);
     },
     update: function(sm, secs){
 
     },
-    draw: function(sm, layers){
+    draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'print', 1, sm.currentState, 10, 10);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
@@ -49,5 +49,5 @@ gameFrame.smPushState(sm, {
     }
 });
 // start the state machine
-gameFrame.smSetState(sm, 'mainMenu');
+Clucker.gameFrame.smSetState(sm, 'mainMenu');
 sm.loop();
