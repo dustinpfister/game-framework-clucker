@@ -6,8 +6,13 @@
 * create a /dist/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
-## () - 0.5.27 - new chicken-cooker-splash demo
-* start a new chicken-cooker-splash demo based off of chicken-cooker-fun-facts
+## () - 0.x.x - chicken-cooker-weapons: 'frying-pan', and 'rocket' weapons
+* have the current attack be a 'rocket' type weapon
+* start a frying-pan weapon that is just a single target attack weapon
+* have a weapon selection button
+
+## () - 0.5.27 - new chicken-cooker-weapons demo
+* start a new chicken-cooker-weapons demo based off of chicken-cooker-fun-facts
 * make it so that chicken display objects have a stat object
 * this stat object contains hp, and hpMax properties
 * have a sm.DAMAGE\_SPLASH\_MAX const
