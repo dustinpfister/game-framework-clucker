@@ -207,12 +207,9 @@
     // main update chicken method
     var updateChicken = function (obj, pool, sm, secs) {
         obj.lifespan = 1;
-        // call current state
-        chickenState[obj.data.state].call(obj, obj, pool, sm, secs);
-
         obj.data.alpha = 1;
+        // update god mode secs and switch god mode off
         if(obj.data.godMode){
-            // update god mode secs and switch god mode off
             obj.data.godModeSecs -= secs;
             obj.data.godModeSecs = obj.data.godModeSecs < 0 ? 0 : obj.data.godModeSecs;
             obj.data.godMode = obj.data.godModeSecs === 0 ? false: true;
@@ -221,6 +218,8 @@
                 obj.data.alpha = obj.data.godModeSecs % 0.1 >= 0.05 ? 0.4 : 0.8;
             }
         }
+        // call current state
+        chickenState[obj.data.state].call(obj, obj, pool, sm, secs);
 
     };
     // on purge of chicken
