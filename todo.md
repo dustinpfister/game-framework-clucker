@@ -11,12 +11,12 @@
 * start a frying-pan weapon that is just a single target attack weapon
 * have a weapon selection button
 
-## () - 0.5.27 - new chicken-cooker-weapons demo
+## ( done 09/26/2021 ) - 0.5.27 - new chicken-cooker-weapons demo
 * (done) start a new chicken-cooker-weapons demo based off of chicken-cooker-fun-facts
 * (done) make it so that chicken display objects have a stat object
 * (done) this stat object contains hp, and hpMax properties
 * (done) chickens should have small hp bars
-* use the distance from the center of a blast to find out how much damage to hit a chicken with
+* (done) use the distance from the center of a blast to find out how much damage to hit a chicken with
 * (done) chickens should have a stat.recovery prop that is the amount of time in secs that can pass until the chick can get hit again
 * (done) adjust alpha value of chickens while in godMode
 
