@@ -8,6 +8,15 @@ Clucker.canvasMod.load({
                 Clucker.canvasMod.draw(stack, 'pool-solid', 1, sm.game.blasts, {
                     fillStyle: 'rgba(255, 255, 0, 0.5)'
                 });
+                // draw hp bars
+                Clucker.poolMod.getActiveObjects(sm.game.chickens).forEach(function(chk){
+                    if(chk.data.state != 'cooked'){
+                        ctx.fillStyle = 'gray';
+                        ctx.fillRect(chk.x, chk.y, 20, 5);
+                        ctx.fillStyle = 'lime';
+                        ctx.fillRect(chk.x, chk.y, 20 * ( chk.data.stat.hp / chk.data.stat.hpMax  ), 5);
+                    }
+                });
             }
         },
         // draw the swpan bar
