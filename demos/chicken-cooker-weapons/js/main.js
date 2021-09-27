@@ -31,7 +31,7 @@ sm.CHICKENS_PPS_MAX = 256;                // max pixels per second for chicken s
 sm.CHICKENS_SIZE = 64;                    // the scaled size of chickens
 sm.CHICKENS_CELL_SIZE = 32;               // this will need to be adjusted when using a higher res sprite sheet
 
-sm.game = gameMod.create({});
+sm.game = gameMod.create({}, sm);
 
 // a game state
 Clucker.gameFrame.smPushState(sm, {

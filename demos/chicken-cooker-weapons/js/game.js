@@ -84,6 +84,14 @@
     CHICKEN POOL
      ********** ********** ********** *********/
 
+    var setupChicken = function(obj, sm){
+        var d = obj.data;
+        d.sheetKey = 'chick-walk';
+        d.cellIndex = 0;
+        d.imageIndex = Math.floor(Math.random() * 2);
+        d.stat = { hp: 10, hpMax: 10 };
+    };
+
     // what to do for a chicken that is to be spanwed in
     var onSpawnedChicken = function (obj, pool, sm, opt) {
         obj.data.state = 'live'; // 'live' or 'cooked' state
@@ -259,7 +267,7 @@
      ********** ********** ********** *********/
 
     // create game state object
-    api.create = function (opt) {
+    api.create = function (opt, sm) {
         opt = opt || {};
         var game = {
             score: 0,
@@ -282,9 +290,7 @@
 
         // set up the data objects before spawn
         game.chickens.objects.forEach(function (obj) {
-            obj.data.sheetKey = 'chick-walk';
-            obj.data.cellIndex = 0;
-            obj.data.imageIndex = Math.floor(Math.random() * 2);
+            setupChicken(obj, sm)
         });
 
         // blasts object pool
