@@ -118,9 +118,6 @@
         obj.data.imageIndex = Math.floor(Math.random() * 2);
         // alpha
         obj.data.alpha = 1;
-        // STATS
-        var stat = obj.data.stat;
-        stat.hp = stat.hpMax;
     };
     // update a chicken
     var chickenState = {};
@@ -253,16 +250,14 @@
                             // chk overlaps with blast area
                             if (Clucker.utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)) {
                                 // damage
-                                chk.data.stat.hp -= 1;
-                                chk.data.stat.hp = chk.data.stat.hp < 0 ? 0: chk.data.stat.hp;
-                                // chicken is cooked if hp <= 0
-                                if(chk.data.stat.hp <= 0){
-                                    chk.data.delay = sm.CHICKEN_COOKED_DELAY;
-                                    chk.data.sheetKey = 'chick-cooked';
-                                    chk.data.imageIndex = 0;
-                                    chk.data.cellIndex = Math.floor(Math.random() * 4); ;
-                                    chk.data.state = 'cooked';
-                                }
+                                chk.data.hp -= 1;
+                                chk.data.hp = chk.data.hp < 0 ? 0: chk.data.hp;
+                                // chicken is now cooked
+                                //chk.data.delay = sm.CHICKEN_COOKED_DELAY;
+                                //chk.data.sheetKey = 'chick-cooked';
+                                //chk.data.imageIndex = 0;
+                                //chk.data.cellIndex = Math.floor(Math.random() * 4); ;
+                                //chk.data.state = 'cooked';
                             }
 
                         }
