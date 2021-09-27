@@ -310,7 +310,7 @@
                 sheetKey: 'funfacts-talk',
                 imageIndex: 0,
                 cellIndex: 0,
-                alpha: 1
+                alpha: 0.8
             }
         };
         // base image object of the guy

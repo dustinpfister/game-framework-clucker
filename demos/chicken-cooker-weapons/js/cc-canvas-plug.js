@@ -64,25 +64,25 @@ Clucker.canvasMod.load({
                         fontSize: fontSize
                     });
                 });
+                ctx.globalAlpha = 1;
             }
         },
         // info about the game
         {
             name: 'info',
             method: function (stack, ctx, canvas, layerObj, sm) {
-
-        // printing info
-        var printOptions = {
-            fontSize: 15
-        };
-        Clucker.canvasMod.draw(stack, 'print', 1, 'score : ' + sm.game.score, 10, 10, printOptions);
-        Clucker.canvasMod.draw(stack, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, printOptions);
-        var spawn = sm.game.spawn;
-        Clucker.canvasMod.draw(stack, 'print', 1, 'active: ' + spawn.activeCount + '/' + spawn.currentMaxActive, 10, 50, printOptions);
-        Clucker.canvasMod.draw(stack, 'print', 1, 'spawn rate: ' + spawn.rate.toFixed(2), 10, 70, printOptions);
-        // fun facts info
-        Clucker.canvasMod.draw(stack, 'print', 1, 'ff idle secs: ' + sm.funFacts.idleSecs.toFixed(2), 10, 90, printOptions);
-        Clucker.canvasMod.draw(stack, 'print', 1, 'ff talk secs: ' + sm.funFacts.talkSecs.toFixed(2), 10, 110, printOptions);
+                // printing info
+                var printOptions = {
+                    fontSize: 15
+                };
+                Clucker.canvasMod.draw(stack, 'print', 1, 'score : ' + sm.game.score, 10, 10, printOptions);
+                Clucker.canvasMod.draw(stack, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, printOptions);
+                var spawn = sm.game.spawn;
+                Clucker.canvasMod.draw(stack, 'print', 1, 'active: ' + spawn.activeCount + '/' + spawn.currentMaxActive, 10, 50, printOptions);
+                Clucker.canvasMod.draw(stack, 'print', 1, 'spawn rate: ' + spawn.rate.toFixed(2), 10, 70, printOptions);
+                // fun facts info
+                Clucker.canvasMod.draw(stack, 'print', 1, 'ff idle secs: ' + sm.funFacts.idleSecs.toFixed(2), 10, 90, printOptions);
+                Clucker.canvasMod.draw(stack, 'print', 1, 'ff talk secs: ' + sm.funFacts.talkSecs.toFixed(2), 10, 110, printOptions);
 		
             }
         }
