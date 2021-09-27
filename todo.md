@@ -15,9 +15,9 @@
 * (done) start a new chicken-cooker-weapons demo based off of chicken-cooker-fun-facts
 * (done) make it so that chicken display objects have a stat object
 * (done) this stat object contains hp, and hpMax properties
-* have a sm.DAMAGE\_SPLASH\_MAX const
-* use the distance from the center of a blash to find out how much damage to hit a chicken with
-* chickens should have small hp bars
+* (done) chickens should have small hp bars
+* use the distance from the center of a blast to find out how much damage to hit a chicken with
+* chickens should have a stat.recovery prop that is the amount of time in secs that can pass until the chick can get hit again
 
 ## ( done 09/26/2021 ) - 0.5.26 - Better Points demo
 * (done) have a target points array

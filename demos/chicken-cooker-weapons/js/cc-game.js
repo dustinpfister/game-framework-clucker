@@ -89,7 +89,13 @@
         d.sheetKey = 'chick-walk';
         d.cellIndex = 0;
         d.imageIndex = Math.floor(Math.random() * 2);
-        d.stat = { hp: 10, hpMax: 10 };
+        d.stat = {
+            hp: 10, 
+            hpMax: 10,
+            recovery: 0.5
+        };
+        d.godMode = false;
+        d.godModeSecs = d.stat.recovery;
     };
 
     // what to do for a chicken that is to be spanwed in
@@ -121,6 +127,8 @@
         // STATS
         var stat = obj.data.stat;
         stat.hp = stat.hpMax;
+        // set god mode to false
+        obj.data.godMode = false;
     };
     // update a chicken
     var chickenState = {};
@@ -253,8 +261,16 @@
                             // chk overlaps with blast area
                             if (Clucker.utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)) {
                                 // damage
-                                chk.data.stat.hp -= 1;
-                                chk.data.stat.hp = chk.data.stat.hp < 0 ? 0: chk.data.stat.hp;
+                                if(!chk.data.godMode){
+                                    chk.data.stat.hp -= 1;
+                                    chk.data.stat.hp = chk.data.stat.hp < 0 ? 0: chk.data.stat.hp;
+                                    chk.data.godMode = true;
+                                    chk.data.godModeSecs = chk.data.stat.recovery;
+                                }else{
+                                    chk.data.godModeSecs -= secs;
+                                    chk.data.godModeSecs = chk.data.godModeSecs < 0 ? 0 : chk.data.godModeSecs;
+                                    chk.data.godMode = chk.data.godModeSecs === 0 ? false: true;
+                                }
                                 // chicken is cooked if hp <= 0
                                 if(chk.data.stat.hp <= 0){
                                     chk.data.delay = sm.CHICKEN_COOKED_DELAY;
