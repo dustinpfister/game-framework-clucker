@@ -92,7 +92,7 @@
         d.stat = {
             hp: 10, 
             hpMax: 10,
-            recovery: 0.5
+            recovery: 1.5
         };
         d.godMode = false;
         d.godModeSecs = d.stat.recovery;
@@ -207,7 +207,21 @@
     // main update chicken method
     var updateChicken = function (obj, pool, sm, secs) {
         obj.lifespan = 1;
+        // call current state
         chickenState[obj.data.state].call(obj, obj, pool, sm, secs);
+
+        obj.data.alpha = 1;
+        if(obj.data.godMode){
+            // update god mode secs and switch god mode off
+            obj.data.godModeSecs -= secs;
+            obj.data.godModeSecs = obj.data.godModeSecs < 0 ? 0 : obj.data.godModeSecs;
+            obj.data.godMode = obj.data.godModeSecs === 0 ? false: true;
+            // adjust alpha based on god mode
+            if(obj.data.godMode){
+                obj.data.alpha = obj.data.godModeSecs % 0.1 >= 0.05 ? 0.4 : 0.8;
+            }
+        }
+
     };
     // on purge of chicken
     var onPurgedChicken = function (obj, pool, sm) {
@@ -266,10 +280,6 @@
                                     chk.data.stat.hp = chk.data.stat.hp < 0 ? 0: chk.data.stat.hp;
                                     chk.data.godMode = true;
                                     chk.data.godModeSecs = chk.data.stat.recovery;
-                                }else{
-                                    chk.data.godModeSecs -= secs;
-                                    chk.data.godModeSecs = chk.data.godModeSecs < 0 ? 0 : chk.data.godModeSecs;
-                                    chk.data.godMode = chk.data.godModeSecs === 0 ? false: true;
                                 }
                                 // chicken is cooked if hp <= 0
                                 if(chk.data.stat.hp <= 0){
