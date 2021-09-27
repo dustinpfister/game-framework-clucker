@@ -290,7 +290,7 @@
 
         // set up the data objects before spawn
         game.chickens.objects.forEach(function (obj) {
-            setupChicken(obj, sm)
+            setupChicken(obj, sm);
         });
 
         // blasts object pool

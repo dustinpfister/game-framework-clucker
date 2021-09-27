@@ -14,7 +14,7 @@
 ## () - 0.5.27 - new chicken-cooker-weapons demo
 * (done) start a new chicken-cooker-weapons demo based off of chicken-cooker-fun-facts
 * (done) make it so that chicken display objects have a stat object
-* this stat object contains hp, and hpMax properties
+* (done) this stat object contains hp, and hpMax properties
 * have a sm.DAMAGE\_SPLASH\_MAX const
 * use the distance from the center of a blash to find out how much damage to hit a chicken with
 * chickens should have small hp bars
