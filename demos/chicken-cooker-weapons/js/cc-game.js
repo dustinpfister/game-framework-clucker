@@ -276,7 +276,15 @@
                             if (Clucker.utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)) {
                                 // damage
                                 if(!chk.data.godMode){
-                                    chk.data.stat.hp -= 1;
+                                    // distance and dPer
+                                    var x1 = chk.x + chk.w / 2,
+                                    y1 = chk.y + chk.h / 2,
+                                    x2 = obj.x + obj.w / 2,
+                                    y2 = obj.y + obj.h / 2;
+                                    var d = Clucker.utils.distance(x1, y1, x2, y2),
+                                    dPer = 1 - (d / 100).toFixed(2);
+                                    // apply damage
+                                    chk.data.stat.hp -= 1 + Math.round( 10  * dPer);
                                     chk.data.stat.hp = chk.data.stat.hp < 0 ? 0: chk.data.stat.hp;
                                     chk.data.godMode = true;
                                     chk.data.godModeSecs = chk.data.stat.recovery;

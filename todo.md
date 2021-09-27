@@ -18,7 +18,7 @@
 * (done) chickens should have small hp bars
 * use the distance from the center of a blast to find out how much damage to hit a chicken with
 * (done) chickens should have a stat.recovery prop that is the amount of time in secs that can pass until the chick can get hit again
-* adjust alpha value of chickens while in godMode
+* (done) adjust alpha value of chickens while in godMode
 
 ## ( done 09/26/2021 ) - 0.5.26 - Better Points demo
 * (done) have a target points array
