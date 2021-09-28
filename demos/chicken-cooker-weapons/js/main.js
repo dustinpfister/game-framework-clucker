@@ -38,33 +38,39 @@ Clucker.gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {
         weapon: { x: 16, y: 480 - 64 - 16, w: 64, h:64, desc: 'Weapon', onClick: function(e, pos, sm, button){
-            console.log('weapon')
+            var weaponKey = sm.game.currentWeapon,
+            keys = Object.keys(sm.game.WEAPONS),
+            i = 0;
+            while(i < keys.length){
+                if(weaponKey === keys[i]){
+                    break;
+                }
+                i += 1;
+            }
+            i += 1;
+            i %= keys.length;
+            console.log(keys);
+            console.log(keys[i]);
+            sm.game.currentWeapon = keys[i];
         }}
     },
     start: function (sm, canvasMod) {
         // create sm.funFacts
         sm.funFacts = funFactsMod.create(sm);
-
         // background
         sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
-
         // create chicken sprite sheets
         var size = sm.CHICKENS_CELL_SIZE;
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', [4, 6], size, size);
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', [5, 7], size, size);
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
-
         // create fun facts sheets
         funFactsMod.createSheets(sm, [2, 3]);
-
     },
     update: function (sm, secs) {
         gameMod.update(sm.game, sm, secs);
-
         funFactsMod.update(sm, sm.funFacts, secs);
-
-
     },
     draw: function (sm, layers, canvasMod) {
         // clear and draw any buttons
