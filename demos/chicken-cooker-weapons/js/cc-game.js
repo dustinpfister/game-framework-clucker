@@ -252,7 +252,7 @@
             key: 'frying_pan',
             blastType : 'singleHit',
             maxBlastRadius: 8,
-            damage: [1, 3]
+            damage: [1, 5]
         },
         rocket: {
             key: 'rocket',
@@ -268,7 +268,9 @@
     };
     // sigle hit damage
     getDamage.singleHit = function(chk, blast){
-        return 1;
+        var minDam = blast.weapon.damage[0],
+        maxDeltaDam = blast.weapon.damage[1]; 
+        return minDam + Math.round( Math.random() *  maxDeltaDam);
     };
     // get explosion damage
     getDamage.explosion = function(chk, blast){
