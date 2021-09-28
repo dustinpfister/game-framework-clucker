@@ -266,9 +266,8 @@
                 obj.data.cx = opt.pos.x;
                 obj.data.cy = opt.pos.y;
 
-                obj.weapon = sm.game.WEAPONS[sm.game.currentWeapon];
-
-console.log(obj.weapon);
+                // ref to the weapon object
+                obj.weapon = opt.weapon;
 
                 obj.w = 0;
                 obj.h = 0;
