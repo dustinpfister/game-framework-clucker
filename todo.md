@@ -31,6 +31,9 @@
 * have a stats menu for now on top of options
 * from the main menu the player can progress to other menus such as the stats menu
 * both stats and options menus should have an button for returning back to the game.
+* have an stat.autoHealRate and stat.autoHealPer prop for chickens
+* do not display health bars for chickens that have full health
+* have color coded hp bars
 
 ## ( done 09/28/2021 ) - 0.5.28 - chicken-cooker-weapons: 'frying-pan', and 'rocket' weapons
 * (done) I will need to start a weapons object in cc-game.js
