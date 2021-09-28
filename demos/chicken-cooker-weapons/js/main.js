@@ -78,15 +78,7 @@ Clucker.gameFrame.smPushState(sm, {
     },
     events: {
         pointerStart: function (e, pos, sm) {
-            if(!sm.game.holdFire){
-                // spawn a blast
-                Clucker.poolMod.spawn(sm.game.blasts, sm, {
-                    pos: pos,
-                    weapon: sm.game.WEAPONS[sm.game.currentWeapon]
-                });
-            }
-            // set hold fire back to false if true
-            sm.game.holdFire = false;
+            gameMod.playerClick(sm.game, pos, e);
             // set funFacts mod know whats up
             funFactsMod.userAction(sm.funFacts, 'pointerStart', pos);
         },

@@ -458,5 +458,18 @@
         game.currentWeapon = keys[i];
     };
 
+    // player click
+    api.playerClick = function(game, pos, e){
+        if(!game.holdFire){
+            // spawn a blast
+            Clucker.poolMod.spawn(game.blasts, sm, {
+                pos: pos,
+                weapon: game.WEAPONS[sm.game.currentWeapon]
+            });
+        }
+        // set hold fire back to false if true
+        game.holdFire = false;
+    };
+
 }
     (this['gameMod'] = {}));
