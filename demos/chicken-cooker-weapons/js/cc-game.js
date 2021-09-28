@@ -362,6 +362,7 @@
             score: 0,
             WEAPONS: WEAPONS,
             currentWeapon: 'frying_pan',
+            holdFire: false,
             cpm: { // cooked per minute
                 secs: 0,
                 counts: [],
