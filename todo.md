@@ -6,7 +6,20 @@
 * create a /dist/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
-## () - 0.x.x - chicken-cooker-weapons: 'frying-pan', and 'rocket' weapons
+## () - 0.5.30 - chicken-cooker-weapons: new system for images
+* start a new system for chicken sheets that allows for more animations, and have all cells for a chicken in one sheet
+* reserve 0.png - 9.png for images other than chicken sheets
+* any unused images can just be blank place holder images for now if that works
+* first 10.png can be the first chicken type sheet, and 11 can be the second based off of current images
+* have an image for change weapons button
+
+## () - 0.5.29 - /img root folder started
+* start a /img root folder that will contain images used in the various demos
+* start a /img/chicken-cooker/cc-128 folder for 'chicken-cooker' demo
+* start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
+* start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
+
+## () - 0.5.28 - chicken-cooker-weapons: 'frying-pan', and 'rocket' weapons
 * have the current attack be a 'rocket' type weapon
 * start a frying-pan weapon that is just a single target attack weapon
 * have a weapon selection button
