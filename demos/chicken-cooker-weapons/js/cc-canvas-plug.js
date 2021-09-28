@@ -14,6 +14,13 @@ Clucker.canvasMod.load({
                         ctx.fillStyle = 'gray';
                         ctx.fillRect(chk.x, chk.y, 20, 5);
                         ctx.fillStyle = 'lime';
+                        var hpPer = chk.data.stat.hp / chk.data.stat.hpMax;
+                        if(hpPer <= 0.5){
+                            ctx.fillStyle = 'orange';
+                        }
+                        if(hpPer <= 0.25){
+                            ctx.fillStyle = 'red';
+                        }
                         ctx.fillRect(chk.x, chk.y, 20 * ( chk.data.stat.hp / chk.data.stat.hpMax  ), 5);
                     }
                 });
