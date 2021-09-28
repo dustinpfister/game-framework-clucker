@@ -6,18 +6,30 @@
 * create a /dist/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
-## () - 0.5.30 - chicken-cooker-weapons: new system for images
+## () - 0.5.x - chicken-cooker-weapons: new system for images
 * start a new system for chicken sheets that allows for more animations, and have all cells for a chicken in one sheet
 * reserve 0.png - 9.png for images other than chicken sheets
 * any unused images can just be blank place holder images for now if that works
 * first 10.png can be the first chicken type sheet, and 11 can be the second based off of current images
 * have an image for change weapons button
 
-## () - 0.5.29 - /img root folder started
+## () - 0.5.x - /img root folder started
 * start a /img root folder that will contain images used in the various demos
 * start a /img/chicken-cooker/cc-128 folder for 'chicken-cooker' demo
 * start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
+
+## () - 0.5.x - chicken-cooker-weapons: new system for 'cooked' chickens
+* I will want to start a new system for racking up money rather than just a score of 1 point per cooked chicken
+* have to so that the various types of cooked chickens have various prices
+* various probibites for various types of cooked chicken
+
+## () - 0.5.29 - chicken-cooker-weapons: Menus
+* have an options button in the top right corner of the canvas
+* clicking the options button will cause the game to enter a main menu
+* have a stats menu for now on top of options
+* from the main menu the player can progress to other menus such as the stats menu
+* both stats and options menus should have an buttom for returning back to the game.
 
 ## ( done 09/28/2021 ) - 0.5.28 - chicken-cooker-weapons: 'frying-pan', and 'rocket' weapons
 * (done) I will need to start a weapons object in cc-game.js
