@@ -48,10 +48,12 @@ Clucker.gameFrame.smPushState(sm, {
         canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
         // create fun facts sheets
         funFactsMod.createSheets(sm, [2, 3]);
+        // background
+        sm.layers.background = sm.layers.images[0];
+        canvasMod.draw(sm.layers, 'background', 0);
         Clucker.gameFrame.smSetState(sm, 'gameTime');
     }
 });
-
 
 // a game state
 Clucker.gameFrame.smPushState(sm, {
@@ -61,12 +63,15 @@ Clucker.gameFrame.smPushState(sm, {
             gameMod.cycleWeapons(sm.game);
             button.desc = sm.game.currentWeapon;
             sm.game.holdFire = true;
+        }},
+        menu: { x: 640 - 64 - 16, y: 16, w: 64, h:64, desc: 'Menu', onClick: function(e, pos, sm, button){
+            Clucker.gameFrame.smSetState(sm, 'mainMenu');
         }}
     },
     start: function (sm, canvasMod) {
         // background
-        sm.layers.background = sm.layers.images[0];
-        canvasMod.draw(sm.layers, 'background', 0);
+        //sm.layers.background = sm.layers.images[0];
+        //canvasMod.draw(sm.layers, 'background', 0);
     },
     update: function (sm, secs) {
         gameMod.update(sm.game, sm, secs);
@@ -95,6 +100,31 @@ Clucker.gameFrame.smPushState(sm, {
         pointerEnd: function (e, pos, sm) {}
     }
 });
+
+// a main menu state
+Clucker.gameFrame.smPushState(sm, {
+    name: 'mainMenu',
+    buttons: {
+        back: { x: 16, y: 16, w: 64, h:64, desc: 'back', onClick: function(e, pos, sm, button){
+            Clucker.gameFrame.smSetState(sm, 'gameTime');
+        }}
+    },
+    start: function (sm, canvasMod) {},
+    update: function (sm, secs) {},
+    draw: function (sm, layers, canvasMod) {
+        // clear and draw any buttons
+        canvasMod.draw(layers, 'clear', 1);
+        canvasMod.draw(layers, 'stateButtons', 1, sm);
+        // pools
+        canvasMod.draw(layers, 'pool-cc', 1, sm);
+    },
+    events: {
+        pointerStart: function (e, pos, sm) {},
+        pointerMove: function (e, pos, sm) {},
+        pointerEnd: function (e, pos, sm) {}
+    }
+});
+
 // start the state machine
 Clucker.gameFrame.smSetState(sm, 'loader');
 sm.loop();
