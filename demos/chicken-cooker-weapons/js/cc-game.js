@@ -93,7 +93,7 @@
             hp: 10, 
             hpMax: 10,
             recovery: 1.5,
-            autoHealRate: 1,
+            autoHealRate: 10,
             autoHealPer: 0.1
         };
         d.autoHealSecs = 0;
@@ -265,7 +265,7 @@
             key: 'frying_pan',
             blastType : 'singleHit',
             maxBlastRadius: 8,
-            damage: [1, 5]
+            damage: [2, 7]
         },
         rocket: {
             key: 'rocket',
