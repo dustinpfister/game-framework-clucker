@@ -22,7 +22,7 @@
 ## () - 0.5.x - chicken-cooker-weapons: new system for 'cooked' chickens
 * I will want to start a new system for racking up money rather than just a score of 1 point per cooked chicken
 * have to so that the various types of cooked chickens have various prices
-* various probibites for various types of cooked chicken
+* various probabilities for various types of cooked chicken
 
 ## () - 0.5.29 - chicken-cooker-weapons: Menus
 * change the way chickens are looped over in blasts update so that the loop can be broken for singleHit blasts
@@ -30,7 +30,7 @@
 * clicking the options button will cause the game to enter a main menu
 * have a stats menu for now on top of options
 * from the main menu the player can progress to other menus such as the stats menu
-* both stats and options menus should have an buttom for returning back to the game.
+* both stats and options menus should have an button for returning back to the game.
 
 ## ( done 09/28/2021 ) - 0.5.28 - chicken-cooker-weapons: 'frying-pan', and 'rocket' weapons
 * (done) I will need to start a weapons object in cc-game.js
