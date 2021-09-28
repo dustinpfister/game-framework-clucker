@@ -437,5 +437,27 @@
         maxActiveUpdate(game);
     };
 
+
+
+
+    /********* ********** ********** **********
+    UPDATE THE GAME OBJECT
+     ********** ********** ********** *********/
+
+    api.cycleWeapons = function(game){
+        var weaponKey = game.currentWeapon,
+        keys = Object.keys(game.WEAPONS),
+        i = 0;
+        while(i < keys.length){
+            if(weaponKey === keys[i]){
+                break;
+            }
+            i += 1;
+        }
+        i += 1;
+        i %= keys.length;
+        game.currentWeapon = keys[i];
+    };
+
 }
     (this['gameMod'] = {}));

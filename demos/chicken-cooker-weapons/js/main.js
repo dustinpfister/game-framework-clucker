@@ -38,20 +38,7 @@ Clucker.gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {
         weapon: { x: 16, y: 480 - 64 - 16, w: 64, h:64, desc: 'Weapon', onClick: function(e, pos, sm, button){
-            var weaponKey = sm.game.currentWeapon,
-            keys = Object.keys(sm.game.WEAPONS),
-            i = 0;
-            while(i < keys.length){
-                if(weaponKey === keys[i]){
-                    break;
-                }
-                i += 1;
-            }
-            i += 1;
-            i %= keys.length;
-            console.log(keys);
-            console.log(keys[i]);
-            sm.game.currentWeapon = keys[i];
+            gameMod.cycleWeapons(sm.game);
         }}
     },
     start: function (sm, canvasMod) {
