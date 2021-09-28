@@ -248,13 +248,37 @@
      ********** ********** ********** *********/
 
     var WEAPONS = {
+        frying_pan: {
+            key: 'frying_pan',
+            blastType : 'singleHit',
+            maxBlastRadius: 8,
+            damage: [1, 3]
+        },
         rocket: {
             key: 'rocket',
             blastType : 'explosion',
             maxBlastRadius: 225,
-            damage: [5, 6]
+            damage: [2, 9]
         }
     };
+
+    // get damage
+    var getDamage = function(chk, blast){
+        return getDamage[blast.weapon.blastType](chk, blast);
+    };
+    // get explosion damage
+    getDamage.explosion = function(chk, blast){
+        // distance and dPer
+        var x1 = chk.x + chk.w / 2,
+        y1 = chk.y + chk.h / 2,
+        x2 = blast.x + blast.w / 2,
+        y2 = blast.y + blast.h / 2;
+        var d = Clucker.utils.distance(x1, y1, x2, y2),
+        dPer = 1 - (d / blast.data.size).toFixed(2);
+        // apply damage
+        return blast.weapon.damage[0] + Math.round( blast.weapon.damage[1]  * dPer);
+    };
+
 
     // create blasts pool helper
     var createBlastsPool = function () {
@@ -293,15 +317,8 @@
                             if (Clucker.utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)) {
                                 // damage
                                 if(!chk.data.godMode){
-                                    // distance and dPer
-                                    var x1 = chk.x + chk.w / 2,
-                                    y1 = chk.y + chk.h / 2,
-                                    x2 = obj.x + obj.w / 2,
-                                    y2 = obj.y + obj.h / 2;
-                                    var d = Clucker.utils.distance(x1, y1, x2, y2),
-                                    dPer = 1 - (d / obj.data.size).toFixed(2);
-                                    // apply damage
-                                    var damage = obj.weapon.damage[0] + Math.round( obj.weapon.damage[1]  * dPer);
+                                    // get damage
+                                    var damage = getDamage(chk, obj);
                                     chk.data.stat.hp -= damage;
                                     chk.data.stat.hp = chk.data.stat.hp < 0 ? 0: chk.data.stat.hp;
                                     chk.data.godMode = true;
