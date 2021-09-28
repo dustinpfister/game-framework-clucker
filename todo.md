@@ -25,7 +25,7 @@
 * various probabilities for various types of cooked chicken
 
 ## () - 0.5.29 - chicken-cooker-weapons: Menus
-* change the way chickens are looped over in blasts update so that the loop can be broken for singleHit blasts
+* (done) change the way chickens are looped over in blasts update so that the loop can be broken for singleHit blasts
 * have an options button in the top right corner of the canvas
 * clicking the options button will cause the game to enter a main menu
 * have a stats menu for now on top of options

@@ -92,8 +92,11 @@
         d.stat = {
             hp: 10, 
             hpMax: 10,
-            recovery: 1.5
+            recovery: 1.5,
+            autoHealRate: 1,
+            autoHealPer: 0.1
         };
+        d.autoHealSecs = 0;
         d.godMode = false;
         d.godModeSecs = d.stat.recovery;
     };
@@ -218,6 +221,16 @@
                 obj.data.alpha = obj.data.godModeSecs % 0.1 >= 0.05 ? 0.4 : 0.8;
             }
         }
+        // autoheal
+        var stat = obj.data.stat;
+        obj.data.autoHealSecs += secs;
+        if(obj.data.autoHealSecs >= stat.autoHealRate){
+            var hpDelta = Math.round(stat.hpMax * stat.autoHealPer);
+            stat.hp += hpDelta;
+            stat.hp = stat.hp >= stat.hpMax ? stat.hpMax: stat.hp;
+
+            obj.data.autoHealSecs = 0;
+        }
         // call current state
         chickenState[obj.data.state].call(obj, obj, pool, sm, secs);
 
@@ -252,7 +265,7 @@
             key: 'frying_pan',
             blastType : 'singleHit',
             maxBlastRadius: 8,
-            damage: [10, 15]
+            damage: [1, 5]
         },
         rocket: {
             key: 'rocket',
@@ -319,14 +332,10 @@
                 }
                 obj.x = obj.data.cx - obj.w / 2;
                 obj.y = obj.data.cy - obj.h / 2;
-
-
                 // looping chickens
                 var i = 0,
                 chk,
                 len = sm.game.chickens.objects.length;
-
-                //sm.game.chickens.objects.forEach(function (chk) {
                 while(i < len){
                     chk = sm.game.chickens.objects[i];
                     if (chk.active) {
@@ -356,14 +365,10 @@
                                     break;
                                 }
                             }
-
                         }
                     }
                     i += 1;
                 }
-                //});
-
-
             }
         });
     };
