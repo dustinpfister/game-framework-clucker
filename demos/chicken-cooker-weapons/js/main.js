@@ -37,11 +37,14 @@ sm.game = gameMod.create({}, sm);
 Clucker.gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {
-        weapon: { x: 16, y: 480 - 64 - 16, w: 64, h:64, desc: 'Weapon', onClick: function(e, pos, sm, button){
+        weapon: { x: 16, y: 480 - 64 - 16, w: 64, h:64, desc: '', onClick: function(e, pos, sm, button){
             gameMod.cycleWeapons(sm.game);
+            button.desc = sm.game.currentWeapon;
         }}
     },
     start: function (sm, canvasMod) {
+        // set button desc for first time
+        sm.states.gameTime.buttons.weapon.desc = sm.game.currentWeapon;
         // create sm.funFacts
         sm.funFacts = funFactsMod.create(sm);
         // background
