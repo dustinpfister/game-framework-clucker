@@ -22,7 +22,7 @@
 ## () - 0.5.28 - chicken-cooker-weapons: 'frying-pan', and 'rocket' weapons
 * have the current attack be a 'rocket' type weapon
 * start a frying-pan weapon that is just a single target attack weapon
-* have a weapon selection button
+* have a weapon selection button that can be used to switch between the two weapons
 
 ## ( done 09/26/2021 ) - 0.5.27 - new chicken-cooker-weapons demo
 * (done) start a new chicken-cooker-weapons demo based off of chicken-cooker-fun-facts

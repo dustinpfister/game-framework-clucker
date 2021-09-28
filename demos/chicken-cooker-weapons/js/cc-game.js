@@ -247,6 +247,14 @@
     BLASTS POOL
      ********** ********** ********** *********/
 
+    var WEAPONS = {
+        rocket: {
+            key: 'rocket',
+            blastType : 'explosion',
+            maxBlastRadius: 125
+        }
+    };
+
     // create blasts pool helper
     var createBlastsPool = function () {
         return Clucker.poolMod.create({
@@ -254,8 +262,14 @@
             secsCap: 0.25,
             //disableLifespan: true,
             spawn: function (obj, pool, sm, opt) {
+
                 obj.data.cx = opt.pos.x;
                 obj.data.cy = opt.pos.y;
+
+                obj.weapon = sm.game.WEAPONS[sm.game.currentWeapon];
+
+console.log(obj.weapon);
+
                 obj.w = 0;
                 obj.h = 0;
                 obj.data.maxLife = 0.5;
@@ -314,6 +328,8 @@
         opt = opt || {};
         var game = {
             score: 0,
+            WEAPONS: WEAPONS,
+            currentWeapon: 'rocket',
             cpm: { // cooked per minute
                 secs: 0,
                 counts: [],
