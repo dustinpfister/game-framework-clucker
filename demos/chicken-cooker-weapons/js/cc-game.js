@@ -252,7 +252,7 @@
             key: 'frying_pan',
             blastType : 'singleHit',
             maxBlastRadius: 8,
-            damage: [1, 5]
+            damage: [10, 15]
         },
         rocket: {
             key: 'rocket',
@@ -319,8 +319,16 @@
                 }
                 obj.x = obj.data.cx - obj.w / 2;
                 obj.y = obj.data.cy - obj.h / 2;
+
+
                 // looping chickens
-                sm.game.chickens.objects.forEach(function (chk) {
+                var i = 0,
+                chk,
+                len = sm.game.chickens.objects.length;
+
+                //sm.game.chickens.objects.forEach(function (chk) {
+                while(i < len){
+                    chk = sm.game.chickens.objects[i];
                     if (chk.active) {
                         if (chk.data.state === 'live' || chk.data.state === 'rest' || chk.data.state === 'out') {
                             // chk overlaps with blast area
@@ -342,11 +350,20 @@
                                     chk.data.cellIndex = Math.floor(Math.random() * 4); ;
                                     chk.data.state = 'cooked';
                                 }
+                                // break out of loop for singleHit blast type
+                                if(obj.weapon.blastType === 'singleHit'){
+                                    obj.lifespan = 0;
+                                    break;
+                                }
                             }
 
                         }
                     }
-                });
+                    i += 1;
+                }
+                //});
+
+
             }
         });
     };
