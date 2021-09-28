@@ -251,7 +251,8 @@
         rocket: {
             key: 'rocket',
             blastType : 'explosion',
-            maxBlastRadius: 225
+            maxBlastRadius: 225,
+            damage: [5, 6]
         }
     };
 
@@ -262,10 +263,8 @@
             secsCap: 0.25,
             //disableLifespan: true,
             spawn: function (obj, pool, sm, opt) {
-
                 obj.data.cx = opt.pos.x;
                 obj.data.cy = opt.pos.y;
-
                 // ref to the weapon object
                 obj.weapon = opt.weapon;
                 obj.w = 8;
@@ -302,7 +301,8 @@
                                     var d = Clucker.utils.distance(x1, y1, x2, y2),
                                     dPer = 1 - (d / obj.data.size).toFixed(2);
                                     // apply damage
-                                    chk.data.stat.hp -= 1 + Math.round( 10  * dPer);
+                                    var damage = obj.weapon.damage[0] + Math.round( obj.weapon.damage[1]  * dPer);
+                                    chk.data.stat.hp -= damage;
                                     chk.data.stat.hp = chk.data.stat.hp < 0 ? 0: chk.data.stat.hp;
                                     chk.data.godMode = true;
                                     chk.data.godModeSecs = chk.data.stat.recovery;
