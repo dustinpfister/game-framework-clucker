@@ -20,7 +20,7 @@
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
 ## () - 0.5.28 - chicken-cooker-weapons: 'frying-pan', and 'rocket' weapons
-* I will need to start a weapons object in cc-game.js
+* (done) I will need to start a weapons object in cc-game.js
 * (done) have the current attack be a 'rocket' type weapon
 * start a frying-pan weapon that is just a single target attack weapon
 * have a weapon selection button that can be used to switch between the two weapons

@@ -266,6 +266,10 @@
     var getDamage = function(chk, blast){
         return getDamage[blast.weapon.blastType](chk, blast);
     };
+    // sigle hit damage
+    getDamage.singleHit = function(chk, blast){
+        return 1;
+    };
     // get explosion damage
     getDamage.explosion = function(chk, blast){
         // distance and dPer
@@ -306,10 +310,14 @@
             update: function (obj, pool, sm, secs) {
                 var per = 1 - obj.lifespan / obj.data.maxLife;
                 var size = Math.round(obj.data.size * per);
-                obj.w = size;
-                obj.h = size;
+                // size must be adjusted for explosion types
+                if(obj.weapon.blastType === 'explosion'){
+                    obj.w = size;
+                    obj.h = size;
+                }
                 obj.x = obj.data.cx - obj.w / 2;
                 obj.y = obj.data.cy - obj.h / 2;
+                // looping chickens
                 sm.game.chickens.objects.forEach(function (chk) {
                     if (chk.active) {
                         if (chk.data.state === 'live' || chk.data.state === 'rest' || chk.data.state === 'out') {
@@ -351,7 +359,7 @@
         var game = {
             score: 0,
             WEAPONS: WEAPONS,
-            currentWeapon: 'rocket',
+            currentWeapon: 'frying_pan',
             cpm: { // cooked per minute
                 secs: 0,
                 counts: [],
