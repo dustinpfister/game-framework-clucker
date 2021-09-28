@@ -7,7 +7,7 @@ var sm = Clucker.gameFrame.smCreateMain({
         height: 480,
         game: {},
         loader: {
-            startState: 'gameTime',
+            startState: 'init',
             images: { // load images ./img
                 baseURL: '/demos/chicken-cooker-fun-facts/img/cc-fun-facts',
                 count: 8
@@ -33,6 +33,26 @@ sm.CHICKENS_CELL_SIZE = 32;               // this will need to be adjusted when 
 
 sm.game = gameMod.create({}, sm);
 
+// simple init state that will just be called once after load state
+Clucker.gameFrame.smPushState(sm, {
+    name: 'init',
+    start: function (sm, canvasMod) {
+        // set button desc for first time
+        sm.states.gameTime.buttons.weapon.desc = sm.game.currentWeapon;
+        // create sm.funFacts
+        sm.funFacts = funFactsMod.create(sm);
+        // create chicken sprite sheets
+        var size = sm.CHICKENS_CELL_SIZE;
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', [4, 6], size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', [5, 7], size, size);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
+        // create fun facts sheets
+        funFactsMod.createSheets(sm, [2, 3]);
+        Clucker.gameFrame.smSetState(sm, 'gameTime');
+    }
+});
+
+
 // a game state
 Clucker.gameFrame.smPushState(sm, {
     name: 'gameTime',
@@ -44,20 +64,9 @@ Clucker.gameFrame.smPushState(sm, {
         }}
     },
     start: function (sm, canvasMod) {
-        // set button desc for first time
-        sm.states.gameTime.buttons.weapon.desc = sm.game.currentWeapon;
-        // create sm.funFacts
-        sm.funFacts = funFactsMod.create(sm);
         // background
         sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
-        // create chicken sprite sheets
-        var size = sm.CHICKENS_CELL_SIZE;
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-walk', [4, 6], size, size);
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-rest', [5, 7], size, size);
-        canvasMod.createSpriteSheetGrid(sm.layers, 'chick-cooked', 1, size, size);
-        // create fun facts sheets
-        funFactsMod.createSheets(sm, [2, 3]);
     },
     update: function (sm, secs) {
         gameMod.update(sm.game, sm, secs);
