@@ -444,6 +444,9 @@
     UPDATE THE GAME OBJECT
      ********** ********** ********** *********/
 
+
+
+
     api.cycleWeapons = function(game){
         var weaponKey = game.currentWeapon,
         keys = Object.keys(game.WEAPONS),
