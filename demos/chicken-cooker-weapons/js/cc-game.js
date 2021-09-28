@@ -251,7 +251,7 @@
         rocket: {
             key: 'rocket',
             blastType : 'explosion',
-            maxBlastRadius: 125
+            maxBlastRadius: 225
         }
     };
 
@@ -268,15 +268,21 @@
 
                 // ref to the weapon object
                 obj.weapon = opt.weapon;
-
-                obj.w = 0;
-                obj.h = 0;
+                obj.w = 8;
+                obj.h = 8;
+                // if blast type is explosion obj.w and obj.h will start at zero
+                // and increase to size set by weapon
+                if(obj.weapon.blastType === 'explosion'){
+                    obj.w = 0;
+                    obj.h = 0;
+                    obj.data.size = obj.weapon.maxBlastRadius;
+                }
                 obj.data.maxLife = 0.5;
                 obj.lifespan = obj.data.maxLife;
             },
             update: function (obj, pool, sm, secs) {
                 var per = 1 - obj.lifespan / obj.data.maxLife;
-                var size = Math.round(100 * per);
+                var size = Math.round(obj.data.size * per);
                 obj.w = size;
                 obj.h = size;
                 obj.x = obj.data.cx - obj.w / 2;
@@ -294,7 +300,7 @@
                                     x2 = obj.x + obj.w / 2,
                                     y2 = obj.y + obj.h / 2;
                                     var d = Clucker.utils.distance(x1, y1, x2, y2),
-                                    dPer = 1 - (d / 100).toFixed(2);
+                                    dPer = 1 - (d / obj.data.size).toFixed(2);
                                     // apply damage
                                     chk.data.stat.hp -= 1 + Math.round( 10  * dPer);
                                     chk.data.stat.hp = chk.data.stat.hp < 0 ? 0: chk.data.stat.hp;
