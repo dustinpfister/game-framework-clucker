@@ -36,7 +36,11 @@ sm.game = gameMod.create({}, sm);
 // a game state
 Clucker.gameFrame.smPushState(sm, {
     name: 'gameTime',
-    buttons: {},
+    buttons: {
+        weapon: { x: 16, y: 480 - 64 - 16, w: 64, h:64, desc: 'Weapon', onClick: function(e, pos, sm, button){
+            console.log('weapon')
+        }}
+    },
     start: function (sm, canvasMod) {
         // create sm.funFacts
         sm.funFacts = funFactsMod.create(sm);

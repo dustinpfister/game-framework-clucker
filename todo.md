@@ -23,6 +23,7 @@
 * (done) I will need to start a weapons object in cc-game.js
 * (done) have the current attack be a 'rocket' type weapon
 * (done) start a frying-pan weapon that is just a single target attack weapon
+* in main.js 
 * have a weapon selection button that can be used to switch between the two weapons
 
 ## ( done 09/26/2021 ) - 0.5.27 - new chicken-cooker-weapons demo
