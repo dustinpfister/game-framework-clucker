@@ -10,7 +10,7 @@ Clucker.canvasMod.load({
                 });
                 // draw hp bars
                 Clucker.poolMod.getActiveObjects(sm.game.chickens).forEach(function(chk){
-                    if(chk.data.state != 'cooked'){
+                    if(chk.data.state != 'cooked' && chk.data.stat.hp != chk.data.stat.hpMax){
                         ctx.fillStyle = 'gray';
                         ctx.fillRect(chk.x, chk.y, 20, 5);
                         ctx.fillStyle = 'lime';
