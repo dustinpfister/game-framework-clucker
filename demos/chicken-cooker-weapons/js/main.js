@@ -124,9 +124,52 @@ Clucker.gameFrame.smPushState(sm, {
             y: 16,
             w: 64,
             h: 64,
-            desc: 'back',
+            desc: 'Back',
             onClick: function (e, pos, sm, button) {
                 Clucker.gameFrame.smSetState(sm, 'gameTime');
+            }
+        },
+        stats: {
+            x: 16,
+            y: 128,
+            w: 64,
+            h: 64,
+            desc: 'Stats',
+            onClick: function (e, pos, sm, button) {
+                Clucker.gameFrame.smSetState(sm, 'stats');
+            }
+        }
+    },
+    start: function (sm, canvasMod) {},
+    update: function (sm, secs) {
+        gameMod.update(sm.game, sm, secs);
+    },
+    draw: function (sm, layers, canvasMod) {
+        // clear and draw any buttons
+        canvasMod.draw(layers, 'clear', 1);
+        canvasMod.draw(layers, 'stateButtons', 1, sm);
+        // pools
+        canvasMod.draw(layers, 'pool-cc', 1, sm);
+    },
+    events: {
+        pointerStart: function (e, pos, sm) {},
+        pointerMove: function (e, pos, sm) {},
+        pointerEnd: function (e, pos, sm) {}
+    }
+});
+
+// a main menu state
+Clucker.gameFrame.smPushState(sm, {
+    name: 'stats',
+    buttons: {
+        back: {
+            x: 16,
+            y: 16,
+            w: 64,
+            h: 64,
+            desc: 'back',
+            onClick: function (e, pos, sm, button) {
+                Clucker.gameFrame.smSetState(sm, 'mainMenu');
             }
         }
     },
