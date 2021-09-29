@@ -20,19 +20,19 @@
     var COOKED_TYPES = [
         {
             desc: 'Drumstick',
-            points: 90
+            points: 10
         },
         {
             desc: 'Rotisserie',
-            points: 5
+            points: 10
         },
         {
             desc: 'Sandwich',
-            points: 4
+            points: 10
         },
         {
             desc: 'Over Rice',
-            points: 1
+            points: 10
         }
     ];
 
@@ -329,8 +329,20 @@
         });
     };
 
+    // get cooked chicken index
     var getCookedChickenIndex = function(game){
-        return 2; //Math.floor(Math.random() * 4);
+        var roll = Math.random(),
+        i = 0,
+        per = 0,
+        len = game.COOKED_TYPES.length;
+        while(i < len - 1){
+             per += game.COOKED_TYPES[i].per;
+             if(roll < per){
+                 break;
+             }
+             i += 1;
+        }
+        return i; //Math.floor(Math.random() * 4);
     };
 
     // create blasts pool helper
