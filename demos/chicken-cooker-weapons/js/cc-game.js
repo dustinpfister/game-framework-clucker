@@ -17,7 +17,7 @@
     };
 
     // cooked Types
-    var COOKED_TYPES = {
+    var COOKED_TYPES = [
         {
             desc: 'Drumstick'
         },
@@ -30,7 +30,7 @@
         {
             desc: 'Over Rice'
         }
-    };
+    ];
 
     /********* ********** ********** **********
     HELPERS
@@ -412,7 +412,9 @@
                 avg: 0
             },
             stats: {
-                cookedTypes: []
+                cookedTypes: COOKED_TYPES.map(function(){
+                    return 0;
+                })
             },
             spawn: {
                 secs: 0,
