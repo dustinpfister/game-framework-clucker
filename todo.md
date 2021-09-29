@@ -39,9 +39,9 @@
 * (done) have color coded hp bars
 * (done) have an menu button in the top right corner of the canvas
 * (done) clicking the menu button will cause the game to enter a main menu
-* have a stats menu for now on top of main menu
-* from the main menu the player can progress to other menus such as the stats menu
-* both stats and options menus should have an button for returning back to the game.
+* (done) have a stats menu for now on top of main menu
+* (done) from the main menu the player can progress to other menus such as the stats menu
+* (done) both stats and options menus should have a button for returning back to the game.
 
 
 ## ( done 09/28/2021 ) - 0.5.28 - chicken-cooker-weapons: 'frying-pan', and 'rocket' weapons
