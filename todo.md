@@ -19,8 +19,16 @@
 * start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
-## () - 0.5.x - chicken-cooker-weapons: new system for 'cooked' chickens
-* I will want to start a new system for racking up money rather than just a score of 1 point per cooked chicken
+## () - 0.5.31 - chicken-cooker-weapons: upgrades menu
+* Start an upgrades menu
+* Global cooked chicken value upgrade
+* Global weapon damage upgrade
+* Probability of happening upgrades for each cooked chicken type
+* Value upgrades for each cooked chicken type
+* damage upgrades for each weapon
+
+## () - 0.5.30 - chicken-cooker-weapons: new system for 'cooked' chickens
+* I will want to start a new system for racking up a money value rather than just a score of 1 point per cooked chicken
 * have to so that the various types of cooked chickens have various prices
 * various probabilities for various types of cooked chicken
 
@@ -29,9 +37,9 @@
 * (done) have an stat.autoHealRate and stat.autoHealPer prop for chickens
 * (done) do not display health bars for chickens that have full health
 * (done) have color coded hp bars
-* have an options button in the top right corner of the canvas
-* clicking the options button will cause the game to enter a main menu
-* have a stats menu for now on top of options
+* (done) have an menu button in the top right corner of the canvas
+* (done) clicking the menu button will cause the game to enter a main menu
+* have a stats menu for now on top of main menu
 * from the main menu the player can progress to other menus such as the stats menu
 * both stats and options menus should have an button for returning back to the game.
 
