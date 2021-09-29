@@ -195,12 +195,15 @@ Clucker.gameFrame.smPushState(sm, {
         // clear and draw any buttons
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
+       
         // pools
         canvasMod.draw(layers, 'pool-cc', 1, sm);
+        canvasMod.draw(layers, 'background', 1, 'rgba(0,0,0,0.4)')
 
         // printing info
         var printOptions = {
-            fontSize: 15
+            fontSize: 15,
+            fillStyle: 'white'
         };
         // print line helper
         var printLine = function (mess, yIndex) {
@@ -208,8 +211,10 @@ Clucker.gameFrame.smPushState(sm, {
         };
         sm.game.stats.cookedTypes.forEach(function (count, i) {
             count = count || 0;
-            printLine('cookedType ' + i + ' : ' + count, i);
+            printLine(sm.game.COOKED_TYPES[i].desc + ' : ' + count, i);
         });
+
+
 
     },
     events: {

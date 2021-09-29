@@ -404,6 +404,7 @@
         var game = {
             score: 0,
             WEAPONS: WEAPONS,
+            COOKED_TYPES: COOKED_TYPES,
             currentWeapon: 'frying_pan',
             holdFire: false,
             cpm: { // cooked per minute
