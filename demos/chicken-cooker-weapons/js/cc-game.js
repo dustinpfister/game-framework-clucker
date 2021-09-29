@@ -283,7 +283,6 @@
             var price = sm.game.COOKED_TYPES[obj.data.cellIndex].price;
             sm.game.money += price;
             sm.game.money = Math.round(sm.game.money);
-            console.log(sm.game.money);
         };
         obj.data.alpha = 1;
     };
