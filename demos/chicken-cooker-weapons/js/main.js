@@ -123,9 +123,8 @@ Clucker.gameFrame.smPushState(sm, {
         funFactsMod.update(sm, sm.funFacts, secs);
     },
     draw: function (sm, layers, canvasMod) {
-        // clear and draw any buttons
+        // clear 
         canvasMod.draw(layers, 'clear', 1);
-        canvasMod.draw(layers, 'stateButtons', 1, sm);
         // pools
         canvasMod.draw(layers, 'pool-cc', 1, sm);
         // spawn bar
@@ -134,6 +133,8 @@ Clucker.gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'fun-facts-guy', 1, sm);
         // info
         canvasMod.draw(layers, 'info', 1, sm);
+        // state buttons
+        canvasMod.draw(layers, 'stateButtons', 1, sm);
     },
     events: {
         pointerStart: function (e, pos, sm) {
