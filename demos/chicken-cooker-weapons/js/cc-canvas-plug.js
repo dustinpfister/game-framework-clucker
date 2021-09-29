@@ -26,7 +26,7 @@ Clucker.canvasMod.load({
                 });
             }
         },
-        // draw the swpan bar
+        // draw the spawn bar
         {
             name: 'spawn-bar',
             method: function (stack, ctx, canvas, layerObj, sm) {
@@ -49,7 +49,9 @@ Clucker.canvasMod.load({
                 ctx.fillStyle = 'blue';
                 ctx.fillRect(x, 35, w * per3, 5);
             }
-        }, {
+        },
+        // draw the fun facts guy
+        {
             name: 'fun-facts-guy',
             method: function (stack, ctx, canvas, layerObj, sm) {
                 var talk = sm.funFacts.disp.talk;
@@ -87,7 +89,6 @@ Clucker.canvasMod.load({
                 };
                 printLine('score: ' + sm.game.score, 0);
                 printLine('cpm avg: ' + sm.game.cpm.avg, 1);
-
                 //Clucker.canvasMod.draw(stack, 'print', 1, 'score : ' + sm.game.score, 10, 10, printOptions);
                 //Clucker.canvasMod.draw(stack, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, printOptions);
                 //var spawn = sm.game.spawn;
@@ -96,7 +97,6 @@ Clucker.canvasMod.load({
                 // fun facts info
                 //Clucker.canvasMod.draw(stack, 'print', 1, 'ff idle secs: ' + sm.funFacts.idleSecs.toFixed(2), 10, 90, printOptions);
                 //Clucker.canvasMod.draw(stack, 'print', 1, 'ff talk secs: ' + sm.funFacts.talkSecs.toFixed(2), 10, 110, printOptions);
-
             }
         }
     ]
