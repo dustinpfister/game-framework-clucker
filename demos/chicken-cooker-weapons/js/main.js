@@ -16,20 +16,20 @@ var sm = Clucker.gameFrame.smCreateMain({
     });
 
 // CONSTANTS
-sm.CHICKENS_COUNT = 50;                   // the pool size for chickens
-sm.CHICKENS_MIN_ACTIVE = 3;               // the min amount of active chickens
-sm.CHICKENS_SPAWN_RATE_SLOWEST = 1.0;     // the slowest spawn rate
-sm.CHICKENS_SPAWN_RATE_FASTEST = 0.125;   // the highest spawn rate
-sm.CPM_DSECS = 5;                         // the duration in secs used for a sample to figure CPM
-sm.CPM_MAX_SAMPLES = 12;                  // max count of samples for CPM
-sm.CHICKEN_COOKED_DELAY = 2;              // The delay that a cooked state chicken remains on the canvas
-sm.MAX_ACTIVE_CPM = 125;                  // the CPM rate to get to to have the full effect on current max active
-sm.CHICKENS_RADIUS_START = 400;           // the start radius for a chicken
-sm.CHICKENS_RADIUS = 200;                 // the inner bounds radius for a chicken
-sm.CHICKENS_PPS_MIN = 64;                 // min pixels per second for chicken speed
-sm.CHICKENS_PPS_MAX = 256;                // max pixels per second for chicken speed
-sm.CHICKENS_SIZE = 64;                    // the scaled size of chickens
-sm.CHICKENS_CELL_SIZE = 32;               // this will need to be adjusted when using a higher res sprite sheet
+sm.CHICKENS_COUNT = 50; // the pool size for chickens
+sm.CHICKENS_MIN_ACTIVE = 3; // the min amount of active chickens
+sm.CHICKENS_SPAWN_RATE_SLOWEST = 1.0; // the slowest spawn rate
+sm.CHICKENS_SPAWN_RATE_FASTEST = 0.125; // the highest spawn rate
+sm.CPM_DSECS = 5; // the duration in secs used for a sample to figure CPM
+sm.CPM_MAX_SAMPLES = 12; // max count of samples for CPM
+sm.CHICKEN_COOKED_DELAY = 2; // The delay that a cooked state chicken remains on the canvas
+sm.MAX_ACTIVE_CPM = 125; // the CPM rate to get to to have the full effect on current max active
+sm.CHICKENS_RADIUS_START = 400; // the start radius for a chicken
+sm.CHICKENS_RADIUS = 200; // the inner bounds radius for a chicken
+sm.CHICKENS_PPS_MIN = 64; // min pixels per second for chicken speed
+sm.CHICKENS_PPS_MAX = 256; // max pixels per second for chicken speed
+sm.CHICKENS_SIZE = 64; // the scaled size of chickens
+sm.CHICKENS_CELL_SIZE = 32; // this will need to be adjusted when using a higher res sprite sheet
 
 sm.game = gameMod.create({}, sm);
 
@@ -59,14 +59,28 @@ Clucker.gameFrame.smPushState(sm, {
 Clucker.gameFrame.smPushState(sm, {
     name: 'gameTime',
     buttons: {
-        weapon: { x: 16, y: 480 - 64 - 16, w: 64, h:64, desc: '', onClick: function(e, pos, sm, button){
-            gameMod.cycleWeapons(sm.game);
-            button.desc = sm.game.currentWeapon;
-            sm.game.holdFire = true;
-        }},
-        menu: { x: 640 - 64 - 16, y: 16, w: 64, h:64, desc: 'Menu', onClick: function(e, pos, sm, button){
-            Clucker.gameFrame.smSetState(sm, 'mainMenu');
-        }}
+        weapon: {
+            x: 16,
+            y: 480 - 64 - 16,
+            w: 64,
+            h: 64,
+            desc: '',
+            onClick: function (e, pos, sm, button) {
+                gameMod.cycleWeapons(sm.game);
+                button.desc = sm.game.currentWeapon;
+                sm.game.holdFire = true;
+            }
+        },
+        menu: {
+            x: 640 - 64 - 16,
+            y: 16,
+            w: 64,
+            h: 64,
+            desc: 'Menu',
+            onClick: function (e, pos, sm, button) {
+                Clucker.gameFrame.smSetState(sm, 'mainMenu');
+            }
+        }
     },
     start: function (sm, canvasMod) {
         // background
@@ -105,12 +119,21 @@ Clucker.gameFrame.smPushState(sm, {
 Clucker.gameFrame.smPushState(sm, {
     name: 'mainMenu',
     buttons: {
-        back: { x: 16, y: 16, w: 64, h:64, desc: 'back', onClick: function(e, pos, sm, button){
-            Clucker.gameFrame.smSetState(sm, 'gameTime');
-        }}
+        back: {
+            x: 16,
+            y: 16,
+            w: 64,
+            h: 64,
+            desc: 'back',
+            onClick: function (e, pos, sm, button) {
+                Clucker.gameFrame.smSetState(sm, 'gameTime');
+            }
+        }
     },
     start: function (sm, canvasMod) {},
-    update: function (sm, secs) {},
+    update: function (sm, secs) {
+        gameMod.update(sm.game, sm, secs);
+    },
     draw: function (sm, layers, canvasMod) {
         // clear and draw any buttons
         canvasMod.draw(layers, 'clear', 1);
