@@ -276,10 +276,14 @@
     };
     // on purge of chicken
     var onPurgedChicken = function (obj, pool, sm) {
-        // if it is a cooked chicken add to score
+        // if it is a cooked chicken add to score, money
         if (obj.data.state === 'cooked') {
             CPMCount(sm.game, 1);
             sm.game.score += 1;
+            var price = sm.game.COOKED_TYPES[obj.data.cellIndex].price;
+            sm.game.money += price;
+            sm.game.money = Math.round(sm.game.money);
+            console.log(sm.game.money);
         };
         obj.data.alpha = 1;
     };
@@ -412,7 +416,6 @@
                                     cookedCount = cookedCount === undefined ? 0 : cookedCount;
                                     cookedCount += 1;
                                     sm.game.stats.cookedTypes[cookedIndex] = cookedCount;
-                                    console.log(sm.game.stats.cookedTypes);
                                     chk.data.cellIndex = cookedIndex;
                                     chk.data.state = 'cooked';
                                 }
@@ -439,6 +442,7 @@
         opt = opt || {};
         var game = {
             score: 0,
+            money: 0,
             WEAPONS: WEAPONS,
             COOKED_TYPES: COOKED_TYPES,
             currentWeapon: 'frying_pan',
