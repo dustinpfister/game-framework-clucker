@@ -27,7 +27,7 @@
 * Value upgrades for each cooked chicken type
 * damage upgrades for each weapon
 
-## () - 0.5.30 - chicken-cooker-weapons: new system for 'cooked' chickens
+## ( done 09/29/2021 ) - 0.5.30 - chicken-cooker-weapons: new system for 'cooked' chickens
 * (done) I am going to want a COOKED-TYPES const in cc-game.js
 * (done) set up game.stats.cookedTypes array to zeros for length of COOKED_TYPES in gameMod.create
 * (done) have Display names for objects in COOKED-TYPES
@@ -37,7 +37,7 @@
 * (done) have a setCookedTypePerValues helper 
 * (done) various probabilities for various types of cooked chicken
 * (done) have to so that the various types of cooked chickens have various prices
-* display money
+* (done) display money
 
 ## ( done 09/29/2021 ) - 0.5.29 - chicken-cooker-weapons: Menus
 * (done) change the way chickens are looped over in blasts update so that the loop can be broken for singleHit blasts
