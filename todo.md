@@ -28,10 +28,15 @@
 * damage upgrades for each weapon
 
 ## () - 0.5.30 - chicken-cooker-weapons: new system for 'cooked' chickens
-* I am going to want a COOKED_TYPES const in cc-game.js
-* set up game.stats.cookedTypes array to zeros for length of COOKED_TYPES in gameMod.create
-* have Display names for objects in COOKED_TYPES
-* I will want to start a new system for racking up a money value rather than just a score of 1 point per cooked chicken
+* (done) I am going to want a COOKED-TYPES const in cc-game.js
+* (done) set up game.stats.cookedTypes array to zeros for length of COOKED_TYPES in gameMod.create
+* (done) have Display names for objects in COOKED-TYPES
+
+* start a getCookedTypeIndex helper to be used in blast update method
+* have a roll local variable in getCookedTypeIndex that wil be used to find the cooked type index
+* have points values for each object in COOKED-TYPES this is what will be used to find per values for each
+* have a setCookedTypePerValues helper 
+
 * have to so that the various types of cooked chickens have various prices
 * various probabilities for various types of cooked chicken
 
