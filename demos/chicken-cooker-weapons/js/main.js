@@ -197,6 +197,20 @@ Clucker.gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'stateButtons', 1, sm);
         // pools
         canvasMod.draw(layers, 'pool-cc', 1, sm);
+
+        // printing info
+        var printOptions = {
+            fontSize: 15
+        };
+        // print line helper
+        var printLine = function (mess, yIndex) {
+            Clucker.canvasMod.draw(sm.layers, 'print', 1, mess, 64, 128 + 20 * yIndex, printOptions);
+        };
+        sm.game.stats.cookedTypes.forEach(function (count, i) {
+            count = count || 0;
+            printLine('cookedType ' + i + ' : ' + count, i);
+        });
+
     },
     events: {
         pointerStart: function (e, pos, sm) {},
