@@ -19,16 +19,20 @@
     // cooked Types
     var COOKED_TYPES = [
         {
-            desc: 'Drumstick'
+            desc: 'Drumstick',
+            points: 90
         },
         {
-            desc: 'Rotisserie'
+            desc: 'Rotisserie',
+            points: 5
         },
         {
-            desc: 'Sandwich'
+            desc: 'Sandwich',
+            points: 4
         },
         {
-            desc: 'Over Rice'
+            desc: 'Over Rice',
+            points: 1
         }
     ];
 
