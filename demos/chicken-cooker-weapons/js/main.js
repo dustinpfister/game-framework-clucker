@@ -38,7 +38,7 @@ sm.game = gameMod.create({}, sm);
 // create a standard back button for a state
 var createBackButton = function (toStateKey) {
     return {
-        x: 16,
+        x: 640 - 128 - 32,
         y: 16,
         w: 64,
         h: 64,
