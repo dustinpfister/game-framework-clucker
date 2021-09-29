@@ -195,11 +195,9 @@ Clucker.gameFrame.smPushState(sm, {
         // clear and draw any buttons
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'stateButtons', 1, sm);
-       
         // pools
         canvasMod.draw(layers, 'pool-cc', 1, sm);
         canvasMod.draw(layers, 'background', 1, 'rgba(0,0,0,0.4)')
-
         // printing info
         var printOptions = {
             fontSize: 15,
@@ -213,9 +211,6 @@ Clucker.gameFrame.smPushState(sm, {
             count = count || 0;
             printLine(sm.game.COOKED_TYPES[i].desc + ' : ' + count, i);
         });
-
-
-
     },
     events: {
         pointerStart: function (e, pos, sm) {},

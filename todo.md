@@ -36,8 +36,8 @@
 * (done) have points values for each object in COOKED-TYPES this is what will be used to find per values for each
 * (done) have a setCookedTypePerValues helper 
 * (done) various probabilities for various types of cooked chicken
-
-* have to so that the various types of cooked chickens have various prices
+* (done) have to so that the various types of cooked chickens have various prices
+* display money
 
 ## ( done 09/29/2021 ) - 0.5.29 - chicken-cooker-weapons: Menus
 * (done) change the way chickens are looped over in blasts update so that the loop can be broken for singleHit blasts

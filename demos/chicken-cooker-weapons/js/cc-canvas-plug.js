@@ -87,7 +87,7 @@ Clucker.canvasMod.load({
                 var printLine = function (mess, yIndex) {
                     Clucker.canvasMod.draw(stack, 'print', 1, mess, 10, 10 + 20 * yIndex, printOptions);
                 };
-                printLine('score: ' + sm.game.score, 0);
+                printLine('$ ' + sm.game.money, 0);
                 printLine('cpm avg: ' + sm.game.cpm.avg, 1);
                 //Clucker.canvasMod.draw(stack, 'print', 1, 'score : ' + sm.game.score, 10, 10, printOptions);
                 //Clucker.canvasMod.draw(stack, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, printOptions);
