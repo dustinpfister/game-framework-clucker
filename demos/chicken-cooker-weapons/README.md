@@ -14,11 +14,11 @@ This time around as the name suggests I will be adding a few options when it com
 
 ## New features for chicken-cooker-weapons
 
-So of course it should go without saying that more than one weapon is one of the features that will be added at this point. However each time I make a new chicken cooker demo of Clucker, I often add a few more features beyond just that of what the working name of the demo suggests. After all there is not just using weapons, there is also selecting which weapon to use while playing the game. There is also the idea of upgrading weapons, and buying supplies with weapons. So other features that I might want to add at this time would allow for additional menus that can be used to unlock and upgrade weapons.
+So of course it should go without saying that more than one weapon choice is one of the changes, however there is much more than has changed. After all there is not just using weapons, there is also selecting which weapon to use while playing the game so some changes have been made when it comes to the user interface. This means additional states beyond just the loading state, and game time state, and buttons have been added not just for cycling weapons but also entering other states. Many more changes have been made when it comes to the various types of cooked chicken, money over score, and other various additions and changes outline here.
 
 ### The player can now switch between at least two kinds of weapons thus far
 
-many of the changes have to do with adding things to the game logic that allow for more than one kind of Weapon. previous demos of this chicken cooker game had just one weapon that would result in the expansion of an area called a blast, and any chickens in that area would end up being cooked.
+Previous demos of this chicken cooker game had just one weapon that would result in the expansion of an area called a blast, and any chickens in that area would end up being cooked. With the new system I now have a collection of weapons in the cc-game.js file that outline some properties for what is thus far just two options for weapons.
 
 ```js
     var WEAPONS = {
@@ -39,7 +39,7 @@ many of the changes have to do with adding things to the game logic that allow f
 
 ## The chickens now have hp bars
 
-In previous chicken cooker demos chickens would just be cooked if in a blast area. Now they just take damage, and when there hp values reach zero that is when they are cooked.
+In previous chicken cooker demos chickens would just be cooked if in a blast area. Now they just take damage, and when there hp values reach zero that is when they are cooked. So a display object of a chicken in the chickens object pool now has a stat object in the data object of the display object of a chicken. This stat object for now contains hit points, max hit points, and additional values that have to do with auto heal rate.
 
 ```js
     // set up a chicken object for the first time
@@ -63,7 +63,7 @@ In previous chicken cooker demos chickens would just be cooked if in a blast are
 
 ## An init state, main menu state, stats state added in main.js
 
-When it comes to the older chicken cooker demos thus far there was just a loading state and a game time state. In this demo I am now adding additional state objects in main.js that will allow for the beginnings of additional menus.
+When it comes to the older chicken cooker demos thus far there was just a loading state and a game time state. Once all the assets load the game would just jump to the game time state and that is it. In this demo I am now adding additional state objects in main.js that will allow for the beginnings of additional menus. Because the game and progress from once state back to the game time state I also added an init state that will be called just once after the loading state.
 
 ```js
 // simple init state that will just be called once after load state
