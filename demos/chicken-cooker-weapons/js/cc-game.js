@@ -1,6 +1,7 @@
 
 (function (api) {
 
+    // WEAPONS
     var WEAPONS = {
         frying_pan: {
             key: 'frying_pan',
@@ -123,6 +124,7 @@
     CHICKEN POOL
      ********** ********** ********** *********/
 
+    // set up a chicken object for the first time
     var setupChicken = function (obj, sm) {
         var d = obj.data;
         d.sheetKey = 'chick-walk';
@@ -155,7 +157,7 @@
         obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
         // set delay
         obj.data.delay = 3;
-        obj.data.cellDir = 1; // 0 for facting left and 1 for facing right
+        obj.data.cellDir = 1; // 0 for facing left and 1 for facing right
         obj.data.imgSecs = 0;
         // 'pool-solid'
         obj.data.fillStyle = 'gray';
