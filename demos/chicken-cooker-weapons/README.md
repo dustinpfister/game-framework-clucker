@@ -28,4 +28,8 @@ In previous chicken cooker demos chickens would just be cooked if in a blast are
 
 When it comes to the older chicken cooker demos thus far there was just a loading state and a game time state. In this demo I am now adding additional state objects in main.js that will allow for the beginnings of additional menus.
 
+## Cooked chicken type probability, prices, and total player money
+
+Up until now the game was just about racking up a simple score where each chicken was worth just one point. Now the situation has changed where we are talking about a money value, and each type of cooked chicken is worth a certain amount of money. On top of that the system used to be that it was just an equally random selection when it comes to the various types, so changes where made so that points values can be set for each cooked chicken type which in turn will effect the percentage chance of that kind of cooked chicken occurring.
+
 
