@@ -318,6 +318,17 @@
         return blast.weapon.damage[0] + Math.round(blast.weapon.damage[1] * dPer);
     };
 
+    // set cooked chicken per values
+    var setCookedChickenPerValues = function(game){
+        var totalPoints = game.COOKED_TYPES.reduce(function(acc, obj){
+            return acc + obj.points || 0;
+        }, 0);
+        game.COOKED_TYPES = game.COOKED_TYPES.map(function(obj){
+            obj.per = obj.points / totalPoints;
+            return obj;
+        });
+    };
+
     // create blasts pool helper
     var createBlastsPool = function () {
         return Clucker.poolMod.create({
@@ -372,6 +383,7 @@
                                 }
                                 // chicken is cooked if hp <= 0
                                 if (chk.data.stat.hp <= 0) {
+                                    setCookedChickenPerValues(game);
                                     chk.data.delay = sm.CHICKEN_COOKED_DELAY;
                                     chk.data.sheetKey = 'chick-cooked';
                                     chk.data.imageIndex = 0;
@@ -430,6 +442,8 @@
                 currentMaxActive: sm.CHICKENS_MIN_ACTIVE // the current max to allow
             }
         };
+        // set cooked chicken per values for first time
+        setCookedChickenPerValues(game);
         // chickens pool
         game.chickens = createChickenPool();
 
