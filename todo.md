@@ -28,11 +28,14 @@
 * damage upgrades for each weapon
 
 ## () - 0.5.30 - chicken-cooker-weapons: new system for 'cooked' chickens
+* I am going to want a COOKED_TYPES const in cc-game.js
+* set up game.stats.cookedTypes array to zeros for length of COOKED_TYPES in gameMod.create
+* have Display names for objects in COOKED_TYPES
 * I will want to start a new system for racking up a money value rather than just a score of 1 point per cooked chicken
 * have to so that the various types of cooked chickens have various prices
 * various probabilities for various types of cooked chicken
 
-## () - 0.5.29 - chicken-cooker-weapons: Menus
+## ( done 09/29/2021 ) - 0.5.29 - chicken-cooker-weapons: Menus
 * (done) change the way chickens are looped over in blasts update so that the loop can be broken for singleHit blasts
 * (done) have an stat.autoHealRate and stat.autoHealPer prop for chickens
 * (done) do not display health bars for chickens that have full health
@@ -42,8 +45,8 @@
 * (done) have a stats menu for now on top of main menu
 * (done) from the main menu the player can progress to other menus such as the stats menu
 * (done) both stats and options menus should have a button for returning back to the game.
-* have a game.stats.cookedTypes array that will be a count for each cooked chicken type
-* display counts of game.stats.cookedTypes array in stats state
+* (done) have a game.stats.cookedTypes array that will be a count for each cooked chicken type
+* (done) display counts of game.stats.cookedTypes array in stats state
 
 ## ( done 09/28/2021 ) - 0.5.28 - chicken-cooker-weapons: 'frying-pan', and 'rocket' weapons
 * (done) I will need to start a weapons object in cc-game.js
