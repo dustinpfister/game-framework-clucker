@@ -49,6 +49,21 @@ var createBackButton = function (toStateKey) {
     }
 };
 
+// create a standard back button for a state
+var createToGameButton = function () {
+    return {
+        x: 640 - 64 - 16,
+        y: 16,
+        w: 64,
+        h: 64,
+        desc: 'Game',
+        onClick: function (e, pos, sm, button) {
+            Clucker.gameFrame.smSetState(sm, 'gameTime');
+            sm.game.holdFire = true;
+        }
+    };
+};
+
 // simple init state that will just be called once after load state
 Clucker.gameFrame.smPushState(sm, {
     name: 'init',
@@ -135,17 +150,7 @@ Clucker.gameFrame.smPushState(sm, {
 Clucker.gameFrame.smPushState(sm, {
     name: 'mainMenu',
     buttons: {
-        to_game: {
-            x: 640 - 64 - 16,
-            y: 16,
-            w: 64,
-            h: 64,
-            desc: 'Game',
-            onClick: function (e, pos, sm, button) {
-                Clucker.gameFrame.smSetState(sm, 'gameTime');
-                sm.game.holdFire = true;
-            }
-        },
+        to_game: createToGameButton(),
         stats: {
             x: 16,
             y: 128,
@@ -179,17 +184,7 @@ Clucker.gameFrame.smPushState(sm, {
 Clucker.gameFrame.smPushState(sm, {
     name: 'stats',
     buttons: {
-        to_game: {
-            x: 640 - 64 - 16,
-            y: 16,
-            w: 64,
-            h: 64,
-            desc: 'Game',
-            onClick: function (e, pos, sm, button) {
-                Clucker.gameFrame.smSetState(sm, 'gameTime');
-                sm.game.holdFire = true;
-            }
-        },
+        to_game: createToGameButton(),
         back: createBackButton('mainMenu')
     },
     start: function (sm, canvasMod) {},
