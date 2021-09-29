@@ -119,14 +119,15 @@ Clucker.gameFrame.smPushState(sm, {
 Clucker.gameFrame.smPushState(sm, {
     name: 'mainMenu',
     buttons: {
-        back: {
-            x: 16,
+        to_game: {
+            x: 640 - 64 - 16,
             y: 16,
             w: 64,
             h: 64,
-            desc: 'Back',
+            desc: 'Game',
             onClick: function (e, pos, sm, button) {
                 Clucker.gameFrame.smSetState(sm, 'gameTime');
+                sm.game.holdFire = true;
             }
         },
         stats: {
@@ -162,6 +163,17 @@ Clucker.gameFrame.smPushState(sm, {
 Clucker.gameFrame.smPushState(sm, {
     name: 'stats',
     buttons: {
+        to_game: {
+            x: 640 - 64 - 16,
+            y: 16,
+            w: 64,
+            h: 64,
+            desc: 'Game',
+            onClick: function (e, pos, sm, button) {
+                Clucker.gameFrame.smSetState(sm, 'gameTime');
+                sm.game.holdFire = true;
+            }
+        },
         back: {
             x: 16,
             y: 16,
