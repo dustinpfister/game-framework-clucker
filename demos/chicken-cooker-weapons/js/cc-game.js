@@ -329,6 +329,10 @@
         });
     };
 
+    var getCookedChickenIndex = function(game){
+        return 2; //Math.floor(Math.random() * 4);
+    };
+
     // create blasts pool helper
     var createBlastsPool = function () {
         return Clucker.poolMod.create({
@@ -383,11 +387,11 @@
                                 }
                                 // chicken is cooked if hp <= 0
                                 if (chk.data.stat.hp <= 0) {
-                                    setCookedChickenPerValues(game);
+                                    setCookedChickenPerValues(sm.game);
                                     chk.data.delay = sm.CHICKEN_COOKED_DELAY;
                                     chk.data.sheetKey = 'chick-cooked';
                                     chk.data.imageIndex = 0;
-                                    var cookedIndex = Math.floor(Math.random() * 4);
+                                    var cookedIndex = getCookedChickenIndex(sm.game);
                                     var cookedCount = sm.game.stats.cookedTypes[cookedIndex];
                                     cookedCount = cookedCount === undefined ? 0 : cookedCount;
                                     cookedCount += 1;
