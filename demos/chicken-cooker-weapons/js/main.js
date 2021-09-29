@@ -180,7 +180,7 @@ Clucker.gameFrame.smPushState(sm, {
     }
 });
 
-// a main menu state
+// a stats state
 Clucker.gameFrame.smPushState(sm, {
     name: 'stats',
     buttons: {

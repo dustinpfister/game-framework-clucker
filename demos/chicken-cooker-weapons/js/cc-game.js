@@ -84,13 +84,13 @@
     CHICKEN POOL
      ********** ********** ********** *********/
 
-    var setupChicken = function(obj, sm){
+    var setupChicken = function (obj, sm) {
         var d = obj.data;
         d.sheetKey = 'chick-walk';
         d.cellIndex = 0;
         d.imageIndex = Math.floor(Math.random() * 2);
         d.stat = {
-            hp: 10, 
+            hp: 10,
             hpMax: 10,
             recovery: 1.5,
             autoHealRate: 10,
@@ -212,22 +212,22 @@
         obj.lifespan = 1;
         obj.data.alpha = 1;
         // update god mode secs and switch god mode off
-        if(obj.data.godMode){
+        if (obj.data.godMode) {
             obj.data.godModeSecs -= secs;
             obj.data.godModeSecs = obj.data.godModeSecs < 0 ? 0 : obj.data.godModeSecs;
-            obj.data.godMode = obj.data.godModeSecs === 0 ? false: true;
+            obj.data.godMode = obj.data.godModeSecs === 0 ? false : true;
             // adjust alpha based on god mode
-            if(obj.data.godMode){
+            if (obj.data.godMode) {
                 obj.data.alpha = obj.data.godModeSecs % 0.1 >= 0.05 ? 0.4 : 0.8;
             }
         }
         // autoheal
         var stat = obj.data.stat;
         obj.data.autoHealSecs += secs;
-        if(obj.data.autoHealSecs >= stat.autoHealRate){
+        if (obj.data.autoHealSecs >= stat.autoHealRate) {
             var hpDelta = Math.round(stat.hpMax * stat.autoHealPer);
             stat.hp += hpDelta;
-            stat.hp = stat.hp >= stat.hpMax ? stat.hpMax: stat.hp;
+            stat.hp = stat.hp >= stat.hpMax ? stat.hpMax : stat.hp;
 
             obj.data.autoHealSecs = 0;
         }
@@ -263,30 +263,30 @@
     var WEAPONS = {
         frying_pan: {
             key: 'frying_pan',
-            blastType : 'singleHit',
+            blastType: 'singleHit',
             maxBlastRadius: 8,
             damage: [2, 7]
         },
         rocket: {
             key: 'rocket',
-            blastType : 'explosion',
+            blastType: 'explosion',
             maxBlastRadius: 225,
             damage: [2, 9]
         }
     };
 
     // get damage
-    var getDamage = function(chk, blast){
+    var getDamage = function (chk, blast) {
         return getDamage[blast.weapon.blastType](chk, blast);
     };
     // sigle hit damage
-    getDamage.singleHit = function(chk, blast){
+    getDamage.singleHit = function (chk, blast) {
         var minDam = blast.weapon.damage[0],
-        maxDeltaDam = blast.weapon.damage[1]; 
-        return minDam + Math.round( Math.random() *  maxDeltaDam);
+        maxDeltaDam = blast.weapon.damage[1];
+        return minDam + Math.round(Math.random() * maxDeltaDam);
     };
     // get explosion damage
-    getDamage.explosion = function(chk, blast){
+    getDamage.explosion = function (chk, blast) {
         // distance and dPer
         var x1 = chk.x + chk.w / 2,
         y1 = chk.y + chk.h / 2,
@@ -295,9 +295,8 @@
         var d = Clucker.utils.distance(x1, y1, x2, y2),
         dPer = 1 - (d / blast.data.size).toFixed(2);
         // apply damage
-        return blast.weapon.damage[0] + Math.round( blast.weapon.damage[1]  * dPer);
+        return blast.weapon.damage[0] + Math.round(blast.weapon.damage[1] * dPer);
     };
-
 
     // create blasts pool helper
     var createBlastsPool = function () {
@@ -314,7 +313,7 @@
                 obj.h = 8;
                 // if blast type is explosion obj.w and obj.h will start at zero
                 // and increase to size set by weapon
-                if(obj.weapon.blastType === 'explosion'){
+                if (obj.weapon.blastType === 'explosion') {
                     obj.w = 0;
                     obj.h = 0;
                     obj.data.size = obj.weapon.maxBlastRadius;
@@ -326,7 +325,7 @@
                 var per = 1 - obj.lifespan / obj.data.maxLife;
                 var size = Math.round(obj.data.size * per);
                 // size must be adjusted for explosion types
-                if(obj.weapon.blastType === 'explosion'){
+                if (obj.weapon.blastType === 'explosion') {
                     obj.w = size;
                     obj.h = size;
                 }
@@ -336,31 +335,37 @@
                 var i = 0,
                 chk,
                 len = sm.game.chickens.objects.length;
-                while(i < len){
+                while (i < len) {
                     chk = sm.game.chickens.objects[i];
                     if (chk.active) {
                         if (chk.data.state === 'live' || chk.data.state === 'rest' || chk.data.state === 'out') {
                             // chk overlaps with blast area
                             if (Clucker.utils.boundingBox(chk.x, chk.y, chk.w, chk.h, obj.x, obj.y, obj.w, obj.h)) {
                                 // damage
-                                if(!chk.data.godMode){
+                                if (!chk.data.godMode) {
                                     // get damage
                                     var damage = getDamage(chk, obj);
                                     chk.data.stat.hp -= damage;
-                                    chk.data.stat.hp = chk.data.stat.hp < 0 ? 0: chk.data.stat.hp;
+                                    chk.data.stat.hp = chk.data.stat.hp < 0 ? 0 : chk.data.stat.hp;
                                     chk.data.godMode = true;
                                     chk.data.godModeSecs = chk.data.stat.recovery;
                                 }
                                 // chicken is cooked if hp <= 0
-                                if(chk.data.stat.hp <= 0){
+                                if (chk.data.stat.hp <= 0) {
                                     chk.data.delay = sm.CHICKEN_COOKED_DELAY;
                                     chk.data.sheetKey = 'chick-cooked';
                                     chk.data.imageIndex = 0;
-                                    chk.data.cellIndex = Math.floor(Math.random() * 4); ;
+                                    var cookedIndex = Math.floor(Math.random() * 4);
+                                    var cookedCount = sm.game.stats.cookedTypes[cookedIndex];
+                                    cookedCount = cookedCount === undefined ? 0 : cookedCount;
+                                    cookedCount += 1;
+                                    sm.game.stats.cookedTypes[cookedIndex] = cookedCount;
+                                    console.log(sm.game.stats.cookedTypes);
+                                    chk.data.cellIndex = cookedIndex;
                                     chk.data.state = 'cooked';
                                 }
                                 // break out of loop for singleHit blast type
-                                if(obj.weapon.blastType === 'singleHit'){
+                                if (obj.weapon.blastType === 'singleHit') {
                                     obj.lifespan = 0;
                                     break;
                                 }
@@ -389,6 +394,9 @@
                 secs: 0,
                 counts: [],
                 avg: 0
+            },
+            stats: {
+                cookedTypes: []
             },
             spawn: {
                 secs: 0,
@@ -465,12 +473,12 @@
      ********** ********** ********** *********/
 
     // cycle weapons
-    api.cycleWeapons = function(game){
+    api.cycleWeapons = function (game) {
         var weaponKey = game.currentWeapon,
         keys = Object.keys(game.WEAPONS),
         i = 0;
-        while(i < keys.length){
-            if(weaponKey === keys[i]){
+        while (i < keys.length) {
+            if (weaponKey === keys[i]) {
                 break;
             }
             i += 1;
@@ -481,8 +489,8 @@
     };
 
     // player click
-    api.playerClick = function(game, pos, e){
-        if(!game.holdFire){
+    api.playerClick = function (game, pos, e) {
+        if (!game.holdFire) {
             // spawn a blast
             Clucker.poolMod.spawn(game.blasts, sm, {
                 pos: pos,
