@@ -20,19 +20,23 @@
     var COOKED_TYPES = [
         {
             desc: 'Drumstick',
-            points: 10
+            points: 70,
+            price: 1
         },
         {
             desc: 'Rotisserie',
-            points: 10
+            points: 20,
+            price: 2
         },
         {
             desc: 'Sandwich',
-            points: 10
+            points: 8,
+            price: 6
         },
         {
             desc: 'Over Rice',
-            points: 10
+            points: 2,
+            price: 15
         }
     ];
 
