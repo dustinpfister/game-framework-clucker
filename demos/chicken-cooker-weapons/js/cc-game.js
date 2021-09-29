@@ -1,6 +1,37 @@
 
 (function (api) {
 
+    var WEAPONS = {
+        frying_pan: {
+            key: 'frying_pan',
+            blastType: 'singleHit',
+            maxBlastRadius: 8,
+            damage: [2, 7]
+        },
+        rocket: {
+            key: 'rocket',
+            blastType: 'explosion',
+            maxBlastRadius: 225,
+            damage: [2, 9]
+        }
+    };
+
+    // cooked Types
+    var COOKED_TYPES = {
+        {
+            desc: 'Drumstick'
+        },
+        {
+            desc: 'Rotisserie'
+        },
+        {
+            desc: 'Sandwich'
+        },
+        {
+            desc: 'Over Rice'
+        }
+    };
+
     /********* ********** ********** **********
     HELPERS
      ********** ********** ********** *********/
@@ -259,21 +290,6 @@
     /********* ********** ********** **********
     BLASTS POOL
      ********** ********** ********** *********/
-
-    var WEAPONS = {
-        frying_pan: {
-            key: 'frying_pan',
-            blastType: 'singleHit',
-            maxBlastRadius: 8,
-            damage: [2, 7]
-        },
-        rocket: {
-            key: 'rocket',
-            blastType: 'explosion',
-            maxBlastRadius: 225,
-            damage: [2, 9]
-        }
-    };
 
     // get damage
     var getDamage = function (chk, blast) {
