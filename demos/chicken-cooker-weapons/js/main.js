@@ -33,6 +33,22 @@ sm.CHICKENS_CELL_SIZE = 32; // this will need to be adjusted when using a higher
 
 sm.game = gameMod.create({}, sm);
 
+// HELPERS
+
+// create a standard back button for a state
+var createBackButton = function (toStateKey) {
+    return {
+        x: 16,
+        y: 16,
+        w: 64,
+        h: 64,
+        desc: 'Back',
+        onClick: function (e, pos, sm, button) {
+            Clucker.gameFrame.smSetState(sm, toStateKey);
+        }
+    }
+};
+
 // simple init state that will just be called once after load state
 Clucker.gameFrame.smPushState(sm, {
     name: 'init',
@@ -174,16 +190,7 @@ Clucker.gameFrame.smPushState(sm, {
                 sm.game.holdFire = true;
             }
         },
-        back: {
-            x: 16,
-            y: 16,
-            w: 64,
-            h: 64,
-            desc: 'back',
-            onClick: function (e, pos, sm, button) {
-                Clucker.gameFrame.smSetState(sm, 'mainMenu');
-            }
-        }
+        back: createBackButton('mainMenu')
     },
     start: function (sm, canvasMod) {},
     update: function (sm, secs) {
