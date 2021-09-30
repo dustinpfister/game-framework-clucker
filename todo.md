@@ -30,6 +30,17 @@
 * start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
+## (  ) - 0.5.34 - chicken-cooker-weapons: chick hp reduction upgrade
+* get the chick hp reduction upgrade working
+
+## (  ) - 0.5.33 - chicken-cooker-weapons: Chickens Level Up
+* chickens level up with CPM value
+
+## (  ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
+* get the Global Cooked Chicken value upgrade working
+* make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
+* use new minor text value to display price of an upgrade, the current effect value, and the current level over max
+
 ## ( done 09/30/2021 ) - 0.5.31 - chicken-cooker-weapons: upgrades menu strated
 * (done) Start an upgrades menu
 * (done) The colection of upgrades needs to be part of gameMod
