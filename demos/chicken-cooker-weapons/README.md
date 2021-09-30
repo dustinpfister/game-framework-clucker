@@ -37,7 +37,7 @@ I just need to keep working on demos like this for the sake of finding out what 
 
 ### Fixed a Bug with the XP system in utils ( 0.5.31 )
 
-When using the XP system for the first time when working out some upgrades for this demo I found a bug in the XP System of the utils module. The cause of the bug was just a few carless mistakes when calling some internal methods, and not passing a delta next value when doing so.
+When using the XP system for the first time when working out some upgrades for this demo I found a bug in the XP System of the utils module. The cause of the bug was just a few careless mistakes when calling some internal methods, and not passing a delta next value when doing so.
 
 ```js
 // Basic experience point system methods
