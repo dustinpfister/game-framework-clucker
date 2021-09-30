@@ -33,8 +33,10 @@
 ## () - 0.5.31 - chicken-cooker-weapons: upgrades menu
 * (done) Start an upgrades menu
 * (done) The colection of upgrades needs to be part of gameMod
-* fix bug with xp system
+* (done) fix bug with xp system
+
 * I will need a game.upgrades propery that will be used to render upgrades in the upgrades menu
+
 * Use the XP system in utils to figure out prices
 * Start with a Global Cooked Chicken value upgrade
 
