@@ -445,6 +445,11 @@
                 key: 'global_food_value',
                 desc: 'Global Food Values',
                 levelObj: Clucker.utils.XP.parseByLevel(2, 100, 500)
+            },
+            chicken_hp: {
+                key: 'chicken_hp',
+                desc: 'Reduce Chicken HP',
+                levelObj: Clucker.utils.XP.parseByLevel(2, 100, 500)
             }
         };
     };
@@ -480,7 +485,7 @@
             }
         };
 
-console.log(game);
+console.log(game.upgrades)
 
         // set cooked chicken per values for first time
         setCookedChickenPerValues(game);

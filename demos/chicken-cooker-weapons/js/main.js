@@ -32,9 +32,6 @@ sm.CHICKENS_SIZE = 64; // the scaled size of chickens
 sm.CHICKENS_CELL_SIZE = 32; // this will need to be adjusted when using a higher res sprite sheet
 
 
-console.log( Clucker.utils.XP.parseByLevel(18, 100, 500) );
-
-
 // HELPERS
 
 // create a standard back button for a state
@@ -66,6 +63,24 @@ var createToGameButton = function () {
     };
 };
 
+// create upgrade buttons
+var createUpgradeButtons = function(sm, upgradeKey, upgrades){
+    var state = sm.states[upgradeKey];
+    Object.keys(upgrades).forEach(function(upgradeKey, i){
+        var upgradeObj = upgrades[upgradeKey];
+        state.buttons['upgrade_' + upgradeKey] = {
+            x: 32 + (128 + 32) * i,
+            y: 128,
+            w: 128,
+            h: 64,
+            desc: upgradeObj.desc,
+            onClick: function (e, pos, sm, button) {
+                console.log('upgrade clicked');
+            }
+        };
+    });
+};
+
 // simple init state that will just be called once after load state
 Clucker.gameFrame.smPushState(sm, {
     name: 'init',
@@ -78,6 +93,11 @@ Clucker.gameFrame.smPushState(sm, {
         }, sm);
         // set button desc for first time
         sm.states.gameTime.buttons.weapon.desc = sm.game.currentWeapon;
+
+// create upgrade buttons for game.upgrades
+createUpgradeButtons(sm, 'upgrades', sm.game.upgrades);
+
+
         // create sm.funFacts
         sm.funFacts = funFactsMod.create(sm);
         // create chicken sprite sheets

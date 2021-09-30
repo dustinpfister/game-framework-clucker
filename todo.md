@@ -30,14 +30,14 @@
 * start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
-## () - 0.5.31 - chicken-cooker-weapons: upgrades menu
+## () - 0.5.31 - chicken-cooker-weapons: upgrades menu strated
 * (done) Start an upgrades menu
 * (done) The colection of upgrades needs to be part of gameMod
 * (done) fix bug with xp system
 * (done) while I am at it I added utils.deepClone, utils.traverse, and utils.formatNumber methods to new 0.5.31 build
-* I will need a game.upgrades propery that will be used to render upgrades in the upgrades menu
-
-* Use the XP system in utils to figure out prices
+* (done) I will need a game.upgrades propery that will be used to render upgrades in the upgrades menu
+* (done) Use the XP system in utils to figure out prices
+* Create Buttons for upgrades helper in main.js
 * Start with a Global Cooked Chicken value upgrade
 
 ## ( done 09/29/2021 ) - 0.5.30 - chicken-cooker-weapons: new system for 'cooked' chickens
