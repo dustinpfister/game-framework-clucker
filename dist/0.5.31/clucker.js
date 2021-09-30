@@ -40,8 +40,17 @@ utils.mod = function (x, m) {
     return (x % m + m) % m;
 };
 
-
-
+// format money method
+utils.formatNumber = function(number){
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        // These options are needed to round to whole numbers if that's what you want.
+        minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        maximumFractionDigits: 0 // (causes 2500.99 to be printed as $2,501)
+    });
+    return formatter.format(number); /* $2,500.00 */
+};
 
 /********* ********** ********** *********/
 //  TEXT
@@ -105,9 +114,6 @@ utils.httpPNG = function(opt){
             image.src = imageURL;
             // need to do an unload for this
             image.addEventListener('load', function(){
-				
-				//console.log(image);
-				
                 opt.onDone.call(xhr, image, xhr);
             });
         },
@@ -200,7 +206,87 @@ utils.logOnce = (function () {
     };
 }
     ());
-var poolMod = (function () {
+
+/********* ********** ********** *********/
+//  OBJECTS
+/********* ********** ********** *********/
+
+// a deep clone method that should work in most situations
+utils.deepClone = (function () {
+    // forInstance methods supporting Date, Array, and Object
+    var forInstance = {
+        Date: function (val, key) {
+            return new Date(val.getTime());
+        },
+        Array: function (val, key) {
+            // deep clone the object, and return as array
+            var obj = utils.deepClone(val);
+            obj.length = Object.keys(obj).length;
+            return Array.from(obj);
+        },
+        Object: function (val, key) {
+            return utils.deepClone(val);
+        }
+    };
+    // default forRecursive
+    var forRecursive = function (cloneObj, sourceObj, sourceKey) {
+        return cloneObj;
+    };
+    // default method for unsupported types
+    var forUnsupported = function (cloneObj, sourceObj, sourceKey) {
+        // not supported? Just ref the object,
+        // and hope for the best then
+        return sourceObj[sourceKey];
+    };
+    // return deep clone method
+    return function (obj, opt) {
+        var clone = {},
+        conName,
+        forIMethod; // clone is a new object
+        opt = opt || {};
+        opt.forInstance = opt.forInstance || {};
+        opt.forRecursive = opt.forRecursive || forRecursive;
+        opt.forUnsupported = opt.forUnsupported || forUnsupported;
+        for (var i in obj) {
+            // if the type is object and not null
+            if (typeof(obj[i]) == "object" && obj[i] != null) {
+                // recursive check
+                if (obj[i] === obj) {
+                    clone[i] = opt.forRecursive(clone, obj, i);
+                } else {
+                    // if the constructor is supported, clone it
+                    conName = obj[i].constructor.name;
+                    forIMethod = opt.forInstance[conName] || forInstance[conName];
+                    if (forIMethod) {
+                        clone[i] = forIMethod(obj[i], i);
+                    } else {
+                        clone[i] = opt.forUnsupported(clone, obj, i);
+                    }
+                }
+            } else {
+                // should be a primitive so just assign
+                clone[i] = obj[i];
+            }
+        }
+        return clone;
+    };
+}
+    ());
+
+// traverse an object
+utils.traverse = function (obj, forKey, level) {
+    level = level || 1;
+    for (var i in obj) {
+        // call forKey for every key found
+        forKey.call(obj[i], obj[i], i, typeof obj[i], level, obj);
+        // call utils.traverse recursively if type is object and not null
+        if (typeof obj[i] === 'object' && obj[i] != null) {
+            nextLevel = level + 1;
+            utils.traverse(obj[i], forKey, nextLevel);
+        }
+    }
+    return null;
+};var poolMod = (function () {
     // Public API
     var api = {};
     // get next inactive object in the given pool
