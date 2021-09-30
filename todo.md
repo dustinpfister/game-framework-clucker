@@ -1,9 +1,11 @@
 # game-framework-clucker todo list
 
 
-## (  ) - 0.6.0 - Clucker r6 released
+## (  ) - 0.6.0 - Clucker r6 - started Grid Module
+* Start a new grid module for clucker.js
+* Start a grid-basic demo
 * update readme.
-* create a /dist/clucker.js and clucker.min.js at this state
+* create a /dist/0.6.0/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
 ## () - 0.5.x - chicken-cooker-weapons: new system for images
