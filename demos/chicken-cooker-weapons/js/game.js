@@ -271,6 +271,16 @@
     CREATE METHOD
      ********** ********** ********** *********/
 
+    var createUpgradesCollection = function(opt){
+        return {
+            global_food_value: {
+                key: 'global_food_value',
+                desc: 'Global Food Values',
+                levelObj: parseByLevel(opt.global_food_value, 30, 500)
+            }
+        };
+    };
+
     // create game state object
     api.create = function (opt, sm) {
         opt = opt || {};

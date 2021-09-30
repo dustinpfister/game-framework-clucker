@@ -31,12 +31,11 @@
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
 ## () - 0.5.31 - chicken-cooker-weapons: upgrades menu
-* Start an upgrades menu
-* Global cooked chicken value upgrade
-* Global weapon damage upgrade
-* Probability of happening upgrades for each cooked chicken type
-* Value upgrades for each cooked chicken type
-* damage upgrades for each weapon
+* (done) Start an upgrades menu
+* The colection of upgrades needs to be part of gameMod
+* I will need a game.upgrades propery that will be used to render upgrades in the upgrades menu
+* Use the XP system in utils to figure out prices
+* Start with a Global Cooked Chicken value upgrade
 
 ## ( done 09/29/2021 ) - 0.5.30 - chicken-cooker-weapons: new system for 'cooked' chickens
 * (done) I am going to want a COOKED-TYPES const in cc-game.js

@@ -438,12 +438,24 @@
     CREATE METHOD
      ********** ********** ********** *********/
 
+    var createUpgradesCollection = function(opt){
+        opt = opt || {};
+        return {
+            global_food_value: {
+                key: 'global_food_value',
+                desc: 'Global Food Values',
+                levelObj: Clucker.utils.XP.parseByLevel(opt.global_food_value || 1, 30, 500)
+            }
+        };
+    };
+
     // create game state object
     api.create = function (opt, sm) {
         opt = opt || {};
         var game = {
             score: 0,
             money: 0,
+            upgrades: createUpgradesCollection(opt.upgrades),
             WEAPONS: WEAPONS,
             COOKED_TYPES: COOKED_TYPES,
             currentWeapon: 'frying_pan',
@@ -467,6 +479,9 @@
                 currentMaxActive: sm.CHICKENS_MIN_ACTIVE // the current max to allow
             }
         };
+
+console.log(game);
+
         // set cooked chicken per values for first time
         setCookedChickenPerValues(game);
         // chickens pool
