@@ -16,7 +16,7 @@ So then some points about this demo over the others would be:
 
 * the player can now choose between two or more weapons
 * chickens now have hit point values, they do not just cook when they are in a blast area but take damage
-* cooked chicken types not have differing probabilities of happening
+* cooked chicken types now have differing probabilities of happening
 * there is now a money value in place of score
 * various types of cooked chicken have various money values
 * there is a main menu that can be used to enter other menus
