@@ -1,5 +1,14 @@
 # game-framework-clucker todo list
 
+## (  ) - 0.6.2 - start a chicken-cooker-grid demo
+* start the next chicken-cooker demo based off of chicken-cooker-weapons
+* have a grid for the area where the chickens go
+* simular system whe it comes to starting position and target locations but now we are talking grid tiles
+* start a new background system that is makes use of a sprite sheet for tiles
+
+## (  ) - 0.6.1 - Path detection
+* add a path detection feature for the grid module
+* start a grid-path-detection demo
 
 ## (  ) - 0.6.0 - Clucker r6 - started Grid Module
 * Start a new grid module for clucker.js
