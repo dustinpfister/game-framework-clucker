@@ -10,7 +10,117 @@ chicken-cooker-sheets => chicken-cooker-fun-facts
 chicken-cooker-fun-facts => chicken-cooker-weapons
 ```
 
-This time around as the name suggests I will be adding a few options when it comes to inflicting damage to the chickens. Speaking of damage I will also be adding hit point values to the chickens also of course. At this point I think I should add a number of other features while I am at it in an effort to continue turning this demo into something that is starting to look like a final product of some kind. Also I just need to keep working on demos like this for the sake of finding out what more needs to be integrated into the core of the framework.
+This time around as the name suggests I will be adding a few options when it comes to inflicting damage to the chickens. Speaking of damage I will also be adding hit point values to the chickens also of course. At this point I think I should add a number of other features while I am at it in an effort to continue turning this demo into something that is starting to look like a final product of some kind.
+
+So then some points about this demo over the others would be:
+
+* the player can now choose between two or more weapons
+* chickens now have hit point values, they do not just cook when they are in a blast area but take damage
+* cooked chicken types not have differing probabilities of happening
+* there is now a money value in place of score
+* various types of cooked chicken have various money values
+* there is a main menu that can be used to enter other menus
+* there is a stats menu that will be used to display various stats about the game
+* there is an upgrade menu that can be used to buy upgrades
+
+I am still working on this one as of this writing so some additional things are planed:
+
+* I will want to have chickens level up
+* when chickens level up the max hp values will go up
+* a working upgrade for reducing hpMax as chickens level up
+* a working upgrade for cooked chicken values
+* working weapons upgrades
+
+## New features and changes to clucker while working on chicken-cooker-weapons
+
+I just need to keep working on demos like this for the sake of finding out what more needs to be integrated into the core of the framework. As there is still a great deal of basic stuff that is missing that I think a game framework should have. Anyway in this section I will be going over some of the features and changes made to clucker that where a result of working on this demo. When I started with this one I was using Clucker 0.5.25, and from there I made a 0.5.31 thus far while working on this. At the time of this writing this is still an active demo.
+
+### Fixed a Bug with the XP system in utils ( 0.5.31 )
+
+When using the XP system for the first time when working out some upgrades for this demo I found a bug in the XP System of the utils module. The cause of the bug was just a few carless mistakes when calling some internal methods, and not passing a delta next value when doing so.
+
+```js
+// Basic experience point system methods
+utils.XP = (function () {
+    // default values
+    var default_deltaNext = 50,
+    defualt_cap = 100;
+    // get level with given xp
+    var getLevel = function (xp, deltaNext) {
+        deltaNext = deltaNext === undefined ? default_deltaNext : deltaNext;
+        return (1 + Math.sqrt(1 + 8 * xp / deltaNext)) / 2;
+    };
+    // get exp to the given level with given current_level and xp
+    var getXP = function (level, deltaNext) {
+        deltaNext = deltaNext === undefined ? default_deltaNext : deltaNext;
+        return ((Math.pow(level, 2) - level) * deltaNext) / 2;
+    };
+    // parse a levelObj by XP
+    var parseByXP = function (xp, cap, deltaNext) {
+        //cap = cap === undefined ? default_cap : cap;
+        var l = getLevel(xp, deltaNext);
+        l = l > cap ? cap : l;
+        var level = Math.floor(l),
+        forNext = getXP(level + 1);
+        return {
+            level: level,
+            levelFrac: l,
+            per: l % 1,
+            xp: xp,
+            forNext: l === cap ? Infinity : forNext,
+            toNext: l === cap ? Infinity : forNext - xp
+        };
+    };
+    return {
+        // use getXP method and then pass that to parseXP for utils.XP.parseByLevel
+        parseByLevel: function (l, cap, deltaNext) {
+            return parseByXP(getXP(l, deltaNext), cap, deltaNext);
+        },
+        // can just directly use parseByXP for utils.XP.parseByXP
+        parseByXP: parseByXP
+    };
+}
+    ());
+```
+
+### Format number utils method ( 0.5.31 )
+
+While I was fixing the bug I thought I should also expand the utils module with some additional methods including one that can be used to format a number that is a money value.
+
+```
+// format money method
+utils.formatNumber = function(number){
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        // These options are needed to round to whole numbers if that's what you want.
+        minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        maximumFractionDigits: 0 // (causes 2500.99 to be printed as $2,501)
+    });
+    return formatter.format(number); /* $2,500.00 */
+};
+```
+
+### Deep Clone and traverse methods ( 0.5.31 )
+
+On top of the format number method I also added some object methods for deep cloning and traversing an object.
+
+```
+// traverse an object
+utils.traverse = function (obj, forKey, level) {
+    level = level || 1;
+    for (var i in obj) {
+        // call forKey for every key found
+        forKey.call(obj[i], obj[i], i, typeof obj[i], level, obj);
+        // call utils.traverse recursively if type is object and not null
+        if (typeof obj[i] === 'object' && obj[i] != null) {
+            nextLevel = level + 1;
+            utils.traverse(obj[i], forKey, nextLevel);
+        }
+    }
+    return null;
+};
+```
 
 ## New features for chicken-cooker-weapons
 
@@ -146,4 +256,30 @@ Up until now the game was just about racking up a simple score where each chicke
         }
         return i; //Math.floor(Math.random() * 4);
     };
+```
+
+## Upgrades state, and create upgrade buttons
+
+On top of weapons I have also started working on an upgrade state, and other various things to have such a system.
+
+```
+// create upgrade buttons
+var createUpgradeButtons = function(sm, upgradeKey, upgrades){
+    var state = sm.states[upgradeKey];
+    Object.keys(upgrades).forEach(function(upgradeKey, i){
+        var upgradeObj = upgrades[upgradeKey];
+        state.buttons['upgrade_' + upgradeKey] = {
+            x: 32 + (128 + 32) * i,
+            y: 128,
+            w: 128,
+            h: 64,
+            upgradeKey: upgradeKey, 
+            desc: upgradeObj.desc,
+            onClick: function (e, pos, sm, button) {
+                var upgrade = sm.game.upgrades[button.upgradeKey];
+                console.log(upgrade.levelObj);
+            }
+        };
+    });
+};
 ```
