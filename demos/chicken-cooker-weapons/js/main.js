@@ -32,7 +32,7 @@ sm.CHICKENS_SIZE = 64; // the scaled size of chickens
 sm.CHICKENS_CELL_SIZE = 32; // this will need to be adjusted when using a higher res sprite sheet
 
 
-console.log( Clucker.utils.XP.parseByLevel(3, 50, 100) );
+console.log( Clucker.utils.XP.parseByLevel(18, 100, 500) );
 
 
 // HELPERS
