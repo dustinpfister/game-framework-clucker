@@ -444,7 +444,7 @@
             global_food_value: {
                 key: 'global_food_value',
                 desc: 'Global Food Values',
-                levelObj: Clucker.utils.XP.parseByLevel(opt.global_food_value || 1, 30, 500)
+                levelObj: Clucker.utils.XP.parseByLevel(2, 100, 500)
             }
         };
     };
