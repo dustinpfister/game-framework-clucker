@@ -73,9 +73,11 @@ var createUpgradeButtons = function(sm, upgradeKey, upgrades){
             y: 128,
             w: 128,
             h: 64,
+            upgradeKey: upgradeKey, 
             desc: upgradeObj.desc,
             onClick: function (e, pos, sm, button) {
-                console.log('upgrade clicked');
+                var upgrade = sm.game.upgrades[button.upgradeKey];
+                console.log(upgrade);
             }
         };
     });
