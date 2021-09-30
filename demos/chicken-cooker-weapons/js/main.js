@@ -153,13 +153,23 @@ Clucker.gameFrame.smPushState(sm, {
     buttons: {
         to_game: createToGameButton(),
         stats: {
-            x: 16,
-            y: 128,
-            w: 64,
-            h: 64,
+            x: 320 - 128 - 32,
+            y: 240 - 64,
+            w: 128,
+            h: 128,
             desc: 'Stats',
             onClick: function (e, pos, sm, button) {
                 Clucker.gameFrame.smSetState(sm, 'stats');
+            }
+        },
+        upgrades: {
+            x: 320 + 32,
+            y: 240 - 64,
+            w: 128,
+            h: 128,
+            desc: 'Upgrades',
+            onClick: function (e, pos, sm, button) {
+                Clucker.gameFrame.smSetState(sm, 'upgrades');
             }
         }
     },
@@ -174,11 +184,6 @@ Clucker.gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'pool-cc', 1, sm);
         // buttons
         canvasMod.draw(layers, 'stateButtons', 1, sm);
-    },
-    events: {
-        pointerStart: function (e, pos, sm) {},
-        pointerMove: function (e, pos, sm) {},
-        pointerEnd: function (e, pos, sm) {}
     }
 });
 
@@ -214,11 +219,29 @@ Clucker.gameFrame.smPushState(sm, {
         });
         // buttons
         canvasMod.draw(layers, 'stateButtons', 1, sm);
+    }
+});
+
+// a stats state
+Clucker.gameFrame.smPushState(sm, {
+    name: 'upgrades',
+    buttons: {
+        to_game: createToGameButton(),
+        back: createBackButton('mainMenu')
     },
-    events: {
-        pointerStart: function (e, pos, sm) {},
-        pointerMove: function (e, pos, sm) {},
-        pointerEnd: function (e, pos, sm) {}
+    start: function (sm, canvasMod) {},
+    update: function (sm, secs) {
+        gameMod.update(sm.game, sm, secs);
+    },
+    draw: function (sm, layers, canvasMod) {
+        // clear
+        canvasMod.draw(layers, 'clear', 1);
+        // pools
+        canvasMod.draw(layers, 'pool-cc', 1, sm);
+        canvasMod.draw(layers, 'background', 1, 'rgba(0,0,0,0.4)')
+
+        // buttons
+        canvasMod.draw(layers, 'stateButtons', 1, sm);
     }
 });
 
