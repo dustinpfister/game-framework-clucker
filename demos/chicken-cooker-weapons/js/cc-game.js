@@ -41,6 +41,33 @@
         }
     ];
 
+    // UPGRADES
+    var UPGRADES = {
+        global_food_value: {
+            key: '',
+            desc: 'Global Food Values',
+            deltaNext: 10,
+            cap: 100,
+            applyToState: function(game, upgrade){
+                console.log('apply to state for ' + upgrade.key);
+            }
+        },
+        chicken_hp: {
+            key: 'chicken_hp',
+            desc: 'Reduce Chicken HP',
+            deltaNext: 150,
+            cap: 100,
+            applyToState: function(game, upgrade){
+                console.log('apply to state for ' + upgrade.key);
+            }
+        }
+    };
+    // set keys
+    Object.keys(UPGRADES).forEach(function(key){
+        var upgrade = UPGRADES[key];
+        upgrade.key = key;
+    });
+
     /********* ********** ********** **********
     HELPERS
      ********** ********** ********** *********/
@@ -438,28 +465,7 @@
     CREATE METHOD
      ********** ********** ********** *********/
 
-    // UPGRADES
-    var UPGRADES = {
-        global_food_value: {
-            key: '',
-            desc: 'Global Food Values',
-            deltaNext: 10,
-            cap: 100
-        },
-        chicken_hp: {
-            key: 'chicken_hp',
-            desc: 'Reduce Chicken HP',
-            deltaNext: 150,
-            cap: 100
-        }
-    };
-    // set keys
-    Object.keys(UPGRADES).forEach(function(key){
-        var upgrade = UPGRADES[key];
-        upgrade.key = key;
-    });
-
-
+    // create upgrades collection helper
     var createUpgradesCollection = function(opt){
         opt = opt || {};
         var upgradeCol = {};
@@ -468,6 +474,14 @@
             upgrade.levelObj = Clucker.utils.XP.parseByLevel(opt[key] || 1, upgrade.cap, upgrade.deltaNext);
         });
         return upgradeCol;
+    };
+
+    // apply upgrades to state helper
+    var applyUpgradesToState = function(game){
+        Object.keys(game.upgrades).forEach(function(key){
+            var upgrade = game.upgrades[key];
+            upgrade.applyToState.call(game, game, upgrade);
+        });
     };
 
     // create game state object
@@ -501,7 +515,12 @@
             }
         };
 
+applyUpgradesToState(game);
+
+
 console.log(game.upgrades)
+
+
 
         // set cooked chicken per values for first time
         setCookedChickenPerValues(game);
