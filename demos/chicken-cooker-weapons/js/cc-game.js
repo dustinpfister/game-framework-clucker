@@ -309,7 +309,7 @@
         if (obj.data.state === 'cooked') {
             CPMCount(sm.game, 1);
             sm.game.score += 1;
-            var price = sm.game.COOKED_TYPES[obj.data.cellIndex].price;
+            var price = sm.game.cookedTypes[obj.data.cellIndex].price;
             sm.game.money += price;
             sm.game.money = Math.round(sm.game.money);
         };
@@ -356,10 +356,10 @@
 
     // set cooked chicken per values
     var setCookedChickenPerValues = function(game){
-        var totalPoints = game.COOKED_TYPES.reduce(function(acc, obj){
+        var totalPoints = game.cookedTypes.reduce(function(acc, obj){
             return acc + obj.points || 0;
         }, 0);
-        game.COOKED_TYPES = game.COOKED_TYPES.map(function(obj){
+        game.cookedTypes = game.cookedTypes.map(function(obj){
             obj.per = obj.points / totalPoints;
             return obj;
         });
@@ -370,9 +370,9 @@
         var roll = Math.random(),
         i = 0,
         per = 0,
-        len = game.COOKED_TYPES.length;
+        len = game.cookedTypes.length;
         while(i < len - 1){
-             per += game.COOKED_TYPES[i].per;
+             per += game.cookedTypes[i].per;
              if(roll < per){
                  break;
              }
