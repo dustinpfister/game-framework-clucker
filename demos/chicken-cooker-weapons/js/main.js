@@ -64,7 +64,7 @@ var createToGameButton = function () {
 };
 
 var getUpgradeDesc = function(upgradeObj){
-    return upgradeObj.desc + ' (' + upgradeObj.levelObj.level + ') ';
+    return upgradeObj.desc + ' (' + upgradeObj.levelObj.level + ') $' + upgradeObj.levelObj.forNext;
 };
 
 // create upgrade buttons
