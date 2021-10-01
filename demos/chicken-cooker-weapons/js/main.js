@@ -63,8 +63,8 @@ var createToGameButton = function () {
     };
 };
 
-var getUpgradeDesc = function(upgradeObj){
-    return upgradeObj.desc + ' (' + upgradeObj.levelObj.level + ') $' + upgradeObj.levelObj.forNext;
+var getUpgradeMinor = function(upgradeObj){
+    return '(' + upgradeObj.levelObj.level + ') $' + upgradeObj.levelObj.forNext;
 };
 
 // create upgrade buttons
@@ -78,12 +78,12 @@ var createUpgradeButtons = function(sm, upgradeKey, upgrades){
             w: 256,
             h: 64,
             upgradeKey: upgradeKey, 
-            desc: getUpgradeDesc(upgradeObj),
-            minor: 'foo',
+            desc: upgradeObj.desc,
+            minor: getUpgradeMinor(upgradeObj),
             descSize: 20,
             onClick: function (e, pos, sm, button) {
                 gameMod.buyUpgrade(sm.game, button.upgradeKey);
-                button.desc = getUpgradeDesc(sm.game.upgrades[button.upgradeKey]);
+                button.minor = getUpgradeMinor(sm.game.upgrades[button.upgradeKey]);
             }
         };
     });
