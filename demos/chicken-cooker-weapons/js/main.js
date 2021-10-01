@@ -83,6 +83,13 @@ var createUpgradeButtons = function(sm, upgradeKey, upgrades){
                 var upgrade = sm.game.upgrades[button.upgradeKey];
 
 console.log(sm.game.money);
+console.log(upgrade.levelObj.xp);
+
+if(sm.game.money >= upgrade.levelObj.forNext){
+    sm.game.money -= upgrade.levelObj.forNext;
+    var newLevel = upgrade.levelObj.level + 1;
+    upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, 100, 500)
+}
 
                 button.desc = getUpgradeDesc(upgrade);
                 console.log(upgrade.levelObj);
@@ -97,7 +104,7 @@ Clucker.gameFrame.smPushState(sm, {
     start: function (sm, canvasMod) {
         // create new game object
         sm.game = gameMod.create({
-            money: 500,
+            money: 1000,
             upgrades : {
                 global_food_value: 2
             }
