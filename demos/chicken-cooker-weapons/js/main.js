@@ -80,14 +80,8 @@ var createUpgradeButtons = function(sm, upgradeKey, upgrades){
             upgradeKey: upgradeKey, 
             desc: getUpgradeDesc(upgradeObj),
             onClick: function (e, pos, sm, button) {
-                var upgrade = sm.game.upgrades[button.upgradeKey];
-                if(sm.game.money >= upgrade.levelObj.forNext){
-                    sm.game.money -= upgrade.levelObj.forNext;
-                    var newLevel = upgrade.levelObj.level + 1;
-                    upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
-                }
-                button.desc = getUpgradeDesc(upgrade);
-                console.log(upgrade.levelObj);
+                gameMod.buyUpgrade(sm.game, button.upgradeKey);
+                button.desc = getUpgradeDesc(sm.game.upgrades[button.upgradeKey]);
             }
         };
     });

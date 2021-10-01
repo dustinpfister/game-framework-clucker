@@ -618,5 +618,15 @@ console.log(game.upgrades)
         game.holdFire = false;
     };
 
+    api.buyUpgrade = function(game, key){
+        var upgrade = game.upgrades[key];
+        if(game.money >= upgrade.levelObj.forNext){
+            game.money -= upgrade.levelObj.forNext;
+            var newLevel = upgrade.levelObj.level + 1;
+            upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
+        }
+        console.log(upgrade.levelObj);
+    };
+
 }
     (this['gameMod'] = {}));
