@@ -48,8 +48,8 @@
             desc: 'Global Food Values',
             deltaNext: 10,
             cap: 100,
-            applyToState: function(game, upgrade){
-                console.log('apply to state for ' + upgrade.key);
+            applyToState: function(game, upgrade, level){
+                console.log('apply to state for ' + upgrade.key + ' at level ' + level);
             }
         },
         chicken_hp: {
@@ -57,8 +57,8 @@
             desc: 'Reduce Chicken HP',
             deltaNext: 150,
             cap: 100,
-            applyToState: function(game, upgrade){
-                console.log('apply to state for ' + upgrade.key);
+            applyToState: function(game, upgrade, level){
+                console.log('apply to state for ' + upgrade.key + ' at level ' + level);
             }
         }
     };
@@ -480,7 +480,7 @@
     var applyUpgradesToState = function(game){
         Object.keys(game.upgrades).forEach(function(key){
             var upgrade = game.upgrades[key];
-            upgrade.applyToState.call(game, game, upgrade);
+            upgrade.applyToState.call(game, game, upgrade, upgrade.levelObj.level);
         });
     };
 
@@ -514,13 +514,8 @@
                 currentMaxActive: sm.CHICKENS_MIN_ACTIVE // the current max to allow
             }
         };
-
-applyUpgradesToState(game);
-
-
-console.log(game.upgrades)
-
-
+        // apply upgrades for first time
+        applyUpgradesToState(game);
 
         // set cooked chicken per values for first time
         setCookedChickenPerValues(game);
@@ -618,6 +613,7 @@ console.log(game.upgrades)
         game.holdFire = false;
     };
 
+    // buy an upgrade
     api.buyUpgrade = function(game, key){
         var upgrade = game.upgrades[key];
         if(game.money >= upgrade.levelObj.forNext){
@@ -626,7 +622,6 @@ console.log(game.upgrades)
             upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
         }
         applyUpgradesToState(game);
-        console.log(upgrade.levelObj);
     };
 
 }
