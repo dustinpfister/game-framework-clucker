@@ -63,6 +63,10 @@ var createToGameButton = function () {
     };
 };
 
+var getUpgradeDesc = function(upgradeObj){
+    return upgradeObj.desc + ' (' + upgradeObj.levelObj.level + ') ';
+};
+
 // create upgrade buttons
 var createUpgradeButtons = function(sm, upgradeKey, upgrades){
     var state = sm.states[upgradeKey];
@@ -74,7 +78,7 @@ var createUpgradeButtons = function(sm, upgradeKey, upgrades){
             w: 128,
             h: 64,
             upgradeKey: upgradeKey, 
-            desc: upgradeObj.desc,
+            desc: getUpgradeDesc(upgradeObj), //upgradeObj.desc + ' (' + upgradeObj.levelObj.level + ') ',
             onClick: function (e, pos, sm, button) {
                 var upgrade = sm.game.upgrades[button.upgradeKey];
                 console.log(upgrade.levelObj);
