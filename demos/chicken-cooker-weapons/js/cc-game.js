@@ -444,7 +444,13 @@
             key: '',
             desc: 'Global Food Values',
             deltaNext: 50,
-            cap: 30
+            cap: 100
+        },
+        chicken_hp: {
+            key: 'chicken_hp',
+            desc: 'Reduce Chicken HP',
+            deltaNext: 150,
+            cap: 100
         }
     };
     // set keys
@@ -456,6 +462,13 @@
 
     var createUpgradesCollection = function(opt){
         opt = opt || {};
+        var upgradeCol = {};
+        Object.keys(UPGRADES).forEach(function(key){
+            var upgrade = upgradeCol[key] = Object.assign({}, UPGRADES[key]);
+            upgrade.levelObj = Clucker.utils.XP.parseByLevel(opt[key] || 1, 100, 50);
+        });
+        return upgradeCol;
+/*
         return {
             global_food_value: {
                 key: 'global_food_value',
@@ -468,6 +481,7 @@
                 levelObj: Clucker.utils.XP.parseByLevel(opt.chicken_hp || 1, 100, 50)
             }
         };
+*/
     };
 
     // create game state object
