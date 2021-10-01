@@ -41,7 +41,8 @@
 * use new minor text value to display price of an upgrade, the current effect value, and the current level over max
 
 ## (  ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
-* for now make the price and current level part of the desc of the button
+* (done) Make the current level part of the desc of the button
+* (done) can not set an amount of starting money by gameMod.create method option
 * get the Global Cooked Chicken value upgrade working
 
 ## ( done 09/30/2021 ) - 0.5.31 - chicken-cooker-weapons: upgrades menu strated

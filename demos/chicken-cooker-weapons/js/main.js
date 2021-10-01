@@ -81,6 +81,9 @@ var createUpgradeButtons = function(sm, upgradeKey, upgrades){
             desc: getUpgradeDesc(upgradeObj),
             onClick: function (e, pos, sm, button) {
                 var upgrade = sm.game.upgrades[button.upgradeKey];
+
+console.log(sm.game.money);
+
                 button.desc = getUpgradeDesc(upgrade);
                 console.log(upgrade.levelObj);
             }
@@ -94,6 +97,7 @@ Clucker.gameFrame.smPushState(sm, {
     start: function (sm, canvasMod) {
         // create new game object
         sm.game = gameMod.create({
+            money: 500,
             upgrades : {
                 global_food_value: 2
             }
@@ -117,7 +121,7 @@ createUpgradeButtons(sm, 'upgrades', sm.game.upgrades);
         // background
         sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
-        Clucker.gameFrame.smSetState(sm, 'gameTime');
+        Clucker.gameFrame.smSetState(sm, 'upgrades'); //'gameTime');
     }
 });
 

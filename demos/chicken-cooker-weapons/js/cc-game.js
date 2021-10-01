@@ -459,7 +459,7 @@
         opt = opt || {};
         var game = {
             score: 0,
-            money: 0,
+            money: opt.money === undefined ? 0 : opt.money,
             upgrades: createUpgradesCollection(opt.upgrades),
             WEAPONS: WEAPONS,
             COOKED_TYPES: COOKED_TYPES,
