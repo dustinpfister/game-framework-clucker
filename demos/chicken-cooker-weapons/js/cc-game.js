@@ -493,6 +493,11 @@
             upgrades: createUpgradesCollection(opt.upgrades),
             WEAPONS: WEAPONS,
             COOKED_TYPES: COOKED_TYPES,
+
+            cookedTypes: COOKED_TYPES.map(function(el){
+                return Object.assign({}, el);
+            }), 
+
             currentWeapon: 'frying_pan',
             holdFire: false,
             cpm: { // cooked per minute
@@ -514,6 +519,9 @@
                 currentMaxActive: sm.CHICKENS_MIN_ACTIVE // the current max to allow
             }
         };
+
+console.log(game.cookedTypes);
+
         // apply upgrades for first time
         applyUpgradesToState(game);
 
