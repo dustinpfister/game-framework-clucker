@@ -22,21 +22,26 @@
         {
             desc: 'Drumstick',
             points: 70,
+            pricePerLevelGlobal: 1,
             price: 1
         },
         {
             desc: 'Rotisserie',
             points: 20,
+            pricePerLevelGlobal: 2,
             price: 2
         },
         {
             desc: 'Sandwich',
             points: 8,
+            startPrice: 6,
+            pricePerLevelGlobal: 6,
             price: 6
         },
         {
             desc: 'Over Rice',
             points: 2,
+            pricePerLevelGlobal: 15,
             price: 15
         }
     ];
@@ -50,6 +55,10 @@
             cap: 100,
             applyToState: function(game, upgrade, level){
                 console.log('apply to state for ' + upgrade.key + ' at level ' + level);
+                game.cookedTypes.forEach(function(cooked){
+                  cooked.price = cooked.pricePerLevelGlobal * level;
+                });
+                console.log(game.cookedTypes);
             }
         },
         chicken_hp: {
@@ -492,12 +501,10 @@
             money: opt.money === undefined ? 0 : opt.money,
             upgrades: createUpgradesCollection(opt.upgrades),
             WEAPONS: WEAPONS,
-            COOKED_TYPES: COOKED_TYPES,
-
-            cookedTypes: COOKED_TYPES.map(function(el){
+            COOKED_TYPES: COOKED_TYPES, // ref to const
+            cookedTypes: COOKED_TYPES.map(function(el){ // game.cookedTypes is subject to mutation
                 return Object.assign({}, el);
             }), 
-
             currentWeapon: 'frying_pan',
             holdFire: false,
             cpm: { // cooked per minute
@@ -519,8 +526,6 @@
                 currentMaxActive: sm.CHICKENS_MIN_ACTIVE // the current max to allow
             }
         };
-
-console.log(game.cookedTypes);
 
         // apply upgrades for first time
         applyUpgradesToState(game);
