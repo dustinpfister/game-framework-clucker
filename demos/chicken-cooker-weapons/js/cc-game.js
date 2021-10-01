@@ -438,6 +438,22 @@
     CREATE METHOD
      ********** ********** ********** *********/
 
+    // UPGRADES
+    var UPGRADES = {
+        global_food_value: {
+            key: '',
+            desc: 'Global Food Values',
+            deltaNext: 50,
+            cap: 30
+        }
+    };
+    // set keys
+    Object.keys(UPGRADES).forEach(function(key){
+        var upgrade = UPGRADES[key];
+        upgrade.key = key;
+    });
+
+
     var createUpgradesCollection = function(opt){
         opt = opt || {};
         return {
