@@ -36,9 +36,10 @@
 ## (  ) - 0.6.2 - chicken-cooker-weapons: Chickens Level Up
 * chickens level up with CPM value
 
-## (  ) - 0.6.0 - Starting Buttons
+## (  ) - 0.6.0 - New features for Buttons
 * make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
-* use new minor text value to display price of an upgrade, the current effect value, and the current level over max
+* have control over font size of desc and minor
+* use new minor text value to display price of an upgrade, and the current level over max in chicken-cooker-weapons
 
 ## ( done 10/01/2021 ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
 * (done) Make the current level part of the desc of the button
