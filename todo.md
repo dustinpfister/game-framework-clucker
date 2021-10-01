@@ -40,14 +40,14 @@
 * make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
 * use new minor text value to display price of an upgrade, the current effect value, and the current level over max
 
-## (  ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
+## ( done 10/01/2021 ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
 * (done) Make the current level part of the desc of the button
 * (done) can not set an amount of starting money by gameMod.create method option
 * (done) fix bug with forNext prop of XP system for new 0.5.32 build
 * (done) new UPGRADES Const in gameMod
-* use a gameMod.buyUpgrade method for the onclick method of an upgrade button
-* have an applyToState method for each upgrade object
-* get the Global Cooked Chicken value upgrade working
+* (done) use a gameMod.buyUpgrade method for the onclick method of an upgrade button
+* (done) have an applyToState method for each upgrade object
+* (done) get the Global Cooked Chicken value upgrade working
 
 ## ( done 09/30/2021 ) - 0.5.31 - chicken-cooker-weapons: upgrades menu strated
 * (done) Start an upgrades menu
