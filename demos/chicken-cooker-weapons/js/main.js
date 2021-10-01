@@ -84,7 +84,7 @@ var createUpgradeButtons = function(sm, upgradeKey, upgrades){
                 if(sm.game.money >= upgrade.levelObj.forNext){
                     sm.game.money -= upgrade.levelObj.forNext;
                     var newLevel = upgrade.levelObj.level + 1;
-                    upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, 100, 50);
+                    upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
                 }
                 button.desc = getUpgradeDesc(upgrade);
                 console.log(upgrade.levelObj);
