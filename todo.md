@@ -17,29 +17,28 @@
 * create a /dist/0.6.0/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
-## (  ) - 0.6.5 - chicken-cooker-weapons: new system for images
+## (  ) - 0.6.3 - chicken-cooker-weapons: new system for images
 * start a new system for chicken sheets that allows for more animations, and have all cells for a chicken in one sheet
 * reserve 0.png - 9.png for images other than chicken sheets
 * any unused images can just be blank place holder images for now if that works
 * first 10.png can be the first chicken type sheet, and 11 can be the second based off of current images
 * have an image for change weapons button
 
-## (  ) - 0.6.4 - /img root folder started
+## (  ) - 0.6.2 - /img root folder started
 * start a /img root folder that will contain images used in the various demos
 * start a /img/chicken-cooker/cc-128 folder for 'chicken-cooker' demo
 * start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
-## (  ) - 0.6.3 - chicken-cooker-weapons: chick hp reduction upgrade
-* get the chick hp reduction upgrade working
+## (  ) - 0.6.1 - start new Upgrades module for Clucker
+* start a new Clucker.upgrades module to help set up an upgrades state for a game
 
-## (  ) - 0.6.2 - chicken-cooker-weapons: Chickens Level Up
+## (  ) - 0.6.0 - New features for Buttons, and chicken-cooker-weapons: chicken levels
+* (done) make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
+* (done) have control over font size of desc and minor
+* (done) use new minor text value to display price of an upgrade, and the current level over max in chicken-cooker-weapons
 * chickens level up with CPM value
-
-## (  ) - 0.6.0 - New features for Buttons
-* make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
-* have control over font size of desc and minor
-* use new minor text value to display price of an upgrade, and the current level over max in chicken-cooker-weapons
+* get the chick hp reduction upgrade working
 
 ## ( done 10/01/2021 ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
 * (done) Make the current level part of the desc of the button
