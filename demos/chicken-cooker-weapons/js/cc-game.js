@@ -625,6 +625,7 @@ console.log(game.upgrades)
             var newLevel = upgrade.levelObj.level + 1;
             upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
         }
+        applyUpgradesToState(game);
         console.log(upgrade.levelObj);
     };
 
