@@ -88,7 +88,7 @@ console.log(upgrade.levelObj.xp);
 if(sm.game.money >= upgrade.levelObj.forNext){
     sm.game.money -= upgrade.levelObj.forNext;
     var newLevel = upgrade.levelObj.level + 1;
-    upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, 100, 500)
+    upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, 100, 50);
 }
 
                 button.desc = getUpgradeDesc(upgrade);

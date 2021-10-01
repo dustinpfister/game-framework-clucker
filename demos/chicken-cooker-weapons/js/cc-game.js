@@ -444,12 +444,12 @@
             global_food_value: {
                 key: 'global_food_value',
                 desc: 'Global Food Values',
-                levelObj: Clucker.utils.XP.parseByLevel(opt.global_food_value || 1, 100, 500)
+                levelObj: Clucker.utils.XP.parseByLevel(opt.global_food_value || 1, 100, 50)
             },
             chicken_hp: {
                 key: 'chicken_hp',
                 desc: 'Reduce Chicken HP',
-                levelObj: Clucker.utils.XP.parseByLevel(opt.chicken_hp || 1, 100, 500)
+                levelObj: Clucker.utils.XP.parseByLevel(opt.chicken_hp || 1, 100, 50)
             }
         };
     };
