@@ -1,45 +1,47 @@
 # game-framework-clucker todo list
 
-## (  ) - 0.6.2 - start a chicken-cooker-grid demo
+## (  ) - 0.7.2 - start a chicken-cooker-grid demo
 * start the next chicken-cooker demo based off of chicken-cooker-weapons
 * have a grid for the area where the chickens go
 * simular system whe it comes to starting position and target locations but now we are talking grid tiles
 * start a new background system that is makes use of a sprite sheet for tiles
 
-## (  ) - 0.6.1 - Path detection
+## (  ) - 0.7.1 - Path detection
 * add a path detection feature for the grid module
 * start a grid-path-detection demo
 
-## (  ) - 0.6.0 - Clucker r6 - started Grid Module
+## (  ) - 0.7.0 - Starting Grid Module
 * Start a new grid module for clucker.js
 * Start a grid-basic demo
 * update readme.
 * create a /dist/0.6.0/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
-## () - 0.5.x - chicken-cooker-weapons: new system for images
+## (  ) - 0.6.5 - chicken-cooker-weapons: new system for images
 * start a new system for chicken sheets that allows for more animations, and have all cells for a chicken in one sheet
 * reserve 0.png - 9.png for images other than chicken sheets
 * any unused images can just be blank place holder images for now if that works
 * first 10.png can be the first chicken type sheet, and 11 can be the second based off of current images
 * have an image for change weapons button
 
-## () - 0.5.x - /img root folder started
+## (  ) - 0.6.4 - /img root folder started
 * start a /img root folder that will contain images used in the various demos
 * start a /img/chicken-cooker/cc-128 folder for 'chicken-cooker' demo
 * start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
-## (  ) - 0.5.34 - chicken-cooker-weapons: chick hp reduction upgrade
+## (  ) - 0.6.3 - chicken-cooker-weapons: chick hp reduction upgrade
 * get the chick hp reduction upgrade working
 
-## (  ) - 0.5.33 - chicken-cooker-weapons: Chickens Level Up
+## (  ) - 0.6.2 - chicken-cooker-weapons: Chickens Level Up
 * chickens level up with CPM value
+
+## (  ) - 0.6.0 - Starting Buttons
+* make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
+* use new minor text value to display price of an upgrade, the current effect value, and the current level over max
 
 ## (  ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
 * get the Global Cooked Chicken value upgrade working
-* make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
-* use new minor text value to display price of an upgrade, the current effect value, and the current level over max
 
 ## ( done 09/30/2021 ) - 0.5.31 - chicken-cooker-weapons: upgrades menu strated
 * (done) Start an upgrades menu
