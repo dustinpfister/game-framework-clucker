@@ -79,6 +79,8 @@ var createUpgradeButtons = function(sm, upgradeKey, upgrades){
             h: 64,
             upgradeKey: upgradeKey, 
             desc: getUpgradeDesc(upgradeObj),
+            minor: 'foo',
+            descSize: 20,
             onClick: function (e, pos, sm, button) {
                 gameMod.buyUpgrade(sm.game, button.upgradeKey);
                 button.desc = getUpgradeDesc(sm.game.upgrades[button.upgradeKey]);
