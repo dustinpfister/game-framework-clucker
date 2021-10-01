@@ -73,24 +73,19 @@ var createUpgradeButtons = function(sm, upgradeKey, upgrades){
     Object.keys(upgrades).forEach(function(upgradeKey, i){
         var upgradeObj = upgrades[upgradeKey];
         state.buttons['upgrade_' + upgradeKey] = {
-            x: 32 + (128 + 32) * i,
-            y: 128,
-            w: 128,
+            x: 32,
+            y: 128 + (64 + 8) * i,
+            w: 256,
             h: 64,
             upgradeKey: upgradeKey, 
             desc: getUpgradeDesc(upgradeObj),
             onClick: function (e, pos, sm, button) {
                 var upgrade = sm.game.upgrades[button.upgradeKey];
-
-console.log(sm.game.money);
-console.log(upgrade.levelObj.xp);
-
-if(sm.game.money >= upgrade.levelObj.forNext){
-    sm.game.money -= upgrade.levelObj.forNext;
-    var newLevel = upgrade.levelObj.level + 1;
-    upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, 100, 50);
-}
-
+                if(sm.game.money >= upgrade.levelObj.forNext){
+                    sm.game.money -= upgrade.levelObj.forNext;
+                    var newLevel = upgrade.levelObj.level + 1;
+                    upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, 100, 50);
+                }
                 button.desc = getUpgradeDesc(upgrade);
                 console.log(upgrade.levelObj);
             }
