@@ -187,8 +187,6 @@
         obj.y = startPos.y;
         obj.w = sm.CHICKENS_SIZE;
         obj.h = sm.CHICKENS_SIZE;
-        // set speed
-        obj.pps = sm.CHICKENS_PPS_MIN + Math.round((sm.CHICKENS_PPS_MAX - sm.CHICKENS_PPS_MIN) * Math.random());
         // set first target
         obj.data.targetPos = getPosFromCenter(sm.layers[0].canvas, sm.CHICKENS_RADIUS, rndRadian());
         // set delay
@@ -209,6 +207,8 @@
         stat.hp = stat.hpMax;
         // set god mode to false
         obj.data.godMode = false;
+        // set speed
+        obj.pps = sm.CHICKENS_PPS_MIN + Math.round((sm.CHICKENS_PPS_MAX - sm.CHICKENS_PPS_MIN) * Math.random());
     };
     // update a chicken
     var chickenState = {};

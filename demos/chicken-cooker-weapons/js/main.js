@@ -103,8 +103,8 @@ Clucker.gameFrame.smPushState(sm, {
         // set button desc for first time
         sm.states.gameTime.buttons.weapon.desc = sm.game.currentWeapon;
 
-// create upgrade buttons for game.upgrades
-createUpgradeButtons(sm, 'upgrades', sm.game.upgrades);
+        // create upgrade buttons for game.upgrades
+        createUpgradeButtons(sm, 'upgrades', sm.game.upgrades);
 
 
         // create sm.funFacts
@@ -119,7 +119,7 @@ createUpgradeButtons(sm, 'upgrades', sm.game.upgrades);
         // background
         sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
-        Clucker.gameFrame.smSetState(sm, 'upgrades'); //'gameTime');
+        Clucker.gameFrame.smSetState(sm, 'gameTime');
     }
 });
 

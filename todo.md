@@ -37,7 +37,9 @@
 * (done) make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
 * (done) have control over font size of desc and minor
 * (done) use new minor text value to display price of an upgrade, and the current level over max in chicken-cooker-weapons
-* chickens level up with CPM value
+* have a game.chickLevel property
+* chickens level up with game.score value
+* have it so that game.chickLevel is used set set level and stats each time a chicken spawns
 * get the chick hp reduction upgrade working
 
 ## ( done 10/01/2021 ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
