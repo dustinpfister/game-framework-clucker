@@ -30,6 +30,10 @@
 * start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
+## () - 0.6.1 - Clucker.upgrades : create state method
+* use the Clucker upgrades create state method with chicken-cooker-weapons
+* have a main setChickenStats helper that will call a method for each chicken state effected by chick level
+
 ## ( done 10/02/2021 ) - 0.6.0 - New features for Buttons
 * (done) make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
 * (done) have control over font size of desc and minor
@@ -39,7 +43,6 @@
 * (done) have it so that game.chickLevel is used set set stats each time a chicken spawns
 * (done) get the chick hp reduction upgrade working
 * (done) start a new Clucker.upgrades module to help set up an upgrades state for a game
-* have a main setChickenStats helper that will call a method for each chicken state effected by chick level
 
 ## ( done 10/01/2021 ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
 * (done) Make the current level part of the desc of the button
