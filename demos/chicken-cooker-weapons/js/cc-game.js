@@ -54,11 +54,9 @@
             deltaNext: 10,
             cap: 100,
             applyToState: function(game, upgrade, level){
-                console.log('apply to state for ' + upgrade.key + ' at level ' + level);
                 game.cookedTypes.forEach(function(cooked){
                   cooked.price = cooked.pricePerLevelGlobal * level;
                 });
-                console.log(game.cookedTypes);
             }
         },
         chicken_hp: {
@@ -67,7 +65,11 @@
             deltaNext: 150,
             cap: 100,
             applyToState: function(game, upgrade, level){
-                console.log('apply to state for ' + upgrade.key + ' at level ' + level);
+                //console.log('apply to state for ' + upgrade.key + ' at level ' + level);
+                game.multipliers.chick_hp_reduction = 1 + 5 * ( level - 1 ) / 99;
+
+console.log( 100 / game.multipliers.chick_hp_reduction );
+
             }
         }
     };
@@ -525,6 +527,9 @@
                 counts: [],
                 avg: 0
             },
+            multipliers: {
+               chick_hp_reduction: 0
+            },
             stats: {
                 cookedTypes: COOKED_TYPES.map(function(){
                     return 0;
@@ -542,8 +547,6 @@
 
         // set chciken level for the first time
         setChickLevel(game);
-
-console.log(game);
 
         // apply upgrades for first time
         applyUpgradesToState(game);

@@ -32,14 +32,15 @@
 
 ## (  ) - 0.6.1 - start new Upgrades module for Clucker
 * start a new Clucker.upgrades module to help set up an upgrades state for a game
+* have a main setChickenStats helper that will call a method for each chicken state effected by chick level
 
 ## (  ) - 0.6.0 - New features for Buttons, and chicken-cooker-weapons: chicken levels
 * (done) make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
 * (done) have control over font size of desc and minor
 * (done) use new minor text value to display price of an upgrade, and the current level over max in chicken-cooker-weapons
-* have a game.chickLevel property
-* chickens level up with game.score value
-* have it so that game.chickLevel is used set set level and stats each time a chicken spawns
+* (done) have a game.chickLevel property
+* (done) chickens level up with game.score value
+* (done) have it so that game.chickLevel is used set set stats each time a chicken spawns
 * get the chick hp reduction upgrade working
 
 ## ( done 10/01/2021 ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working

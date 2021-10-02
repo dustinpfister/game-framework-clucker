@@ -95,7 +95,8 @@ Clucker.gameFrame.smPushState(sm, {
     start: function (sm, canvasMod) {
         // create new game object
         sm.game = gameMod.create({
-            money: 1000,
+            money: 0,
+            score: 0,
             upgrades : {
                 global_food_value: 2
             }
