@@ -41,7 +41,7 @@
 * (done) have a game.chickLevel property
 * (done) chickens level up with game.score value
 * (done) have it so that game.chickLevel is used set set stats each time a chicken spawns
-* get the chick hp reduction upgrade working
+* (done) get the chick hp reduction upgrade working
 
 ## ( done 10/01/2021 ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
 * (done) Make the current level part of the desc of the button
