@@ -108,6 +108,8 @@ Clucker.gameFrame.smPushState(sm, {
         // create upgrade buttons for game.upgrades
         createUpgradeButtons(sm, 'upgrades', sm.game.upgrades);
 
+// started a Clucker.upgrades module
+console.log(Clucker.upgrades);
 
         // create sm.funFacts
         sm.funFacts = funFactsMod.create(sm);
