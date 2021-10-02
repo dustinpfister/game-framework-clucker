@@ -83,7 +83,7 @@
 
     // set chicken level
     var setChickLevel = function(game){
-        game.chickLevel = Clucker.utils.XP.parseByXP(game.score, 100, 1000);
+        game.chickLevel = Clucker.utils.XP.parseByXP(game.score, 100, 75);
     };
 
     // CPM (Cooked Per Minute) call each time a cooked chicken is purged
@@ -183,6 +183,11 @@
         d.godModeSecs = d.stat.recovery;
     };
 
+    var getMaxHp = function(sm){
+        var level = sm.game.chickLevel.level;
+        return 1 + 5 * (level - 1) + Math.floor(Math.pow(1.125, level));
+    };
+
     // what to do for a chicken that is to be spanwed in
     var onSpawnedChicken = function (obj, pool, sm, opt) {
         obj.data.state = 'live'; // 'live' or 'cooked' state
@@ -207,8 +212,9 @@
         obj.data.imageIndex = Math.floor(Math.random() * 2);
         // alpha
         obj.data.alpha = 1;
-        // STATS
+        // STATS base on level
         var stat = obj.data.stat;
+        stat.hpMax = getMaxHp(sm);
         stat.hp = stat.hpMax;
         // set god mode to false
         obj.data.godMode = false;
