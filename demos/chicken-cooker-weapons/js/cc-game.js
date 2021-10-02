@@ -493,12 +493,17 @@
         });
     };
 
+    var setChickLevel = function(game){
+        game.chickLevel = Clucker.utils.XP.parseByXP(game.score, 100, 1000);
+    };
+
     // create game state object
     api.create = function (opt, sm) {
         opt = opt || {};
         var game = {
-            score: 0,
+            score: opt.score === undefined ? 0 : opt.score,
             money: opt.money === undefined ? 0 : opt.money,
+            chickLevel: {},
             upgrades: createUpgradesCollection(opt.upgrades),
             WEAPONS: WEAPONS,
             COOKED_TYPES: COOKED_TYPES, // ref to const
@@ -526,6 +531,11 @@
                 currentMaxActive: sm.CHICKENS_MIN_ACTIVE // the current max to allow
             }
         };
+
+        // set chciken level for the first time
+        setChickLevel(game);
+
+console.log(game);
 
         // apply upgrades for first time
         applyUpgradesToState(game);
