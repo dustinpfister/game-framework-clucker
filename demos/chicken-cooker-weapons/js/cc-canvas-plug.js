@@ -89,6 +89,9 @@ Clucker.canvasMod.load({
                 };
                 printLine('$ ' + sm.game.money, 0);
                 printLine('cpm avg: ' + sm.game.cpm.avg, 1);
+                printLine('chick level: ' + sm.game.chickLevel.level, 2)
+                printLine('to next: ' + sm.game.chickLevel.toNext, 3);
+
                 //Clucker.canvasMod.draw(stack, 'print', 1, 'score : ' + sm.game.score, 10, 10, printOptions);
                 //Clucker.canvasMod.draw(stack, 'print', 1, 'cpm avg : ' + sm.game.cpm.avg, 10, 30, printOptions);
                 //var spawn = sm.game.spawn;

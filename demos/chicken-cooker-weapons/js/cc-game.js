@@ -81,6 +81,11 @@
     HELPERS
      ********** ********** ********** *********/
 
+    // set chicken level
+    var setChickLevel = function(game){
+        game.chickLevel = Clucker.utils.XP.parseByXP(game.score, 100, 1000);
+    };
+
     // CPM (Cooked Per Minute) call each time a cooked chicken is purged
     var CPMCount = function (game, deltaCount) {
         var cpm = game.cpm;
@@ -318,6 +323,7 @@
         if (obj.data.state === 'cooked') {
             CPMCount(sm.game, 1);
             sm.game.score += 1;
+            setChickLevel(sm.game);
             var price = sm.game.cookedTypes[obj.data.cellIndex].price;
             sm.game.money += price;
             sm.game.money = Math.round(sm.game.money);
@@ -491,10 +497,6 @@
             var upgrade = game.upgrades[key];
             upgrade.applyToState.call(game, game, upgrade, upgrade.levelObj.level);
         });
-    };
-
-    var setChickLevel = function(game){
-        game.chickLevel = Clucker.utils.XP.parseByXP(game.score, 100, 1000);
     };
 
     // create game state object
