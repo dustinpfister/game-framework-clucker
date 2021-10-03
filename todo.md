@@ -31,7 +31,9 @@
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
 ## (  ) - 0.6.1 - Clucker.upgrades : create state method
-* use the game.multipliers prop for the cooked chicken value upgrade
+* (done) use the game.multipliers prop for the cooked chicken value upgrade
+* maybe multipliers, and other effect values should be part of the upgrade object as upgrade.value
+* if we are now using values in upgrade objects, then remove the old game.multipliers prop
 * have a main setChickenStats helper that will call a method for each chicken state effected by chick level
 * use the Clucker upgrades create state method with chicken-cooker-weapons
 

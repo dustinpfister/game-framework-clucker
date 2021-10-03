@@ -57,6 +57,7 @@
             desc: 'Global Food Values',
             deltaNext: 10,
             cap: 100,
+            multiRate: 0.25,
             applyToState: function(game, upgrade, level){
                 game.cookedTypes.forEach(function(cooked){
                   //cooked.price = cooked.pricePerLevelGlobal * level;
