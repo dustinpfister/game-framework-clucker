@@ -17,22 +17,24 @@
 * create a /dist/0.6.0/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
-## (  ) - 0.6.2 - chicken-cooker-weapons: new system for images
+## (  ) - 0.6.3 - chicken-cooker-weapons: new system for images
 * start a new system for chicken sheets that allows for more animations, and have all cells for a chicken in one sheet
 * reserve 0.png - 9.png for images other than chicken sheets
 * any unused images can just be blank place holder images for now if that works
 * first 10.png can be the first chicken type sheet, and 11 can be the second based off of current images
 * have an image for change weapons button
 
-## (  ) - 0.6.1 - /img root folder started
+## (  ) - 0.6.2 - /img root folder started
 * start a /img root folder that will contain images used in the various demos
 * start a /img/chicken-cooker/cc-128 folder for 'chicken-cooker' demo
 * start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
-## () - 0.6.1 - Clucker.upgrades : create state method
-* use the Clucker upgrades create state method with chicken-cooker-weapons
+## (  ) - 0.6.1 - Clucker.upgrades : create state method
+* use the game.multipliers prop for the cooked chicken value upgrade
 * have a main setChickenStats helper that will call a method for each chicken state effected by chick level
+* use the Clucker upgrades create state method with chicken-cooker-weapons
+
 
 ## ( done 10/02/2021 ) - 0.6.0 - New features for Buttons
 * (done) make changes to buttons.js canvas plugin to allow for drawing minor text value in the button
