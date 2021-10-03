@@ -57,12 +57,14 @@
             desc: 'Global Food Values',
             deltaNext: 10,
             cap: 100,
-            multiRate: 0.25,
+            value: 0,
             applyToState: function(game, upgrade, level){
                 game.cookedTypes.forEach(function(cooked){
                   //cooked.price = cooked.pricePerLevelGlobal * level;
-                  game.multipliers.chick_cooked_value = 0.25 * ( level - 1 );
-                  cooked.price = cooked.priceBase * (1 + game.multipliers.chick_cooked_value);
+                  //game.multipliers.chick_cooked_value = 0.25 * ( level - 1 );
+                  upgrade.value = 0.25 * ( level - 1 );
+                  //cooked.price = cooked.priceBase * (1 + game.multipliers.chick_cooked_value);
+                  cooked.price = cooked.priceBase * (1 + upgrade.value);
                   console.log(cooked.price);
                 });
             }
