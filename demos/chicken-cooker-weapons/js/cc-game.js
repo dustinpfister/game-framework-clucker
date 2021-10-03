@@ -22,14 +22,14 @@
         {
             desc: 'Drumstick',
             points: 70,
-            pricePerLevelGlobal: 1,
+            //pricePerLevelGlobal: 1,
             priceBase: 1,
             price: 1
         },
         {
             desc: 'Rotisserie',
             points: 20,
-            pricePerLevelGlobal: 2,
+            //pricePerLevelGlobal: 2,
             priceBase: 2,
             price: 2
         },
@@ -37,14 +37,14 @@
             desc: 'Sandwich',
             points: 8,
             startPrice: 6,
-            pricePerLevelGlobal: 6,
+            //pricePerLevelGlobal: 6,
             priceBase: 6,
             price: 6
         },
         {
             desc: 'Over Rice',
             points: 2,
-            pricePerLevelGlobal: 15,
+            //pricePerLevelGlobal: 15,
             priceBase: 15,
             price: 15
         }
@@ -52,7 +52,7 @@
 
     // UPGRADES
     var UPGRADES = {
-        global_food_value: {
+        chick_cooked_value: {
             key: '',
             desc: 'Global Food Values',
             deltaNext: 10,
@@ -66,7 +66,7 @@
                 });
             }
         },
-        chicken_hp: {
+        chick_hp_reduction: {
             key: 'chicken_hp',
             desc: 'Reduce Chicken HP',
             deltaNext: 150,

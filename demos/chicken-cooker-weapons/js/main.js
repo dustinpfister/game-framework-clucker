@@ -98,8 +98,8 @@ Clucker.gameFrame.smPushState(sm, {
             money: 0,
             score: 0,
             upgrades : {
-                global_food_value: 4,
-                chicken_hp: 1	
+                chick_cooked_value: 90,
+                chick_hp_reduction: 20	
             }
         }, sm);
         // set button desc for first time
