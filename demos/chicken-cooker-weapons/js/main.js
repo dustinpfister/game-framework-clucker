@@ -64,7 +64,8 @@ var createToGameButton = function () {
 };
 
 var getUpgradeMinor = function(upgradeObj){
-    return '(' + upgradeObj.levelObj.level + ') $' + upgradeObj.levelObj.forNext;
+    var cost = '$' + upgradeObj.levelObj.forNext;
+    return '(' + upgradeObj.levelObj.level + ')' + cost;
 };
 
 // create upgrade buttons
