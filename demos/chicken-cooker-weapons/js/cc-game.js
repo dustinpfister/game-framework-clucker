@@ -60,10 +60,7 @@
             value: 0,
             applyToState: function(game, upgrade, level){
                 game.cookedTypes.forEach(function(cooked){
-                  //cooked.price = cooked.pricePerLevelGlobal * level;
-                  //game.multipliers.chick_cooked_value = 0.25 * ( level - 1 );
                   upgrade.value = 0.25 * ( level - 1 );
-                  //cooked.price = cooked.priceBase * (1 + game.multipliers.chick_cooked_value);
                   cooked.price = cooked.priceBase * (1 + upgrade.value);
                   console.log(cooked.price);
                 });
@@ -75,9 +72,7 @@
             deltaNext: 150,
             cap: 100,
             applyToState: function(game, upgrade, level){
-                //console.log('apply to state for ' + upgrade.key + ' at level ' + level);
                 upgrade.value = 1 + 5 * ( level - 1 ) / 99;
-                game.multipliers.chick_hp_reduction = 1 + 5 * ( level - 1 ) / 99;
             }
         }
     };
@@ -196,7 +191,6 @@
     var getMaxHp = function(sm){
         var level = sm.game.chickLevel.level,
         rawHp = 1 + 5 * (level - 1) + Math.floor(Math.pow(1.125, level));
-        //return Math.floor(rawHp / sm.game.multipliers.chick_hp_reduction);
         var upgrade = sm.game.upgrades.chick_hp_reduction;
         return Math.floor(rawHp / upgrade.value);
     };
@@ -538,10 +532,6 @@ console.log(stat.hpMax);
                 secs: 0,
                 counts: [],
                 avg: 0
-            },
-            multipliers: {
-               chick_cooked_value: 0,
-               chick_hp_reduction: 0
             },
             stats: {
                 cookedTypes: COOKED_TYPES.map(function(){
