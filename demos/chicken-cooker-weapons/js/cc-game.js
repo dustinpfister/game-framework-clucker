@@ -76,6 +76,7 @@
             cap: 100,
             applyToState: function(game, upgrade, level){
                 //console.log('apply to state for ' + upgrade.key + ' at level ' + level);
+                upgrade.value = 1 + 5 * ( level - 1 ) / 99;
                 game.multipliers.chick_hp_reduction = 1 + 5 * ( level - 1 ) / 99;
             }
         }
@@ -195,7 +196,9 @@
     var getMaxHp = function(sm){
         var level = sm.game.chickLevel.level,
         rawHp = 1 + 5 * (level - 1) + Math.floor(Math.pow(1.125, level));
-        return Math.floor(rawHp / sm.game.multipliers.chick_hp_reduction);
+        //return Math.floor(rawHp / sm.game.multipliers.chick_hp_reduction);
+        var upgrade = sm.game.upgrades.chick_hp_reduction;
+        return Math.floor(rawHp / upgrade.value);
     };
 
     // what to do for a chicken that is to be spanwed in
@@ -225,6 +228,7 @@
         // STATS base on level
         var stat = obj.data.stat;
         stat.hpMax = getMaxHp(sm);
+console.log(stat.hpMax);
         stat.hp = stat.hpMax;
         // set god mode to false
         obj.data.godMode = false;

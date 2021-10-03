@@ -96,10 +96,10 @@ Clucker.gameFrame.smPushState(sm, {
         // create new game object
         sm.game = gameMod.create({
             money: 0,
-            score: 0,
+            score: 10000,
             upgrades : {
                 chick_cooked_value: 90,
-                chick_hp_reduction: 20	
+                chick_hp_reduction: 100	
             }
         }, sm);
         // set button desc for first time
