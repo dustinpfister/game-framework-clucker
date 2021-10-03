@@ -98,7 +98,7 @@ Clucker.gameFrame.smPushState(sm, {
             money: 0,
             score: 0,
             upgrades : {
-                global_food_value: 1,
+                global_food_value: 4,
                 chicken_hp: 1	
             }
         }, sm);

@@ -23,12 +23,14 @@
             desc: 'Drumstick',
             points: 70,
             pricePerLevelGlobal: 1,
+            priceBase: 1,
             price: 1
         },
         {
             desc: 'Rotisserie',
             points: 20,
             pricePerLevelGlobal: 2,
+            priceBase: 2,
             price: 2
         },
         {
@@ -36,12 +38,14 @@
             points: 8,
             startPrice: 6,
             pricePerLevelGlobal: 6,
+            priceBase: 6,
             price: 6
         },
         {
             desc: 'Over Rice',
             points: 2,
             pricePerLevelGlobal: 15,
+            priceBase: 15,
             price: 15
         }
     ];
@@ -55,7 +59,10 @@
             cap: 100,
             applyToState: function(game, upgrade, level){
                 game.cookedTypes.forEach(function(cooked){
-                  cooked.price = cooked.pricePerLevelGlobal * level;
+                  //cooked.price = cooked.pricePerLevelGlobal * level;
+                  game.multipliers.chick_cooked_value = 0.25 * ( level - 1 );
+                  cooked.price = cooked.priceBase * (1 + game.multipliers.chick_cooked_value);
+                  console.log(cooked.price);
                 });
             }
         },
@@ -67,9 +74,6 @@
             applyToState: function(game, upgrade, level){
                 //console.log('apply to state for ' + upgrade.key + ' at level ' + level);
                 game.multipliers.chick_hp_reduction = 1 + 5 * ( level - 1 ) / 99;
-
-console.log( 100 / game.multipliers.chick_hp_reduction );
-
             }
         }
     };
@@ -529,6 +533,7 @@ console.log( 100 / game.multipliers.chick_hp_reduction );
                 avg: 0
             },
             multipliers: {
+               chick_cooked_value: 0,
                chick_hp_reduction: 0
             },
             stats: {
