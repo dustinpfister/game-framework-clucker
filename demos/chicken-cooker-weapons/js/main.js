@@ -113,6 +113,9 @@ Clucker.gameFrame.smPushState(sm, {
 // started a Clucker.upgrades module
 console.log(Clucker.upgrades);
 
+var stateObj = Clucker.upgrades.createState(sm, {});
+console.log(stateObj);
+
         // create sm.funFacts
         sm.funFacts = funFactsMod.create(sm);
         // create chicken sprite sheets
