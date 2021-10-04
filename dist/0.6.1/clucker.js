@@ -1275,11 +1275,15 @@ if(this['Clucker']){
         opt.upgradeStateKey = opt.upgradeStateKey || 'upgrades';
         opt.gameStateKey = opt.gameStateKey || 'game';
         opt.menuStateKey = opt.menuStateKey || 'menu';
+
+var canvasWidth = sm.layers[0].canvas.width,
+canvasHeight = sm.layers[0].canvas.height;
+
         return {
             name: opt.upgradeStateKey,
             buttons: {
                 to_game: createToStateButton(opt.gameStateKey, canvasWidth - 64 - 16, 16, 'Game'), //createToGameButton(),
-                back: createToStateButton(opt.menuStateKey, canvasWidth - 64 - 16, 16, 'Game')
+                back: createToStateButton(opt.menuStateKey, 16, 16, 'Back')
             },
             start: function (sm, canvasMod) {},
             update: function (sm, secs) {},
