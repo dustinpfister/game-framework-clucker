@@ -1272,10 +1272,11 @@ if(this['Clucker']){
     api.createState = function (sm, opt) {
         opt = opt || {};
         opt.buttonLayer = opt.buttonLayer || 2;
-        opt.gameStateKey = opt.gameStateKey || 'gameTime';
-        opt.menuStateKey = opt.menuStateKey || 'mainMenu';
+        opt.upgradeStateKey = opt.upgradeStateKey || 'upgrades';
+        opt.gameStateKey = opt.gameStateKey || 'game';
+        opt.menuStateKey = opt.menuStateKey || 'menu';
         return {
-            name: 'upgrades',
+            name: opt.upgradeStateKey,
             buttons: {
                 to_game: createToStateButton(opt.gameStateKey, canvasWidth - 64 - 16, 16, 'Game'), //createToGameButton(),
                 back: createToStateButton(opt.menuStateKey, canvasWidth - 64 - 16, 16, 'Game')

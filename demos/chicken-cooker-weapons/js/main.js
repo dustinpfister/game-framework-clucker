@@ -113,7 +113,12 @@ Clucker.gameFrame.smPushState(sm, {
 // started a Clucker.upgrades module
 console.log(Clucker.upgrades);
 
-var stateObj = Clucker.upgrades.createState(sm, {});
+var stateObj = Clucker.upgrades.createState(sm, {
+    buttonLayer: 2,
+    upgradeStateKey: 'upgrades_builtin',
+    gameStateKey: 'gameTime',
+    menuStateKey: 'mainMenu'
+});
 console.log(stateObj);
 
         // create sm.funFacts
