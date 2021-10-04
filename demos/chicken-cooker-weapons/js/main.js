@@ -5,6 +5,7 @@ var sm = Clucker.gameFrame.smCreateMain({
         currentState: 'loader',
         width: 640,
         height: 480,
+        canvasLayers: 3, // 0 - background // 1 - forground // 2 - buttons
         game: {},
         loader: {
             startState: 'init',
@@ -124,6 +125,7 @@ console.log(Clucker.upgrades);
         // background
         sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
+        // switch to background
         Clucker.gameFrame.smSetState(sm, 'gameTime');
     }
 });
@@ -155,11 +157,7 @@ Clucker.gameFrame.smPushState(sm, {
             }
         }
     },
-    start: function (sm, canvasMod) {
-        // background
-        //sm.layers.background = sm.layers.images[0];
-        //canvasMod.draw(sm.layers, 'background', 0);
-    },
+    start: function (sm, canvasMod) {},
     update: function (sm, secs) {
         gameMod.update(sm.game, sm, secs);
         funFactsMod.update(sm, sm.funFacts, secs);
@@ -176,7 +174,8 @@ Clucker.gameFrame.smPushState(sm, {
         // info
         canvasMod.draw(layers, 'info', 1, sm);
         // state buttons
-        canvasMod.draw(layers, 'stateButtons', 1, sm);
+        canvasMod.draw(layers, 'clear', 2);
+        canvasMod.draw(layers, 'stateButtons', 2, sm);
     },
     events: {
         pointerStart: function (e, pos, sm) {
@@ -225,7 +224,8 @@ Clucker.gameFrame.smPushState(sm, {
         // pools
         canvasMod.draw(layers, 'pool-cc', 1, sm);
         // buttons
-        canvasMod.draw(layers, 'stateButtons', 1, sm);
+        canvasMod.draw(layers, 'clear', 2);
+        canvasMod.draw(layers, 'stateButtons', 2, sm);
     }
 });
 
@@ -260,7 +260,8 @@ Clucker.gameFrame.smPushState(sm, {
             printLine(sm.game.COOKED_TYPES[i].desc + ' : ' + count, i);
         });
         // buttons
-        canvasMod.draw(layers, 'stateButtons', 1, sm);
+        canvasMod.draw(layers, 'clear', 2);
+        canvasMod.draw(layers, 'stateButtons', 2, sm);
     }
 });
 
@@ -283,7 +284,8 @@ Clucker.gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'background', 1, 'rgba(0,0,0,0.4)')
 
         // buttons
-        canvasMod.draw(layers, 'stateButtons', 1, sm);
+        canvasMod.draw(layers, 'clear', 2);
+        canvasMod.draw(layers, 'stateButtons', 2, sm);
     }
 });
 
