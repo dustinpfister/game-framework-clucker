@@ -119,6 +119,9 @@ var stateObj = Clucker.upgrades.createState(sm, {
     gameStateKey: 'gameTime',
     menuStateKey: 'mainMenu'
 });
+
+Clucker.gameFrame.smPushState(sm, stateObj);
+
 console.log(stateObj);
 
         // create sm.funFacts
@@ -133,8 +136,12 @@ console.log(stateObj);
         // background
         sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
-        // switch to background
-        Clucker.gameFrame.smSetState(sm, 'gameTime');
+        // switch to next state
+        //Clucker.gameFrame.smSetState(sm, 'gameTime');
+		
+		canvasMod.draw(sm.layers, 'clear', 1);
+		Clucker.gameFrame.smSetState(sm, 'upgrades_builtin');
+		
     }
 });
 

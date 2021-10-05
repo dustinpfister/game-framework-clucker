@@ -34,7 +34,7 @@
 * (done) use the game.multipliers prop for the cooked chicken value upgrade
 * (done) maybe multipliers, and other effect values should be part of the upgrade object as upgrade.value
 * (done) if we are now using values in upgrade objects, then remove the old game.multipliers prop
-* have a main setChickenStats helper that will call a method for each chicken state effected by chick level
+* (done) have a main setChickenStats helper that will call a method for each chicken state effected by chick level
 * use the Clucker upgrades create state method with chicken-cooker-weapons
 
 

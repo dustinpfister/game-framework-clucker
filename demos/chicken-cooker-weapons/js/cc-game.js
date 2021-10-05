@@ -58,7 +58,6 @@
                 game.cookedTypes.forEach(function (cooked) {
                     upgrade.value = 0.25 * (level - 1);
                     cooked.price = cooked.priceBase * (1 + upgrade.value);
-                    console.log(cooked.price);
                 });
             }
         },
