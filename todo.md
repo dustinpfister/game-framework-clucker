@@ -33,6 +33,7 @@
 ## () - 0.6.2 - upgrades module: create upgrades method
 * I will want a create upgrades helper that will be used to create an upgrades collection for a game state
 * create upgrade buttons for upgrade-builtin
+* start using 0.6.2 with chicken-cooker-weapons
 
 ## ( done 10/05/2021 ) - 0.6.1 - Clucker.upgrades : create state method
 * (done) use the game.multipliers prop for the cooked chicken value upgrade
