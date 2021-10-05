@@ -35,8 +35,8 @@
 * (done) maybe multipliers, and other effect values should be part of the upgrade object as upgrade.value
 * (done) if we are now using values in upgrade objects, then remove the old game.multipliers prop
 * (done) have a main setChickenStats helper that will call a method for each chicken state effected by chick level
-* use the Clucker upgrades create state method with chicken-cooker-weapons
-
+* (done) use the Clucker upgrades create state method with chicken-cooker-weapons
+* (done) have an update option for the upgrades create state method
 
 ## ( done 10/02/2021 ) - 0.6.0 - New features for Buttons
 * (done) make changes to buttons.js canvas plugin to allow for drawing minor text value in the button

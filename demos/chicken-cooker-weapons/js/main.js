@@ -64,22 +64,22 @@ var createToGameButton = function () {
     };
 };
 
-var getUpgradeMinor = function(upgradeObj){
+var getUpgradeMinor = function (upgradeObj) {
     var cost = '$' + upgradeObj.levelObj.forNext;
     return '(' + upgradeObj.levelObj.level + ')' + cost;
 };
 
 // create upgrade buttons
-var createUpgradeButtons = function(sm, upgradeKey, upgrades){
+var createUpgradeButtons = function (sm, upgradeKey, upgrades) {
     var state = sm.states[upgradeKey];
-    Object.keys(upgrades).forEach(function(upgradeKey, i){
+    Object.keys(upgrades).forEach(function (upgradeKey, i) {
         var upgradeObj = upgrades[upgradeKey];
         state.buttons['upgrade_' + upgradeKey] = {
             x: 32,
             y: 128 + (64 + 8) * i,
             w: 256,
             h: 64,
-            upgradeKey: upgradeKey, 
+            upgradeKey: upgradeKey,
             desc: upgradeObj.desc,
             minor: getUpgradeMinor(upgradeObj),
             descSize: 20,
@@ -97,32 +97,36 @@ Clucker.gameFrame.smPushState(sm, {
     start: function (sm, canvasMod) {
         // create new game object
         sm.game = gameMod.create({
-            money: 0,
-            score: 10000,
-            upgrades : {
-                chick_cooked_value: 90,
-                chick_hp_reduction: 100	
-            }
-        }, sm);
+                money: 0,
+                score: 10000,
+                upgrades: {
+                    chick_cooked_value: 90,
+                    chick_hp_reduction: 100
+                }
+            }, sm);
         // set button desc for first time
         sm.states.gameTime.buttons.weapon.desc = sm.game.currentWeapon;
 
         // create upgrade buttons for game.upgrades
         createUpgradeButtons(sm, 'upgrades', sm.game.upgrades);
 
-// started a Clucker.upgrades module
-console.log(Clucker.upgrades);
+        // started a Clucker.upgrades module
+        console.log(Clucker.upgrades);
 
-var stateObj = Clucker.upgrades.createState(sm, {
-    buttonLayer: 2,
-    upgradeStateKey: 'upgrades_builtin',
-    gameStateKey: 'gameTime',
-    menuStateKey: 'mainMenu'
-});
+        var stateObj = Clucker.upgrades.createState(sm, {
+                buttonLayer: 2,
+                upgradeStateKey: 'upgrades_builtin',
+                gameStateKey: 'gameTime',
+                menuStateKey: 'mainMenu',
+                update: function (sm, secs) {
+                    // this is a weird duck tape solution for this
+                    Clucker.canvasMod.draw(sm.layers, 'clear', 1);
+                }
+            });
 
-Clucker.gameFrame.smPushState(sm, stateObj);
+        Clucker.gameFrame.smPushState(sm, stateObj);
 
-console.log(stateObj);
+        console.log(stateObj);
 
         // create sm.funFacts
         sm.funFacts = funFactsMod.create(sm);
@@ -138,10 +142,12 @@ console.log(stateObj);
         canvasMod.draw(sm.layers, 'background', 0);
         // switch to next state
         //Clucker.gameFrame.smSetState(sm, 'gameTime');
-		
-		canvasMod.draw(sm.layers, 'clear', 1);
-		Clucker.gameFrame.smSetState(sm, 'upgrades_builtin');
-		
+
+        canvasMod.draw(sm.layers, 'clear', 0);
+        canvasMod.draw(sm.layers, 'clear', 1);
+        canvasMod.draw(sm.layers, 'clear', 2);
+        Clucker.gameFrame.smSetState(sm, 'upgrades_builtin');
+
     }
 });
 
@@ -178,7 +184,7 @@ Clucker.gameFrame.smPushState(sm, {
         funFactsMod.update(sm, sm.funFacts, secs);
     },
     draw: function (sm, layers, canvasMod) {
-        // clear 
+        // clear
         canvasMod.draw(layers, 'clear', 1);
         // pools
         canvasMod.draw(layers, 'pool-cc', 1, sm);

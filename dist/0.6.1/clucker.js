@@ -1249,7 +1249,6 @@ if(this['Clucker']){
 
 (function (api) {
 
-
     var createToStateButton = function (toState, x, y, desc) {
         return {
             x: x,
@@ -1263,9 +1262,8 @@ if(this['Clucker']){
         }
     };
 
-
     /********* ********** ********** ********** *********/
-    //  
+    //
     /********* ********** ********** ********** *********/
 
     // create and rerturn a state object
@@ -1275,9 +1273,10 @@ if(this['Clucker']){
         opt.upgradeStateKey = opt.upgradeStateKey || 'upgrades';
         opt.gameStateKey = opt.gameStateKey || 'game';
         opt.menuStateKey = opt.menuStateKey || 'menu';
+        opt.update = opt.update || function () {};
 
-var canvasWidth = sm.layers[0].canvas.width,
-canvasHeight = sm.layers[0].canvas.height;
+        var canvasWidth = sm.layers[0].canvas.width,
+        canvasHeight = sm.layers[0].canvas.height;
 
         return {
             name: opt.upgradeStateKey,
@@ -1286,7 +1285,11 @@ canvasHeight = sm.layers[0].canvas.height;
                 back: createToStateButton(opt.menuStateKey, 16, 16, 'Back')
             },
             start: function (sm, canvasMod) {},
-            update: function (sm, secs) {},
+            update: function (sm, secs) {
+
+                opt.update(sm, secs);
+
+            },
             draw: function (sm, layers, canvasMod) {
                 // clear
                 canvasMod.draw(layers, 'clear', opt.buttonLayer);
@@ -1296,7 +1299,8 @@ canvasHeight = sm.layers[0].canvas.height;
         };
     };
 
-}(this['Clucker'] === undefined ? this['upgrades'] = {} : Clucker['upgrades'] = {}));
-
+}
+    (this['Clucker'] === undefined ? this['upgrades'] = {}
+        : Clucker['upgrades'] = {}));
 
 }(this['Clucker'] = {ver:'0.6.1'}));
