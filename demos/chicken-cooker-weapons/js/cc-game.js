@@ -18,30 +18,26 @@
     };
 
     // cooked Types
-    var COOKED_TYPES = [
-        {
+    var COOKED_TYPES = [{
             desc: 'Drumstick',
             points: 70,
             //pricePerLevelGlobal: 1,
             priceBase: 1,
             price: 1
-        },
-        {
+        }, {
             desc: 'Rotisserie',
             points: 20,
             //pricePerLevelGlobal: 2,
             priceBase: 2,
             price: 2
-        },
-        {
+        }, {
             desc: 'Sandwich',
             points: 8,
             startPrice: 6,
             //pricePerLevelGlobal: 6,
             priceBase: 6,
             price: 6
-        },
-        {
+        }, {
             desc: 'Over Rice',
             points: 2,
             //pricePerLevelGlobal: 15,
@@ -58,11 +54,11 @@
             deltaNext: 10,
             cap: 100,
             value: 0,
-            applyToState: function(game, upgrade, level){
-                game.cookedTypes.forEach(function(cooked){
-                  upgrade.value = 0.25 * ( level - 1 );
-                  cooked.price = cooked.priceBase * (1 + upgrade.value);
-                  console.log(cooked.price);
+            applyToState: function (game, upgrade, level) {
+                game.cookedTypes.forEach(function (cooked) {
+                    upgrade.value = 0.25 * (level - 1);
+                    cooked.price = cooked.priceBase * (1 + upgrade.value);
+                    console.log(cooked.price);
                 });
             }
         },
@@ -71,13 +67,13 @@
             desc: 'Reduce Chicken HP',
             deltaNext: 150,
             cap: 100,
-            applyToState: function(game, upgrade, level){
-                upgrade.value = 1 + 5 * ( level - 1 ) / 99;
+            applyToState: function (game, upgrade, level) {
+                upgrade.value = 1 + 5 * (level - 1) / 99;
             }
         }
     };
     // set keys
-    Object.keys(UPGRADES).forEach(function(key){
+    Object.keys(UPGRADES).forEach(function (key) {
         var upgrade = UPGRADES[key];
         upgrade.key = key;
     });
@@ -87,7 +83,7 @@
      ********** ********** ********** *********/
 
     // set chicken level
-    var setChickLevel = function(game){
+    var setChickLevel = function (game) {
         game.chickLevel = Clucker.utils.XP.parseByXP(game.score, 100, 75);
     };
 
@@ -188,11 +184,19 @@
         d.godModeSecs = d.stat.recovery;
     };
 
-    var getMaxHp = function(sm){
+    // get stat values for a new spawned chicken
+    var getStat = {};
+    getStat.hpMax = function (sm) {
         var level = sm.game.chickLevel.level,
         rawHp = 1 + 5 * (level - 1) + Math.floor(Math.pow(1.125, level));
         var upgrade = sm.game.upgrades.chick_hp_reduction;
         return Math.floor(rawHp / upgrade.value);
+    };
+
+    var setChickenStatValues = function (sm, chk) {
+        'hpMax'.split(',').forEach(function (statKey) {
+            chk.data.stat[statKey] = getStat[statKey](sm);
+        })
     };
 
     // what to do for a chicken that is to be spanwed in
@@ -219,10 +223,11 @@
         obj.data.imageIndex = Math.floor(Math.random() * 2);
         // alpha
         obj.data.alpha = 1;
+
         // STATS base on level
+        setChickenStatValues(sm, obj);
+
         var stat = obj.data.stat;
-        stat.hpMax = getMaxHp(sm);
-console.log(stat.hpMax);
         stat.hp = stat.hpMax;
         // set god mode to false
         obj.data.godMode = false;
@@ -384,28 +389,28 @@ console.log(stat.hpMax);
     };
 
     // set cooked chicken per values
-    var setCookedChickenPerValues = function(game){
-        var totalPoints = game.cookedTypes.reduce(function(acc, obj){
-            return acc + obj.points || 0;
-        }, 0);
-        game.cookedTypes = game.cookedTypes.map(function(obj){
-            obj.per = obj.points / totalPoints;
-            return obj;
-        });
+    var setCookedChickenPerValues = function (game) {
+        var totalPoints = game.cookedTypes.reduce(function (acc, obj) {
+                return acc + obj.points || 0;
+            }, 0);
+        game.cookedTypes = game.cookedTypes.map(function (obj) {
+                obj.per = obj.points / totalPoints;
+                return obj;
+            });
     };
 
     // get cooked chicken index
-    var getCookedChickenIndex = function(game){
+    var getCookedChickenIndex = function (game) {
         var roll = Math.random(),
         i = 0,
         per = 0,
         len = game.cookedTypes.length;
-        while(i < len - 1){
-             per += game.cookedTypes[i].per;
-             if(roll < per){
-                 break;
-             }
-             i += 1;
+        while (i < len - 1) {
+            per += game.cookedTypes[i].per;
+            if (roll < per) {
+                break;
+            }
+            i += 1;
         }
         return i; //Math.floor(Math.random() * 4);
     };
@@ -495,10 +500,10 @@ console.log(stat.hpMax);
      ********** ********** ********** *********/
 
     // create upgrades collection helper
-    var createUpgradesCollection = function(opt){
+    var createUpgradesCollection = function (opt) {
         opt = opt || {};
         var upgradeCol = {};
-        Object.keys(UPGRADES).forEach(function(key){
+        Object.keys(UPGRADES).forEach(function (key) {
             var upgrade = upgradeCol[key] = Object.assign({}, UPGRADES[key]);
             upgrade.levelObj = Clucker.utils.XP.parseByLevel(opt[key] || 1, upgrade.cap, upgrade.deltaNext);
         });
@@ -506,8 +511,8 @@ console.log(stat.hpMax);
     };
 
     // apply upgrades to state helper
-    var applyUpgradesToState = function(game){
-        Object.keys(game.upgrades).forEach(function(key){
+    var applyUpgradesToState = function (game) {
+        Object.keys(game.upgrades).forEach(function (key) {
             var upgrade = game.upgrades[key];
             upgrade.applyToState.call(game, game, upgrade, upgrade.levelObj.level);
         });
@@ -523,9 +528,9 @@ console.log(stat.hpMax);
             upgrades: createUpgradesCollection(opt.upgrades),
             WEAPONS: WEAPONS,
             COOKED_TYPES: COOKED_TYPES, // ref to const
-            cookedTypes: COOKED_TYPES.map(function(el){ // game.cookedTypes is subject to mutation
+            cookedTypes: COOKED_TYPES.map(function (el) { // game.cookedTypes is subject to mutation
                 return Object.assign({}, el);
-            }), 
+            }),
             currentWeapon: 'frying_pan',
             holdFire: false,
             cpm: { // cooked per minute
@@ -534,7 +539,7 @@ console.log(stat.hpMax);
                 avg: 0
             },
             stats: {
-                cookedTypes: COOKED_TYPES.map(function(){
+                cookedTypes: COOKED_TYPES.map(function () {
                     return 0;
                 })
             },
@@ -651,9 +656,9 @@ console.log(stat.hpMax);
     };
 
     // buy an upgrade
-    api.buyUpgrade = function(game, key){
+    api.buyUpgrade = function (game, key) {
         var upgrade = game.upgrades[key];
-        if(game.money >= upgrade.levelObj.forNext){
+        if (game.money >= upgrade.levelObj.forNext) {
             game.money -= upgrade.levelObj.forNext;
             var newLevel = upgrade.levelObj.level + 1;
             upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
