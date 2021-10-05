@@ -17,20 +17,24 @@
 * create a /dist/0.6.0/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
-## (  ) - 0.6.3 - chicken-cooker-weapons: new system for images
+## (  ) - 0.6.4 - chicken-cooker-weapons: new system for images
 * start a new system for chicken sheets that allows for more animations, and have all cells for a chicken in one sheet
 * reserve 0.png - 9.png for images other than chicken sheets
 * any unused images can just be blank place holder images for now if that works
 * first 10.png can be the first chicken type sheet, and 11 can be the second based off of current images
 * have an image for change weapons button
 
-## (  ) - 0.6.2 - /img root folder started
+## (  ) - 0.6.3 - /img root folder started
 * start a /img root folder that will contain images used in the various demos
 * start a /img/chicken-cooker/cc-128 folder for 'chicken-cooker' demo
 * start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
-## (  ) - 0.6.1 - Clucker.upgrades : create state method
+## () - 0.6.2 - upgrades module: create upgrades method
+* I will want a create upgrades helper that will be used to create an upgrades collection for a game state
+* create upgrade buttons for upgrade-builtin
+
+## ( done 10/05/2021 ) - 0.6.1 - Clucker.upgrades : create state method
 * (done) use the game.multipliers prop for the cooked chicken value upgrade
 * (done) maybe multipliers, and other effect values should be part of the upgrade object as upgrade.value
 * (done) if we are now using values in upgrade objects, then remove the old game.multipliers prop
