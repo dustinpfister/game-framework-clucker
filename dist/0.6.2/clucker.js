@@ -1057,35 +1057,17 @@ canvasMod.load({
                     }
                 }
             },
-			end: function(sm){
-				
-				console.log('loading state ended');
-				
-				canvasMod.draw(sm.layers, 'clear', 0);
-				canvasMod.draw(sm.layers, 'clear', 1);
-				
-			},
+            end: function (sm) {
+                canvasMod.draw(sm.layers, 'clear', 0);
+                canvasMod.draw(sm.layers, 'clear', 1);
+            },
             update: function (sm, secs) {
-
                 var loaded = sm.layers.images.reduce(function (acc, el) {
                         return el === undefined ? acc : acc + 1;
                     }, 0);
                 if (loaded === sm.loader.images.count) {
                     Clucker.gameFrame.smSetState(sm, sm.loader.startState || 'game');
                 }
-
-                /*
-                if(sm.loader.images){
-                // start game state when all images are loaded
-                //if(sm.images.length === sm.loader.images.count){
-                if(sm.layers.images.length === sm.loader.images.count){
-                gameFrame.smSetState(sm, sm.loader.startState || 'game');
-                }
-                }else{
-                // no images just progress to game state
-                gameFrame.smSetState(sm, sm.loader.startState ||  'game');
-                }
-                 */
             },
             draw: function (sm, layers) {
                 var ctx = layers[1].ctx,
@@ -1158,19 +1140,17 @@ canvasMod.load({
             sm.secs = (now - sm.lt) / 1000,
             state = sm.states[sm.currentState] || {};
             if (sm.secs >= 1 / sm.fps) {
-				
-				                // draw
-                var drawMethod = state.draw;
-                if (drawMethod) {
-                    drawMethod.call(sm, sm, sm.layers, canvasMod);
-                }
-				
                 // update
                 var update = state.update;
                 if (update) {
                     update.call(sm, sm, sm.secs);
                 }
-
+                // draw
+                state = sm.states[sm.currentState] || {}; // getting start object again to account for state change
+                var drawMethod = state.draw;
+                if (drawMethod) {
+                    drawMethod.call(sm, sm, sm.layers, canvasMod);
+                }
                 sm.lt = now;
             }
             // if sm.stopLoop === false, then keep looping
@@ -1179,16 +1159,16 @@ canvasMod.load({
             }
         };
         // stop loop on any page error
-/*
+        /*
         window.addEventListener('error', function (e) {
-            if (sm.debugMode) {
-                sm.stopLoop = true;
-                console.log('error: ' + e.message);
-                console.log(e);
-                console.log('loop stoped');
-            }
+        if (sm.debugMode) {
+        sm.stopLoop = true;
+        console.log('error: ' + e.message);
+        console.log(e);
+        console.log('loop stoped');
+        }
         });
-*/
+         */
         return sm;
     };
 
@@ -1234,26 +1214,24 @@ canvasMod.load({
             startHook.call(sm, sm, canvasMod);
         }
     };
-}(this['Clucker'] === undefined ? this['gameFrame'] = {} : Clucker['gameFrame'] = {}));
+}
+    (this['Clucker'] === undefined ? this['gameFrame'] = {}
+         : Clucker['gameFrame'] = {}));
 
 // create Clucker methods
-if(this['Clucker']){
-  // Clucker.createMain
-  Clucker.createMain = function(opt){
-      return Clucker.gameFrame.smCreateMain(opt);
-  };
-  // Clicker.pushState
-  Clucker.pushState = function(sm, opt){
-      return Clucker.gameFrame.smPushState(sm, opt);
-  };
-  Clucker.setState = function(sm, key){
-      return Clucker.gameFrame.smSetState(sm, key);
-  };
+if (this['Clucker']) {
+    // Clucker.createMain
+    Clucker.createMain = function (opt) {
+        return Clucker.gameFrame.smCreateMain(opt);
+    };
+    // Clicker.pushState
+    Clucker.pushState = function (sm, opt) {
+        return Clucker.gameFrame.smPushState(sm, opt);
+    };
+    Clucker.setState = function (sm, key) {
+        return Clucker.gameFrame.smSetState(sm, key);
+    };
 }
-
-
-
-
 
 (function (api) {
 
