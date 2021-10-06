@@ -120,7 +120,7 @@ Clucker.gameFrame.smPushState(sm, {
                 menuStateKey: 'mainMenu',
                 update: function (sm, secs) {
                     // this is a weird duck tape solution for this
-                    Clucker.canvasMod.draw(sm.layers, 'clear', 1);
+                    //Clucker.canvasMod.draw(sm.layers, 'clear', 1);
                 }
             });
 
@@ -143,9 +143,10 @@ Clucker.gameFrame.smPushState(sm, {
         // switch to next state
         //Clucker.gameFrame.smSetState(sm, 'gameTime');
 
-        canvasMod.draw(sm.layers, 'clear', 0);
-        canvasMod.draw(sm.layers, 'clear', 1);
-        canvasMod.draw(sm.layers, 'clear', 2);
+        //canvasMod.draw(sm.layers, 'clear', 0);
+        //canvasMod.draw(sm.layers, 'clear', 1);
+        //canvasMod.draw(sm.layers, 'clear', 2);
+		console.log('this is the init start start');
         Clucker.gameFrame.smSetState(sm, 'upgrades_builtin');
 
     }
