@@ -1038,6 +1038,7 @@ canvasMod.load({
                                 url: sm.loader.images.baseURL + '/' + imageIndex + '.png',
                                 // set to sm images if all goes well
                                 onDone: function (image, xhr) {
+                                    console.log('image ' + imageIndex + ' loaded: ');
                                     // OLD ARRAY
                                     //sm.images[imageIndex] = image;
                                     // NEW ARRAY
@@ -1077,15 +1078,20 @@ canvasMod.load({
                 cy = canvas.height / 2;
                 // clear
                 canvasMod.draw(layers, 'clear', 1);
+
+                var loaded = sm.layers.images.reduce(function (acc, el) {
+                        return el === undefined ? acc : acc + 1;
+                    }, 0);
+
                 // if images
                 if (sm.loader.images) {
                     ctx.fillStyle = 'white'
                         ctx.strokeStyle = 'black';
                     ctx.beginPath();
-                    ctx.rect(0, cy - 10, canvas.width * (sm.images.length / sm.loader.images.count), 10);
+                    ctx.rect(0, cy - 10, canvas.width * (loaded / sm.loader.images.count), 10);
                     ctx.fill();
                     ctx.stroke();
-                    canvasMod.draw(layers, 'print', 1, sm.images.length + ' / ' + sm.loader.images.count, cx, cy + 15, {
+                    canvasMod.draw(layers, 'print', 1, loaded + ' / ' + sm.loader.images.count, cx, cy + 15, {
                         align: 'center',
                         fontSize: 30
                     });
@@ -1139,7 +1145,6 @@ canvasMod.load({
         sm.loop = function () {
             var now = new Date();
             sm.secs = (now - sm.lt) / 1000;
-            //state = sm.states[sm.currentState] || {};
             if (sm.secs >= 1 / sm.fps) {
                 // update
                 var update = sm.stateObj.update;
@@ -1147,7 +1152,8 @@ canvasMod.load({
                     update.call(sm, sm, sm.secs);
                 }
                 // draw
-                //state = sm.states[sm.currentState] || {}; // getting start object again to account for state change
+                // getting state object by sm.stateObj will ensure that the draw
+                // method for the current state is drawn in the event that a change of state happens.
                 var drawMethod = sm.stateObj.draw;
                 if (drawMethod) {
                     drawMethod.call(sm, sm, sm.layers, canvasMod);
