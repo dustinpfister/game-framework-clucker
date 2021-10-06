@@ -106,7 +106,7 @@ utils.XP = (function () {
 
 While I was fixing the bug I thought I should also expand the utils module with some additional methods including one that can be used to format a number that is a money value.
 
-```
+```js
 // format money method
 utils.formatNumber = function(number){
     var formatter = new Intl.NumberFormat('en-US', {
@@ -124,7 +124,7 @@ utils.formatNumber = function(number){
 
 On top of the format number method I also added some object methods for deep cloning and traversing an object.
 
-```
+```js
 // traverse an object
 utils.traverse = function (obj, forKey, level) {
     level = level || 1;
