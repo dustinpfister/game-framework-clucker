@@ -36,7 +36,7 @@ I am still working on this one as of this writing so some additional things are 
 
 ## New features and changes to clucker while working on chicken-cooker-weapons
 
-I just need to keep working on demos like this for the sake of finding out what more needs to be integrated into the core of the framework. As there is still a great deal of basic stuff that is missing that I think a game framework should have. Anyway in this section I will be going over some of the features and changes made to clucker that where a result of working on this demo. When I started with this one I was using Clucker 0.5.25, and from there I made a 0.5.31 thus far while working on this. At the time of this writing this is still an active demo.
+I just need to keep working on demos like this for the sake of finding out what more needs to be integrated into the core of the framework. As there is still a great deal of basic stuff that is missing that I think a game framework should have. Anyway in this section I will be going over some of the features and changes made to Clucker that where a result of working on this demo. When I started with this one I was using Clucker 0.5.25. As of the last time I updated this readme I was using 0.6.2, and this is still an active demo that I intended to keep working on until I have a few additional features added for the demo, as well as of course Clucker itself before moving on to the next demo.
 
 ### Various bugs fixed, and improvements made with the Clucker built in loader ( 0.6.2 )
 
