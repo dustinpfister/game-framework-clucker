@@ -190,6 +190,17 @@ In previous chicken cooker demos chickens would just be cooked if in a blast are
     };
 ```
 
+## Chickens now level up
+
+The chickens will now level up as the score value goes up.
+
+```js
+    // set chicken level
+    var setChickLevel = function (game) {
+        game.chickLevel = Clucker.utils.XP.parseByXP(game.score, 100, 75);
+    };
+```
+
 ## An init state, main menu state, stats state added in main.js
 
 When it comes to the older chicken cooker demos thus far there was just a loading state and a game time state. Once all the assets load the game would just jump to the game time state and that is it. In this demo I am now adding additional state objects in main.js that will allow for the beginnings of additional menus. Because the game and progress from once state back to the game time state I also added an init state that will be called just once after the loading state.
@@ -281,7 +292,7 @@ Up until now the game was just about racking up a simple score where each chicke
 
 On top of weapons I have also started working on an upgrade state, and other various things to have such a system.
 
-```
+```js
 // create upgrade buttons
 var createUpgradeButtons = function(sm, upgradeKey, upgrades){
     var state = sm.states[upgradeKey];
