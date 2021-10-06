@@ -986,6 +986,7 @@ canvasMod.load({
         // return a base sm object
         var sm = {
             currentState: opt.currentState || '', // current state key
+            data: {}, // a user data object for the state
             stateObj: {}, // use for a ref to current state object
             states: opt.states || {},
             events: opt.events || {}
@@ -1024,6 +1025,9 @@ canvasMod.load({
         Clucker.gameFrame.smPushState(sm, {
             name: 'loader',
             start: function (sm) {
+                // make sure data.loaded = 0;
+                sm.states.loader.data.loaded = 0;
+                // background
                 canvasMod.draw(sm.layers, 'background', 0);
                 // set up images array
                 sm.images = [];
@@ -1064,7 +1068,8 @@ canvasMod.load({
                 canvasMod.draw(sm.layers, 'clear', 1);
             },
             update: function (sm, secs) {
-                var loaded = sm.layers.images.reduce(function (acc, el) {
+                var data = sm.states.loader.data;
+                var loaded = data.loaded = sm.layers.images.reduce(function (acc, el) {
                         return el === undefined ? acc : acc + 1;
                     }, 0);
                 if (loaded === sm.loader.images.count) {
@@ -1079,9 +1084,7 @@ canvasMod.load({
                 // clear
                 canvasMod.draw(layers, 'clear', 1);
 
-                var loaded = sm.layers.images.reduce(function (acc, el) {
-                        return el === undefined ? acc : acc + 1;
-                    }, 0);
+                var loaded = sm.states.loader.data.loaded;
 
                 // if images
                 if (sm.loader.images) {
@@ -1190,7 +1193,8 @@ canvasMod.load({
     // push a new state object
     api.smPushState = function (sm, opt) {
         var state = {
-            name: opt.name || 'state_' + Object.keys(sm.states).length
+            name: opt.name || 'state_' + Object.keys(sm.states).length,
+            data: opt.data || {}
         };
         state.buttons = opt.buttons || {};
         state.start = opt.start || function () {};
