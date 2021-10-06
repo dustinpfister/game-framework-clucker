@@ -166,7 +166,7 @@ Previous demos of this chicken cooker game had just one weapon that would result
     };
 ```
 
-## The chickens now have hp bars
+### The chickens now have hp bars
 
 In previous chicken cooker demos chickens would just be cooked if in a blast area. Now they just take damage, and when there hp values reach zero that is when they are cooked. So a display object of a chicken in the chickens object pool now has a stat object in the data object of the display object of a chicken. This stat object for now contains hit points, max hit points, and additional values that have to do with auto heal rate.
 
@@ -190,7 +190,7 @@ In previous chicken cooker demos chickens would just be cooked if in a blast are
     };
 ```
 
-## Chickens now level up
+### Chickens now level up
 
 The chickens will now level up as the score value goes up.
 
@@ -201,7 +201,7 @@ The chickens will now level up as the score value goes up.
     };
 ```
 
-## An init state, main menu state, stats state added in main.js
+### An init state, main menu state, stats state added in main.js
 
 When it comes to the older chicken cooker demos thus far there was just a loading state and a game time state. Once all the assets load the game would just jump to the game time state and that is it. In this demo I am now adding additional state objects in main.js that will allow for the beginnings of additional menus. Because the game and progress from once state back to the game time state I also added an init state that will be called just once after the loading state.
 
@@ -229,7 +229,7 @@ Clucker.gameFrame.smPushState(sm, {
 });
 ```
 
-## Cooked chicken type probability, prices, and total player money
+### Cooked chicken type probability, prices, and total player money
 
 Up until now the game was just about racking up a simple score where each chicken was worth just one point. Now the situation has changed where we are talking about a money value, and each type of cooked chicken is worth a certain amount of money. On top of that the system used to be that it was just an equally random selection when it comes to the various types, so changes where made so that points values can be set for each cooked chicken type which in turn will effect the percentage chance of that kind of cooked chicken occurring.
 
@@ -288,7 +288,7 @@ Up until now the game was just about racking up a simple score where each chicke
     };
 ```
 
-## Upgrades state, and create upgrade buttons
+### Upgrades state, and create upgrade buttons
 
 On top of weapons I have also started working on an upgrade state, and other various things to have such a system.
 
