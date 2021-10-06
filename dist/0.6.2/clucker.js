@@ -985,7 +985,8 @@ canvasMod.load({
         opt = opt || {};
         // return a base sm object
         var sm = {
-            currentState: opt.currentState || '',
+            currentState: opt.currentState || '', // current state key
+            stateObj: {}, // use for a ref to current state object
             states: opt.states || {},
             events: opt.events || {}
         };
@@ -1137,17 +1138,17 @@ canvasMod.load({
         // main loop
         sm.loop = function () {
             var now = new Date();
-            sm.secs = (now - sm.lt) / 1000,
-            state = sm.states[sm.currentState] || {};
+            sm.secs = (now - sm.lt) / 1000;
+            //state = sm.states[sm.currentState] || {};
             if (sm.secs >= 1 / sm.fps) {
                 // update
-                var update = state.update;
+                var update = sm.stateObj.update;
                 if (update) {
                     update.call(sm, sm, sm.secs);
                 }
                 // draw
-                state = sm.states[sm.currentState] || {}; // getting start object again to account for state change
-                var drawMethod = state.draw;
+                //state = sm.states[sm.currentState] || {}; // getting start object again to account for state change
+                var drawMethod = sm.stateObj.draw;
                 if (drawMethod) {
                     drawMethod.call(sm, sm, sm.layers, canvasMod);
                 }
@@ -1158,6 +1159,10 @@ canvasMod.load({
                 requestAnimationFrame(sm.loop);
             }
         };
+        // make sure sm.stateObj is the currentState
+        if (sm.currentState) {
+            sm.stateObj = sm.states[sm.currentState];
+        }
         // stop loop on any page error
         /*
         window.addEventListener('error', function (e) {
@@ -1208,7 +1213,7 @@ canvasMod.load({
         }
         // change to the new state, and call the start hook it it has one
         sm.currentState = newState;
-        var newState = sm.states[sm.currentState];
+        var newState = sm.stateObj = sm.states[sm.currentState];
         var startHook = newState.start;
         if (startHook) {
             startHook.call(sm, sm, canvasMod);

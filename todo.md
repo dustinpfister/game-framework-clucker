@@ -32,6 +32,7 @@
 
 ## () - 0.6.2 - upgrades module: create upgrades method
 * (done) have a new end hook for the built in loader state
+* (done) new sm.stateObj prop that is a ref to the current state object
 * I will want a create upgrades helper that will be used to create an upgrades collection for a game state
 * create upgrade buttons for upgrade-builtin
 * start using 0.6.2 with chicken-cooker-weapons
