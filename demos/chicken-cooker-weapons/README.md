@@ -1,6 +1,6 @@
 # chicken-cooker-weapons
 
-This is yet another demo where I am continuing to build on top of what was once the original chicken cooker demo, which at this point I am just maintaining at its current state rather than adding features. The idea then is that I have some idea as to what the finished demo is when I first start working on it, and once I get to that point the only changes that should be made are to just make sure that the demo will continue to work with a late version of Clucker. However each time I start a new demo off of one of these demos, I can add features and this is one of those demos.
+This is yet another demo where I am continuing to build on top of what was once the original chicken cooker demo, which at this point I am just maintaining at its current state rather than adding features. The idea then is that I have some idea as to what the finished demo is when I first start working on it, and once I get to that point the only changes that should be made are to just make sure that the demo will continue to work with a late version of Clucker as I continue to work on the framework. However each time I start a new demo off of one of these demos, I can add features and this is one of those demos.
 
 The progression thus far then is:
 
@@ -10,32 +10,51 @@ chicken-cooker-sheets => chicken-cooker-fun-facts
 chicken-cooker-fun-facts => chicken-cooker-weapons
 ```
 
-This time around as the name suggests I will be adding a few options when it comes to inflicting damage to the chickens. Speaking of damage I will also be adding hit point values to the chickens also of course. At this point I think I should add a number of other features while I am at it in an effort to continue turning this demo into something that is starting to look like a final product of some kind.
+This time around as the name suggests I will be adding a few options when it comes to inflicting damage to the chickens. Speaking of damage I will also be adding hit point values to the chickens also of course. At this point I think I should add a number of other features while I am at it in an effort to continue turning this demo into something that is starting to look like a final product of some kind. Also I want to have a better idea of what should be built into the framework itself, and what should remain part of a specific games logic.
 
 So then some points about this demo over the others would be:
 
-* the player can now choose between two or more weapons
-* chickens now have hit point values, they do not just cook when they are in a blast area but take damage
-* cooked chicken types now have differing probabilities of happening
-* there is now a money value in place of score
-* various types of cooked chicken have various money values
-* there is a main menu that can be used to enter other menus
-* there is a stats menu that will be used to display various stats about the game
-* there is an upgrade menu that can be used to buy upgrades
+* The player can now choose between two or more weapons
+* Chickens now have hit point values, they do not just cook when they are in a blast area but take damage
+* Cooked chicken types now have differing probabilities of happening
+* There is now a money value in place of score
+* Various types of cooked chicken have various money values
+* There is a main menu that can be used to enter other menus
+* There is a stats menu that will be used to display various stats about the game
+* There is an upgrade menu that can be used to buy upgrades
+* Chickens now level up using the built in XP system of Clucker
+* When chickens level up the max hp values will go up
+* A working upgrade for reducing hpMax as chickens level up
+* A working upgrade for cooked chicken values
+
 
 I am still working on this one as of this writing so some additional things are planed:
 
-* I will want to have chickens level up
-* when chickens level up the max hp values will go up
-* a working upgrade for reducing hpMax as chickens level up
-* a working upgrade for cooked chicken values
+
+
 * working weapons upgrades
 
 ## New features and changes to clucker while working on chicken-cooker-weapons
 
 I just need to keep working on demos like this for the sake of finding out what more needs to be integrated into the core of the framework. As there is still a great deal of basic stuff that is missing that I think a game framework should have. Anyway in this section I will be going over some of the features and changes made to clucker that where a result of working on this demo. When I started with this one I was using Clucker 0.5.25, and from there I made a 0.5.31 thus far while working on this. At the time of this writing this is still an active demo.
 
-### Fixed a Bug with the XP system in utils ( 0.5.31 )
+### Various bugs fixed, and improvements made with the Clucker built in loader ( 0.6.2 )
+
+In the state machine module of clucker I have a built in loader state that I am using to load just images for now. However I have found that there where a few problems with it that have been resolved. The progress bar would not move when I simulated a slow Internet collection which is of course a major problem for a loader. This was resolved by making the code that is used in the update method set a value in a new data object for a state object that is then what is used to draw and update text in the draw method of the loader state object.
+
+```js
+    // update data.loaded value
+    var data = sm.states.loader.data;
+    var loaded = data.loaded = sm.layers.images.reduce(function (acc, el) {
+        return el === undefined ? acc : acc + 1;
+    }, 0);
+    // if loaded === total count of images change state to start state of the sm.loader object
+    if (loaded === sm.loader.images.count) {
+        Clucker.gameFrame.smSetState(sm, sm.loader.startState || 'game');
+    }
+```
+
+### Fixed a Bug with the XP system in utils ( 0.5.32 )
 
 When using the XP system for the first time when working out some upgrades for this demo I found a bug in the XP System of the utils module. The cause of the bug was just a few careless mistakes when calling some internal methods, and not passing a delta next value when doing so.
 
@@ -61,7 +80,7 @@ utils.XP = (function () {
         var l = getLevel(xp, deltaNext);
         l = l > cap ? cap : l;
         var level = Math.floor(l),
-        forNext = getXP(level + 1);
+        forNext = getXP(level + 1, deltaNext);
         return {
             level: level,
             levelFrac: l,
