@@ -36,9 +36,9 @@
 * (done) fix issue with loader where progress bar is not updating
 * (done) make a data object of a state object standard
 * (done) use the data object as a way to update a stateObj.data.loaded value for the built in loader
+* (done) start using 0.6.2 with chicken-cooker-weapons
 * I will want a create upgrades helper that will be used to create an upgrades collection for a game state
 * create upgrade buttons for upgrade-builtin
-* start using 0.6.2 with chicken-cooker-weapons
 
 ## ( done 10/05/2021 ) - 0.6.1 - Clucker.upgrades : create state method
 * (done) use the game.multipliers prop for the cooked chicken value upgrade
