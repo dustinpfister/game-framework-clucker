@@ -1068,10 +1068,12 @@ canvasMod.load({
                 canvasMod.draw(sm.layers, 'clear', 1);
             },
             update: function (sm, secs) {
+                // update data.loaded value
                 var data = sm.states.loader.data;
                 var loaded = data.loaded = sm.layers.images.reduce(function (acc, el) {
                         return el === undefined ? acc : acc + 1;
                     }, 0);
+                // if loaded === total count of images change state to start state of the sm.loader object
                 if (loaded === sm.loader.images.count) {
                     Clucker.gameFrame.smSetState(sm, sm.loader.startState || 'game');
                 }
@@ -1080,12 +1082,10 @@ canvasMod.load({
                 var ctx = layers[1].ctx,
                 canvas = layers[1].canvas,
                 cx = canvas.width / 2,
-                cy = canvas.height / 2;
+                cy = canvas.height / 2,
+                loaded = sm.states.loader.data.loaded;
                 // clear
                 canvasMod.draw(layers, 'clear', 1);
-
-                var loaded = sm.states.loader.data.loaded;
-
                 // if images
                 if (sm.loader.images) {
                     ctx.fillStyle = 'white'
@@ -1263,8 +1263,30 @@ if (this['Clucker']) {
         }
     };
 
+    // create upgrades buttons helper
+    var createUpgradeButtons = function (sm, upgradeKey, upgrades) {
+        var state = sm.states[upgradeKey];
+        Object.keys(upgrades).forEach(function (upgradeKey, i) {
+            var upgradeObj = upgrades[upgradeKey];
+            state.buttons['upgrade_' + upgradeKey] = {
+                x: 32,
+                y: 128 + (64 + 8) * i,
+                w: 256,
+                h: 64,
+                upgradeKey: upgradeKey,
+                desc: upgradeObj.desc,
+                minor: getUpgradeMinor(upgradeObj),
+                descSize: 20,
+                onClick: function (e, pos, sm, button) {
+                    gameMod.buyUpgrade(sm, button.upgradeKey);
+                    button.minor = getUpgradeMinor(sm.game.upgrades[button.upgradeKey]);
+                }
+            };
+        });
+    };
+
     /********* ********** ********** ********** *********/
-    //
+    // PUBLIC METHODS
     /********* ********** ********** ********** *********/
 
     // create and rerturn a state object
@@ -1275,17 +1297,21 @@ if (this['Clucker']) {
         opt.gameStateKey = opt.gameStateKey || 'game';
         opt.menuStateKey = opt.menuStateKey || 'menu';
         opt.update = opt.update || function () {};
-
         var canvasWidth = sm.layers[0].canvas.width,
         canvasHeight = sm.layers[0].canvas.height;
-
-        return {
+        // return the state object
+        var state = {
             name: opt.upgradeStateKey,
             buttons: {
-                to_game: createToStateButton(opt.gameStateKey, canvasWidth - 64 - 16, 16, 'Game'), //createToGameButton(),
-                back: createToStateButton(opt.menuStateKey, 16, 16, 'Back')
+                //to_game: createToStateButton(opt.gameStateKey, canvasWidth - 64 - 16, 16, 'Game'), //createToGameButton(),
+                //back: createToStateButton(opt.menuStateKey, 16, 16, 'Back')
             },
-            start: function (sm, canvasMod) {},
+            start: function (sm, canvasMod) {
+                var buttons = sm.stateObj.buttons = {};
+                buttons['to_game'] = createToStateButton(opt.gameStateKey, canvasWidth - 64 - 16, 16, 'Game');
+                buttons['game'] = createToStateButton(opt.menuStateKey, 16, 16, 'Back');
+
+            },
             update: function (sm, secs) {
                 // call opt update
                 opt.update(sm, secs);
@@ -1297,6 +1323,7 @@ if (this['Clucker']) {
                 canvasMod.draw(layers, 'stateButtons', opt.buttonLayer, sm);
             }
         };
+        return state;
     };
 
 }
