@@ -1265,7 +1265,7 @@ if (this['Clucker']) {
 
     var getUpgradeMinor = function (upgradeObj) {
         var cost = '$' + upgradeObj.levelObj.forNext;
-        return '(' + upgradeObj.levelObj.level + ')' + cost;
+        return '(' + upgradeObj.levelObj.level + ') ' + cost;
     };
 
     var buyUpgrade = function(sm, key){
@@ -1273,8 +1273,8 @@ if (this['Clucker']) {
     };
 
     // create upgrades buttons helper
-    var createUpgradeButtons = function (sm, upgradeKey, upgrades) {
-        var state = sm.states[upgradeKey];
+    var createUpgradeButtons = function (sm, upgradeStateKey, upgrades) {
+        var state = sm.states[upgradeStateKey];
         Object.keys(upgrades).forEach(function (upgradeKey, i) {
             var upgradeObj = upgrades[upgradeKey];
             state.buttons['upgrade_' + upgradeKey] = {
@@ -1318,6 +1318,9 @@ if (this['Clucker']) {
                 var buttons = sm.stateObj.buttons = {};
                 buttons['to_game'] = createToStateButton(opt.gameStateKey, canvasWidth - 64 - 16, 16, 'Game');
                 buttons['game'] = createToStateButton(opt.menuStateKey, 16, 16, 'Back');
+
+                var upgrades = sm.game.upgrades;
+                createUpgradeButtons(sm, opt.upgradeStateKey, upgrades);
 
             },
             update: function (sm, secs) {
