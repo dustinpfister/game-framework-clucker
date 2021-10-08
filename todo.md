@@ -40,8 +40,7 @@
 * (done) create upgrade buttons for upgrade-builtin
 * (done) the built in buttons will look for an sm.game.upgrades collection by default
 * (done) have a getUpgrades helper that will get the upgrades object from a path such as 'game.upgrades'
-
-* have an onBuyUpgrade method option that will be used to set how to deduct money, or any other resource
+* (done) have an onBuyUpgrade method option that will be used to set how to deduct money, or any other resource
 
 * I will want a upgrades.createUpgradesCollection helper that will be used to create an upgrades collection for a game state object
 
