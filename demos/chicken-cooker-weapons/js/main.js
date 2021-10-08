@@ -96,14 +96,14 @@ Clucker.gameFrame.smPushState(sm, {
     name: 'init',
     start: function (sm, canvasMod) {
         // create new game object
-        sm.game = gameMod.create({
-                money: 1000,
-                score: 0,
-                upgrades: {
-                    chick_cooked_value: 1,
-                    chick_hp_reduction: 1
-                }
-            }, sm);
+        gameMod.create({
+            money: 1000,
+            score: 0,
+            upgrades: {
+                chick_cooked_value: 1,
+                chick_hp_reduction: 1
+            }
+        }, sm);
         // set button desc for first time
         sm.states.gameTime.buttons.weapon.desc = sm.game.currentWeapon;
 

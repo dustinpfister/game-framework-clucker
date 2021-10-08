@@ -53,8 +53,9 @@
             deltaNext: 10,
             cap: 100,
             value: 0,
-            applyToState: function (game, upgrade, level, sm) {
-                game.cookedTypes.forEach(function (cooked) {
+            //applyToState: function (game, upgrade, level, sm) {
+            applyToState: function (sm, upgrade, level) {
+                sm.game.cookedTypes.forEach(function (cooked) {
                     upgrade.value = 0.25 * (level - 1);
                     cooked.price = cooked.priceBase * (1 + upgrade.value);
                 });
@@ -64,7 +65,7 @@
             desc: 'Reduce Chicken HP',
             deltaNext: 150,
             cap: 100,
-            applyToState: function (game, upgrade, level, sm) {
+            applyToState: function (sm, upgrade, level) {
                 upgrade.value = 1 + 5 * (level - 1) / 99;
             }
         }
@@ -512,7 +513,7 @@
     var applyUpgradesToState = function (game, sm) {
         Object.keys(game.upgrades).forEach(function (key) {
             var upgrade = game.upgrades[key];
-            upgrade.applyToState.call(game, game, upgrade, upgrade.levelObj.level, sm);
+            upgrade.applyToState.call(sm, sm, upgrade, upgrade.levelObj.level);
         });
     };
 
@@ -555,6 +556,7 @@
         setChickLevel(game);
 
         // apply upgrades for first time
+        sm.game = game;
         applyUpgradesToState(game, sm);
 
         // set cooked chicken per values for first time
