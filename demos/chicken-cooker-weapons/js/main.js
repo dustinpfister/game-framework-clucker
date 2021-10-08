@@ -113,21 +113,6 @@ Clucker.gameFrame.smPushState(sm, {
         // started a Clucker.upgrades module
         console.log(Clucker.upgrades);
 
-        var stateObj = Clucker.upgrades.createState(sm, {
-                buttonLayer: 2,
-                upgradeStateKey: 'upgrades_builtin',
-                gameStateKey: 'gameTime',
-                menuStateKey: 'mainMenu',
-                update: function (sm, secs) {
-                    // this is a weird duck tape solution for this
-                    //Clucker.canvasMod.draw(sm.layers, 'clear', 1);
-                }
-            });
-
-        Clucker.gameFrame.smPushState(sm, stateObj);
-
-        console.log(stateObj);
-
         // create sm.funFacts
         sm.funFacts = funFactsMod.create(sm);
         // create chicken sprite sheets
@@ -310,6 +295,22 @@ Clucker.gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     }
 });
+
+// new upgrades_builtin state
+Clucker.gameFrame.smPushState(sm, Clucker.upgrades.createState(sm, {
+    buttonLayer: 2,
+    upgradeStateKey: 'upgrades_builtin',
+    gameStateKey: 'gameTime',
+    menuStateKey: 'mainMenu',
+    update: function (sm, secs) {
+        // update game state still
+        gameMod.update(sm.game, sm, secs);
+        // draw just the chickens on layer 1
+        Clucker.canvasMod.draw(sm.layers, 'clear', 1);
+        Clucker.canvasMod.draw(sm.layers, 'pool-cc', 1, sm);
+        
+    }
+}));
 
 // start the state machine
 Clucker.gameFrame.smSetState(sm, 'loader');
