@@ -1279,13 +1279,39 @@ if (this['Clucker']) {
         return ref;
     };
 
-    var buyUpgrade = function(sm, key){
+    var applyUpgradesToState = function (sm, data) {
+        var upgrades = getUpgrades(sm, data.upgradesPath);
+        Object.keys(upgrades).forEach(function (key) {
+            var upgrade = upgrades[key];
+            upgrade.applyToState.call(sm, sm, upgrade, upgrade.levelObj.level);
+        });
+    };
+
+    var buyUpgrade = function(sm, data, key){
         console.log('buying upgrade');
+        var upgrades = getUpgrades(sm, data.upgradesPath),
+        upgrade = upgrades[key];
+        if(data.onBuyUpgrade(sm, upgrade)){
+            var newLevel = upgrade.levelObj.level + 1;
+            upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
+            applyUpgradesToState(sm, data);
+        }
+
+/*
+        var upgrade = game.upgrades[key];
+        if (game.money >= upgrade.levelObj.forNext) {
+            game.money -= upgrade.levelObj.forNext;
+            var newLevel = upgrade.levelObj.level + 1;
+            upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
+        }
+        applyUpgradesToState(game, sm);
+*/
+
     };
 
     // create upgrades buttons helper
-    var createUpgradeButtons = function (sm, upgradeStateKey, upgrades) {
-        var state = sm.states[upgradeStateKey];
+    var createUpgradeButtons = function (sm, data, upgrades) {
+        var state = sm.states[data.upgradeStateKey];
         Object.keys(upgrades).forEach(function (upgradeKey, i) {
             var upgradeObj = upgrades[upgradeKey];
             state.buttons['upgrade_' + upgradeKey] = {
@@ -1299,7 +1325,7 @@ if (this['Clucker']) {
                 descSize: 20,
                 onClick: function (e, pos, sm, button) {
                     //gameMod.buyUpgrade(sm, button.upgradeKey);
-                    buyUpgrade(sm, button.upgradeKey);
+                    buyUpgrade(sm, data, button.upgradeKey);
                     button.minor = getUpgradeMinor(sm.game.upgrades[button.upgradeKey]);
                 }
             };
@@ -1319,6 +1345,9 @@ if (this['Clucker']) {
         opt.menuStateKey = opt.menuStateKey || 'menu';
         opt.update = opt.update || function () {};
         opt.upgradesPath = opt.upgradesPath || 'game.upgrades';
+        opt.onBuyUpgrade = opt.onBuyUpgrade || function(sm, upgrade){
+            return true;
+        }
         var canvasWidth = sm.layers[0].canvas.width,
         canvasHeight = sm.layers[0].canvas.height;
         // return the state object
@@ -1331,7 +1360,7 @@ if (this['Clucker']) {
                 buttons['game'] = createToStateButton(opt.menuStateKey, 16, 16, 'Back');
 
                 var upgrades = getUpgrades(sm, opt.upgradesPath);
-                createUpgradeButtons(sm, opt.upgradeStateKey, upgrades);
+                createUpgradeButtons(sm, opt, upgrades);
 
             },
             update: function (sm, secs) {
