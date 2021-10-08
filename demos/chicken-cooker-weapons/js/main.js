@@ -84,7 +84,7 @@ var createUpgradeButtons = function (sm, upgradeKey, upgrades) {
             minor: getUpgradeMinor(upgradeObj),
             descSize: 20,
             onClick: function (e, pos, sm, button) {
-                gameMod.buyUpgrade(sm.game, button.upgradeKey);
+                gameMod.buyUpgrade(sm, button.upgradeKey);
                 button.minor = getUpgradeMinor(sm.game.upgrades[button.upgradeKey]);
             }
         };
@@ -97,11 +97,11 @@ Clucker.gameFrame.smPushState(sm, {
     start: function (sm, canvasMod) {
         // create new game object
         sm.game = gameMod.create({
-                money: 0,
-                score: 10000,
+                money: 1000,
+                score: 0,
                 upgrades: {
-                    chick_cooked_value: 90,
-                    chick_hp_reduction: 100
+                    chick_cooked_value: 1,
+                    chick_hp_reduction: 1
                 }
             }, sm);
         // set button desc for first time

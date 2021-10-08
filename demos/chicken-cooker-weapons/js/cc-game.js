@@ -49,12 +49,11 @@
     // UPGRADES
     var UPGRADES = {
         chick_cooked_value: {
-            key: '',
             desc: 'Global Food Values',
             deltaNext: 10,
             cap: 100,
             value: 0,
-            applyToState: function (game, upgrade, level) {
+            applyToState: function (game, upgrade, level, sm) {
                 game.cookedTypes.forEach(function (cooked) {
                     upgrade.value = 0.25 * (level - 1);
                     cooked.price = cooked.priceBase * (1 + upgrade.value);
@@ -62,15 +61,15 @@
             }
         },
         chick_hp_reduction: {
-            key: 'chicken_hp',
             desc: 'Reduce Chicken HP',
             deltaNext: 150,
             cap: 100,
-            applyToState: function (game, upgrade, level) {
+            applyToState: function (game, upgrade, level, sm) {
                 upgrade.value = 1 + 5 * (level - 1) / 99;
             }
         }
     };
+
     // set keys
     Object.keys(UPGRADES).forEach(function (key) {
         var upgrade = UPGRADES[key];
@@ -510,10 +509,10 @@
     };
 
     // apply upgrades to state helper
-    var applyUpgradesToState = function (game) {
+    var applyUpgradesToState = function (game, sm) {
         Object.keys(game.upgrades).forEach(function (key) {
             var upgrade = game.upgrades[key];
-            upgrade.applyToState.call(game, game, upgrade, upgrade.levelObj.level);
+            upgrade.applyToState.call(game, game, upgrade, upgrade.levelObj.level, sm);
         });
     };
 
@@ -556,7 +555,7 @@
         setChickLevel(game);
 
         // apply upgrades for first time
-        applyUpgradesToState(game);
+        applyUpgradesToState(game, sm);
 
         // set cooked chicken per values for first time
         setCookedChickenPerValues(game);
@@ -655,14 +654,15 @@
     };
 
     // buy an upgrade
-    api.buyUpgrade = function (game, key) {
+    api.buyUpgrade = function (sm, key) {
+        var game = sm.game;
         var upgrade = game.upgrades[key];
         if (game.money >= upgrade.levelObj.forNext) {
             game.money -= upgrade.levelObj.forNext;
             var newLevel = upgrade.levelObj.level + 1;
             upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
         }
-        applyUpgradesToState(game);
+        applyUpgradesToState(game, sm);
     };
 
 }
