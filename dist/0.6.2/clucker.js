@@ -1358,10 +1358,8 @@ if (this['Clucker']) {
                 var buttons = sm.stateObj.buttons = {};
                 buttons['to_game'] = createToStateButton(opt.gameStateKey, canvasWidth - 64 - 16, 16, 'Game');
                 buttons['game'] = createToStateButton(opt.menuStateKey, 16, 16, 'Back');
-
                 var upgrades = getUpgrades(sm, opt.upgradesPath);
                 createUpgradeButtons(sm, opt, upgrades);
-
             },
             update: function (sm, secs) {
                 // call opt update

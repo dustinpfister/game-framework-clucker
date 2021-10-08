@@ -126,14 +126,7 @@ Clucker.gameFrame.smPushState(sm, {
         sm.layers.background = sm.layers.images[0];
         canvasMod.draw(sm.layers, 'background', 0);
         // switch to next state
-        //Clucker.gameFrame.smSetState(sm, 'gameTime');
-
-        //canvasMod.draw(sm.layers, 'clear', 0);
-        //canvasMod.draw(sm.layers, 'clear', 1);
-        //canvasMod.draw(sm.layers, 'clear', 2);
-		console.log('this is the init start start');
-        Clucker.gameFrame.smSetState(sm, 'upgrades_builtin');
-
+        Clucker.gameFrame.smSetState(sm, 'gameTime');
     }
 });
 
@@ -273,6 +266,7 @@ Clucker.gameFrame.smPushState(sm, {
 });
 
 // a stats state
+/*
 Clucker.gameFrame.smPushState(sm, {
     name: 'upgrades',
     buttons: {
@@ -295,13 +289,22 @@ Clucker.gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     }
 });
+*/
 
 // new upgrades_builtin state
 Clucker.gameFrame.smPushState(sm, Clucker.upgrades.createState(sm, {
     buttonLayer: 2,
-    upgradeStateKey: 'upgrades_builtin',
+    //upgradeStateKey: 'upgrades_builtin',
+    upgradeStateKey: 'upgrades',
     gameStateKey: 'gameTime',
     menuStateKey: 'mainMenu',
+    onBuyUpgrade: function(sm, upgrade){
+        if (sm.game.money >= upgrade.levelObj.forNext) {
+            sm.game.money -= upgrade.levelObj.forNext;
+            return true;
+        }
+        return false;
+    },
     update: function (sm, secs) {
         // update game state still
         gameMod.update(sm.game, sm, secs);
