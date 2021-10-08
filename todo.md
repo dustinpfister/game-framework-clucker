@@ -37,10 +37,12 @@
 * (done) make a data object of a state object standard
 * (done) use the data object as a way to update a stateObj.data.loaded value for the built in loader
 * (done) start using 0.6.2 with chicken-cooker-weapons
+* (done) create upgrade buttons for upgrade-builtin
+* (done) the built in buttons will look for an sm.game.upgrades collection by default
 
+* have a getUpgrades helper that will get the upgrades object from a path such as 'game.upgrades'
+* have an onBuyUpgrade method option that will be used to set how to deduct money, or any other resource
 * I will want a upgrades.createUpgradesCollection helper that will be used to create an upgrades collection for a game state object
-* create upgrade buttons for upgrade-builtin
-* the built in buttons will look for an sm.game.upgrades collection by default
 
 ## ( done 10/05/2021 ) - 0.6.1 - Clucker.upgrades : create state method
 * (done) use the game.multipliers prop for the cooked chicken value upgrade

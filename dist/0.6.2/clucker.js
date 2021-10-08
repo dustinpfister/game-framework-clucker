@@ -1268,6 +1268,17 @@ if (this['Clucker']) {
         return '(' + upgradeObj.levelObj.level + ') ' + cost;
     };
 
+    // get upgrades helper
+    var getUpgrades = function(sm, str){
+        var keys = str.split('.'),
+        ref = sm;
+        while(keys.length > 0){
+            var k = keys.shift();
+            ref = ref[k];
+        }
+        return ref;
+    };
+
     var buyUpgrade = function(sm, key){
         console.log('buying upgrade');
     };
@@ -1319,7 +1330,7 @@ if (this['Clucker']) {
                 buttons['to_game'] = createToStateButton(opt.gameStateKey, canvasWidth - 64 - 16, 16, 'Game');
                 buttons['game'] = createToStateButton(opt.menuStateKey, 16, 16, 'Back');
 
-                var upgrades = sm.game.upgrades;
+                var upgrades = getUpgrades(sm, opt.upgradesPath);
                 createUpgradeButtons(sm, opt.upgradeStateKey, upgrades);
 
             },
