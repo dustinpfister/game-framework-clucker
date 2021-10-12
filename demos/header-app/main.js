@@ -1,9 +1,3 @@
-// to create an object pool with default hard coded settings
-//var pool = poolMod.create();
-//console.log( pool.objects.length ) // 10
-//console.log( JSON.stringify( pool.objects[0] ) );
-// {"active":false,"i":0,"x":0,"y":0,"w":32,"h":32,"heading":0,"pps":32,"lifespan":3,"data":{}}
-
 
 console.log('Using clucker v' +this['Clucker'].ver)
 
@@ -12,9 +6,9 @@ console.log('Using clucker v' +this['Clucker'].ver)
 //var sm = Clucker.gameFrame.smCreateMain({
 var sm = Clucker.createMain({
     currentState: 'game', // set starting state object to use
-    canvasContainer: '#banner',
-    width: 640,
-    height: 480,
+    canvasContainer: 'canvas-app', //'#banner',
+    width: 300,
+    height: 300,
     game: {
         text: 'Hello World',
         pool: Clucker.poolMod.create({
