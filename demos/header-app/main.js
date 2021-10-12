@@ -26,11 +26,11 @@ var sm = Clucker.createMain({
                obj.data.radian += obj.data.deltaRadian;
                obj.data.radian = Clucker.utils.mod(obj.data.radian, Math.PI * 2);  
                obj.lifespan = 1;
-               obj.x = 150 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
+               obj.x = 400 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
                obj.y = 150 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
             }
         }),
-        cx: 150,
+        cx: 400,
         cy: 150,
         x: 0,
         y: 0,
