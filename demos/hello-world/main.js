@@ -59,7 +59,7 @@ Clucker.pushState(sm, {
         canvasMod.draw(sm.layers, 'background', 0);
 
         // spawn
-        poolMod.spawnAll(sm.game.pool, sm, {});
+        Clucker.poolMod.spawnAll(sm.game.pool, sm, {});
     },
     // what to do on each update
     update: function(sm, secs){
@@ -75,7 +75,7 @@ Clucker.pushState(sm, {
         sm.game.x = sm.game.cx + sm.game.dx;
         sm.game.y = sm.game.cy;
         // update game.pool
-        poolMod.update(sm.game.pool, secs, sm);
+        Clucker.poolMod.update(sm.game.pool, secs, sm);
     },
     // draw will be called after each update
     draw: function(sm, layers, canvasMod){
