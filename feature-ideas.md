@@ -3,20 +3,29 @@
 When I have an idea for a new feature for this project I start out by writing it down here. I then draft out my todo list when it 
 comes to actual lined up revisions of the over all framework.
 
-## (  ) - 0.x.x - new chicken-cooker-weapons demo
-* start new chicken cooker demo where the focus is adding weapons
-* have a single target weapon called 'frying pan' that will only hit one target at a time
-* must hit a chicken with the 'frying pan' as there is no spash damage
-* have a 'napalm' weapon that does splash damage
+## (  ) - x.x.x - save state system
+* start a save state system as a new lin called storage.js
+* start out with just localStorage as a means to store save states
+* have a public method than can be used to create and return a built in menu for save states
+
+## (  ) - 0.x.x - chicken-cooker-weapons: new system for images
+* start a new system for chicken sheets that allows for more animations, and have all cells for a chicken in one sheet
+* reserve 0.png - 9.png for images other than chicken sheets
+* any unused images can just be blank place holder images for now if that works
+* first 10.png can be the first chicken type sheet, and 11 can be the second based off of current images
+* have an image for change weapons button
+
+## (  ) - 0.x.x - /img root folder started
+* start a /img root folder that will contain images used in the various demos
+* start a /img/chicken-cooker/cc-128 folder for 'chicken-cooker' demo
+* start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
+* start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
 ## (  ) - 0.x.x - chicken-cooker-fun-facts: brow disp object
 * make changes to fun facts so that the eyebrows are animated
 
 ## (  ) - 0.x.x - chicken-cooker-fun-facts: eyes disp object
 * make changes to fun facts so that the eyes are animated
-
-## (  ) - 0.x.x - Grid library
-* add a library that can be used to create, update, and work with a simple 2d grid of tiles
 
 ## (  ) - 0.x.x - User Event system
 * add an event system based off of what I made for js-custom-event

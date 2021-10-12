@@ -17,22 +17,12 @@
 * create a /dist/0.6.0/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
-## (  ) - 0.6.4 - chicken-cooker-weapons: new system for images
-* start a new system for chicken sheets that allows for more animations, and have all cells for a chicken in one sheet
-* reserve 0.png - 9.png for images other than chicken sheets
-* any unused images can just be blank place holder images for now if that works
-* first 10.png can be the first chicken type sheet, and 11 can be the second based off of current images
-* have an image for change weapons button
-
-## (  ) - 0.6.3 - /img root folder started
-* start a /img root folder that will contain images used in the various demos
-* start a /img/chicken-cooker/cc-128 folder for 'chicken-cooker' demo
-* start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
-* start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
-
-## () - 0.6.3 - weapon upgrades
-* I will want a upgrades.createUpgradesCollection helper that will be used to create an upgrades collection for a game state object
-* have a global weapons upgrade for chicken-cooker-weapons demo
+## () - 0.6.3 - starting a new header-app demo
+* start a new header-app demo that will be a start for the kind of project to place in the header of a website
+* have an object pool of little ships that move around in the canvas and wrap around when they go out of bounds
+* clicking on one will cause it to purge.
+* have a helper in upgrades.js that can be used to create a game.upgrades array
+* have a global weapons upgrade for chicken-cooker-weapons demo to finish up that demo
 
 ## ( done 10/12/2021 ) - 0.6.2 - upgrades module: create upgrades method
 * (done) have a new end hook for the built in loader state
