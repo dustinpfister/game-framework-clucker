@@ -12,6 +12,7 @@ console.log('Using clucker v' +this['Clucker'].ver)
 //var sm = Clucker.gameFrame.smCreateMain({
 var sm = Clucker.createMain({
     currentState: 'game', // set starting state object to use
+    canvasContainer: '#banner',
     width: 640,
     height: 480,
     game: {
