@@ -30,7 +30,11 @@
 * start a /img/chicken-cooker/cc-funfacts folder and get it to work with 'chicken-cooker-fun-facts', and 'chicken-cooker-sheets'
 * start a /img/chicken-cooker/cc-weapons folder for 'chicken-cooker-weapons'
 
-## () - 0.6.2 - upgrades module: create upgrades method
+## () - 0.6.3 - weapon upgrades
+* I will want a upgrades.createUpgradesCollection helper that will be used to create an upgrades collection for a game state object
+* have a global weapons upgrade for chicken-cooker-weapons demo
+
+## ( done 10/12/2021 ) - 0.6.2 - upgrades module: create upgrades method
 * (done) have a new end hook for the built in loader state
 * (done) new sm.stateObj prop that is a ref to the current state object
 * (done) fix issue with loader where progress bar is not updating
@@ -41,8 +45,6 @@
 * (done) the built in buttons will look for an sm.game.upgrades collection by default
 * (done) have a getUpgrades helper that will get the upgrades object from a path such as 'game.upgrades'
 * (done) have an onBuyUpgrade method option that will be used to set how to deduct money, or any other resource
-
-* I will want a upgrades.createUpgradesCollection helper that will be used to create an upgrades collection for a game state object
 
 ## ( done 10/05/2021 ) - 0.6.1 - Clucker.upgrades : create state method
 * (done) use the game.multipliers prop for the cooked chicken value upgrade
