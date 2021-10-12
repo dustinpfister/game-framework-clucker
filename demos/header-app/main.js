@@ -6,7 +6,7 @@ console.log('Using clucker v' +this['Clucker'].ver)
 //var sm = Clucker.gameFrame.smCreateMain({
 var sm = Clucker.createMain({
     currentState: 'game', // set starting state object to use
-    canvasContainer: 'canvas-app', //'#banner',
+    canvasContainer: '#banner', //'canvas-app', //'#banner',
     width: 300,
     height: 300,
     game: {
@@ -19,19 +19,19 @@ var sm = Clucker.createMain({
                 obj.data.homeRadian = Math.PI * 2 / pool.objects.length * obj.i;
                 obj.data.deltaRadian = 0;
                 obj.data.radian = obj.data.homeRadian;
-                obj.data.radius = 200;
+                obj.data.radius = 100;
             },
             update: function (obj, pool, sm, secs){
                obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
                obj.data.radian += obj.data.deltaRadian;
                obj.data.radian = Clucker.utils.mod(obj.data.radian, Math.PI * 2);  
                obj.lifespan = 1;
-               obj.x = 320 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
-               obj.y = 240 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
+               obj.x = 150 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
+               obj.y = 150 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
             }
         }),
-        cx: 320,
-        cy: 240,
+        cx: 150,
+        cy: 150,
         x: 0,
         y: 0,
         dir: 1,
@@ -51,6 +51,7 @@ Clucker.pushState(sm, {
     // start hook will just fire once when the state object starts
     start: function(sm, canvasMod){
         // draw background once
+        sm.layers.background ='gray';
         canvasMod.draw(sm.layers, 'background', 0);
 
         // spawn
@@ -91,8 +92,8 @@ Clucker.pushState(sm, {
         },
         pointerEnd: function(e, pos, sm){
             sm.game.pointerDown = false;
-            sm.game.cx = 320;
-            sm.game.cy = 240;
+            sm.game.cx = 150;
+            sm.game.cy = 150;
         }
     }
 });
