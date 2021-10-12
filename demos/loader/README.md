@@ -1,0 +1,3 @@
+# loader
+
+This is a quick demo that I started when I added a built in loader for Clucker. The demo is just for simple making sure that the features added are working as they should. So from now on the main thing to do moving forward is to just make sure that this demo is still working with late versions of Clucker. If I add some additional features for the built in loader there is expanding on this demo, rather than maybe making a new one.
