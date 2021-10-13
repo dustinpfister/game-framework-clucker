@@ -1,7 +1,8 @@
 
 (function(gameMod){
 
-    var SHIP_SPEEDS = [64, 96, 128];
+    var SHIP_SPEEDS = [64, 96, 128],
+    SHIP_SPAWN_RATE = 0.5; // spawn rate in secs
 
     // create ships object pool helper
     var createShips = function(){
@@ -31,17 +32,7 @@
         var game = {
             pool: createShips(),
             cx: 400,
-            cy: 150,
-            x: 0,
-            y: 0,
-            dir: 1,
-            dx: 0,
-            printOptions: {
-                align: 'center',
-                baseLine: 'middle',
-                fontSize: 40
-            },
-            pointerDown: false
+            cy: 150
         };
         return game;
     };

@@ -20,7 +20,9 @@
 ## () - 0.6.3 - starting a new header-app demo collection
 * (done) start a new header-app demo that will be a start for the kind of project to place in the header of a website
 * (done) make sure all demos are working with at least 0.6.2
-* have an object pool of little ships that move around in the canvas and wrap around when they go out of bounds
+* (done) have an object pool of little ships that move around in the canvas and wrap around when they go out of bounds
+* (done) random headings and sppeds when spawning
+* have a spawn rate
 * clicking on one will cause it to purge.
 * have a helper in upgrades.js that can be used to create a game.upgrades array
 * have a global weapons upgrade for chicken-cooker-weapons demo to finish up that demo
