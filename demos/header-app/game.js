@@ -2,12 +2,13 @@
 (function(gameMod){
 
     var SHIP_SPEEDS = [64, 96, 128],
+    SHIP_COUNT = 10,
     SHIP_SPAWN_RATE = 0.5; // spawn rate in secs
 
     // create ships object pool helper
     var createShips = function(){
         return Clucker.poolMod.create({
-            count: 8,
+            count: SHIP_COUNT,
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool, sm){
