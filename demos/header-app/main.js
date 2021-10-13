@@ -6,7 +6,7 @@ console.log('Using clucker v' +this['Clucker'].ver)
 // create an sm object
 var sm = Clucker.createMain({
     currentState: 'game', // set starting state object to use
-    canvasContainer: '#banner',
+    canvasContainer: '#logo-wrap', //'#banner',
     width: 800,
     height: 300,
     game: gameMod.create()
@@ -20,7 +20,6 @@ Clucker.pushState(sm, {
         // draw background once
         sm.layers.background ='gray';
         canvasMod.draw(sm.layers, 'background', 0);
-
     },
     // what to do on each update
     update: function(sm, secs){
@@ -35,18 +34,11 @@ Clucker.pushState(sm, {
     // events for this state
     events: {
         pointerStart: function(e, pos, sm){
-            sm.game.pointerDown = true;
+            gameMod.clickAt(sm, pos);
         },
         pointerMove: function(e, pos, sm){
-            if(sm.game.pointerDown){
-                sm.game.cx = pos.x;
-                sm.game.cy = pos.y;
-            }
         },
         pointerEnd: function(e, pos, sm){
-            sm.game.pointerDown = false;
-            sm.game.cx = 150;
-            sm.game.cy = 150;
         }
     }
 });

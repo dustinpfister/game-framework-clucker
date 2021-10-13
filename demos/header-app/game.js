@@ -42,11 +42,17 @@
         return game;
     };
 
+    // public update method
     gameMod.update = function(sm, secs){
         // update game.pool
         Clucker.poolMod.update(sm.game.pool, secs, sm);
         // spawn
         Clucker.poolMod.spawn(sm.game.pool, sm);
+    };
+
+    // user clicked
+    gameMod.clickAt = function(sm, pos){
+        console.log(pos);
     };
 
 }(this['gameMod'] = {}));
