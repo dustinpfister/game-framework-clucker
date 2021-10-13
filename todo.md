@@ -22,8 +22,10 @@
 * (done) make sure all demos are working with at least 0.6.2
 * (done) have an object pool of little ships that move around in the canvas and wrap around when they go out of bounds
 * (done) random headings and sppeds when spawning
-* have a spawn rate
-* clicking on one will cause it to purge.
+* (done) have a spawn rate
+* (done) clicking on one will cause it to purge.
+
+
 * have a helper in upgrades.js that can be used to create a game.upgrades array
 * have a global weapons upgrade for chicken-cooker-weapons demo to finish up that demo
 
