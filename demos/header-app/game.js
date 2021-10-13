@@ -7,19 +7,21 @@
             count: 8,
             secsCap: 0.25,
             disableLifespan: true,
-            spawn: function(obj, pool){
-                obj.data.homeRadian = Math.PI * 2 / pool.objects.length * obj.i;
-                obj.data.deltaRadian = 0;
-                obj.data.radian = obj.data.homeRadian;
-                obj.data.radius = 50 + Math.round(100 * Math.random());
+            spawn: function(obj, pool, sm){
+                var canvas = sm.layers[0].canvas;
+                obj.x = canvas.width / 2;
+                //obj.data.homeRadian = Math.PI * 2 / pool.objects.length * obj.i;
+                //obj.data.deltaRadian = 0;
+                //obj.data.radian = obj.data.homeRadian;
+                //obj.data.radius = 50 + Math.round(100 * Math.random());
             },
             update: function (obj, pool, sm, secs){
-               obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
-               obj.data.radian += obj.data.deltaRadian;
-               obj.data.radian = Clucker.utils.mod(obj.data.radian, Math.PI * 2);  
-               obj.lifespan = 1;
-               obj.x = 400 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
-               obj.y = 150 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
+               //obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
+               //obj.data.radian += obj.data.deltaRadian;
+               //obj.data.radian = Clucker.utils.mod(obj.data.radian, Math.PI * 2);  
+               //obj.lifespan = 1;
+               //obj.x = 400 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
+               //obj.y = 150 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
             }
         });
     };
@@ -44,11 +46,11 @@
         return game;
     };
 
-    gameMod.update = function(game, secs){
+    gameMod.update = function(sm, secs){
         // update game.pool
         Clucker.poolMod.update(sm.game.pool, secs, sm);
         // spawn
-        Clucker.poolMod.spawn(sm.game.pool, sm, {});
+        Clucker.poolMod.spawn(sm.game.pool, sm);
     };
 
 }(this['gameMod'] = {}));

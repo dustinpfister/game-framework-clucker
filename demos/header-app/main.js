@@ -24,7 +24,7 @@ Clucker.pushState(sm, {
     },
     // what to do on each update
     update: function(sm, secs){
-        gameMod.update(sm.game, secs);
+        gameMod.update(sm, secs);
     },
     // draw will be called after each update
     draw: function(sm, layers, canvasMod){
