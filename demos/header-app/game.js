@@ -12,13 +12,14 @@
                 obj.x = game.cx - obj.w / 2;
                 obj.y = game.cy - obj.h / 2;
                 obj.pps = 128;
-                obj.heading = 0;
+                obj.heading = Math.PI / 180 * Math.round(360 * Math.random());
                 //obj.data.homeRadian = Math.PI * 2 / pool.objects.length * obj.i;
                 //obj.data.deltaRadian = 0;
                 //obj.data.radian = obj.data.homeRadian;
                 //obj.data.radius = 50 + Math.round(100 * Math.random());
             },
             update: function (obj, pool, sm, secs){
+
 Clucker.poolMod.moveByPPS(obj, secs);
 var canvas = sm.layers[0].canvas;
 Clucker.poolMod.wrap(obj, canvas, 32);
