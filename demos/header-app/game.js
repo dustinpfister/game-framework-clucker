@@ -21,12 +21,12 @@
                obj.x = 400 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
                obj.y = 150 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
             }
-        })
+        });
     };
 
     // public create game state method
     gameMod.create = function(){
-        return {
+        var game = {
             pool: createShips(),
             cx: 400,
             cy: 150,
@@ -40,13 +40,15 @@
                 fontSize: 40
             },
             pointerDown: false
-        }
+        };
+        return game;
     };
 
     gameMod.update = function(game, secs){
         // update game.pool
         Clucker.poolMod.update(sm.game.pool, secs, sm);
-
+        // spawn
+        Clucker.poolMod.spawn(sm.game.pool, sm, {});
     };
 
 }(this['gameMod'] = {}));

@@ -20,8 +20,7 @@ Clucker.pushState(sm, {
         // draw background once
         sm.layers.background ='gray';
         canvasMod.draw(sm.layers, 'background', 0);
-        // spawn
-        Clucker.poolMod.spawnAll(sm.game.pool, sm, {});
+
     },
     // what to do on each update
     update: function(sm, secs){
