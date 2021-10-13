@@ -31,7 +31,7 @@ Clucker.pushState(sm, {
     draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'pool', 1, sm.game.pool);
-        canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
+        //canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
     },
     // events for this state
     events: {
