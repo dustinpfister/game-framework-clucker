@@ -31,7 +31,7 @@
     // public create game state method
     gameMod.create = function(){
         var game = {
-            pool: createShips(),
+            ships: createShips(),
             cx: 400,
             cy: 150,
             spawnSecs: 0
@@ -43,19 +43,24 @@
     gameMod.update = function(sm, secs){
         var game = sm.game;
         // update game.pool
-        Clucker.poolMod.update(game.pool, secs, sm);
+        Clucker.poolMod.update(game.ships, secs, sm);
 
         // spawn
         game.spawnSecs += secs;
         if(game.spawnSecs >= SHIP_SPAWN_RATE){
-            Clucker.poolMod.spawn(game.pool, sm);
+            Clucker.poolMod.spawn(game.ships, sm);
             game.spawnSecs = 0;
         }
     };
 
     // user clicked
     gameMod.clickAt = function(sm, pos){
-        console.log(pos);
+        //console.log(pos);
+        var clickObj = {w:1, h:1, x: pos.x, y: pos.y, active: true};
+        var hit = Clucker.poolMod.getOverlaping(clickObj, sm.game.ships);
+        hit.forEach(function(ship){
+            Clucker.poolMod.purge(sm.game.ships, ship, sm);
+        });
     };
 
 }(this['gameMod'] = {}));
