@@ -1,6 +1,7 @@
 
 (function(gameMod){
 
+    // create ships object pool helper
     var createShips = function(){
         return Clucker.poolMod.create({
             count: 8,
@@ -23,6 +24,7 @@
         })
     };
 
+    // public create game state method
     gameMod.create = function(){
         return {
             text: 'Hello World',
@@ -40,6 +42,23 @@
             },
             pointerDown: false
         }
+    };
+
+    gameMod.update = function(game, secs){
+        game.dx += 64 * secs * game.dir;
+        if(game.dx >= 32){
+            game.dx = 32;
+            game.dir = -1;
+        }
+        if(game.dx <= -32){
+            game.dx = -32;
+            game.dir = 1;
+        }
+        game.x = game.cx + game.dx;
+        game.y = game.cy;
+        // update game.pool
+        Clucker.poolMod.update(sm.game.pool, secs, sm);
+
     };
 
 }(this['gameMod'] = {}));

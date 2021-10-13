@@ -25,19 +25,7 @@ Clucker.pushState(sm, {
     },
     // what to do on each update
     update: function(sm, secs){
-        sm.game.dx += 64 * secs * sm.game.dir;
-        if(sm.game.dx >= 32){
-            sm.game.dx = 32;
-            sm.game.dir = -1;
-        }
-        if(sm.game.dx <= -32){
-            sm.game.dx = -32;
-            sm.game.dir = 1;
-        }
-        sm.game.x = sm.game.cx + sm.game.dx;
-        sm.game.y = sm.game.cy;
-        // update game.pool
-        Clucker.poolMod.update(sm.game.pool, secs, sm);
+        gameMod.update(sm.game, secs);
     },
     // draw will be called after each update
     draw: function(sm, layers, canvasMod){
