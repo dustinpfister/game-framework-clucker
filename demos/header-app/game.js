@@ -32,17 +32,24 @@
         var game = {
             pool: createShips(),
             cx: 400,
-            cy: 150
+            cy: 150,
+            spawnSecs: 0
         };
         return game;
     };
 
     // public update method
     gameMod.update = function(sm, secs){
+        var game = sm.game;
         // update game.pool
-        Clucker.poolMod.update(sm.game.pool, secs, sm);
+        Clucker.poolMod.update(game.pool, secs, sm);
+
         // spawn
-        Clucker.poolMod.spawn(sm.game.pool, sm);
+        game.spawnSecs += secs;
+        if(game.spawnSecs >= SHIP_SPAWN_RATE){
+            Clucker.poolMod.spawn(game.pool, sm);
+            game.spawnSecs = 0;
+        }
     };
 
     // user clicked
