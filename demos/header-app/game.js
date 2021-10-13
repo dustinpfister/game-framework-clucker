@@ -13,23 +13,11 @@
                 obj.y = game.cy - obj.h / 2;
                 obj.pps = 128;
                 obj.heading = Math.PI / 180 * Math.round(360 * Math.random());
-                //obj.data.homeRadian = Math.PI * 2 / pool.objects.length * obj.i;
-                //obj.data.deltaRadian = 0;
-                //obj.data.radian = obj.data.homeRadian;
-                //obj.data.radius = 50 + Math.round(100 * Math.random());
             },
             update: function (obj, pool, sm, secs){
-
-Clucker.poolMod.moveByPPS(obj, secs);
-var canvas = sm.layers[0].canvas;
-Clucker.poolMod.wrap(obj, canvas, 32);
-
-               //obj.data.deltaRadian = Math.PI / 180 * 45 * secs;
-               //obj.data.radian += obj.data.deltaRadian;
-               //obj.data.radian = Clucker.utils.mod(obj.data.radian, Math.PI * 2);  
-               //obj.lifespan = 1;
-               //obj.x = 400 - obj.w / 2 + Math.cos(obj.data.radian) * obj.data.radius;
-               //obj.y = 150 - obj.h / 2 + Math.sin(obj.data.radian) * obj.data.radius;
+                Clucker.poolMod.moveByPPS(obj, secs);
+                var canvas = sm.layers[0].canvas;
+                Clucker.poolMod.wrap(obj, canvas, 32);
             }
         });
     };
