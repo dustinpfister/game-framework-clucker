@@ -1,6 +1,8 @@
 
 (function(gameMod){
 
+    var SHIP_SPEEDS = [64, 96, 128];
+
     // create ships object pool helper
     var createShips = function(){
         return Clucker.poolMod.create({
@@ -9,14 +11,16 @@
             disableLifespan: true,
             spawn: function(obj, pool, sm){
                 var game = sm.game;
+                // start at center
                 obj.x = game.cx - obj.w / 2;
                 obj.y = game.cy - obj.h / 2;
-                obj.pps = 128;
+                obj.pps = SHIP_SPEEDS[Math.floor(Math.random() * SHIP_SPEEDS.length)];
                 obj.heading = Math.PI / 180 * Math.round(360 * Math.random());
             },
             update: function (obj, pool, sm, secs){
-                Clucker.poolMod.moveByPPS(obj, secs);
                 var canvas = sm.layers[0].canvas;
+                // move and wrap
+                Clucker.poolMod.moveByPPS(obj, secs);
                 Clucker.poolMod.wrap(obj, canvas, 32);
             }
         });
