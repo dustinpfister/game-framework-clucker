@@ -28,6 +28,7 @@
 
 * have a helper in upgrades.js that can be used to create a game.upgrades array
 * have a global weapons upgrade for chicken-cooker-weapons demo to finish up that demo
+* createToState button should be a public method if gameframe.js
 
 ## ( done 10/12/2021 ) - 0.6.2 - upgrades module: create upgrades method
 * (done) have a new end hook for the built in loader state
