@@ -46,7 +46,10 @@
         }
     ];
 
-    // UPGRADES
+    /********* ********** ********** **********
+    UPGRADES
+     ********** ********** ********** *********/
+
     var UPGRADES = {
         chick_cooked_value: {
             desc: 'Global Food Values',
@@ -76,6 +79,25 @@
         var upgrade = UPGRADES[key];
         upgrade.key = key;
     });
+
+    // create upgrades collection helper
+    var createUpgradesCollection = function (opt) {
+        opt = opt || {};
+        var upgradeCol = {};
+        Object.keys(UPGRADES).forEach(function (key) {
+            var upgrade = upgradeCol[key] = Object.assign({}, UPGRADES[key]);
+            upgrade.levelObj = Clucker.utils.XP.parseByLevel(opt[key] || 1, upgrade.cap, upgrade.deltaNext);
+        });
+        return upgradeCol;
+    };
+
+    // apply upgrades to state helper
+    var applyUpgradesToState = function (game, sm) {
+        Object.keys(game.upgrades).forEach(function (key) {
+            var upgrade = game.upgrades[key];
+            upgrade.applyToState.call(sm, sm, upgrade, upgrade.levelObj.level);
+        });
+    };
 
     /********* ********** ********** **********
     HELPERS
@@ -498,25 +520,6 @@
     CREATE METHOD
      ********** ********** ********** *********/
 
-    // create upgrades collection helper
-    var createUpgradesCollection = function (opt) {
-        opt = opt || {};
-        var upgradeCol = {};
-        Object.keys(UPGRADES).forEach(function (key) {
-            var upgrade = upgradeCol[key] = Object.assign({}, UPGRADES[key]);
-            upgrade.levelObj = Clucker.utils.XP.parseByLevel(opt[key] || 1, upgrade.cap, upgrade.deltaNext);
-        });
-        return upgradeCol;
-    };
-
-    // apply upgrades to state helper
-    var applyUpgradesToState = function (game, sm) {
-        Object.keys(game.upgrades).forEach(function (key) {
-            var upgrade = game.upgrades[key];
-            upgrade.applyToState.call(sm, sm, upgrade, upgrade.levelObj.level);
-        });
-    };
-
     // create game state object
     api.create = function (opt, sm) {
         opt = opt || {};
@@ -557,6 +560,7 @@
 
         // apply upgrades for first time
         sm.game = game;
+
         applyUpgradesToState(game, sm);
 
         // set cooked chicken per values for first time
