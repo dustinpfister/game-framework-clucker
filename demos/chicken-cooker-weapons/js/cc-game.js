@@ -656,6 +656,7 @@
     };
 
     // buy an upgrade
+/*
     api.buyUpgrade = function (sm, key) {
         var game = sm.game;
         var upgrade = game.upgrades[key];
@@ -666,6 +667,7 @@
         }
         applyUpgradesToState(game, sm);
     };
+*/
 
 }
     (this['gameMod'] = {}));
