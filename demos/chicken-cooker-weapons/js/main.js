@@ -73,7 +73,7 @@ Clucker.gameFrame.smPushState(sm, {
             money: 1000,
             score: 0,
             upgrades: {
-                chick_cooked_value: 1,
+                chick_cooked_value: 30,
                 chick_hp_reduction: 1
             }
         }, sm);

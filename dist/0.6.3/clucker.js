@@ -1280,7 +1280,8 @@ if (this['Clucker']) {
         return ref;
     };
 
-    var applyUpgradesToState = function (sm, data) {
+    // apply upgrades to state
+    api.applyUpgradesToState = function (sm, data) {
         var upgrades = getUpgrades(sm, data.upgradesPath);
         Object.keys(upgrades).forEach(function (key) {
             var upgrade = upgrades[key];
@@ -1295,7 +1296,7 @@ if (this['Clucker']) {
         if(data.onBuyUpgrade(sm, upgrade)){
             var newLevel = upgrade.levelObj.level + 1;
             upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
-            applyUpgradesToState(sm, data);
+            api.applyUpgradesToState(sm, data);
         }
 
 /*

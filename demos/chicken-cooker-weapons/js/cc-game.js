@@ -92,12 +92,14 @@
     };
 
     // apply upgrades to state helper
+/*
     var applyUpgradesToState = function (game, sm) {
         Object.keys(game.upgrades).forEach(function (key) {
             var upgrade = game.upgrades[key];
             upgrade.applyToState.call(sm, sm, upgrade, upgrade.levelObj.level);
         });
     };
+*/
 
     /********* ********** ********** **********
     HELPERS
@@ -561,7 +563,9 @@
         // apply upgrades for first time
         sm.game = game;
 
-        applyUpgradesToState(game, sm);
+        //applyUpgradesToState(game, sm);
+
+Clucker.upgrades.applyUpgradesToState(sm, {upgradesPath: 'game.upgrades'});
 
         // set cooked chicken per values for first time
         setCookedChickenPerValues(game);
