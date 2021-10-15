@@ -24,10 +24,10 @@
 * (done) random headings and sppeds when spawning
 * (done) have a spawn rate
 * (done) clicking on one will cause it to purge.
+* (done) make applyUpgradesToState a public method of the upgrades module
+* (done) have chicken-cooker-weapons be the first demo to use 0.6.3 of clucker
 
-* make applyUpgradesToState a public method of the upgrades module
 * have a helper in upgrades.js that can be used to create a game.upgrades array
-* have chicken-cooker-weapons be the first demo to use 0.6.3 of clucker
 * have a global weapons upgrade for chicken-cooker-weapons demo to finish up that demo
 * createToState button should be a public method if gameframe.js
 
