@@ -64,33 +64,6 @@ var createToGameButton = function () {
     };
 };
 
-var getUpgradeMinor = function (upgradeObj) {
-    var cost = '$' + upgradeObj.levelObj.forNext;
-    return '(' + upgradeObj.levelObj.level + ')' + cost;
-};
-
-// create upgrade buttons
-var createUpgradeButtons = function (sm, upgradeKey, upgrades) {
-    var state = sm.states[upgradeKey];
-    Object.keys(upgrades).forEach(function (upgradeKey, i) {
-        var upgradeObj = upgrades[upgradeKey];
-        state.buttons['upgrade_' + upgradeKey] = {
-            x: 32,
-            y: 128 + (64 + 8) * i,
-            w: 256,
-            h: 64,
-            upgradeKey: upgradeKey,
-            desc: upgradeObj.desc,
-            minor: getUpgradeMinor(upgradeObj),
-            descSize: 20,
-            onClick: function (e, pos, sm, button) {
-                gameMod.buyUpgrade(sm, button.upgradeKey);
-                button.minor = getUpgradeMinor(sm.game.upgrades[button.upgradeKey]);
-            }
-        };
-    });
-};
-
 // simple init state that will just be called once after load state
 Clucker.gameFrame.smPushState(sm, {
     name: 'init',
@@ -108,7 +81,7 @@ Clucker.gameFrame.smPushState(sm, {
         sm.states.gameTime.buttons.weapon.desc = sm.game.currentWeapon;
 
         // create upgrade buttons for game.upgrades
-        createUpgradeButtons(sm, 'upgrades', sm.game.upgrades);
+        //createUpgradeButtons(sm, 'upgrades', sm.game.upgrades);
 
         // started a Clucker.upgrades module
         console.log(Clucker.upgrades);
@@ -264,32 +237,6 @@ Clucker.gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     }
 });
-
-// a stats state
-/*
-Clucker.gameFrame.smPushState(sm, {
-    name: 'upgrades',
-    buttons: {
-        to_game: createToGameButton(),
-        back: createBackButton('mainMenu')
-    },
-    start: function (sm, canvasMod) {},
-    update: function (sm, secs) {
-        gameMod.update(sm.game, sm, secs);
-    },
-    draw: function (sm, layers, canvasMod) {
-        // clear
-        canvasMod.draw(layers, 'clear', 1);
-        // pools
-        canvasMod.draw(layers, 'pool-cc', 1, sm);
-        canvasMod.draw(layers, 'background', 1, 'rgba(0,0,0,0.4)')
-
-        // buttons
-        canvasMod.draw(layers, 'clear', 2);
-        canvasMod.draw(layers, 'stateButtons', 2, sm);
-    }
-});
-*/
 
 // new upgrades_builtin state
 Clucker.gameFrame.smPushState(sm, Clucker.upgrades.createState(sm, {
