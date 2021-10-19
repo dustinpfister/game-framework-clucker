@@ -1056,7 +1056,6 @@ canvasMod.load({
                                 url: sm.loader.images.baseURL + '/' + imageIndex + '.png',
                                 // set to sm images if all goes well
                                 onDone: function (image, xhr) {
-                                    console.log('image ' + imageIndex + ' loaded: ');
                                     // OLD ARRAY
                                     //sm.images[imageIndex] = image;
                                     // NEW ARRAY
@@ -1066,7 +1065,7 @@ canvasMod.load({
                                 onError: function () {
                                     console.log('error')
                                     // OLD ARRAY
-                                    sm.images[imageIndex] = new Image();
+                                    //sm.images[imageIndex] = new Image();
                                     // NEW ARRAY
                                     images[imageIndex] = new Image();
                                 }
@@ -1264,21 +1263,7 @@ if (this['Clucker']) {
 
 (function (api) {
 
-    // create to state button helper
-/*
-    var createToStateButton = function (toState, x, y, desc, w, h) {
-        return {
-            x: x === undefined ? 0 : x,
-            y: y === undefined ? 0 : y,
-            w: w === undefined ? 64 : w,
-            h: h === undefined ? 64 : h,
-            desc: desc || 'Back',
-            onClick: function (e, pos, sm, button) {
-                Clucker.gameFrame.smSetState(sm, toState);
-            }
-        }
-    };
-*/
+
     var getUpgradeMinor = function (upgradeObj) {
         var cost = '$' + upgradeObj.levelObj.forNext;
         return '(' + upgradeObj.levelObj.level + ') ' + cost;
@@ -1313,16 +1298,6 @@ if (this['Clucker']) {
             upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
             api.applyUpgradesToState(sm, data);
         }
-
-/*
-        var upgrade = game.upgrades[key];
-        if (game.money >= upgrade.levelObj.forNext) {
-            game.money -= upgrade.levelObj.forNext;
-            var newLevel = upgrade.levelObj.level + 1;
-            upgrade.levelObj = Clucker.utils.XP.parseByLevel(newLevel, upgrade.cap, upgrade.deltaNext);
-        }
-        applyUpgradesToState(game, sm);
-*/
 
     };
 
