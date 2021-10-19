@@ -1,23 +1,40 @@
 # game-framework-clucker todo list
 
-## (  ) - 0.7.2 - start a chicken-cooker-grid demo
-* start the next chicken-cooker demo based off of chicken-cooker-weapons
-* have a grid for the area where the chickens go
-* simular system whe it comes to starting position and target locations but now we are talking grid tiles
-* start a new background system that is makes use of a sprite sheet for tiles
+<!-- ########## ########## -->
+## 0.8.x - Grid Module
+<!-- ########## ########## -->
 
-## (  ) - 0.7.1 - Path detection
+### (  ) - 0.8.1 - Path detection
 * add a path detection feature for the grid module
 * start a grid-path-detection demo
 
-## (  ) - 0.7.0 - Starting Grid Module
+### (  ) - 0.8.0 - Starting Grid Module
 * Start a new grid module for clucker.js
 * Start a grid-basic demo
 * update readme.
 * create a /dist/0.6.0/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
-## () - 0.6.3 - starting a new header-app demo collection
+<!-- ########## ########## -->
+## 0.7.x - Save States started
+<!-- ########## ########## -->
+
+### (  ) - 0.7.0 - save state system
+* start a save state system as a new lin called storage.js
+* start out with just localStorage as a means to store save states
+* have a public method than can be used to create and return a built in menu for save states
+* start a new storage demo for this new feature
+* the storage demo can just be some very simple idle clicker game
+
+
+
+
+
+<!-- ########## ########## -->
+## 0.6.x - Starting an upgrades module for clucker
+<!-- ########## ########## -->
+
+### () - 0.6.3 - starting a new header-app demo collection
 * (done) start a new header-app demo that will be a start for the kind of project to place in the header of a website
 * (done) make sure all demos are working with at least 0.6.2
 * (done) have an object pool of little ships that move around in the canvas and wrap around when they go out of bounds
@@ -60,6 +77,10 @@
 * (done) have it so that game.chickLevel is used set set stats each time a chicken spawns
 * (done) get the chick hp reduction upgrade working
 * (done) start a new Clucker.upgrades module to help set up an upgrades state for a game
+
+<!-- ########## ########## -->
+## 0.5.x - Image Array and SpriteSheets
+<!-- ########## ########## -->
 
 ## ( done 10/01/2021 ) - 0.5.32 - chicken-cooker-weapons: Global Cooked Chicken value working
 * (done) Make the current level part of the desc of the button
@@ -318,6 +339,10 @@
 * (done) update loader demo to work for this change
 * (done) update chicken-cooker demo to work for this change
 
+<!-- ########## ########## -->
+## 0.4.x - Loader
+<!-- ########## ########## -->
+
 ## ( done 09/11/2021 ) - 0.4.10 - chicken-cooker image sets
 * (done) have more than one set of images for skinning the demo
 
@@ -383,12 +408,20 @@ gameframe.js:
 * (done) just go with a system where we have 0.png, 1.png, ect
 * (done) display a process bar while in load state
 
+<!-- ########## ########## -->
+## 0.3.x - Buttons
+<!-- ########## ########## -->
+
 ## ( done 09/02/2021 ) - 0.3.0 - buttons started
 gameframe.js:
 * (done) have a buttons property of a state object like that in orb match
 * (done) start a menus demo that will make use of buttons feature
 * (done) I will want to call a buttonCheck helper each time a global pointer event happens
 * (done) I will want to have a draw buttons method in a buttons canvas plugin
+
+<!-- ########## ########## -->
+## 0.2.x - Object pool lib
+<!-- ########## ########## -->
 
 ## ( done 09/01/2021 ) - 0.2.0 - object pool
 pool.js:
@@ -404,8 +437,16 @@ canvas.js:
 * (done) have a pool.disableLifespan feature that will just disable lifespan all together
 * (done) update hello world demo to make use of new object pool feature
 
+<!-- ########## ########## -->
+## 0.1.x - Create Options
+<!-- ########## ########## -->
+
 ## ( done 09/01/2021 ) - 0.1.0 - additional gameFrame.create options
 * (done) gameFrame.smCreateMain width and height options
+
+<!-- ########## ########## -->
+## 0.0.x - First state of framework
+<!-- ########## ########## -->
 
 ## ( done 08/29/2021 ) - 0.0.0 - first state of framework
 todo.md:

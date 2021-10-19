@@ -12,15 +12,6 @@ comes to actual lined up revisions of the over all framework.
 * have a global weapons upgrade for chicken-cooker-weapons demo to finish up that demo
 
 <!-- ########## ########## -->
-## Save State System
-<!-- ########## ########## -->
-
-## (  ) - 0.x.0 - save state system
-* start a save state system as a new lin called storage.js
-* start out with just localStorage as a means to store save states
-* have a public method than can be used to create and return a built in menu for save states
-
-<!-- ########## ########## -->
 ## User Events
 <!-- ########## ########## -->
 
