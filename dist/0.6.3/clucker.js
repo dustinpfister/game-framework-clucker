@@ -980,6 +980,20 @@ canvasMod.load({
     //  CREATE State Machine PUBLIC Methods and helpers
     /********* ********** ********** ********** *********/
 
+    api.createToStateButton = function (toState, x, y, desc, w, h) {
+        return {
+            x: x === undefined ? 0 : x,
+            y: y === undefined ? 0 : y,
+            w: w === undefined ? 64 : w,
+            h: h === undefined ? 64 : h,
+            desc: desc || 'Back',
+            onClick: function (e, pos, sm, button) {
+                Clucker.gameFrame.smSetState(sm, toState);
+            }
+        }
+    };
+
+
     // create a minamal sm object ( For setting up a nested sm object, and the base of a main sm object )
     api.smCreateMin = function (opt) {
         opt = opt || {};
@@ -1251,6 +1265,7 @@ if (this['Clucker']) {
 (function (api) {
 
     // create to state button helper
+/*
     var createToStateButton = function (toState, x, y, desc, w, h) {
         return {
             x: x === undefined ? 0 : x,
@@ -1263,7 +1278,7 @@ if (this['Clucker']) {
             }
         }
     };
-
+*/
     var getUpgradeMinor = function (upgradeObj) {
         var cost = '$' + upgradeObj.levelObj.forNext;
         return '(' + upgradeObj.levelObj.level + ') ' + cost;
@@ -1358,8 +1373,8 @@ if (this['Clucker']) {
             buttons: {},
             start: function (sm, canvasMod) {
                 var buttons = sm.stateObj.buttons = {};
-                buttons['to_game'] = createToStateButton(opt.gameStateKey, canvasWidth - 64 - 16, 16, 'Game');
-                buttons['game'] = createToStateButton(opt.menuStateKey, 16, 16, 'Back');
+                buttons['to_game'] = Clucker.gameFrame.createToStateButton(opt.gameStateKey, canvasWidth - 64 - 16, 16, 'Game');
+                buttons['game'] = Clucker.gameFrame.createToStateButton(opt.menuStateKey, 16, 16, 'Back');
                 var upgrades = getUpgrades(sm, opt.upgradesPath);
                 createUpgradeButtons(sm, opt, upgrades);
             },

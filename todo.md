@@ -27,9 +27,11 @@
 * (done) make applyUpgradesToState a public method of the upgrades module
 * (done) have chicken-cooker-weapons be the first demo to use 0.6.3 of clucker
 
+* createToState button should be a public method if gameframe.js
+
 * have a helper in upgrades.js that can be used to create a game.upgrades array
 * have a global weapons upgrade for chicken-cooker-weapons demo to finish up that demo
-* createToState button should be a public method if gameframe.js
+
 
 ## ( done 10/12/2021 ) - 0.6.2 - upgrades module: create upgrades method
 * (done) have a new end hook for the built in loader state
