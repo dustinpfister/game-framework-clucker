@@ -9,6 +9,7 @@ var sm = Clucker.createMain({
     canvasContainer: '#logo-wrap', //'#banner',
     width: 800,
     height: 300,
+    canvasLayers: 4, // 0-background, 1-forground, 2-buttons-reserved, 3-logo
     game: gameMod.create()
 });
 
@@ -20,6 +21,11 @@ Clucker.pushState(sm, {
         // draw background once
         sm.layers.background ='gray';
         canvasMod.draw(sm.layers, 'background', 0);
+        // draw logo overlay once
+        canvasMod.draw(sm.layers, 'background', 3, 'rgba(0,0,0,0.3)');
+        var canvas = sm.layers[3].canvas,
+        textOptions = { align: 'center', fontSize: 60, baseLine:'middle', fillStyle: 'rgba(255,255,255,0.5)'};
+        canvasMod.draw(sm.layers, 'print', 3, 'dustinpfister.github.io', canvas.width / 2, canvas.height / 2, textOptions);
     },
     // what to do on each update
     update: function(sm, secs){
