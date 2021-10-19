@@ -34,7 +34,6 @@ sm.CHICKENS_CELL_SIZE = 32; // this will need to be adjusted when using a higher
 
 
 // HELPERS
-
 // create a standard back button for a state
 var createBackButton = function (toStateKey) {
     return {
@@ -48,7 +47,6 @@ var createBackButton = function (toStateKey) {
         }
     }
 };
-
 // create a standard back button for a state
 var createToGameButton = function () {
     return {
@@ -63,7 +61,6 @@ var createToGameButton = function () {
         }
     };
 };
-
 // simple init state that will just be called once after load state
 Clucker.gameFrame.smPushState(sm, {
     name: 'init',
@@ -73,19 +70,12 @@ Clucker.gameFrame.smPushState(sm, {
             money: 1000,
             score: 0,
             upgrades: {
-                chick_cooked_value: 30,
+                chick_cooked_value: 1,
                 chick_hp_reduction: 1
             }
         }, sm);
         // set button desc for first time
         sm.states.gameTime.buttons.weapon.desc = sm.game.currentWeapon;
-
-        // create upgrade buttons for game.upgrades
-        //createUpgradeButtons(sm, 'upgrades', sm.game.upgrades);
-
-        // started a Clucker.upgrades module
-        console.log(Clucker.upgrades);
-
         // create sm.funFacts
         sm.funFacts = funFactsMod.create(sm);
         // create chicken sprite sheets
@@ -102,7 +92,6 @@ Clucker.gameFrame.smPushState(sm, {
         Clucker.gameFrame.smSetState(sm, 'gameTime');
     }
 });
-
 // a game state
 Clucker.gameFrame.smPushState(sm, {
     name: 'gameTime',
@@ -160,7 +149,6 @@ Clucker.gameFrame.smPushState(sm, {
         pointerEnd: function (e, pos, sm) {}
     }
 });
-
 // a main menu state
 Clucker.gameFrame.smPushState(sm, {
     name: 'mainMenu',
@@ -201,7 +189,6 @@ Clucker.gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     }
 });
-
 // a stats state
 Clucker.gameFrame.smPushState(sm, {
     name: 'stats',
@@ -237,7 +224,6 @@ Clucker.gameFrame.smPushState(sm, {
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     }
 });
-
 // new upgrades_builtin state
 Clucker.gameFrame.smPushState(sm, Clucker.upgrades.createState(sm, {
     buttonLayer: 2,
@@ -261,7 +247,6 @@ Clucker.gameFrame.smPushState(sm, Clucker.upgrades.createState(sm, {
         
     }
 }));
-
 // start the state machine
 Clucker.gameFrame.smSetState(sm, 'loader');
 sm.loop();
