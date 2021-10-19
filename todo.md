@@ -44,9 +44,11 @@
 * (done) make applyUpgradesToState a public method of the upgrades module
 * (done) have chicken-cooker-weapons be the first demo to use 0.6.3 of clucker
 * (done) createToState button should be a public method if gameframe.js
+* (done) work out a simple pause button for header-app
 
-* work out a simple pause button for header-app
-
+* start an images folder for header-app starting with a background as 0.png and overlay image as 1.png
+* use the loader feature to load images
+* display the background, and overlay images
 
 
 ## ( done 10/12/2021 ) - 0.6.2 - upgrades module: create upgrades method
