@@ -16,6 +16,9 @@ var sm = Clucker.createMain({
 // add at least one state object
 Clucker.pushState(sm, {
     name: 'game',
+    buttons: {
+        pause: {x: 800 - 64 - 8, y: 200, w: 64, h: 64, desc: 'pause', onClick: function(){ console.log('foo'); }}
+    },
     // start hook will just fire once when the state object starts
     start: function(sm, canvasMod){
         // draw background once
@@ -35,16 +38,12 @@ Clucker.pushState(sm, {
     draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'pool', 1, sm.game.ships);
-        //canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
+        canvasMod.draw(layers, 'stateButtons', 2, sm);
     },
     // events for this state
     events: {
         pointerStart: function(e, pos, sm){
             gameMod.clickAt(sm, pos);
-        },
-        pointerMove: function(e, pos, sm){
-        },
-        pointerEnd: function(e, pos, sm){
         }
     }
 });

@@ -27,10 +27,7 @@ So then some points about this demo over the others would be:
 * A working upgrade for reducing hpMax as chickens level up
 * A working upgrade for cooked chicken values
 
-
 I am still working on this one as of this writing so some additional things are planed:
-
-
 
 * working weapons upgrades
 

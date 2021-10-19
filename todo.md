@@ -38,13 +38,14 @@
 * (done) start a new header-app demo that will be a start for the kind of project to place in the header of a website
 * (done) make sure all demos are working with at least 0.6.2
 * (done) have an object pool of little ships that move around in the canvas and wrap around when they go out of bounds
-* (done) random headings and sppeds when spawning
+* (done) random headings and speeds when spawning
 * (done) have a spawn rate
 * (done) clicking on one will cause it to purge.
 * (done) make applyUpgradesToState a public method of the upgrades module
 * (done) have chicken-cooker-weapons be the first demo to use 0.6.3 of clucker
 * (done) createToState button should be a public method if gameframe.js
 
+* work out a simple pause button for header-app
 
 
 
