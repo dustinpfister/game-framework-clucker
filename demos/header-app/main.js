@@ -17,7 +17,10 @@ var sm = Clucker.createMain({
 Clucker.pushState(sm, {
     name: 'game',
     buttons: {
-        pause: {x: 800 - 64 - 8, y: 200, w: 64, h: 64, desc: 'pause', onClick: function(){ console.log('foo'); }}
+        pause: {x: 800 - 64 - 8, y: 200, w: 64, h: 64, desc: 'pause', onClick: function(e, pos, sm){ 
+            //console.log(sm);
+            sm.pause = !sm.pause; 
+        }}
     },
     // start hook will just fire once when the state object starts
     start: function(sm, canvasMod){
@@ -29,10 +32,17 @@ Clucker.pushState(sm, {
         var canvas = sm.layers[3].canvas,
         textOptions = { align: 'center', fontSize: 60, baseLine:'middle', fillStyle: 'rgba(255,255,255,0.5)'};
         canvasMod.draw(sm.layers, 'print', 3, 'dustinpfister.github.io', canvas.width / 2, canvas.height / 2, textOptions);
+        // sm.pause
+        sm.pause = false;
     },
     // what to do on each update
     update: function(sm, secs){
-        gameMod.update(sm, secs);
+        if(sm.pause){
+            sm.fps = 1;
+        }else{
+            sm.fps = 30;
+            gameMod.update(sm, secs);
+        }
     },
     // draw will be called after each update
     draw: function(sm, layers, canvasMod){
