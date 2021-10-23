@@ -40,14 +40,21 @@ Clucker.pushState(sm, {
     start: function(sm, canvasMod){
         // draw background once
         canvasMod.draw(sm.layers, 'background', 0);
+        var save = Clucker.storage.get('clucker-storage-demo');
+        if(!save){
+           // if not save str, then start new game
+           sm.game.score = 0;
+           Clucker.storage.set('clucker-storage-demo', JSON.stringify({ score: 0 }));
+        }else{
+            saveObj = JSON.parse(save);
+            sm.game.score = saveObj.score;
+        }
 
     },
     // what to do on each update
     update: function(sm, secs){
-
         // spawn
         Clucker.poolMod.spawn(sm.game.pool, sm, {});
-
         // update game.pool
         Clucker.poolMod.update(sm.game.pool, secs, sm);
     },
@@ -65,12 +72,7 @@ Clucker.pushState(sm, {
             hit.forEach(function(ship){
                 Clucker.poolMod.purge(sm.game.pool, ship, sm);
             });
-        },
-        pointerMove: function(e, pos, sm){
-
-        },
-        pointerEnd: function(e, pos, sm){
-
+           Clucker.storage.set('clucker-storage-demo', JSON.stringify({ score: sm.game.score }));
         }
     }
 });
