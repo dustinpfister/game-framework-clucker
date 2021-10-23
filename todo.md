@@ -33,8 +33,8 @@
 * (done) start a new storage demo for this new feature
 * (done) the storage demo can just be some very simple game that is just purging blocks
 * (done) step a score each time a block is purged
-* use new storage module to save the game state in terms of the score
-
+* (done) use new storage module to save the game state in terms of the score
+* JSON.stringify and JSON.parse should be done in storage.js
 
 
 
