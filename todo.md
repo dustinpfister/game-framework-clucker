@@ -15,14 +15,21 @@
 * create a /dist/0.6.0/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
+
+
+
+
 <!-- ########## ########## -->
 ## 0.7.x - Save States started
 <!-- ########## ########## -->
 
+### (  ) - 0.7.1 - createSaveStateMenu method of storage.js 
+* have a public method than can be used to create and return a built in menu for save states 
+* use built in menu system for the storage demo
+
 ### (  ) - 0.7.0 - save state system
-* start a save state system as a new lin called storage.js
+* start a save state system as a new lib called storage.js
 * start out with just localStorage as a means to store save states
-* have a public method than can be used to create and return a built in menu for save states
 * start a new storage demo for this new feature
 * the storage demo can just be some very simple idle clicker game
 
@@ -34,7 +41,7 @@
 ## 0.6.x - Starting an upgrades module for clucker
 <!-- ########## ########## -->
 
-### ( done 10/12/2021 ) - 0.6.3 - starting a new header-app demo collection
+### ( done 10/23/2021 ) - 0.6.3 - starting a new header-app demo collection
 * (done) start a new header-app demo that will be a start for the kind of project to place in the header of a website
 * (done) make sure all demos are working with at least 0.6.2
 * (done) have an object pool of little ships that move around in the canvas and wrap around when they go out of bounds
