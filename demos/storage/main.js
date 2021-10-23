@@ -14,7 +14,6 @@ var sm = Clucker.createMain({
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool, sm){
-
                 var canvas = sm.layers[0].canvas;
                 obj.w = 64;
                 obj.h = 64;
@@ -22,13 +21,13 @@ var sm = Clucker.createMain({
                 obj.y = canvas.height / 2 - obj.h / 2;
                 obj.heading = Math.PI * 2 * Math.random();
                 obj.pps = 256;
-
             },
             update: function (obj, pool, sm, secs){
-
                 Clucker.poolMod.moveByPPS(obj, secs);
                 Clucker.poolMod.wrap(obj, sm.layers[0].canvas, 32);
-
+            },
+            purge: function(obj, pool, sm){
+                sm.game.score += 1;
             }
         })
     }
@@ -56,7 +55,7 @@ Clucker.pushState(sm, {
     draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'pool', 1, sm.game.pool);
-        canvasMod.draw(layers, 'print', 1, sm.game.score, 10, 10, {});
+        canvasMod.draw(layers, 'print', 1, 'score: ' + sm.game.score, 10, 10, { fontSize: 30});
     },
     // events for this state
     events: {
