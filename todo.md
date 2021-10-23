@@ -28,11 +28,12 @@
 * use built in menu system for the storage demo
 
 ### (  ) - 0.7.0 - save state system
-* start a save state system as a new lib called storage.js
-* start out with just localStorage as a means to store save states
-* start a new storage demo for this new feature
-* the storage demo can just be some very simple idle clicker game
-
+* (done) start a save state system as a new lib called storage.js
+* (done) start out with just localStorage as a means to store save states
+* (done) start a new storage demo for this new feature
+* (done) the storage demo can just be some very simple game that is just purging blocks
+* (done) step a score each time a block is purged
+* use new storage module to save the game state in terms of the score
 
 
 
