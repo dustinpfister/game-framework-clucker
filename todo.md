@@ -34,7 +34,7 @@
 ## 0.6.x - Starting an upgrades module for clucker
 <!-- ########## ########## -->
 
-### () - 0.6.3 - starting a new header-app demo collection
+### ( done 10/12/2021 ) - 0.6.3 - starting a new header-app demo collection
 * (done) start a new header-app demo that will be a start for the kind of project to place in the header of a website
 * (done) make sure all demos are working with at least 0.6.2
 * (done) have an object pool of little ships that move around in the canvas and wrap around when they go out of bounds
@@ -45,10 +45,9 @@
 * (done) have chicken-cooker-weapons be the first demo to use 0.6.3 of clucker
 * (done) createToState button should be a public method if gameframe.js
 * (done) work out a simple pause button for header-app
-
-* start an images folder for header-app starting with a background as 0.png and overlay image as 1.png
-* use the loader feature to load images
-* display the background, and overlay images
+* (done) start an images folder for header-app starting with a background as 0.png and overlay image as 1.png
+* (done) use the loader feature to load images
+* (done) display the background, and overlay images
 
 
 ## ( done 10/12/2021 ) - 0.6.2 - upgrades module: create upgrades method
