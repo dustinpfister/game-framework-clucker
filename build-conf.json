@@ -10,7 +10,8 @@
      "./lib/canvas/plugins/mod-pool.js",
      "./lib/canvas/plugins/buttons.js",
      "./lib/gameframe/gameframe.js",
-     "./lib/upgrades/upgrades.js"
+     "./lib/upgrades/upgrades.js",
+     "./lib/storage/storage.js"
   ],
   "top": "(function(Clucker){\n\n",
   "bottom": "\n}(this['Clucker'] = {}));"
