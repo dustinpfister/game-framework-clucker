@@ -42,11 +42,12 @@ Clucker.pushState(sm, {
         // draw background once
         canvasMod.draw(sm.layers, 'background', 0);
 
-        // spawn
-        Clucker.poolMod.spawn(sm.game.pool, sm, {});
     },
     // what to do on each update
     update: function(sm, secs){
+
+        // spawn
+        Clucker.poolMod.spawn(sm.game.pool, sm, {});
 
         // update game.pool
         Clucker.poolMod.update(sm.game.pool, secs, sm);
@@ -60,7 +61,11 @@ Clucker.pushState(sm, {
     // events for this state
     events: {
         pointerStart: function(e, pos, sm){
-
+            var clickObj = {w:1, h:1, x: pos.x, y: pos.y, active: true};
+            var hit = Clucker.poolMod.getOverlaping(clickObj, sm.game.pool);
+            hit.forEach(function(ship){
+                Clucker.poolMod.purge(sm.game.pool, ship, sm);
+            });
         },
         pointerMove: function(e, pos, sm){
 
