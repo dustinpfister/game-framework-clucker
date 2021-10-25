@@ -37,9 +37,10 @@
 * (done) make sm.appName a standard sm prop for a main state machine object in gameframe.js
 * (done) JSON.stringify and JSON.parse should be done in storage.js
 * (done) have gameframe.start and gameframe.stop methods
+* (done) header-app: start a article.js lib for taking into account the content of a page 
 
-* in header-app start a system for taking into account the content of a page 
-
+* header-app: have hit points and let art stats have an impact on maxHP 
+* header-app: have a sprite sheet for the ships
 
 <!-- ########## ########## -->
 ## 0.6.x - Starting an upgrades module for clucker
