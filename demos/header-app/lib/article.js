@@ -58,8 +58,9 @@
         // hash code and hash percent values
         art.hashCode = hashCode(art);
         art.hashPer = hashPer(art);
+        // wordArray stats
         var wordArray = tokenize(art);
-        art.wordsCount = wordArray.length; 
+        art.wordCount = wordArray.length; 
         return art;
     };
 

@@ -10,7 +10,7 @@ var sm = Clucker.createMain({
     width: 800,
     height: 300,
     canvasLayers: 4, // 0-background, 1-forground, 2-buttons-reserved, 3-logo
-    game: gameMod.create(),
+    game: {},
     loader: {
         startState: 'game',
         images: { // load images ./img
@@ -32,8 +32,11 @@ Clucker.pushState(sm, {
     // start hook will just fire once when the state object starts
     start: function(sm, canvasMod){
 
-var art = articleMod.getArtObj();
-console.log(art);
+        var art = articleMod.getArtObj();
+        console.log(art);
+        sm.game = gameMod.create({
+           shipCountPer: art.hashPer // using the hashPer to set the number of ships
+        });
 
         // draw background once
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);

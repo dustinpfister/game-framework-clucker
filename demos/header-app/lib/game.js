@@ -2,13 +2,15 @@
 (function(gameMod){
 
     var SHIP_SPEEDS = [64, 96, 128],
-    SHIP_COUNT = 20,
+    SHIP_COUNT_MAX = 30,
     SHIP_SPAWN_RATE = 0.05; // spawn rate in secs
 
     // create ships object pool helper
-    var createShips = function(){
+    var createShips = function(opt){
+        opt = opt || {};
+        opt.shipCountPer = opt.shipCountPer === undefined ? 1 : opt.shipCountPer;
         return Clucker.poolMod.create({
-            count: SHIP_COUNT,
+            count: 1 + Math.round(opt.shipCountPer * (SHIP_COUNT_MAX - 1)),
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool, sm){
@@ -29,9 +31,9 @@
     };
 
     // public create game state method
-    gameMod.create = function(){
+    gameMod.create = function(opt){
         var game = {
-            ships: createShips(),
+            ships: createShips(opt),
             cx: 400,
             cy: 150,
             spawnSecs: 0
