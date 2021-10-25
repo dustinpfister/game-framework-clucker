@@ -40,7 +40,6 @@ Clucker.pushState(sm, {
         canvasMod.draw(sm.layers, 'background', 0);
         // try to get a save state
         var save = Clucker.storage.get(sm.appName);
-
         if(!save){
            // if no save start a new game and save that for the first time
            sm.game.score = 0;
@@ -49,7 +48,6 @@ Clucker.pushState(sm, {
             // if we have a save load that
             sm.game.score = save.score;
         }
-
     },
     update: function(sm, secs){
         Clucker.poolMod.spawn(sm.game.pool, sm, {});

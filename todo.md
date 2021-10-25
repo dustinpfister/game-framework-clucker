@@ -27,7 +27,7 @@
 * have a public method than can be used to create and return a built in menu for save states 
 * use built in menu system for the storage demo
 
-### (  ) - 0.7.0 - save state system
+### (  ) - 0.7.0 - save state system, new storage demo
 * (done) start a save state system as a new lib called storage.js
 * (done) start out with just localStorage as a means to store save states
 * (done) start a new storage demo for this new feature
@@ -36,7 +36,7 @@
 * (done) use new storage module to save the game state in terms of the score
 * (done) make sm.appName a standard sm prop for a main state machine object in gameframe.js
 * (done) JSON.stringify and JSON.parse should be done in storage.js
-* have gameframe.start and gameframe.stop methods
+* (done) have gameframe.start and gameframe.stop methods
 
 
 <!-- ########## ########## -->
