@@ -32,24 +32,19 @@ Clucker.pushState(sm, {
     // start hook will just fire once when the state object starts
     start: function(sm, canvasMod){
         // draw background once
-        sm.layers.background = sm.layers.images[0]; //'gray';
-        canvasMod.draw(sm.layers, 'background', 0);
+        canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
         // draw logo overlay once
-        //canvasMod.draw(sm.layers, 'background', 3, 'rgba(0,0,0,0.3)');
-        //var canvas = sm.layers[3].canvas,
-        //textOptions = { align: 'center', fontSize: 60, baseLine:'middle', fillStyle: 'rgba(255,255,255,0.5)'};
-        //canvasMod.draw(sm.layers, 'print', 3, 'dustinpfister.github.io', canvas.width / 2, canvas.height / 2, textOptions);
-
         canvasMod.draw(sm.layers, 'background', 3, sm.layers.images[1]);
-
         // sm.pause
         sm.pause = false;
     },
     // what to do on each update
     update: function(sm, secs){
+        // if pause set fps to 1
         if(sm.pause){
             sm.fps = 1;
         }else{
+            // else if not pause set fps to 30 and update game state
             sm.fps = 30;
             gameMod.update(sm, secs);
         }
