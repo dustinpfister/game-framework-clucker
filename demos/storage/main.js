@@ -4,6 +4,7 @@ console.log('Using clucker v' + Clucker.ver)
 
 // create an sm object
 var sm = Clucker.createMain({
+    appName: 'clucker-storage-demo',
     currentState: 'game', // set starting state object to use
     width: 640,
     height: 480,
@@ -38,6 +39,9 @@ Clucker.pushState(sm, {
     name: 'game',
     // start hook will just fire once when the state object starts
     start: function(sm, canvasMod){
+
+console.log(sm.appName);
+
         // draw background once
         canvasMod.draw(sm.layers, 'background', 0);
         var save = Clucker.storage.get('clucker-storage-demo');
