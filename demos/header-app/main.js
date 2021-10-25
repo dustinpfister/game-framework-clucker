@@ -33,7 +33,7 @@ Clucker.pushState(sm, {
     start: function(sm, canvasMod){
 
 var art = articleMod.getArtObj();
-console.log(articleMod.hashCode(art) / 4294967295);
+console.log(art);
 
         // draw background once
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
