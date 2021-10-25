@@ -44,11 +44,11 @@ console.log(sm.appName);
 
         // draw background once
         canvasMod.draw(sm.layers, 'background', 0);
-        var save = Clucker.storage.get('clucker-storage-demo');
+        var save = Clucker.storage.get(sm.appName);
         if(!save){
            // if not save str, then start new game
            sm.game.score = 0;
-           Clucker.storage.set('clucker-storage-demo', JSON.stringify({ score: 0 }));
+           Clucker.storage.set(sm.appName, JSON.stringify({ score: 0 }));
         }else{
             saveObj = JSON.parse(save);
             sm.game.score = saveObj.score;
@@ -76,7 +76,8 @@ console.log(sm.appName);
             hit.forEach(function(ship){
                 Clucker.poolMod.purge(sm.game.pool, ship, sm);
             });
-           Clucker.storage.set('clucker-storage-demo', JSON.stringify({ score: sm.game.score }));
+            // set save state on each click
+            Clucker.storage.set(sm.appName, JSON.stringify({ score: sm.game.score }));
         }
     }
 });
