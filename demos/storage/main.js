@@ -34,41 +34,33 @@ var sm = Clucker.createMain({
     }
 });
 
-// add at least one state object
 Clucker.pushState(sm, {
     name: 'game',
-    // start hook will just fire once when the state object starts
     start: function(sm, canvasMod){
-
-console.log(sm.appName);
-
-        // draw background once
         canvasMod.draw(sm.layers, 'background', 0);
+        // try to get a save state
         var save = Clucker.storage.get(sm.appName);
+
         if(!save){
-           // if not save str, then start new game
+           // if no save start a new game and save that for the first time
            sm.game.score = 0;
-           Clucker.storage.set(sm.appName, JSON.stringify({ score: 0 }));
+           Clucker.storage.set(sm.appName, { score: 0 });
         }else{
+            // if we have a save load that
             saveObj = JSON.parse(save);
             sm.game.score = saveObj.score;
         }
 
     },
-    // what to do on each update
     update: function(sm, secs){
-        // spawn
         Clucker.poolMod.spawn(sm.game.pool, sm, {});
-        // update game.pool
         Clucker.poolMod.update(sm.game.pool, secs, sm);
     },
-    // draw will be called after each update
     draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'pool', 1, sm.game.pool);
         canvasMod.draw(layers, 'print', 1, 'score: ' + sm.game.score, 10, 10, { fontSize: 30});
     },
-    // events for this state
     events: {
         pointerStart: function(e, pos, sm){
             var clickObj = {w:1, h:1, x: pos.x, y: pos.y, active: true};
@@ -77,7 +69,7 @@ console.log(sm.appName);
                 Clucker.poolMod.purge(sm.game.pool, ship, sm);
             });
             // set save state on each click
-            Clucker.storage.set(sm.appName, JSON.stringify({ score: sm.game.score }));
+            Clucker.storage.set(sm.appName, { score: sm.game.score });
         }
     }
 });

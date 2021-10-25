@@ -1440,6 +1440,11 @@ if (this['Clucker']) {
         opt = opt || {};
         opt.onDisabled = opt.onDisabled || function () {};
         if (test()) {
+            // if typeof value is an object, then use JSON.strigify
+            // to create a string, else assume that it is all ready a string
+            if(typeof value === 'object'){
+                value = JSON.stringify(value);
+            }
             localStorage.setItem(key, value);
         } else {
             opt.onDisabled.call(opt, opt, key);
