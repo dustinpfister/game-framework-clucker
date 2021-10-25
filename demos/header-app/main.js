@@ -31,6 +31,10 @@ Clucker.pushState(sm, {
     },
     // start hook will just fire once when the state object starts
     start: function(sm, canvasMod){
+
+var artStats = articleMod.getStats();
+console.log(artStats);
+
         // draw background once
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
         // draw logo overlay once
