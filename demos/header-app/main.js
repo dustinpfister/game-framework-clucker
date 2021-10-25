@@ -32,8 +32,8 @@ Clucker.pushState(sm, {
     // start hook will just fire once when the state object starts
     start: function(sm, canvasMod){
 
-var artStats = articleMod.getStats();
-console.log(artStats);
+var art = articleMod.getArtObj();
+console.log(articleMod.hashCode(art) / 4294967295);
 
         // draw background once
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
