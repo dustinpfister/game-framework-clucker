@@ -1243,22 +1243,48 @@ canvasMod.load({
             startHook.call(sm, sm, canvasMod);
         }
     };
+
+    /********* ********** ********** ********** *********/
+    //  START AND STOP
+    /********* ********** ********** ********** *********/
+
+    // start the given state machine object
+    api.start = function(sm, stateKey){
+        // make sure stopLoop bool is false
+        sm.stopLoop = false;
+        // call setState for the given stateKey or current state to trigger
+        // any start hooks for that starting state object
+        Clucker.setState(sm, stateKey || sm.currentState);
+        // start main loop
+        sm.loop();
+    };
+
+    api.stop = function(sm){
+        // make sure stopLoop bool is true
+        sm.stopLoop = true;
+    };
+
+
 }
     (this['Clucker'] === undefined ? this['gameFrame'] = {}
          : Clucker['gameFrame'] = {}));
 
 // create Clucker methods
 if (this['Clucker']) {
-    // Clucker.createMain
     Clucker.createMain = function (opt) {
         return Clucker.gameFrame.smCreateMain(opt);
     };
-    // Clicker.pushState
     Clucker.pushState = function (sm, opt) {
         return Clucker.gameFrame.smPushState(sm, opt);
     };
     Clucker.setState = function (sm, key) {
         return Clucker.gameFrame.smSetState(sm, key);
+    };
+    Clucker.start = function (sm, key) {
+        return Clucker.gameFrame.start(sm, key);
+    };
+    Clucker.stop = function (sm, key) {
+        return Clucker.gameFrame.stop(sm, key);
     };
 }
 
@@ -1426,7 +1452,14 @@ if (this['Clucker']) {
         if (test()) {
             var mess = localStorage.getItem(key);
             if (mess) {
-                return mess;
+                // try to parse as json and return an object
+                try{
+                    return JSON.parse(mess)
+                }catch(e){
+                    // if there is an error assume some other standard is being used
+                    // and return a string
+                    return mess;
+                }
             } else {
                 return '';
             }

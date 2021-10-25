@@ -47,8 +47,7 @@ Clucker.pushState(sm, {
            Clucker.storage.set(sm.appName, { score: 0 });
         }else{
             // if we have a save load that
-            saveObj = JSON.parse(save);
-            sm.game.score = saveObj.score;
+            sm.game.score = save.score;
         }
 
     },
@@ -73,6 +72,6 @@ Clucker.pushState(sm, {
         }
     }
 });
-// start the state machine
-Clucker.setState(sm, 'game');
-sm.loop();
+
+// start game with current state in sm object
+Clucker.start(sm);

@@ -34,10 +34,9 @@
 * (done) the storage demo can just be some very simple game that is just purging blocks
 * (done) step a score each time a block is purged
 * (done) use new storage module to save the game state in terms of the score
-
-* make sm.appName a standard sm prop for a main state machine object in gameframe.js
-* JSON.stringify and JSON.parse should be done in storage.js
-
+* (done) make sm.appName a standard sm prop for a main state machine object in gameframe.js
+* (done) JSON.stringify and JSON.parse should be done in storage.js
+* have gameframe.start and gameframe.stop methods
 
 
 <!-- ########## ########## -->
