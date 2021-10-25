@@ -32,15 +32,34 @@
         return hc / INTB32MAX;
     };
 
+    // tokenize the given art object based off of what is used in natutal.js ( MIT License )
+    // Copyright (c) 2011, 2012 Chris Umbel, Rob Ellis, Russell Mull
+    // https://github.com/NaturalNode/natural/blob/master/lib/natural/tokenizers/tokenizer.js
+    // https://github.com/NaturalNode/natural/blob/master/lib/natural/tokenizers/aggressive_tokenizer.js
+    var trim = function (array) {
+        while (array[array.length - 1] === '') { array.pop() }
+        while (array[0] === '') { array.shift() }
+        return array;
+    };
+    var tokenize = function (art) {
+        var str = rawText(art);
+        return trim(str.split(/[\W|_]+/));
+    };
+
     // get a main art object from the current document
     articleMod.getArtObj = function(){
+        // get an html collection of article elements for the current document
         var htmlCol = document.querySelectorAll('article');
+        // base art stats object
         var art = {
             elCount: htmlCol.length,
             htmlCol: htmlCol,
         };
+        // hash code and hash percent values
         art.hashCode = hashCode(art);
         art.hashPer = hashPer(art);
+        var wordArray = tokenize(art);
+        art.wordsCount = wordArray.length; 
         return art;
     };
 
