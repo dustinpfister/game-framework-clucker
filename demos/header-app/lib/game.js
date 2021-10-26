@@ -15,14 +15,20 @@
             disableLifespan: true,
             spawn: function(obj, pool, sm){
                 var game = sm.game;
+
+                // dir
+                obj.data.dir = 1;
+
+                // sheetkey
+                obj.data.cellIndex = obj.data.dir;
+                obj.data.sheetKey = 'ship-type-one';
+
+
                 // start at center
                 obj.x = game.cx - obj.w / 2;
                 obj.y = game.cy - obj.h / 2;
                 obj.pps = SHIP_SPEEDS[Math.floor(Math.random() * SHIP_SPEEDS.length)];
-                obj.heading = Math.PI / 180 * Math.round(360 * Math.random());
-                // sheetkey
-        obj.data.cellIndex = 0;
-        obj.data.sheetKey = 'ship-type-one';
+                obj.heading =  (Math.PI * 2) / 8 * obj.data.dir;
             },
             update: function (obj, pool, sm, secs){
                 var canvas = sm.layers[0].canvas;
