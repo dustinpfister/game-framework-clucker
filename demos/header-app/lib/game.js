@@ -66,7 +66,7 @@
                 // move and wrap
                 Clucker.poolMod.moveByPPS(obj, secs);
                 Clucker.poolMod.wrap(obj, canvas, 32);
-
+                // dir change
                 var roll = Math.random();
                 if(roll < 0.025 && obj.data.dirDelta.count === 0){
                     var count = 1 + Math.round( Math.random() * 4);
@@ -74,9 +74,7 @@
                     var sign = Math.random() >= 0.5 ? -1 : 1;
                     obj.data.dirDelta = shipDirDelta(count, rate, sign);
                 }
-
                 shipDirUpdate(obj, secs);
-
             }
         });
     };
