@@ -829,6 +829,20 @@ canvasMod.load({
     ]
 });canvasMod.load({
     drawMethods: [
+        // solid box method
+        {
+            name: 'solid',
+            method: function (stack, ctx, canvas, layerObj, obj, opt) {
+                ctx.fillStyle = opt.fillStyle || obj.data.fillStyle || 'white';
+                ctx.strokeStyle = opt.strokeStyle || obj.data.strokeStyle || 'black';
+                if (obj.active || opt.drawAll) {
+                    ctx.beginPath();
+                    ctx.rect(obj.x, obj.y, obj.w, obj.h);
+                    ctx.fill();
+                    ctx.stroke();
+                }
+            }
+        },
         // default 'pool' draw method
         {
             name: 'pool',
@@ -844,15 +858,7 @@ canvasMod.load({
             method: function (stack, ctx, canvas, layerObj, pool, opt) {
                 opt = opt || {};
                 pool.objects.forEach(function (obj) {
-                    // style
-                    ctx.fillStyle = opt.fillStyle || obj.data.fillStyle || 'white';
-                    ctx.strokeStyle = opt.strokeStyle || obj.data.strokeStyle || 'black';
-                    if (obj.active || opt.drawAll) {
-                        ctx.beginPath();
-                        ctx.rect(obj.x, obj.y, obj.w, obj.h);
-                        ctx.fill();
-                        ctx.stroke();
-                    }
+                    canvasMod.draw(stack, 'solid', layerObj.i, obj, opt); 
                 });
             }
         },
@@ -911,20 +917,8 @@ canvasMod.load({
                         ctx.drawImage(image, imgD.x, imgD.y, imgD.w, imgD.h, obj.x, obj.y, obj.w, obj.h);
                     }
                 } else {
-                    // if we fail to get a sheet use 'pool-solid'
-                    //canvasMod.draw(stack, 'pool-solid', layerObj.i, pool, opt);
-
-
-                    // style
-                    ctx.fillStyle = opt.fillStyle || obj.data.fillStyle || 'white';
-                    ctx.strokeStyle = opt.strokeStyle || obj.data.strokeStyle || 'black';
-                    if (obj.active || opt.drawAll) {
-                        ctx.beginPath();
-                        ctx.rect(obj.x, obj.y, obj.w, obj.h);
-                        ctx.fill();
-                        ctx.stroke();
-                    }
-
+                    // if we fail to get a sheet use 'solid' draw method
+                    canvasMod.draw(stack, 'solid', layerObj.i, obj, opt); 
                 }
             }
         },
