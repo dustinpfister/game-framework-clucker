@@ -12,7 +12,7 @@
         ship.data.cellIndex = ship.data.dir;
         ship.heading =  (Math.PI * 2) / 8 * ship.data.dir;
     };
-
+    // update ship dir
     var shipDirUpdate = function(ship, secs){
         var dd = ship.data.dirDelta;
         if(dd.count > 0){
@@ -27,6 +27,15 @@
            dd.secs = 0;
         }
     };
+    // create ship dirDelta object
+    var shipDirDelta = function(count, rate, sign){
+        return {
+            count: Math.floor(count) || 0, // count of times left
+            rate: rate === undefined ? 1 : rate,
+            secs: 0,
+            sign: sign === undefined ? 1 : sign   // sign 1 or -1
+        };
+    };
 
     // create ships object pool helper
     var createShips = function(opt){
@@ -40,12 +49,7 @@
                 var game = sm.game;
                 // dir
                 obj.data.dir = 0;
-                obj.data.dirDelta = {
-                    count: 5, // count of times left
-                    rate: 1,
-                    secs: 0,
-                    sign: -1   // sign 1 or -1
-                };
+                obj.data.dirDelta = shipDirDelta();
                 // sheetkey
                 obj.data.cellIndex = 0;
                 obj.data.sheetKey = 'ship-type-one';
@@ -63,8 +67,14 @@
                 Clucker.poolMod.moveByPPS(obj, secs);
                 Clucker.poolMod.wrap(obj, canvas, 32);
 
-                //obj.data.dir += 1;
-                //setShipDir(obj, obj.data.dir);
+                var roll = Math.random();
+                if(roll < 0.025 && obj.data.dirDelta.count === 0){
+                    var count = 1 + Math.round( Math.random() * 4);
+                    var rate = 1;
+                    var sign = Math.random() >= 0.5 ? -1 : 1;
+                    obj.data.dirDelta = shipDirDelta(count, rate, sign);
+                }
+
                 shipDirUpdate(obj, secs);
 
             }
