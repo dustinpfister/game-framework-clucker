@@ -38,11 +38,12 @@
 * (done) JSON.stringify and JSON.parse should be done in storage.js
 * (done) have gameframe.start and gameframe.stop methods
 * (done) header-app: start a article.js lib for taking into account the content of a page 
+* (done) gameframe.js: currentState of an sm object should be set to 'loader' if built in loader is being used
 
 * header-app: have hit points and let art stats have an impact on maxHP 
 * header-app: have a sprite sheet for the ships
 
-* currentState of an sm object should be set to 'loader' if built in loader is being used
+
 
 <!-- ########## ########## -->
 ## 0.6.x - Starting an upgrades module for clucker

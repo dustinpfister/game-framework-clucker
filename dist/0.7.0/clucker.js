@@ -1035,7 +1035,11 @@ canvasMod.load({
         }
     };
 
+    // push a loader state
     var pushLoaderState = function (sm) {
+        // set curtrent state to loader
+        sm.currentState = 'loader';
+        // push the state object
         Clucker.gameFrame.smPushState(sm, {
             name: 'loader',
             start: function (sm) {

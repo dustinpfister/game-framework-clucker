@@ -68,4 +68,4 @@ Clucker.pushState(sm, {
     }
 });
 // start the state machine
-Clucker.start(sm, 'loader');
+Clucker.start(sm);
