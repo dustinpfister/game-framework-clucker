@@ -1,15 +1,31 @@
 
 (function(gameMod){
 
-    var SHIP_SPEEDS = [64, 96, 128],
+    var SHIP_SPEEDS = [16, 24, 32, 64, 96],
     SHIP_COUNT_MAX = 30,
-    SHIP_SPAWN_RATE = 0.05; // spawn rate in secs
+    SHIP_SPAWN_RATE = 1.25; // spawn rate in secs
 
     // set ship dir
     var setShipDir = function(ship, dir){
         dir = Clucker.utils.mod(dir, 8);
         ship.data.dir = dir;
         ship.data.cellIndex = ship.data.dir;
+        ship.heading =  (Math.PI * 2) / 8 * ship.data.dir;
+    };
+
+    var shipDirUpdate = function(ship, secs){
+        var dd = ship.data.dirDelta;
+        if(dd.count > 0){
+           dd.secs += secs;
+           if(dd.secs >= dd.rate){
+              dd.secs = 0;
+              dd.count -= 1;
+              ship.data.dir += dd.sign;
+              setShipDir(ship, ship.data.dir);
+           }
+        }else{
+           dd.secs = 0;
+        }
     };
 
     // create ships object pool helper
@@ -24,11 +40,17 @@
                 var game = sm.game;
                 // dir
                 obj.data.dir = 0;
+                obj.data.dirDelta = {
+                    count: 5, // count of times left
+                    rate: 1,
+                    secs: 0,
+                    sign: -1   // sign 1 or -1
+                };
                 // sheetkey
                 obj.data.cellIndex = 0;
                 obj.data.sheetKey = 'ship-type-one';
                 // start dir
-                setShipDir(obj, -1); //Math.floor(Math.random() * 8));
+                setShipDir(obj, Math.floor(Math.random() * 8));
                 // start at center
                 obj.x = game.cx - obj.w / 2;
                 obj.y = game.cy - obj.h / 2;
@@ -40,6 +62,11 @@
                 // move and wrap
                 Clucker.poolMod.moveByPPS(obj, secs);
                 Clucker.poolMod.wrap(obj, canvas, 32);
+
+                //obj.data.dir += 1;
+                //setShipDir(obj, obj.data.dir);
+                shipDirUpdate(obj, secs);
+
             }
         });
     };
