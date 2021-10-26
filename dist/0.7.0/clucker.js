@@ -912,7 +912,19 @@ canvasMod.load({
                     }
                 } else {
                     // if we fail to get a sheet use 'pool-solid'
-                    canvasMod.draw(stack, 'pool-solid', layerObj.i, pool, opt);
+                    //canvasMod.draw(stack, 'pool-solid', layerObj.i, pool, opt);
+
+
+                    // style
+                    ctx.fillStyle = opt.fillStyle || obj.data.fillStyle || 'white';
+                    ctx.strokeStyle = opt.strokeStyle || obj.data.strokeStyle || 'black';
+                    if (obj.active || opt.drawAll) {
+                        ctx.beginPath();
+                        ctx.rect(obj.x, obj.y, obj.w, obj.h);
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+
                 }
             }
         },

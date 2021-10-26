@@ -20,6 +20,9 @@
                 obj.y = game.cy - obj.h / 2;
                 obj.pps = SHIP_SPEEDS[Math.floor(Math.random() * SHIP_SPEEDS.length)];
                 obj.heading = Math.PI / 180 * Math.round(360 * Math.random());
+                // sheetkey
+        obj.data.cellIndex = 0;
+        obj.data.sheetKey = 'ship-type-one';
             },
             update: function (obj, pool, sm, secs){
                 var canvas = sm.layers[0].canvas;

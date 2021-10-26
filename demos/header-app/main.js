@@ -12,7 +12,7 @@ var sm = Clucker.createMain({
         startState: 'game',
         images: {
             baseURL: '/demos/header-app/img/ships',
-            count: 2
+            count: 3
         }
     }
 });
@@ -35,6 +35,8 @@ Clucker.pushState(sm, {
         // draw background and overlay once on start hook
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
         canvasMod.draw(sm.layers, 'background', 3, sm.layers.images[1]);
+        // sprite sheet
+        canvasMod.createSpriteSheetGrid(sm.layers, 'ship-type-one', 2, 32, 32);
         // sm.pause
         sm.pause = false;
     },
@@ -50,7 +52,8 @@ Clucker.pushState(sm, {
     },
     draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
-        canvasMod.draw(layers, 'pool', 1, sm.game.ships);
+        //canvasMod.draw(layers, 'pool', 1, sm.game.ships);
+        canvasMod.draw(layers, 'pool-sprite', 1, sm.game.ships);
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     },
     events: {
