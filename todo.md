@@ -40,6 +40,7 @@
 * (done) header-app: start a article.js lib for taking into account the content of a page 
 * (done) gameframe.js: currentState of an sm object should be set to 'loader' if built in loader is being used
 
+* mod-pool.js: passing option object when calling 'pool-sprite' draw method
 * header-app: have hit points and let art stats have an impact on maxHP 
 * header-app: have a sprite sheet for the ships
 

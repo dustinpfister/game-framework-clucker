@@ -38,6 +38,9 @@
             cy: 150,
             spawnSecs: 0
         };
+
+console.log(game.ships.objects[0]);
+
         return game;
     };
 

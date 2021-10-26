@@ -1,9 +1,8 @@
 
 console.log('Using clucker v' + Clucker.ver);
 
-// create an sm object
+// main state machine object
 var sm = Clucker.createMain({
-    //currentState: 'loader',
     canvasContainer: '#logo-wrap', //'#banner',
     width: 800,
     height: 300,
@@ -18,32 +17,27 @@ var sm = Clucker.createMain({
     }
 });
 
-// add at least one state object
+// main game state
 Clucker.pushState(sm, {
     name: 'game',
     buttons: {
         pause: {x: 800 - 64 - 8, y: 200, w: 64, h: 64, desc: 'pause', onClick: function(e, pos, sm){ 
-            //console.log(sm);
             sm.pause = !sm.pause; 
         }}
     },
-    // start hook will just fire once when the state object starts
     start: function(sm, canvasMod){
-
+        // using the hashPer to set the number of ships
         var art = articleMod.getArtObj();
         console.log(art);
         sm.game = gameMod.create({
-           shipCountPer: art.hashPer // using the hashPer to set the number of ships
+           shipCountPer: art.hashPer 
         });
-
-        // draw background once
+        // draw background and overlay once on start hook
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
-        // draw logo overlay once
         canvasMod.draw(sm.layers, 'background', 3, sm.layers.images[1]);
         // sm.pause
         sm.pause = false;
     },
-    // what to do on each update
     update: function(sm, secs){
         // if pause set fps to 1
         if(sm.pause){
@@ -54,13 +48,11 @@ Clucker.pushState(sm, {
             gameMod.update(sm, secs);
         }
     },
-    // draw will be called after each update
     draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'pool', 1, sm.game.ships);
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     },
-    // events for this state
     events: {
         pointerStart: function(e, pos, sm){
             gameMod.clickAt(sm, pos);
