@@ -5,6 +5,13 @@
     SHIP_COUNT_MAX = 30,
     SHIP_SPAWN_RATE = 0.05; // spawn rate in secs
 
+    // set ship dir
+    var setShipDir = function(ship, dir){
+        dir = Clucker.utils.mod(dir, 8);
+        ship.data.dir = dir;
+        ship.data.cellIndex = ship.data.dir;
+    };
+
     // create ships object pool helper
     var createShips = function(opt){
         opt = opt || {};
@@ -15,15 +22,13 @@
             disableLifespan: true,
             spawn: function(obj, pool, sm){
                 var game = sm.game;
-
                 // dir
-                obj.data.dir = 1;
-
+                obj.data.dir = 0;
                 // sheetkey
-                obj.data.cellIndex = obj.data.dir;
+                obj.data.cellIndex = 0;
                 obj.data.sheetKey = 'ship-type-one';
-
-
+                // start dir
+                setShipDir(obj, -1); //Math.floor(Math.random() * 8));
                 // start at center
                 obj.x = game.cx - obj.w / 2;
                 obj.y = game.cy - obj.h / 2;
