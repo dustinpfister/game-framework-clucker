@@ -42,6 +42,8 @@
 * header-app: have hit points and let art stats have an impact on maxHP 
 * header-app: have a sprite sheet for the ships
 
+* currentState of an sm object should be set to 'loader' if built in loader is being used
+
 <!-- ########## ########## -->
 ## 0.6.x - Starting an upgrades module for clucker
 <!-- ########## ########## -->

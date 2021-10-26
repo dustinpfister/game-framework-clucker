@@ -1,19 +1,17 @@
 
-console.log('Using clucker v' +this['Clucker'].ver)
-
-
+console.log('Using clucker v' + Clucker.ver);
 
 // create an sm object
 var sm = Clucker.createMain({
-    currentState: 'loader',
+    //currentState: 'loader',
     canvasContainer: '#logo-wrap', //'#banner',
     width: 800,
     height: 300,
-    canvasLayers: 4, // 0-background, 1-forground, 2-buttons-reserved, 3-logo
+    canvasLayers: 4, // 0-background, 1-forground, 2-buttons, 3-logo
     game: {},
     loader: {
         startState: 'game',
-        images: { // load images ./img
+        images: {
             baseURL: '/demos/header-app/img/ships',
             count: 2
         }
@@ -70,5 +68,4 @@ Clucker.pushState(sm, {
     }
 });
 // start the state machine
-Clucker.setState(sm, 'loader');
-sm.loop();
+Clucker.start(sm, 'loader');
