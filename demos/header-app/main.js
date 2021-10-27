@@ -3,6 +3,7 @@ console.log('Using clucker v' + Clucker.ver);
 
 // main state machine object
 var sm = Clucker.createMain({
+    appName: 'header-app',
     canvasContainer: '#logo-wrap', //'#banner',
     width: 800,
     height: 300,
@@ -30,8 +31,18 @@ Clucker.pushState(sm, {
         var art = articleMod.getArtObj({
             wordGrades: [1200, 5000]
         });
-        console.log(art);
+
+        // try to get a save state for startMoney
+        var save = Clucker.storage.get(sm.appName),
+        startMoney = 0;
+        if(!save){
+            Clucker.storage.set(sm.appName, { money: startMoney });
+        }else{
+            startMoney = save.money;
+        }
+
         sm.game = gameMod.create({
+           money: startMoney,
            shipCountPer: art.hashPer,
            shipHPPer: art.wordPers[0],
            shipMoneyPer: art.wordPers[1]
@@ -55,6 +66,7 @@ Clucker.pushState(sm, {
         }
     },
     draw: function(sm, layers, canvasMod){
+        var canvas = layers[1].canvas;
         canvasMod.draw(layers, 'clear', 1);
         // using new spriteDraw method to draw hpbars
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.ships, { spriteDraw: function(ship, ctx){
@@ -66,17 +78,16 @@ Clucker.pushState(sm, {
                 ctx.fillRect(ship.x, ship.y, Math.round(stat.hp / stat.hpMax * 16), 3);
             }
         }});
-
-        var canvas = layers[1].canvas;
         // draw money
         var dispText = { fillStyle: 'yellow', fontSize: 15};
         canvasMod.draw(layers, 'print', 1, Clucker.utils.formatNumber(sm.game.money), 10, canvas.height - 25, dispText);
-
+        // state buttons
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     },
     events: {
         pointerStart: function(e, pos, sm){
             gameMod.clickAt(sm, pos);
+            Clucker.storage.set(sm.appName, { money: sm.game.money });
         }
     }
 });
