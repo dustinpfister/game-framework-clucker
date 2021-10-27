@@ -88,6 +88,7 @@
     // public create game state method
     gameMod.create = function(opt){
         var game = {
+            money: 0,
             ships: createShips(opt),
             cx: 400,
             cy: 150,

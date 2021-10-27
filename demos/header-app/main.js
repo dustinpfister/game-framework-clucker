@@ -65,6 +65,12 @@ Clucker.pushState(sm, {
                 ctx.fillRect(ship.x, ship.y, Math.round(stat.hp / stat.hpMax * 16), 3);
             }
         }});
+
+        var canvas = layers[1].canvas;
+        // draw money
+        var dispText = { fillStyle: 'yellow', fontSize: 15};
+        canvasMod.draw(layers, 'print', 1, Clucker.utils.formatNumber(sm.game.money), 10, canvas.height - 25, dispText);
+
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     },
     events: {
