@@ -50,6 +50,10 @@
                 // dir
                 obj.data.dir = 0;
                 obj.data.dirDelta = shipDirDelta();
+                // stats
+                var stat = obj.stat = {};
+                stat.hpMax = 3;
+                stat.hp = stat.hpMax;
                 // sheetkey
                 obj.data.cellIndex = 0;
                 obj.data.sheetKey = 'ship-type-one';
@@ -87,9 +91,6 @@
             cy: 150,
             spawnSecs: 0
         };
-
-console.log(game.ships.objects[0]);
-
         return game;
     };
 
@@ -112,7 +113,12 @@ console.log(game.ships.objects[0]);
         var clickObj = {w:1, h:1, x: pos.x, y: pos.y, active: true};
         var hit = Clucker.poolMod.getOverlaping(clickObj, sm.game.ships);
         hit.forEach(function(ship){
-            Clucker.poolMod.purge(sm.game.ships, ship, sm);
+            var stat = ship.stat;
+            stat.hp -= 1;
+            stat.hp = stat.hp < 0 ? 0 : stat.hp;
+            if(stat.hp === 0){
+                Clucker.poolMod.purge(sm.game.ships, ship, sm);
+            }
         });
     };
 
