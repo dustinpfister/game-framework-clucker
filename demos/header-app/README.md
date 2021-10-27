@@ -12,8 +12,9 @@ The features that should be working for this basic header-app:
 * I will want to use images for this, have a /img/ships/ folder for the first set of images
 * have an background image for image 0.png
 * have an overlay image for 1.png
+* images 3.png forward will then change depeding on the header-app demo for this one it will be sprites for the ships
 
 * have buttons images for 2.png
 * make sure to use an image to skin the pause button
-* images 3.png forward will then change depeding on the header-app demo for this one it will be sprites for the ships
+
 

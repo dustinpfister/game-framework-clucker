@@ -51,8 +51,8 @@
 * (done) header-app: have a display that will show a money figure
 * (done) header-app: have a stat.money value that will be added to game.money when the ship is destroyed
 * (done) header-app: the art stats have an impact on state.money
+* (done) header-app: use the new storage system to save the money vaue
 
-* header-app: use the new storage system to save the money vaue
 
 * header-app: have a shipDeathParticles pool to be used for ship deaths
 * header-app: have a shipDeathExplosions pool to be used for ship deaths
