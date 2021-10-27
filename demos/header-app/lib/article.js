@@ -47,20 +47,27 @@
     };
 
     // get a main art object from the current document
-    articleMod.getArtObj = function(){
+    articleMod.getArtObj = function(opt){
+        opt = opt || {};
+        opt.wordGrades = opt.wordGrades || [500, 1000, 1800, 2400];
         // get an html collection of article elements for the current document
         var htmlCol = document.querySelectorAll('article');
         // base art stats object
         var art = {
             elCount: htmlCol.length,
             htmlCol: htmlCol,
+            wordGrades: opt.wordGrades
         };
         // hash code and hash percent values
         art.hashCode = hashCode(art);
         art.hashPer = hashPer(art);
         // wordArray stats
         var wordArray = tokenize(art);
-        art.wordCount = wordArray.length; 
+        art.wordCount = wordArray.length;
+        art.wordPers = art.wordGrades.map(function(wc){
+            var per = art.wordCount / wc;
+            return parseFloat( (per > 1 ? 1 : per).toFixed(4) );
+        });
         return art;
     };
 
