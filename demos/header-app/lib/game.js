@@ -3,6 +3,8 @@
 
     var SHIP_SPEEDS = [16, 24, 32, 64, 96],
     SHIP_COUNT_MAX = 30,
+    SHIP_HP_MIN = 1,
+    SHIP_HP_MAX = 10,
     SHIP_SPAWN_RATE = 1.25; // spawn rate in secs
 
     // set ship dir
@@ -52,7 +54,7 @@
                 obj.data.dirDelta = shipDirDelta();
                 // stats
                 var stat = obj.stat = {};
-                stat.hpMax = 3;
+                stat.hpMax = SHIP_HP_MIN + Math.round( (SHIP_HP_MAX - SHIP_HP_MIN) * opt.shipHPPer );
                 stat.hp = stat.hpMax;
                 // sheetkey
                 obj.data.cellIndex = 0;

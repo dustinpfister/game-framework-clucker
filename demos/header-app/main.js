@@ -30,7 +30,8 @@ Clucker.pushState(sm, {
         var art = articleMod.getArtObj();
         console.log(art);
         sm.game = gameMod.create({
-           shipCountPer: art.hashPer 
+           shipCountPer: art.hashPer,
+           shipHPPer: art.hashPer
         });
         // draw background and overlay once on start hook
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
@@ -52,8 +53,8 @@ Clucker.pushState(sm, {
     },
     draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
-        //canvasMod.draw(layers, 'pool-solid', 1, sm.game.ships);
-        canvasMod.draw(layers, 'pool-sprite', 1, sm.game.ships, {spriteDraw: function(ship, ctx){
+        // using new spriteDraw method to draw hpbars
+        canvasMod.draw(layers, 'pool-sprite', 1, sm.game.ships, { spriteDraw: function(ship, ctx){
             if(ship.active){
                 ctx.fillStyle = 'rgba(128,128,128, 0.5)';
                 ctx.fillRect(ship.x, ship.y, 16, 3);

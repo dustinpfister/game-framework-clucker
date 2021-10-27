@@ -47,8 +47,8 @@
 * (done) header-app: ships have hit points
 * (done) mod-pool.js: 'sprite' draw method now supports the use of a draw method called after sprite image
 * (done) header-app: use new draw method option of 'sprite' draw method to draw hp bars for ships
+* (done) header-app: art stats have an impact on state.hpMax
 
-* header-app: art stats have an impact on state.hpMax
 * header-app: have a display that will show a money figure
 * header-app: have a stat.money value that will be added to game.money when the ship is destroyed
 * header-app: the art stats have an impact on state.money
