@@ -49,15 +49,13 @@
 * (done) header-app: use new draw method option of 'sprite' draw method to draw hp bars for ships
 * (done) header-app: art stats have an impact on state.hpMax
 * (done) header-app: have a display that will show a money figure
+* (done) header-app: have a stat.money value that will be added to game.money when the ship is destroyed
+* (done) header-app: the art stats have an impact on state.money
 
-
-* header-app: have a stat.money value that will be added to game.money when the ship is destroyed
-* header-app: the art stats have an impact on state.money
 * header-app: use the new storage system to save the money vaue
 
 * header-app: have a shipDeathParticles pool to be used for ship deaths
 * header-app: have a shipDeathExplosions pool to be used for ship deaths
-
 * header-app: see about adding a light layer that will be a current amount of ambent light
 * header-app: have ship deaths effect ambient light
 

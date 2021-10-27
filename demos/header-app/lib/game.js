@@ -5,6 +5,8 @@
     SHIP_COUNT_MAX = 30,
     SHIP_HP_MIN = 1,
     SHIP_HP_MAX = 10,
+    SHIP_MONEY_MIN = 1,
+    SHIP_MONEY_MAX = 1000,
     SHIP_SPAWN_RATE = 1.25; // spawn rate in secs
 
     // set ship dir
@@ -43,6 +45,8 @@
     var createShips = function(opt){
         opt = opt || {};
         opt.shipCountPer = opt.shipCountPer === undefined ? 1 : opt.shipCountPer;
+        opt.shipHPPer = opt.shipHPPer === undefined ? 1 : opt.shipHPPer;
+        opt.shipMoneyPer = opt.shipMoneyPer === undefined ? 1 : opt.shipMoneyPer;
         return Clucker.poolMod.create({
             count: 1 + Math.round(opt.shipCountPer * (SHIP_COUNT_MAX - 1)),
             secsCap: 0.25,
@@ -56,6 +60,7 @@
                 var stat = obj.stat = {};
                 stat.hpMax = SHIP_HP_MIN + Math.round( (SHIP_HP_MAX - SHIP_HP_MIN) * opt.shipHPPer );
                 stat.hp = stat.hpMax;
+                stat.money = SHIP_MONEY_MIN + Math.round( (SHIP_MONEY_MAX - SHIP_MONEY_MIN) * opt.shipMoneyPer )
                 // sheetkey
                 obj.data.cellIndex = 0;
                 obj.data.sheetKey = 'ship-type-one';
@@ -120,6 +125,7 @@
             stat.hp -= 1;
             stat.hp = stat.hp < 0 ? 0 : stat.hp;
             if(stat.hp === 0){
+                sm.game.money += stat.money;
                 Clucker.poolMod.purge(sm.game.ships, ship, sm);
             }
         });

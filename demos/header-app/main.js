@@ -28,12 +28,13 @@ Clucker.pushState(sm, {
     start: function(sm, canvasMod){
         // using the hashPer to set the number of ships
         var art = articleMod.getArtObj({
-            wordGrades: [1200, 2400, 5000]
+            wordGrades: [1200, 5000]
         });
         console.log(art);
         sm.game = gameMod.create({
            shipCountPer: art.hashPer,
-           shipHPPer: art.wordPers[0]
+           shipHPPer: art.wordPers[0],
+           shipMoneyPer: art.wordPers[1]
         });
         // draw background and overlay once on start hook
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
