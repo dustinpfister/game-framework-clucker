@@ -53,7 +53,15 @@ Clucker.pushState(sm, {
     draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
         //canvasMod.draw(layers, 'pool-solid', 1, sm.game.ships);
-        canvasMod.draw(layers, 'pool-sprite', 1, sm.game.ships);
+        canvasMod.draw(layers, 'pool-sprite', 1, sm.game.ships, {spriteDraw: function(ship, ctx){
+            if(ship.active){
+                ctx.fillStyle = 'rgba(128,128,128, 0.5)';
+                ctx.fillRect(ship.x, ship.y, 16, 3);
+                ctx.fillStyle = 'rgba(0,255,0,0.7)';
+                var stat = ship.stat;
+                ctx.fillRect(ship.x, ship.y, Math.round(stat.hp / stat.hpMax * 16), 3);
+            }
+        }});
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     },
     events: {

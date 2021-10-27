@@ -44,10 +44,9 @@
 * (done) mod-pool.js: add a new 'solid' draw method to be used with 'pool-solid' and 'pool-sprite' draw methods
 * (done) header-app: have a sprite sheet for the ships
 * (done) header-app: have ships move in fixed number of directions
-
-* header-app: have hit points and let art stats have an impact on maxHP 
-* mod-pool.js: 'sprite' draw method now supports the use of a draw method that will draw to the sprite area after the image is drawn
-* header-app: use new draw method option of 'sprite' draw method to draw hp bars for ships
+* (done) header-app: have hit points and let art stats have an impact on maxHP
+* (done) mod-pool.js: 'sprite' draw method now supports the use of a draw method called after sprite image
+* (done) header-app: use new draw method option of 'sprite' draw method to draw hp bars for ships
 
 
 <!-- ########## ########## -->
