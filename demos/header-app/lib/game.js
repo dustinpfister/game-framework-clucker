@@ -5,11 +5,11 @@
     SHIP_COUNT_MAX = 30,
     SHIP_HP_MIN = 1,
     SHIP_HP_MAX = 10,
-    SHIP_MONEY_MIN = 1,      // min and max money values for ships
+    SHIP_MONEY_MIN = 1,                    // min and max money values for ships
     SHIP_MONEY_MAX = 1000,
     SHIP_SPAWN_DIST_FROM_CENTER = 200,
-    SHIP_SPAWN_RATE = 1.25, // spawn rate in secs
-    UNIT_COUNT_MAX = 1;
+    SHIP_SPAWN_RATE = 1.25,                // spawn rate in secs
+    UNIT_COUNT_MAX = 20;                   // MAX UNIT POOL SIZE (1 to 40)
 
 /********* ********** **********
   SHIPS
@@ -102,6 +102,32 @@
   UNITS
 ********** ********** *********/
 
+    // get current unit pool positions where a unit can be placed
+    var getUnitPositions = function(units){
+        var cellX = 0, cellY = 0, x, y,
+        positions = [];
+        while(cellY <= 3){
+            y = 50 + 50 * cellY;
+            cellX = 0;
+            while(cellX <= 9){
+                x = 150 + 50 * cellX;
+                positions.push({x: x, y: y});
+                cellX += 1;
+            }
+            cellY += 1;
+        }
+        return positions.filter(function(pos){
+            var i = units.objects.length, obj;
+            while(i--){
+                obj = units.objects[i];
+                if(Clucker.utils.boundingBox(pos.x+ 5, pos.y+ 5, 40, 40, obj.x, obj.y, obj.w, obj.h)){
+                    return false;
+                }
+            }
+            return true;
+        });
+    };
+
     // create units object pool helper
     var createUnits = function(opt){
         opt = opt || {};
@@ -116,9 +142,12 @@
                 // sheetkey
                 //obj.data.cellIndex = 0;
                 //obj.data.sheetKey = 'ship-type-one';
-                // start out of bounds
-                obj.x = 150 + 50 * Math.round(9 * Math.random());
-                obj.y = 50 + 50 * Math.round(3 * Math.random());
+                // start pos
+                var positions = getUnitPositions(pool);
+                var pos = positions[Math.floor(positions.length * Math.random())];
+                obj.x = pos.x; obj.y = pos.y;
+                //obj.x = 150 + 50 * Math.round(9 * Math.random());
+                //obj.y = 50 + 50 * Math.round(3 * Math.random());
                 obj.w = 50;
                 obj.h = 50;
             },
