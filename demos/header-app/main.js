@@ -64,10 +64,12 @@ Clucker.pushState(sm, {
             sm.fps = 30;
             gameMod.update(sm, secs);
         }
+        Clucker.poolMod.spawn(sm.game.units, sm);
     },
     draw: function(sm, layers, canvasMod){
         var canvas = layers[1].canvas;
         canvasMod.draw(layers, 'clear', 1);
+        canvasMod.draw(layers, 'pool-solid', 1, sm.game.units);
         // using new spriteDraw method to draw hpbars
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.ships, { spriteDraw: function(ship, ctx){
             if(ship.active){

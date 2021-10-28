@@ -1,17 +1,22 @@
 
 (function(gameMod){
 
-    var SHIP_SPEEDS = [16, 24, 32, 64, 96],
+    var SHIP_SPEEDS = [32, 64, 128],
     SHIP_COUNT_MAX = 30,
     SHIP_HP_MIN = 1,
     SHIP_HP_MAX = 10,
-    SHIP_MONEY_MIN = 1,
+    SHIP_MONEY_MIN = 1,      // min and max money values for ships
     SHIP_MONEY_MAX = 1000,
     SHIP_SPAWN_DIST_FROM_CENTER = 200,
-    SHIP_SPAWN_RATE = 1.25; // spawn rate in secs
+    SHIP_SPAWN_RATE = 1.25, // spawn rate in secs
+    UNIT_COUNT_MAX = 1;
+
+/********* ********** **********
+  SHIPS
+********** ********** *********/
 
     // set ship dir
-    var setShipDir = function(ship, dir){
+    var shipSetDir = function(ship, dir){
         dir = Clucker.utils.mod(dir, 8);
         ship.data.dir = dir;
         ship.data.cellIndex = ship.data.dir;
@@ -26,7 +31,7 @@
               dd.secs = 0;
               dd.count -= 1;
               ship.data.dir += dd.sign;
-              setShipDir(ship, ship.data.dir);
+              shipSetDir(ship, ship.data.dir);
            }
         }else{
            dd.secs = 0;
@@ -66,7 +71,7 @@
                 obj.data.cellIndex = 0;
                 obj.data.sheetKey = 'ship-type-one';
                 // start dir
-                setShipDir(obj, Math.floor(Math.random() * 8));
+                shipSetDir(obj, Math.floor(Math.random() * 8));
                 // start out of bounds
                 var dist = SHIP_SPAWN_DIST_FROM_CENTER;
                 obj.x = game.cx - dist + Math.round(dist * 2 * Math.random());
@@ -93,11 +98,46 @@
         });
     };
 
+/********* ********** **********
+  UNITS
+********** ********** *********/
+
+    // create units object pool helper
+    var createUnits = function(opt){
+        opt = opt || {};
+        return Clucker.poolMod.create({
+            count: UNIT_COUNT_MAX,
+            secsCap: 0.25,
+            disableLifespan: true,
+            spawn: function(obj, pool, sm){
+                obj.data.fillStyle = 'rgba(0,255,128,0.5)';
+                // stats
+                var stat = obj.stat = {};
+                // sheetkey
+                //obj.data.cellIndex = 0;
+                //obj.data.sheetKey = 'ship-type-one';
+                // start out of bounds
+                obj.x = 150 + 50 * Math.round(9 * Math.random());
+                obj.y = 50 + 50 * Math.round(3 * Math.random());
+                obj.w = 50;
+                obj.h = 50;
+            },
+            update: function (obj, pool, sm, secs){
+
+            }
+        });
+    };
+
+/********* ********** **********
+  PUBLIC METHODS
+********** ********** *********/
+
     // public create game state method
     gameMod.create = function(opt){
         var game = {
             money: opt.money || 0,
             ships: createShips(opt),
+            units: createUnits(opt),
             cx: 400,
             cy: 150,
             spawnSecs: 0
