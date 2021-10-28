@@ -176,6 +176,9 @@
                 obj.data.fillStyle = 'rgba(0,255,128,0.5)';
                 // stats
                 var stat = obj.stat = {};
+                stat.fireRate = 0.25;
+                // fire secs to find out if the unit will fire or not
+                obj.data.fireSecs = 0;
                 // sheetkey
                 //obj.data.cellIndex = 0;
                 //obj.data.sheetKey = 'ship-type-one';
@@ -184,13 +187,18 @@
                 var pos = positions[Math.floor(positions.length * Math.random())];
                 obj.x = pos.x; obj.y = pos.y; obj.w = 50; obj.h = 50;
             },
-            update: function (obj, pool, sm, secs){
-                // fire a shot
-                Clucker.poolMod.spawn(sm.game.shots, sm, {
-                    x: obj.x + obj.w / 2 - 5,
-                    y: obj.y + obj.h / 2 - 5,
-                    a: Math.PI * 2 * Math.random()
-                });
+            update: function (unit, pool, sm, secs){
+
+                unit.data.fireSecs += secs;
+                if(unit.data.fireSecs >= unit.stat.fireRate){
+                    unit.data.fireSecs %= unit.stat.fireRate;
+                    // fire a shot
+                    Clucker.poolMod.spawn(sm.game.shots, sm, {
+                        x: unit.x + unit.w / 2 - 5,
+                        y: unit.y + unit.h / 2 - 5,
+                        a: Math.PI * 2 * Math.random()
+                    });
+                }
             }
         });
     };
