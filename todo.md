@@ -27,6 +27,11 @@
 * have a public method than can be used to create and return a built in menu for save states 
 * use built in menu system for the storage demo
 
+* header-app: have a shipDeathParticles pool to be used for ship deaths
+* header-app: have a shipDeathExplosions pool to be used for ship deaths
+* header-app: see about adding a light layer that will be a current amount of ambent light
+* header-app: have ship deaths effect ambient light
+
 ### (  ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
 * (done) start out with just localStorage as a means to store save states
@@ -51,13 +56,15 @@
 * (done) header-app: have a display that will show a money figure
 * (done) header-app: have a stat.money value that will be added to game.money when the ship is destroyed
 * (done) header-app: the art stats have an impact on state.money
-* (done) header-app: use the new storage system to save the money vaue
+* (done) header-app: use the new storage system to save the money value
 
 
-* header-app: have a shipDeathParticles pool to be used for ship deaths
-* header-app: have a shipDeathExplosions pool to be used for ship deaths
-* header-app: see about adding a light layer that will be a current amount of ambent light
-* header-app: have ship deaths effect ambient light
+* header-app: have ships spawn out of bounds, rather than at the center
+
+* header-app: have a shots pool, and a units pool
+* header-app: first unit is a gun that will fire shots at ships
+
+
 
 
 
