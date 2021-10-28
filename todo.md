@@ -57,9 +57,7 @@
 * (done) header-app: have a stat.money value that will be added to game.money when the ship is destroyed
 * (done) header-app: the art stats have an impact on state.money
 * (done) header-app: use the new storage system to save the money value
-
-
-* header-app: have ships spawn out of bounds, rather than at the center
+* (done) header-app: have ships spawn out of bounds, rather than at the center
 
 * header-app: have a shots pool, and a units pool
 * header-app: first unit is a gun that will fire shots at ships

@@ -7,6 +7,7 @@
     SHIP_HP_MAX = 10,
     SHIP_MONEY_MIN = 1,
     SHIP_MONEY_MAX = 1000,
+    SHIP_SPAWN_DIST_FROM_CENTER = 200,
     SHIP_SPAWN_RATE = 1.25; // spawn rate in secs
 
     // set ship dir
@@ -66,9 +67,11 @@
                 obj.data.sheetKey = 'ship-type-one';
                 // start dir
                 setShipDir(obj, Math.floor(Math.random() * 8));
-                // start at center
-                obj.x = game.cx - obj.w / 2;
-                obj.y = game.cy - obj.h / 2;
+                // start out of bounds
+                var dist = SHIP_SPAWN_DIST_FROM_CENTER;
+                obj.x = game.cx - dist + Math.round(dist * 2 * Math.random());
+                obj.y = obj.h * -1;
+                // speed and heading
                 obj.pps = SHIP_SPEEDS[Math.floor(Math.random() * SHIP_SPEEDS.length)];
                 obj.heading =  (Math.PI * 2) / 8 * obj.data.dir;
             },
