@@ -103,6 +103,20 @@
   SHOTS
 ********** ********** *********/
 
+    var hitCheck = function(shot, sm){
+        var hit = Clucker.poolMod.getOverlaping(shot, sm.game.ships);
+        hit.forEach(function(ship){
+            var stat = ship.stat;
+            stat.hp -= 1;
+            stat.hp = stat.hp < 0 ? 0 : stat.hp;
+            if(stat.hp === 0){
+                sm.game.money += stat.money;
+                Clucker.poolMod.purge(sm.game.ships, ship, sm);
+            }
+            shot.lifespan = 0;
+        });
+    };
+
     // create shots object pool helper
     var createShots = function(opt){
         opt = opt || {};
@@ -130,23 +144,8 @@
                 var canvas = sm.layers[0].canvas;
                 Clucker.poolMod.moveByPPS(shot, secs);
                 Clucker.poolMod.wrap(shot, canvas, 32);
-
-                var overlaping = Clucker.poolMod.getOverlaping(shot, sm.game.ships);
-                overlaping.forEach(function(ship){
-
-            var stat = ship.stat;
-            stat.hp -= 1;
-            stat.hp = stat.hp < 0 ? 0 : stat.hp;
-            if(stat.hp === 0){
-                sm.game.money += stat.money;
-                Clucker.poolMod.purge(sm.game.ships, ship, sm);
-            }
-
-shot.lifespan = 0;
-
-                    
-                });
-
+                // hit check
+                hitCheck(shot, sm);
             }
         });
     };
@@ -193,7 +192,7 @@ shot.lifespan = 0;
                 obj.data.fillStyle = 'rgba(0,255,128,0.5)';
                 // stats
                 var stat = obj.stat = {};
-                stat.fireRate = 1;
+                stat.fireRate = 0.5;
                 // fire secs to find out if the unit will fire or not
                 obj.data.fireSecs = 0;
                 // sheetkey
@@ -255,18 +254,8 @@ shot.lifespan = 0;
 
     // user clicked
     gameMod.clickAt = function(sm, pos){
-        //console.log(pos);
-        var clickObj = {w:1, h:1, x: pos.x, y: pos.y, active: true};
-        var hit = Clucker.poolMod.getOverlaping(clickObj, sm.game.ships);
-        hit.forEach(function(ship){
-            var stat = ship.stat;
-            stat.hp -= 1;
-            stat.hp = stat.hp < 0 ? 0 : stat.hp;
-            if(stat.hp === 0){
-                sm.game.money += stat.money;
-                Clucker.poolMod.purge(sm.game.ships, ship, sm);
-            }
-        });
+        var clickShot = {w:1, h:1, x: pos.x, y: pos.y, active: true};
+        hitCheck(clickShot, sm);
     };
 
 }(this['gameMod'] = {}));

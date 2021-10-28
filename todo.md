@@ -31,6 +31,7 @@
 * header-app: have a shipDeathExplosions pool to be used for ship deaths
 * header-app: see about adding a light layer that will be a current amount of ambent light
 * header-app: have ship deaths effect ambient light
+* header-app: shot accuracy
 
 ### (  ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
@@ -60,8 +61,9 @@
 * (done) header-app: have ships spawn out of bounds, rather than at the center
 * (done) header-app: have a shots pool, and a units pool
 * (done) header-app: first unit is a gun that will fire shots at ships
+* (done) header-app: shots do damage to ships
 
-* header-app: shots do damage to ships
+* header-app: have units fire at ships rather than randomly
 * header-app: have a unit fireRange stat, shots will purge when they reach that distance
 
 
