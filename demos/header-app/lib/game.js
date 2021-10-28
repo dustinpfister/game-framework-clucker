@@ -10,6 +10,7 @@
     SHIP_SPAWN_DIST_FROM_CENTER = 200,
     SHIP_SPAWN_RATE = 1.25,                // spawn rate in secs
     UNIT_COUNT_MAX = 3,                    // MAX UNIT POOL SIZE (1 to 40)
+    UNIT_SIZE = 50,
     SHOTS_COUNT_MAX = 50;
 
 /********* ********** **********
@@ -160,10 +161,10 @@
         var cellX = 0, cellY = 0, x, y,
         positions = [];
         while(cellY <= 3){
-            y = 50 + 50 * cellY;
+            y = UNIT_SIZE + UNIT_SIZE * cellY;
             cellX = 0;
             while(cellX <= 9){
-                x = 150 + 50 * cellX;
+                x = 150 + UNIT_SIZE * cellX;
                 positions.push({x: x, y: y});
                 cellX += 1;
             }
@@ -181,6 +182,20 @@
         });
     };
 
+    // get ships in range of unit
+    var getShipsInRange = function(unit, sm){
+        var ships = Clucker.poolMod.getActiveObjects(sm.game.ships),
+        maxDist = UNIT_SIZE * unit.stat.range;   
+        return ships.filter(function(ship){
+            var x1 = ship.x + ship.w / 2,
+            y1 = ship.y + ship.h / 2,
+            x2 = unit.x + unit.w / 2,
+            y2 = unit.y + unit.h / 2;
+            var d = Clucker.utils.distance(x1, y1, x2, y2);
+            return d < maxDist;
+        });
+    };
+
     // create units object pool helper
     var createUnits = function(opt){
         opt = opt || {};
@@ -193,6 +208,7 @@
                 // stats
                 var stat = obj.stat = {};
                 stat.fireRate = 0.5;
+                stat.range = 3;
                 // fire secs to find out if the unit will fire or not
                 obj.data.fireSecs = 0;
                 // sheetkey
@@ -201,19 +217,25 @@
                 // start pos
                 var positions = getUnitPositions(pool);
                 var pos = positions[Math.floor(positions.length * Math.random())];
-                obj.x = pos.x; obj.y = pos.y; obj.w = 50; obj.h = 50;
+                obj.x = pos.x; obj.y = pos.y; obj.w = UNIT_SIZE; obj.h = UNIT_SIZE;
             },
             update: function (unit, pool, sm, secs){
-
                 unit.data.fireSecs += secs;
                 if(unit.data.fireSecs >= unit.stat.fireRate){
                     unit.data.fireSecs %= unit.stat.fireRate;
-                    // fire a shot
-                    Clucker.poolMod.spawn(sm.game.shots, sm, {
-                        x: unit.x + unit.w / 2 - 5,
-                        y: unit.y + unit.h / 2 - 5,
-                        a: Math.PI * 2 * Math.random()
-                    });
+                    var allTargets = getShipsInRange(unit, sm);
+                    if(allTargets.length > 0){
+                        // just select first target for now
+                        var target = allTargets[0],
+                        x = ( target.x + target.w / 2 ) - ( unit.x + unit.w / 2 ),
+                        y = ( target.y + target.h / 2 ) - ( unit.y + unit.h / 2 );
+                        // fire a shot
+                        Clucker.poolMod.spawn(sm.game.shots, sm, {
+                            x: unit.x + unit.w / 2 - 5,
+                            y: unit.y + unit.h / 2 - 5,
+                            a: Math.atan2(y, x)
+                        });
+                    }
                 }
             }
         });
