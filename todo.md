@@ -62,11 +62,11 @@
 * (done) header-app: have a shots pool, and a units pool
 * (done) header-app: first unit is a gun that will fire shots at ships
 * (done) header-app: shots do damage to ships
+* (done) header-app: have units fire at ships rather than randomly
+* (done) header-app: have a unit range stat
+* (done) header-app: shots will purge when they reach max distance
 
-* header-app: have units fire at ships rather than randomly
-* header-app: have a unit fireRange stat, shots will purge when they reach that distance
-
-
+* make getDistanceToObj method in header-app part of the objectPool library
 
 
 <!-- ########## ########## -->

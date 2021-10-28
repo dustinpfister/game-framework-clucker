@@ -13,6 +13,19 @@
     UNIT_SIZE = 50,
     SHOTS_COUNT_MAX = 50;
 
+
+/********* ********** **********
+  OBJECT POOL
+********** ********** *********/
+
+    var getDistanceToObj = function(obj1, obj2){
+        var x1 = obj2.x + obj2.w / 2,
+        y1 = obj2.y + obj2.h / 2,
+        x2 = obj1.x + obj1.w / 2,
+        y2 = obj1.y + obj1.h / 2;
+        return Clucker.utils.distance(x1, y1, x2, y2);
+    };
+
 /********* ********** **********
   SHIPS
 ********** ********** *********/
@@ -104,6 +117,7 @@
   SHOTS
 ********** ********** *********/
 
+    // check if a shot hit something
     var hitCheck = function(shot, sm){
         var hit = Clucker.poolMod.getOverlaping(shot, sm.game.ships);
         hit.forEach(function(ship){
@@ -133,6 +147,7 @@
                 //obj.data.cellIndex = 0;
                 //obj.data.sheetKey = 'ship-type-one';
                 // start pos
+                obj.data.unit = opt.unit || {};
                 obj.x = opt.x || 0;
                 obj.y = opt.y || 0;
                 obj.w = 10;
@@ -145,8 +160,13 @@
                 var canvas = sm.layers[0].canvas;
                 Clucker.poolMod.moveByPPS(shot, secs);
                 Clucker.poolMod.wrap(shot, canvas, 32);
+                shot.lifespan = 2;
                 // hit check
                 hitCheck(shot, sm);
+                var d = getDistanceToObj(shot, shot.data.unit);
+                if(d > shot.data.unit.stat.range * UNIT_SIZE){
+                    shot.lifespan = 0;
+                }
             }
         });
     };
@@ -187,12 +207,7 @@
         var ships = Clucker.poolMod.getActiveObjects(sm.game.ships),
         maxDist = UNIT_SIZE * unit.stat.range;   
         return ships.filter(function(ship){
-            var x1 = ship.x + ship.w / 2,
-            y1 = ship.y + ship.h / 2,
-            x2 = unit.x + unit.w / 2,
-            y2 = unit.y + unit.h / 2;
-            var d = Clucker.utils.distance(x1, y1, x2, y2);
-            return d < maxDist;
+            return getDistanceToObj(unit, ship) < maxDist;
         });
     };
 
@@ -233,7 +248,8 @@
                         Clucker.poolMod.spawn(sm.game.shots, sm, {
                             x: unit.x + unit.w / 2 - 5,
                             y: unit.y + unit.h / 2 - 5,
-                            a: Math.atan2(y, x)
+                            a: Math.atan2(y, x),
+                            unit: unit
                         });
                     }
                 }
