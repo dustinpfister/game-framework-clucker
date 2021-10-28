@@ -126,10 +126,27 @@
                 obj.pps = 128;
                 obj.lifespan = 2;
             },
-            update: function (obj, pool, sm, secs){
+            update: function (shot, pool, sm, secs){
                 var canvas = sm.layers[0].canvas;
-                Clucker.poolMod.moveByPPS(obj, secs);
-                Clucker.poolMod.wrap(obj, canvas, 32);
+                Clucker.poolMod.moveByPPS(shot, secs);
+                Clucker.poolMod.wrap(shot, canvas, 32);
+
+                var overlaping = Clucker.poolMod.getOverlaping(shot, sm.game.ships);
+                overlaping.forEach(function(ship){
+
+            var stat = ship.stat;
+            stat.hp -= 1;
+            stat.hp = stat.hp < 0 ? 0 : stat.hp;
+            if(stat.hp === 0){
+                sm.game.money += stat.money;
+                Clucker.poolMod.purge(sm.game.ships, ship, sm);
+            }
+
+shot.lifespan = 0;
+
+                    
+                });
+
             }
         });
     };
@@ -176,7 +193,7 @@
                 obj.data.fillStyle = 'rgba(0,255,128,0.5)';
                 // stats
                 var stat = obj.stat = {};
-                stat.fireRate = 0.25;
+                stat.fireRate = 1;
                 // fire secs to find out if the unit will fire or not
                 obj.data.fireSecs = 0;
                 // sheetkey
