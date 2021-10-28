@@ -109,7 +109,7 @@
         return Clucker.poolMod.create({
             count: SHOTS_COUNT_MAX,
             secsCap: 0.25,
-            disableLifespan: true,
+            //disableLifespan: true,
             spawn: function(obj, pool, sm, opt){
                 obj.data.fillStyle = 'rgba(64,64,64,0.7)';
                 // stats
@@ -122,9 +122,14 @@
                 obj.y = opt.y || 0;
                 obj.w = 10;
                 obj.h = 10;
+                obj.heading = opt.a || 0;
+                obj.pps = 128;
+                obj.lifespan = 2;
             },
             update: function (obj, pool, sm, secs){
-
+                var canvas = sm.layers[0].canvas;
+                Clucker.poolMod.moveByPPS(obj, secs);
+                Clucker.poolMod.wrap(obj, canvas, 32);
             }
         });
     };
@@ -180,13 +185,12 @@
                 obj.x = pos.x; obj.y = pos.y; obj.w = 50; obj.h = 50;
             },
             update: function (obj, pool, sm, secs){
-
+                // fire a shot
                 Clucker.poolMod.spawn(sm.game.shots, sm, {
                     x: obj.x + obj.w / 2 - 5,
                     y: obj.y + obj.h / 2 - 5,
                     a: Math.PI * 2 * Math.random()
                 });
-
             }
         });
     };
@@ -215,6 +219,7 @@
         // update game.pool
         Clucker.poolMod.update(game.ships, secs, sm);
         Clucker.poolMod.update(game.units, secs, sm);
+        Clucker.poolMod.update(game.shots, secs, sm);
         // spawn
         game.spawnSecs += secs;
         if(game.spawnSecs >= SHIP_SPAWN_RATE){
