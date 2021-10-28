@@ -9,7 +9,8 @@
     SHIP_MONEY_MAX = 1000,
     SHIP_SPAWN_DIST_FROM_CENTER = 200,
     SHIP_SPAWN_RATE = 1.25,                // spawn rate in secs
-    UNIT_COUNT_MAX = 20;                   // MAX UNIT POOL SIZE (1 to 40)
+    UNIT_COUNT_MAX = 3,                    // MAX UNIT POOL SIZE (1 to 40)
+    SHOTS_COUNT_MAX = 50;
 
 /********* ********** **********
   SHIPS
@@ -99,6 +100,37 @@
     };
 
 /********* ********** **********
+  SHOTS
+********** ********** *********/
+
+    // create shots object pool helper
+    var createShots = function(opt){
+        opt = opt || {};
+        return Clucker.poolMod.create({
+            count: SHOTS_COUNT_MAX,
+            secsCap: 0.25,
+            disableLifespan: true,
+            spawn: function(obj, pool, sm, opt){
+                obj.data.fillStyle = 'rgba(64,64,64,0.7)';
+                // stats
+                var stat = obj.stat = {};
+                // sheetkey
+                //obj.data.cellIndex = 0;
+                //obj.data.sheetKey = 'ship-type-one';
+                // start pos
+                obj.x = opt.x || 0;
+                obj.y = opt.y || 0;
+                obj.w = 10;
+                obj.h = 10;
+            },
+            update: function (obj, pool, sm, secs){
+
+            }
+        });
+    };
+
+
+/********* ********** **********
   UNITS
 ********** ********** *********/
 
@@ -145,13 +177,15 @@
                 // start pos
                 var positions = getUnitPositions(pool);
                 var pos = positions[Math.floor(positions.length * Math.random())];
-                obj.x = pos.x; obj.y = pos.y;
-                //obj.x = 150 + 50 * Math.round(9 * Math.random());
-                //obj.y = 50 + 50 * Math.round(3 * Math.random());
-                obj.w = 50;
-                obj.h = 50;
+                obj.x = pos.x; obj.y = pos.y; obj.w = 50; obj.h = 50;
             },
             update: function (obj, pool, sm, secs){
+
+                Clucker.poolMod.spawn(sm.game.shots, sm, {
+                    x: obj.x + obj.w / 2 - 5,
+                    y: obj.y + obj.h / 2 - 5,
+                    a: Math.PI * 2 * Math.random()
+                });
 
             }
         });
@@ -167,6 +201,7 @@
             money: opt.money || 0,
             ships: createShips(opt),
             units: createUnits(opt),
+            shots: createShots(opt),
             cx: 400,
             cy: 150,
             spawnSecs: 0
@@ -179,6 +214,7 @@
         var game = sm.game;
         // update game.pool
         Clucker.poolMod.update(game.ships, secs, sm);
+        Clucker.poolMod.update(game.units, secs, sm);
         // spawn
         game.spawnSecs += secs;
         if(game.spawnSecs >= SHIP_SPAWN_RATE){
