@@ -58,11 +58,11 @@
 * (done) header-app: the art stats have an impact on state.money
 * (done) header-app: use the new storage system to save the money value
 * (done) header-app: have ships spawn out of bounds, rather than at the center
+* (done) header-app: have a shots pool, and a units pool
+* (done) header-app: first unit is a gun that will fire shots at ships
 
-* header-app: have a shots pool, and a units pool
-* header-app: first unit is a gun that will fire shots at ships
-
-
+* header-app: shots do damage to ships
+* header-app: have a unit fireRange stat, shots will purge when they reach that distance
 
 
 
