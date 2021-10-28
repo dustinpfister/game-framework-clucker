@@ -66,6 +66,10 @@
 * (done) header-app: have a unit range stat
 * (done) header-app: shots will purge when they reach max distance
 
+* header-app: make unit count a factor that is effected by art stats
+* header-app: make unit range a factor that is effected by art stats
+* header-app: make unit shot speed a stat, and make that effected by art stats
+* header-app: display a circle around units that shows range
 * make getDistanceToObj method in header-app part of the objectPool library
 
 
