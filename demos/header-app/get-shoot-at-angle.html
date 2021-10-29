@@ -14,19 +14,19 @@
 
 var UNIT_SIZE = 50;
 
+// GET TARGET ANGLE
 var getTargetAngle = function(unit, target){
     var x = ( target.x + target.w / 2 ) - ( unit.x + unit.w / 2 ),
     y = ( target.y + target.h / 2 ) - ( unit.y + unit.h / 2 );
     return Math.atan2(y, x);
 }
-
+// CREATE A FUTURE TARGET
 var createFutureTarget = function(target, secs){
     return Object.assign({}, target, { // future target after secs
         x: target.x + Math.cos(target.heading) * target.pps * secs,
         y: target.y + Math.sin(target.heading) * target.pps * secs
     });
 };
-
 // THE GET SHOOT AT ANGLE HELPER
 var getShootAtAngle = function(unit, target){
     var a1 = getTargetAngle(unit, target),
@@ -37,9 +37,6 @@ var getShootAtAngle = function(unit, target){
     secsForTarget = secsShot / secsStandard,
     futureTarget2 = createFutureTarget(target, secsForTarget),
     a2 = getTargetAngle(unit, futureTarget2);
-
-    Clucker.utils.logOnce(secsShot / secsStandard)
-
     return a2;
 };
 
@@ -117,19 +114,17 @@ var sm = Clucker.createMain({
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(unit, pool, sm, opt){
-var canvas = sm.layers[0].canvas;
-unit.w = 50;
-unit.h = 50;
-unit.x = canvas.width / 2 - unit.w / 2;
-unit.y = canvas.height / 2 - unit.h / 2;
-
+                var canvas = sm.layers[0].canvas;
+                unit.w = 50;
+                unit.h = 50;
+                unit.x = canvas.width / 2 - unit.w / 2;
+                unit.y = canvas.height / 2 - unit.h / 2;
                 var stat = unit.stat = {};
                 stat.shotPPS = 100;
                 stat.fireRate = 0.5;
                 stat.range = 5;
                 // fire secs to find out if the unit will fire or not
                 unit.data.fireSecs = 0;
-
             },
             update: function (unit, pool, sm, secs){
                 unit.data.fireSecs += secs;
@@ -158,26 +153,21 @@ unit.y = canvas.height / 2 - unit.h / 2;
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(ship, pool, sm, opt){
-ship.w = 32;
-ship.h = 32;
-ship.x = 100;
-ship.y = -32;
-ship.pps = 50;
-ship.heading = Math.PI * 0.5;
-
+                ship.w = 32;
+                ship.h = 32;
+                ship.x = 100;
+                ship.y = -32;
+                ship.pps = 50;
+                ship.heading = Math.PI * 0.5;
                 var stat = ship.stat = {};
                 stat.hpMax = 10;
                 stat.hp = stat.hpMax;
                 stat.money = 0;
             },
             update: function (ship, pool, sm, secs){
-var canvas = sm.layers[0].canvas;
-Clucker.poolMod.moveByPPS(ship, secs);
-
-if(ship.y >= canvas.height + 32){
-  ship.y = -32;
-}
-
+                var canvas = sm.layers[0].canvas;
+                Clucker.poolMod.moveByPPS(ship, secs);
+                Clucker.poolMod.wrap(ship, canvas, 32);
             }
         })
     }
@@ -190,13 +180,12 @@ Clucker.pushState(sm, {
     start: function(sm, canvasMod){
         // draw background once
         canvasMod.draw(sm.layers, 'background', 0);
-
         // spawn
         Clucker.poolMod.spawnAll(sm.game.units, sm, {});
-        Clucker.poolMod.spawnAll(sm.game.ships, sm, {});
     },
     // what to do on each update
     update: function(sm, secs){
+        Clucker.poolMod.spawnAll(sm.game.ships, sm, {});
         // update game.pool
         Clucker.poolMod.update(sm.game.units, secs, sm);
         Clucker.poolMod.update(sm.game.ships, secs, sm);
