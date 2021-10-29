@@ -29,7 +29,7 @@ Clucker.pushState(sm, {
     start: function(sm, canvasMod){
         // using the hashPer to set the number of ships
         var art = articleMod.getArtObj({
-            wordGrades: [1200, 5000]
+            wordGrades: [500, 1200, 5000]
         });
 
         // try to get a save state for startMoney
@@ -40,11 +40,13 @@ Clucker.pushState(sm, {
         }else{
             startMoney = save.money;
         }
+
+        console.log('hashPer: ' + art.hashPer);
         sm.game = gameMod.create({
            money: startMoney,
-           shipCountPer: 1, //art.hashPer,
-           shipHPPer: art.wordPers[0],
-           shipMoneyPer: art.wordPers[1]
+           shipCountPer: art.wordPers[0],
+           shipHPPer: art.wordPers[1],
+           shipMoneyPer: art.wordPers[2]
         });
         // draw background and overlay once on start hook
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);

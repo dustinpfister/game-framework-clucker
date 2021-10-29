@@ -12,7 +12,10 @@
         <script src="/dist/0.7.0/clucker.js"></script>
         <script>
 
-var UNIT_SIZE = 50;
+var UNIT_SIZE = 50,
+SHOT_PPS = 128,
+SHIP_PPS = 256,
+SHIP_STARTX = 220;
 
 // GET TARGET ANGLE
 var getTargetAngle = function(unit, target){
@@ -34,9 +37,12 @@ var getShootAtAngle = function(unit, target){
     futureTarget1 = createFutureTarget(target, secsStandard),
     d1 = Clucker.utils.distance(unit.x, unit.y, futureTarget1.x, futureTarget1.y), // distance to future target
     secsShot = d1 / unit.stat.shotPPS,
-    secsForTarget = secsShot / secsStandard,
-    futureTarget2 = createFutureTarget(target, secsForTarget),
+    secsForHit = secsShot / secsStandard,
+    futureTarget2 = createFutureTarget(target, secsForHit),
     a2 = getTargetAngle(unit, futureTarget2);
+
+Clucker.utils.log(secsShot);
+
     return a2;
 };
 
@@ -120,7 +126,7 @@ var sm = Clucker.createMain({
                 unit.x = canvas.width / 2 - unit.w / 2;
                 unit.y = canvas.height / 2 - unit.h / 2;
                 var stat = unit.stat = {};
-                stat.shotPPS = 100;
+                stat.shotPPS = SHOT_PPS;
                 stat.fireRate = 0.5;
                 stat.range = 5;
                 // fire secs to find out if the unit will fire or not
@@ -155,10 +161,10 @@ var sm = Clucker.createMain({
             spawn: function(ship, pool, sm, opt){
                 ship.w = 32;
                 ship.h = 32;
-                ship.x = 100;
+                ship.x = SHIP_STARTX; //Math.floor(sm.layers[0].canvas.width * Math.random());
                 ship.y = -32;
-                ship.pps = 50;
-                ship.heading = Math.PI * (0.125 + 0.375 * Math.random()); // * Math.random();
+                ship.pps = SHIP_PPS;
+                ship.heading = Math.PI * 0.5; //Math.PI * (0.125 + 0.375 * Math.random()); // * Math.random();
                 var stat = ship.stat = {};
                 stat.hpMax = 10;
                 stat.hp = stat.hpMax;
