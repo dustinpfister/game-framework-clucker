@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <title>Clucker Demo</title>
+    <link rel="stylesheet" href="/css/canvas.css">
+  </head>
+  <body>
+
+        <div id="canvas-app"></div>
+
+
+        <!-- Using Clucker -->
+        <script src="/dist/0.7.0/clucker.js"></script>
+        <script>
+var sm = Clucker.createMain({
+    currentState: 'game',
+    width: 640,
+    height: 480,
+    game: {
+        units: Clucker.poolMod.create({
+            count: 1,
+            secsCap: 0.25,
+            disableLifespan: true,
+            spawn: function(unit, pool, sm, opt){
+var canvas = sm.layers[0].canvas;
+unit.w = 50;
+unit.h = 50;
+unit.x = canvas.width / 2 - unit.w / 2;
+unit.y = canvas.height / 2 - unit.h / 2;
+
+// unit shot speed
+unit.data.shotPPS = 100;
+            },
+            update: function (unit, pool, sm, secs){
+            }
+        }),
+        ships: Clucker.poolMod.create({
+            count: 1,
+            secsCap: 0.25,
+            disableLifespan: true,
+            spawn: function(ship, pool, sm, opt){
+ship.w = 32;
+ship.h = 32;
+ship.x = 100;
+ship.y = -32;
+ship.pps = 100;
+ship.heading = Math.PI * 0.5;
+            },
+            update: function (ship, pool, sm, secs){
+var canvas = sm.layers[0].canvas;
+Clucker.poolMod.moveByPPS(ship, secs);
+
+if(ship.y >= canvas.height + 32){
+  ship.y = -32;
+}
+
+            }
+        })
+    }
+});
+
+// add at least one state object
+Clucker.pushState(sm, {
+    name: 'game',
+    // start hook will just fire once when the state object starts
+    start: function(sm, canvasMod){
+        // draw background once
+        canvasMod.draw(sm.layers, 'background', 0);
+
+        // spawn
+        Clucker.poolMod.spawnAll(sm.game.units, sm, {});
+        Clucker.poolMod.spawnAll(sm.game.ships, sm, {});
+    },
+    // what to do on each update
+    update: function(sm, secs){
+        // update game.pool
+        Clucker.poolMod.update(sm.game.units, secs, sm);
+        Clucker.poolMod.update(sm.game.ships, secs, sm);
+    },
+    // draw will be called after each update
+    draw: function(sm, layers, canvasMod){
+        canvasMod.draw(layers, 'clear', 1);
+        canvasMod.draw(layers, 'pool', 1, sm.game.units);
+        canvasMod.draw(layers, 'pool', 1, sm.game.ships);
+        //canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
+    }
+});
+// start the state machine
+Clucker.start(sm);
+
+        </script>
+
+    </body>
+</html>
