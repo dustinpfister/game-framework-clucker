@@ -13,8 +13,10 @@
         <script>
 
 var UNIT_SIZE = 50,
-SHOT_PPS = 128,
-SHIP_PPS = 256,
+
+SHOT_PPS = 512,
+SHIP_PPS = 512,
+
 SHIP_STARTX = 220;
 
 // GET TARGET ANGLE
@@ -33,12 +35,12 @@ var createFutureTarget = function(target, secs){
 // THE GET SHOOT AT ANGLE HELPER
 var getShootAtAngle = function(unit, target){
     var a1 = getTargetAngle(unit, target),
-    secsStandard = 1,
+    secsStandard = 0.1,
     futureTarget1 = createFutureTarget(target, secsStandard),
     d1 = Clucker.utils.distance(unit.x, unit.y, futureTarget1.x, futureTarget1.y), // distance to future target
     secsShot = d1 / unit.stat.shotPPS,
-    secsForHit = secsShot / secsStandard,
-    futureTarget2 = createFutureTarget(target, secsForHit),
+    //secsForHit = secsShot / secsStandard,
+    futureTarget2 = createFutureTarget(target, secsShot),
     a2 = getTargetAngle(unit, futureTarget2);
 
 Clucker.utils.log(secsShot);
