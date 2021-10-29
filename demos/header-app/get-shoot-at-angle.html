@@ -11,11 +11,78 @@
         <!-- Using Clucker -->
         <script src="/dist/0.7.0/clucker.js"></script>
         <script>
+
+var UNIT_SIZE = 50;
+
+    var getDistanceToObj = function(obj1, obj2){
+        var x1 = obj2.x + obj2.w / 2,
+        y1 = obj2.y + obj2.h / 2,
+        x2 = obj1.x + obj1.w / 2,
+        y2 = obj1.y + obj1.h / 2;
+        return Clucker.utils.distance(x1, y1, x2, y2);
+    };
+
+    var hitCheck = function(shot, sm){
+        var hit = Clucker.poolMod.getOverlaping(shot, sm.game.ships);
+        hit.forEach(function(ship){
+            var stat = ship.stat;
+            stat.hp -= 1;
+            stat.hp = stat.hp < 0 ? 0 : stat.hp;
+            if(stat.hp === 0){
+                sm.game.money += stat.money;
+                Clucker.poolMod.purge(sm.game.ships, ship, sm);
+            }
+            shot.lifespan = 0;
+        });
+    };
+
+    var getShipsInRange = function(unit, sm){
+        var ships = Clucker.poolMod.getActiveObjects(sm.game.ships),
+        maxDist = UNIT_SIZE * unit.stat.range;   
+        return ships.filter(function(ship){
+            return getDistanceToObj(unit, ship) < maxDist;
+        });
+    };
+
 var sm = Clucker.createMain({
     currentState: 'game',
     width: 640,
     height: 480,
     game: {
+        // SHOTS
+        shots: Clucker.poolMod.create({
+            count: 10,
+            secsCap: 0.25,
+            //disableLifespan: true,
+            spawn: function(shot, pool, sm, opt){
+                shot.data.fillStyle = 'rgba(64,64,64,0.7)';
+                // stats
+                var stat = shot.stat = {};
+                // start pos
+                var unit = shot.data.unit = opt.unit || {},
+                unitStat = unit.stat || {};
+                shot.x = opt.x || 0;
+                shot.y = opt.y || 0;
+                shot.w = 10;
+                shot.h = 10;
+                shot.heading = opt.a || 0;
+                shot.pps = unitStat.shotPPS || 128;
+                shot.lifespan = 2;
+            },
+            update: function (shot, pool, sm, secs){
+                var canvas = sm.layers[0].canvas;
+                Clucker.poolMod.moveByPPS(shot, secs);
+                Clucker.poolMod.wrap(shot, canvas, 32);
+                shot.lifespan = 2;
+                // hit check
+                hitCheck(shot, sm);
+                var d = getDistanceToObj(shot, shot.data.unit);
+                if(d > shot.data.unit.stat.range * UNIT_SIZE){
+                    shot.lifespan = 0;
+                }
+            }
+        }),
+        // UNITS
         units: Clucker.poolMod.create({
             count: 1,
             secsCap: 0.25,
@@ -27,12 +94,36 @@ unit.h = 50;
 unit.x = canvas.width / 2 - unit.w / 2;
 unit.y = canvas.height / 2 - unit.h / 2;
 
-// unit shot speed
-unit.data.shotPPS = 100;
+                var stat = unit.stat = {};
+                stat.shotPPS = 100;
+                stat.fireRate = 0.5;
+                stat.range = 5;
+                // fire secs to find out if the unit will fire or not
+                unit.data.fireSecs = 0;
+
             },
             update: function (unit, pool, sm, secs){
+                unit.data.fireSecs += secs;
+                if(unit.data.fireSecs >= unit.stat.fireRate){
+                    unit.data.fireSecs %= unit.stat.fireRate;
+                    var allTargets = getShipsInRange(unit, sm);
+                    if(allTargets.length > 0){
+                        // just select first target for now
+                        var target = allTargets[0],
+                        x = ( target.x + target.w / 2 ) - ( unit.x + unit.w / 2 ),
+                        y = ( target.y + target.h / 2 ) - ( unit.y + unit.h / 2 );
+                        // fire a shot
+                        Clucker.poolMod.spawn(sm.game.shots, sm, {
+                            x: unit.x + unit.w / 2 - 5,
+                            y: unit.y + unit.h / 2 - 5,
+                            a: Math.atan2(y, x),
+                            unit: unit
+                        });
+                    }
+                }
             }
         }),
+        // SHIPS
         ships: Clucker.poolMod.create({
             count: 1,
             secsCap: 0.25,
@@ -44,6 +135,11 @@ ship.x = 100;
 ship.y = -32;
 ship.pps = 100;
 ship.heading = Math.PI * 0.5;
+
+                var stat = ship.stat = {};
+                stat.hpMax = 10;
+                stat.hp = stat.hpMax;
+                stat.money = 0;
             },
             update: function (ship, pool, sm, secs){
 var canvas = sm.layers[0].canvas;
@@ -75,12 +171,14 @@ Clucker.pushState(sm, {
         // update game.pool
         Clucker.poolMod.update(sm.game.units, secs, sm);
         Clucker.poolMod.update(sm.game.ships, secs, sm);
+        Clucker.poolMod.update(sm.game.shots, secs, sm);
     },
     // draw will be called after each update
     draw: function(sm, layers, canvasMod){
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'pool', 1, sm.game.units);
         canvasMod.draw(layers, 'pool', 1, sm.game.ships);
+        canvasMod.draw(layers, 'pool', 1, sm.game.shots);
         //canvasMod.draw(layers, 'print', 1, sm.game.text, sm.game.x, sm.game.y, sm.game.printOptions);
     }
 });
