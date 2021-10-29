@@ -40,10 +40,9 @@ Clucker.pushState(sm, {
         }else{
             startMoney = save.money;
         }
-
         sm.game = gameMod.create({
            money: startMoney,
-           shipCountPer: art.hashPer,
+           shipCountPer: 1, //art.hashPer,
            shipHPPer: art.wordPers[0],
            shipMoneyPer: art.wordPers[1]
         });

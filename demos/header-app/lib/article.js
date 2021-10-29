@@ -16,14 +16,15 @@
     // https://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
     var hashCode = function(art) {
         var hash = 0, i, chr,
-        str = rawText(art);
+        str = typeof art === 'object' ? rawText(art) : art;
         if (str.length === 0) return hash;
         for (i = 0; i < str.length; i++) {
-            chr   = str.charCodeAt(i);
+            chr = str.charCodeAt(i);
             hash  = ((hash << 5) - hash) + chr;
             hash |= 0; // Convert to 32bit integer
         }
-        return hash;
+        // I will want to have a non signed value
+        return hash + INTB32MAX / 2;
     };
 
     // get a hashPer 0-1 based on the given art object
