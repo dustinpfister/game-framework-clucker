@@ -14,8 +14,8 @@
 
 var UNIT_SIZE = 50,
 
-SHOT_PPS = 512,
-SHIP_PPS = 512,
+SHOT_PPS = 256,
+SHIP_PPS = [32, 64, 128, 256, 512],
 
 SHIP_STARTX = 220;
 
@@ -35,16 +35,14 @@ var createFutureTarget = function(target, secs){
 // THE GET SHOOT AT ANGLE HELPER
 var getShootAtAngle = function(unit, target){
     var a1 = getTargetAngle(unit, target),
-    secsStandard = 0.1,
+    // adjust secsStandard based on target speed
+    secsStandard = 1 - 0.85 * (target.pps / SHIP_PPS[SHIP_PPS.length - 1] ),
     futureTarget1 = createFutureTarget(target, secsStandard),
     d1 = Clucker.utils.distance(unit.x, unit.y, futureTarget1.x, futureTarget1.y), // distance to future target
     secsShot = d1 / unit.stat.shotPPS,
     //secsForHit = secsShot / secsStandard,
     futureTarget2 = createFutureTarget(target, secsShot),
     a2 = getTargetAngle(unit, futureTarget2);
-
-Clucker.utils.log(secsShot);
-
     return a2;
 };
 
@@ -83,6 +81,7 @@ var sm = Clucker.createMain({
     width: 640,
     height: 480,
     game: {
+        shipPPSIndex: 0,
         // SHOTS
         shots: Clucker.poolMod.create({
             count: 10,
@@ -165,10 +164,12 @@ var sm = Clucker.createMain({
                 ship.h = 32;
                 ship.x = SHIP_STARTX; //Math.floor(sm.layers[0].canvas.width * Math.random());
                 ship.y = -32;
-                ship.pps = SHIP_PPS;
+                ship.pps = SHIP_PPS[sm.game.shipPPSIndex];
+                sm.game.shipPPSIndex += 1;
+                sm.game.shipPPSIndex %= SHIP_PPS.length;
                 ship.heading = Math.PI * 0.5; //Math.PI * (0.125 + 0.375 * Math.random()); // * Math.random();
                 var stat = ship.stat = {};
-                stat.hpMax = 10;
+                stat.hpMax = 5;
                 stat.hp = stat.hpMax;
                 stat.money = 0;
             },
