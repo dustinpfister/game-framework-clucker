@@ -128,7 +128,7 @@ var sm = Clucker.createMain({
                 unit.y = canvas.height / 2 - unit.h / 2;
                 var stat = unit.stat = {};
                 stat.shotPPS = SHOT_PPS;
-                stat.fireRate = 0.5;
+                stat.fireRate = 0.25;
                 stat.range = 5;
                 // fire secs to find out if the unit will fire or not
                 unit.data.fireSecs = 0;
@@ -162,7 +162,8 @@ var sm = Clucker.createMain({
             spawn: function(ship, pool, sm, opt){
                 ship.w = 32;
                 ship.h = 32;
-                ship.x = SHIP_STARTX; //Math.floor(sm.layers[0].canvas.width * Math.random());
+                ship.x = SHIP_STARTX; 
+                //ship.x = Math.floor(sm.layers[0].canvas.width * Math.random());
                 ship.y = -32;
                 ship.pps = SHIP_PPS[sm.game.shipPPSIndex];
                 sm.game.shipPPSIndex += 1;
