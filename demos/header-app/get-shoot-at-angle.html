@@ -14,7 +14,7 @@
 
 var UNIT_SIZE = 50;
 
-var getTargetAngleNow = function(unit, target){
+var getTargetAngle = function(unit, target){
     var x = ( target.x + target.w / 2 ) - ( unit.x + unit.w / 2 ),
     y = ( target.y + target.h / 2 ) - ( unit.y + unit.h / 2 );
     return Math.atan2(y, x);
@@ -22,9 +22,14 @@ var getTargetAngleNow = function(unit, target){
 
 // THE GET SHOOT AT ANGLE HELPER
 var getShootAtAngle = function(unit, target){
-    var a1 = getTargetAngleNow(unit, target),
+    var a1 = getTargetAngle(unit, target),
+    secs = 2.5,
+    a2 = getTargetAngle(unit, Object.assign({}, target, {
+        x: target.x + Math.cos(target.heading) * target.pps * secs,
+        y: target.y + Math.sin(target.heading) * target.pps * secs
+    })),
     aDelta = 1.1;
-    return a1 - aDelta;
+    return a2; //a1 - aDelta;
 };
 
 var getDistanceToObj = function(obj1, obj2){

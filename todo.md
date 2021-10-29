@@ -65,6 +65,9 @@
 * (done) header-app: have units fire at ships rather than randomly
 * (done) header-app: have a unit range stat
 * (done) header-app: shots will purge when they reach max distance
+* (done) header-app: start a new get shoot angle angle demo in the header app folder
+
+* header-app: get an angle that works well when it comes to 'shooting where a ship will be'
 
 * header-app: make unit count a factor that is effected by art stats
 * header-app: make unit range a factor that is effected by art stats
