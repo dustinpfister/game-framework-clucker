@@ -14,35 +14,48 @@
 
 var UNIT_SIZE = 50;
 
-    var getDistanceToObj = function(obj1, obj2){
-        var x1 = obj2.x + obj2.w / 2,
-        y1 = obj2.y + obj2.h / 2,
-        x2 = obj1.x + obj1.w / 2,
-        y2 = obj1.y + obj1.h / 2;
-        return Clucker.utils.distance(x1, y1, x2, y2);
-    };
+var getTargetAngleNow = function(unit, target){
+    var x = ( target.x + target.w / 2 ) - ( unit.x + unit.w / 2 ),
+    y = ( target.y + target.h / 2 ) - ( unit.y + unit.h / 2 );
+    return Math.atan2(y, x);
+}
 
-    var hitCheck = function(shot, sm){
-        var hit = Clucker.poolMod.getOverlaping(shot, sm.game.ships);
-        hit.forEach(function(ship){
-            var stat = ship.stat;
-            stat.hp -= 1;
-            stat.hp = stat.hp < 0 ? 0 : stat.hp;
-            if(stat.hp === 0){
-                sm.game.money += stat.money;
-                Clucker.poolMod.purge(sm.game.ships, ship, sm);
-            }
-            shot.lifespan = 0;
-        });
-    };
+// THE GET SHOOT AT ANGLE HELPER
+var getShootAtAngle = function(unit, target){
+    var a1 = getTargetAngleNow(unit, target),
+    aDelta = 1.1;
+    return a1 - aDelta;
+};
 
-    var getShipsInRange = function(unit, sm){
-        var ships = Clucker.poolMod.getActiveObjects(sm.game.ships),
-        maxDist = UNIT_SIZE * unit.stat.range;   
-        return ships.filter(function(ship){
-            return getDistanceToObj(unit, ship) < maxDist;
-        });
-    };
+var getDistanceToObj = function(obj1, obj2){
+    var x1 = obj2.x + obj2.w / 2,
+    y1 = obj2.y + obj2.h / 2,
+    x2 = obj1.x + obj1.w / 2,
+    y2 = obj1.y + obj1.h / 2;
+    return Clucker.utils.distance(x1, y1, x2, y2);
+};
+
+var hitCheck = function(shot, sm){
+    var hit = Clucker.poolMod.getOverlaping(shot, sm.game.ships);
+    hit.forEach(function(ship){
+        var stat = ship.stat;
+        stat.hp -= 1;
+        stat.hp = stat.hp < 0 ? 0 : stat.hp;
+        if(stat.hp === 0){
+            sm.game.money += stat.money;
+            Clucker.poolMod.purge(sm.game.ships, ship, sm);
+        }
+        shot.lifespan = 0;
+    });
+};
+
+var getShipsInRange = function(unit, sm){
+    var ships = Clucker.poolMod.getActiveObjects(sm.game.ships),
+    maxDist = UNIT_SIZE * unit.stat.range;   
+    return ships.filter(function(ship){
+        return getDistanceToObj(unit, ship) < maxDist;
+    });
+};
 
 var sm = Clucker.createMain({
     currentState: 'game',
@@ -116,7 +129,7 @@ unit.y = canvas.height / 2 - unit.h / 2;
                         Clucker.poolMod.spawn(sm.game.shots, sm, {
                             x: unit.x + unit.w / 2 - 5,
                             y: unit.y + unit.h / 2 - 5,
-                            a: Math.atan2(y, x),
+                            a: getShootAtAngle(unit, target),
                             unit: unit
                         });
                     }
