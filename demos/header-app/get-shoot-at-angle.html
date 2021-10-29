@@ -158,7 +158,7 @@ var sm = Clucker.createMain({
                 ship.x = 100;
                 ship.y = -32;
                 ship.pps = 50;
-                ship.heading = Math.PI * 0.5;
+                ship.heading = Math.PI * (0.125 + 0.375 * Math.random()); // * Math.random();
                 var stat = ship.stat = {};
                 stat.hpMax = 10;
                 stat.hp = stat.hpMax;
