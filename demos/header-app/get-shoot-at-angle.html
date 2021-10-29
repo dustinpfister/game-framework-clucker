@@ -20,16 +20,27 @@ var getTargetAngle = function(unit, target){
     return Math.atan2(y, x);
 }
 
+var createFutureTarget = function(target, secs){
+    return Object.assign({}, target, { // future target after secs
+        x: target.x + Math.cos(target.heading) * target.pps * secs,
+        y: target.y + Math.sin(target.heading) * target.pps * secs
+    });
+};
+
 // THE GET SHOOT AT ANGLE HELPER
 var getShootAtAngle = function(unit, target){
     var a1 = getTargetAngle(unit, target),
-    secs = 2.5,
-    a2 = getTargetAngle(unit, Object.assign({}, target, {
-        x: target.x + Math.cos(target.heading) * target.pps * secs,
-        y: target.y + Math.sin(target.heading) * target.pps * secs
-    })),
-    aDelta = 1.1;
-    return a2; //a1 - aDelta;
+    secsStandard = 1,
+    futureTarget1 = createFutureTarget(target, secsStandard),
+    d1 = Clucker.utils.distance(unit.x, unit.y, futureTarget1.x, futureTarget1.y), // distance to future target
+    secsShot = d1 / unit.stat.shotPPS,
+    secsForTarget = secsShot / secsStandard,
+    futureTarget2 = createFutureTarget(target, secsForTarget),
+    a2 = getTargetAngle(unit, futureTarget2);
+
+    Clucker.utils.logOnce(secsShot / secsStandard)
+
+    return a2;
 };
 
 var getDistanceToObj = function(obj1, obj2){
