@@ -72,19 +72,13 @@ Clucker.pushState(sm, {
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.units, { spriteDraw: function(unit, ctx){
             if(unit.active){
-
-ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-ctx.beginPath();
-ctx.lineWidth = 3;
-var r = unit.stat.range * 50;
-ctx.arc(unit.x + unit.w / 2, unit.y + unit.h / 2, r, 0, Math.PI * 2);
-ctx.stroke();
-ctx.lineWidth = 1;
-                //ctx.fillStyle = 'rgba(128,128,128, 0.5)';
-                //ctx.fillRect(ship.x, ship.y, 16, 3);
-                //ctx.fillStyle = 'rgba(0,255,0,0.7)';
-                //var stat = ship.stat;
-                //ctx.fillRect(ship.x, ship.y, Math.round(stat.hp / stat.hpMax * 16), 3);
+                ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                ctx.beginPath();
+                ctx.lineWidth = 3;
+                var r = unit.stat.range * 50;
+                ctx.arc(unit.x + unit.w / 2, unit.y + unit.h / 2, r, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.lineWidth = 1;
             }
         }});
         // using new spriteDraw method to draw hpbars
