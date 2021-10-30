@@ -74,10 +74,9 @@
 * (done) header-app: shots will purge when they reach max distance
 * (done) header-app: start a new get shoot angle angle demo in the header app folder
 * (done) header-app: new draft folder that has a demo that has to do with 'shooting where a ship will be'
-
-* header-app: start a new shot.js file that will contain helper methods for shots
-* header-app: make code in get shoot at angle draft be part of the shots lib
-* header-app: use the shot.js file to get shoot at angles
+* (done) header-app: start a new shot.js file that will contain helper methods for shots
+* (done) header-app: make code in get shoot at angle draft be part of the shots lib
+* (done) header-app: use the shot.js file to get shoot at angles
 
 * header-app: display a circle around units that shows range
 
