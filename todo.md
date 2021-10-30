@@ -32,10 +32,6 @@
 * header-app: see about adding a light layer that will be a current amount of ambent light
 * header-app: have ship deaths effect ambient light
 * header-app: shot accuracy
-
-* header-app: make unit count a factor that is effected by art stats
-* header-app: make unit range a factor that is effected by art stats
-* header-app: make unit shot speed a stat, and make that effected by art stats
 * make getDistanceToObj method in header-app part of the objectPool library
 
 
@@ -79,7 +75,12 @@
 * (done) header-app: use the shot.js file to get shoot at angles
 
 * header-app: display a circle around units that shows range
+* header-app: move shot methods in game.js into shot.js
+* header-app: make unit count a factor that is effected by art stats
+* header-app: make unit range a factor that is effected by art stats
+* header-app: make unit shot speed a stat, and make that effected by art stats
 
+* header-app: shot homingActive and homingTarget data values 
 
 <!-- ########## ########## -->
 ## 0.6.x - Starting an upgrades module for clucker
