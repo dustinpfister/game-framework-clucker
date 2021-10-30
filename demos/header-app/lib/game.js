@@ -153,7 +153,7 @@
                 obj.w = 10;
                 obj.h = 10;
                 obj.heading = opt.a || 0;
-                obj.pps = 128;
+                obj.pps = obj.data.unit.stat.shotPPS || 32;
                 obj.lifespan = 2;
             },
             update: function (shot, pool, sm, secs){
@@ -223,6 +223,7 @@
                 // stats
                 var stat = obj.stat = {};
                 stat.fireRate = 0.5;
+                stat.shotPPS = 128;
                 stat.range = 3;
                 // fire secs to find out if the unit will fire or not
                 obj.data.fireSecs = 0;
