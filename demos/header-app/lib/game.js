@@ -4,7 +4,7 @@
     var SHIP_SPEEDS = [32, 64, 128],
     SHIP_COUNT_MAX = 60,
     SHIP_HP_MIN = 1,
-    SHIP_HP_MAX = 50,
+    SHIP_HP_MAX = 25,
     SHIP_MONEY_MIN = 1,                    // min and max money values for ships
     SHIP_MONEY_MAX = 1000,
     SHIP_SPAWN_DIST_FROM_CENTER = 200,
@@ -214,8 +214,10 @@
     // create units object pool helper
     var createUnits = function(opt){
         opt = opt || {};
+        opt.unitCountPer = opt.unitCountPer === undefined ? 1 : opt.unitCountPer;
         return Clucker.poolMod.create({
-            count: UNIT_COUNT_MAX,
+            //count: UNIT_COUNT_MAX,
+            count: 1 + Math.round(opt.unitCountPer * (UNIT_COUNT_MAX - 1)),
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool, sm){

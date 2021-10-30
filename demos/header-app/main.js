@@ -46,7 +46,8 @@ Clucker.pushState(sm, {
            money: startMoney,
            shipCountPer: art.wordPers[0],
            shipHPPer: art.wordPers[1],
-           shipMoneyPer: art.wordPers[2]
+           shipMoneyPer: art.wordPers[2],
+           unitCountPer: art.wordPers[1]
         });
         // draw background and overlay once on start hook
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
