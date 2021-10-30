@@ -33,6 +33,13 @@
 * header-app: have ship deaths effect ambient light
 * header-app: shot accuracy
 
+* header-app: make unit count a factor that is effected by art stats
+* header-app: make unit range a factor that is effected by art stats
+* header-app: make unit shot speed a stat, and make that effected by art stats
+* make getDistanceToObj method in header-app part of the objectPool library
+
+
+
 ### (  ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
 * (done) start out with just localStorage as a means to store save states
@@ -66,14 +73,9 @@
 * (done) header-app: have a unit range stat
 * (done) header-app: shots will purge when they reach max distance
 * (done) header-app: start a new get shoot angle angle demo in the header app folder
+* (done) header-app: new draft folder that has a demo that has to do with 'shooting where a ship will be'
 
-* header-app: get an angle that works well when it comes to 'shooting where a ship will be'
-
-* header-app: make unit count a factor that is effected by art stats
-* header-app: make unit range a factor that is effected by art stats
-* header-app: make unit shot speed a stat, and make that effected by art stats
 * header-app: display a circle around units that shows range
-* make getDistanceToObj method in header-app part of the objectPool library
 
 
 <!-- ########## ########## -->
