@@ -2,14 +2,14 @@
 (function(gameMod){
 
     var SHIP_SPEEDS = [32, 64, 128],
-    SHIP_COUNT_MAX = 30,
+    SHIP_COUNT_MAX = 60,
     SHIP_HP_MIN = 1,
-    SHIP_HP_MAX = 10,
+    SHIP_HP_MAX = 50,
     SHIP_MONEY_MIN = 1,                    // min and max money values for ships
     SHIP_MONEY_MAX = 1000,
     SHIP_SPAWN_DIST_FROM_CENTER = 200,
     SHIP_SPAWN_RATE = 1.25,                // spawn rate in secs
-    UNIT_COUNT_MAX = 3,                    // MAX UNIT POOL SIZE (1 to 40)
+    UNIT_COUNT_MAX = 10,                    // MAX UNIT POOL SIZE (1 to 40)
     UNIT_SIZE = 50,
     SHOTS_COUNT_MAX = 50;
 
