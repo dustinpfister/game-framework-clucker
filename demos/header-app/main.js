@@ -75,7 +75,8 @@ Clucker.pushState(sm, {
 
 ctx.strokeStyle = 'white';
 ctx.beginPath();
-ctx.arc(unit.x, unit.y, 16, 0, Math.PI * 2);
+var r = unit.stat.range * 50;
+ctx.arc(unit.x + unit.w / 2, unit.y + unit.h / 2, r, 0, Math.PI * 2);
 ctx.stroke();
                 //ctx.fillStyle = 'rgba(128,128,128, 0.5)';
                 //ctx.fillRect(ship.x, ship.y, 16, 3);
