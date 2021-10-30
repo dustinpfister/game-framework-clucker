@@ -1,17 +1,18 @@
 
 (function(gameMod){
 
-    var SHIP_SPEEDS = [32, 64, 128],
+    var SHIP_SPEEDS = [30, 60, 100, 150],
     SHIP_COUNT_MAX = 60,
     SHIP_HP_MIN = 1,
     SHIP_HP_MAX = 25,
-    SHIP_MONEY_MIN = 1,                    // min and max money values for ships
+    SHIP_MONEY_MIN = 1,                     // min and max money values for ships
     SHIP_MONEY_MAX = 1000,
     SHIP_SPAWN_DIST_FROM_CENTER = 200,
-    SHIP_SPAWN_RATE = 1.25,                // spawn rate in secs
+    SHIP_SPAWN_RATE = 1.25,                 // spawn rate in secs
     UNIT_COUNT_MAX = 10,                    // MAX UNIT POOL SIZE (1 to 40)
     UNIT_SIZE = 50,
-    SHOTS_COUNT_MAX = 50;
+    SHOTS_COUNT_MAX = 50,
+    SHOTS_SPEEDS = [100, 150, 200]
 
 
 /********* ********** **********
@@ -92,7 +93,8 @@
                 obj.x = game.cx - dist + Math.round(dist * 2 * Math.random());
                 obj.y = obj.h * -1;
                 // speed and heading
-                obj.pps = SHIP_SPEEDS[Math.floor(Math.random() * SHIP_SPEEDS.length)];
+                //obj.pps = SHIP_SPEEDS[Math.floor(Math.random() * SHIP_SPEEDS.length)];
+                obj.pps = SHIP_SPEEDS[SHIP_SPEEDS.length - 1];
                 obj.heading =  (Math.PI * 2) / 8 * obj.data.dir;
             },
             update: function (obj, pool, sm, secs){

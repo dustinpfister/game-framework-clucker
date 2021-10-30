@@ -73,11 +73,9 @@
 * (done) header-app: start a new shot.js file that will contain helper methods for shots
 * (done) header-app: make code in get shoot at angle draft be part of the shots lib
 * (done) header-app: use the shot.js file to get shoot at angles
-
 * (done) header-app: display a circle around units that shows range
+* (done) header-app: make unit count a factor that is effected by art stats
 
-
-* header-app: make unit count a factor that is effected by art stats
 * header-app: make unit range a factor that is effected by art stats
 * header-app: make unit shot speed a stat, and make that effected by art stats
 
