@@ -46,6 +46,7 @@ Clucker.pushState(sm, {
            money: startMoney,
            shipCountPer: art.wordPers[0],
            shipHPPer: art.wordPers[1],
+           shipSpeedPer: 0.5,
            shipMoneyPer: art.wordPers[2],
            unitCountPer: art.wordPers[1]
         });

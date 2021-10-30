@@ -69,6 +69,7 @@
         opt.shipCountPer = opt.shipCountPer === undefined ? 1 : opt.shipCountPer;
         opt.shipHPPer = opt.shipHPPer === undefined ? 1 : opt.shipHPPer;
         opt.shipMoneyPer = opt.shipMoneyPer === undefined ? 1 : opt.shipMoneyPer;
+        opt.shipSpeedPer = opt.shipSpeedPer === undefined ? 1 : opt.shipSpeedPer;
         return Clucker.poolMod.create({
             count: 1 + Math.round(opt.shipCountPer * (SHIP_COUNT_MAX - 1)),
             secsCap: 0.25,
@@ -94,7 +95,7 @@
                 obj.y = obj.h * -1;
                 // speed and heading
                 //obj.pps = SHIP_SPEEDS[Math.floor(Math.random() * SHIP_SPEEDS.length)];
-                obj.pps = SHIP_SPEEDS[SHIP_SPEEDS.length - 1];
+                obj.pps = SHIP_SPEEDS[ Math.round( (SHIP_SPEEDS.length - 1) * opt.shipSpeedPer ) ];
                 obj.heading =  (Math.PI * 2) / 8 * obj.data.dir;
             },
             update: function (obj, pool, sm, secs){
