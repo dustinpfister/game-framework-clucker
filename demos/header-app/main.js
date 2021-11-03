@@ -32,6 +32,9 @@ Clucker.pushState(sm, {
             wordGrades: [500, 1200, 5000]
         });
 
+
+console.log(articleMod.createMap(art));
+
         // try to get a save state for startMoney
         var save = Clucker.storage.get(sm.appName),
         startMoney = 0;
