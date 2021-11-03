@@ -46,19 +46,14 @@ Clucker.pushState(sm, {
 
         console.log('hashPer: ' + art.hashPer);
         sm.game = gameMod.create({
-           unitCells: [
-               {x: 0, y: 0},
-               {x: 2, y: 1},
-               {x: 4, y: 2},
-               {x: 6, y: 3}
-           ],
+           unitCells: unitMap.cells,
            money: startMoney,
-           shipCountPer: 0.5,
-           shipHPPer: 0.3,
+           shipCountPer: 0.8,
+           shipHPPer: 0.6,
            shipSpeedPer: 0.2,
            shipMoneyPer: art.wordPers[2],
-           unitCountPer: art.wordPers[1],
-           unitRangePer: 0.5,
+           unitCountPer: art.wordPers[0],
+           unitRangePer: art.wordPers[1],
            shotSpeedPer: 1
         });
         // draw background and overlay once on start hook
