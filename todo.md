@@ -26,17 +26,18 @@
 ### (  ) - 0.7.1 - createSaveStateMenu method of storage.js 
 * have a public method than can be used to create and return a built in menu for save states 
 * use built in menu system for the storage demo
-
 * header-app: have a shipDeathParticles pool to be used for ship deaths
 * header-app: have a shipDeathExplosions pool to be used for ship deaths
 * header-app: see about adding a light layer that will be a current amount of ambent light
 * header-app: have ship deaths effect ambient light
 * header-app: shot accuracy
 * make getDistanceToObj method in header-app part of the objectPool library
+* header-app: move shot methods in game.js into shot.js
+* header-app: shot homingActive and homingTarget data values 
 
 
 
-### (  ) - 0.7.0 - save state system, new storage demo, header-app
+### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
 * (done) start out with just localStorage as a means to store save states
 * (done) start a new storage demo for this new feature
@@ -77,11 +78,7 @@
 * (done) header-app: make unit count a factor that is effected by art stats
 * (done) header-app: ship speed per
 * (done) header-app: make unit range a factor that is effected by art stats
-
-* header-app: make unit shot speed a stat, and make that effected by art stats
-
-* header-app: move shot methods in game.js into shot.js
-* header-app: shot homingActive and homingTarget data values 
+* (done) header-app: make unit shot speed a stat, and make that effected by art stats
 
 <!-- ########## ########## -->
 ## 0.6.x - Starting an upgrades module for clucker
