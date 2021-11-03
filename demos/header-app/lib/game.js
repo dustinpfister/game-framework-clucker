@@ -241,8 +241,17 @@
                 //obj.data.cellIndex = 0;
                 //obj.data.sheetKey = 'ship-type-one';
                 // start pos
-                var positions = getUnitPositions(pool);
-                var pos = positions[Math.floor(positions.length * Math.random())];
+                var cell = sm.game.unitCells[sm.game.unitCellIndex];
+                if(cell){
+                    var pos = {};
+                    pos.x = cell.x * UNIT_SIZE;
+                    pos.y = cell.y * UNIT_SIZE;
+                    sm.game.unitCellIndex += 1;
+                }else{
+                    var positions = getUnitPositions(pool);
+                    var pos = positions[Math.floor(positions.length * Math.random())];
+                }
+
                 obj.x = pos.x; obj.y = pos.y; obj.w = UNIT_SIZE; obj.h = UNIT_SIZE;
             },
             update: function (unit, pool, sm, secs){
@@ -279,6 +288,8 @@
             ships: createShips(opt),
             units: createUnits(opt),
             shots: createShots(opt),
+            unitCellIndex: 0,
+            unitCells: opt.unitCells || [],
             cx: 400,
             cy: 150,
             spawnSecs: 0
@@ -299,6 +310,8 @@
             Clucker.poolMod.spawn(game.ships, sm);
             game.spawnSecs = 0;
         }
+        // spawn unit
+        Clucker.poolMod.spawn(game.units, sm);
     };
 
     // user clicked

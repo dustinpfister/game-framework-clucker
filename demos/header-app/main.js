@@ -33,7 +33,7 @@ Clucker.pushState(sm, {
         });
 
 
-console.log(articleMod.createMap(art));
+        var unitMap = articleMod.createMap(art);
 
         // try to get a save state for startMoney
         var save = Clucker.storage.get(sm.appName),
@@ -46,6 +46,12 @@ console.log(articleMod.createMap(art));
 
         console.log('hashPer: ' + art.hashPer);
         sm.game = gameMod.create({
+           unitCells: [
+               {x: 0, y: 0},
+               {x: 2, y: 1},
+               {x: 4, y: 2},
+               {x: 6, y: 3}
+           ],
            money: startMoney,
            shipCountPer: 0.5,
            shipHPPer: 0.3,
@@ -72,7 +78,6 @@ console.log(articleMod.createMap(art));
             sm.fps = 30;
             gameMod.update(sm, secs);
         }
-        Clucker.poolMod.spawn(sm.game.units, sm);
     },
     draw: function(sm, layers, canvasMod){
         var canvas = layers[1].canvas;
