@@ -64,7 +64,7 @@
         });
         return art;
     };
-    // create and return a map
+    // new cell helper
     var newCell = function(cellIndex, opt){
          return { 
               i: cellIndex, 
@@ -73,6 +73,28 @@
               value : 0 
          };
     };
+    // get word value
+    var getWordValue = function(word){
+        return word.split('').map(function(s){
+            return s.charCodeAt(0);
+        }).reduce(function(acc, n){
+            return acc + n;
+        },0);
+    };
+    // return sort by
+    articleMod.sortByKey = function(cells, key, accend){
+        accend = accend === undefined ? true : accend;
+        return cells.sort(function(a, b){
+             if(a[key] > b[key]){
+                 return accend ? 1: -1;
+             }
+             if(a[key] < b[key]){
+                 return accend ? -1: 1;
+             }
+             return 0;
+        });
+    };
+    // create and return a map
     articleMod.createMap = function(art, opt){
         opt = opt || {};
         opt.w = opt.w || 16;
@@ -84,7 +106,7 @@
         while(wordIndex--){
             var word = wordArray[wordIndex],
             cell = cells[cellIndex] === undefined ? newCell(cellIndex, opt) : cells[cellIndex];
-            cell.value += word.length;
+            cell.value += getWordValue(word);
             cells[cellIndex] = cell;
             cellIndex += 1;
             cellIndex %= cells.length;
@@ -92,7 +114,7 @@
         // return the map
         return {
            w: opt.w,
-           cells: cells
+           cells: articleMod.sortByKey(cells, 'value', false)
         };
     };
 }(this['articleMod'] = {}));
