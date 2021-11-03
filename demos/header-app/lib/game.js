@@ -11,6 +11,8 @@
     SHIP_SPAWN_RATE = 1.25,                 // spawn rate in secs
     UNIT_COUNT_MAX = 10,                    // MAX UNIT POOL SIZE (1 to 40)
     UNIT_SIZE = 50,
+    UNIT_RANGE_MIN = 1.5,
+    UNIT_RANGE_MAX = 5,
     SHOTS_COUNT_MAX = 50,
     SHOTS_SPEEDS = [100, 150, 200]
 
@@ -83,7 +85,7 @@
                 var stat = obj.stat = {};
                 stat.hpMax = SHIP_HP_MIN + Math.round( (SHIP_HP_MAX - SHIP_HP_MIN) * opt.shipHPPer );
                 stat.hp = stat.hpMax;
-                stat.money = SHIP_MONEY_MIN + Math.round( (SHIP_MONEY_MAX - SHIP_MONEY_MIN) * opt.shipMoneyPer )
+                stat.money = SHIP_MONEY_MIN + Math.round( (SHIP_MONEY_MAX - SHIP_MONEY_MIN) * opt.shipMoneyPer );
                 // sheetkey
                 obj.data.cellIndex = 0;
                 obj.data.sheetKey = 'ship-type-one';
@@ -218,6 +220,7 @@
     var createUnits = function(opt){
         opt = opt || {};
         opt.unitCountPer = opt.unitCountPer === undefined ? 1 : opt.unitCountPer;
+        opt.unitRangePer = opt.unitRangePer === undefined ? 1 : opt.unitRangePer;
         return Clucker.poolMod.create({
             //count: UNIT_COUNT_MAX,
             count: 1 + Math.round(opt.unitCountPer * (UNIT_COUNT_MAX - 1)),
@@ -229,7 +232,7 @@
                 var stat = obj.stat = {};
                 stat.fireRate = 0.5;
                 stat.shotPPS = 128;
-                stat.range = 3;
+                stat.range = UNIT_RANGE_MIN + Math.round( (UNIT_RANGE_MAX - UNIT_RANGE_MIN) * opt.unitRangePer );
                 // fire secs to find out if the unit will fire or not
                 obj.data.fireSecs = 0;
                 // sheetkey

@@ -44,11 +44,12 @@ Clucker.pushState(sm, {
         console.log('hashPer: ' + art.hashPer);
         sm.game = gameMod.create({
            money: startMoney,
-           shipCountPer: art.wordPers[0],
+           shipCountPer: 0.1,
            shipHPPer: art.wordPers[1],
-           shipSpeedPer: 0.5,
+           shipSpeedPer: 0.2,
            shipMoneyPer: art.wordPers[2],
-           unitCountPer: art.wordPers[1]
+           unitCountPer: art.wordPers[1],
+           unitRangePer: 0.5
         });
         // draw background and overlay once on start hook
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
