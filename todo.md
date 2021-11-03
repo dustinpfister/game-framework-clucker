@@ -20,22 +20,24 @@
 
 
 <!-- ########## ########## -->
-## 0.7.x - Save States started
+## 0.7.x - Storage.js started
 <!-- ########## ########## -->
 
-### (  ) - 0.7.1 - createSaveStateMenu method of storage.js 
-* have a public method than can be used to create and return a built in menu for save states 
-* use built in menu system for the storage demo
+### (  ) - 0.7.1 - header-app content map, and effect pools 
+* header-app: see abount art system for making a grid with values that are effected by page content
+
 * header-app: have a shipDeathParticles pool to be used for ship deaths
 * header-app: have a shipDeathExplosions pool to be used for ship deaths
 * header-app: see about adding a light layer that will be a current amount of ambent light
 * header-app: have ship deaths effect ambient light
+
 * header-app: shot accuracy
-* make getDistanceToObj method in header-app part of the objectPool library
 * header-app: move shot methods in game.js into shot.js
 * header-app: shot homingActive and homingTarget data values 
 
-
+* make getDistanceToObj method in header-app part of the objectPool library
+* have a public method than can be used to create and return a built in menu for save states 
+* use built in menu system for the storage demo
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
