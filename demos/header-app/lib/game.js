@@ -221,6 +221,7 @@
         opt = opt || {};
         opt.unitCountPer = opt.unitCountPer === undefined ? 1 : opt.unitCountPer;
         opt.unitRangePer = opt.unitRangePer === undefined ? 1 : opt.unitRangePer;
+        opt.shotSpeedPer = opt.shotSpeedPer === undefined ? 1 : opt.shotSpeedPer;
         return Clucker.poolMod.create({
             //count: UNIT_COUNT_MAX,
             count: 1 + Math.round(opt.unitCountPer * (UNIT_COUNT_MAX - 1)),
@@ -231,7 +232,8 @@
                 // stats
                 var stat = obj.stat = {};
                 stat.fireRate = 0.5;
-                stat.shotPPS = 128;
+                var shotIndex = Math.round( (SHOTS_SPEEDS.length - 1) * opt.shotSpeedPer );
+                stat.shotPPS = SHOTS_SPEEDS[shotIndex];
                 stat.range = UNIT_RANGE_MIN + Math.round( (UNIT_RANGE_MAX - UNIT_RANGE_MIN) * opt.unitRangePer );
                 // fire secs to find out if the unit will fire or not
                 obj.data.fireSecs = 0;
