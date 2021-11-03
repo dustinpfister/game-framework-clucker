@@ -24,7 +24,8 @@
 <!-- ########## ########## -->
 
 ### (  ) - 0.7.1 - header-app content map, and effect pools 
-* header-app: see abount art system for making a grid with values that are effected by page content
+* (done) header-app: make art system for making a grid with values that are effected by page content
+* (done) header-app: use grid of values to set positions of units
 
 * header-app: have a shipDeathParticles pool to be used for ship deaths
 * header-app: have a shipDeathExplosions pool to be used for ship deaths
