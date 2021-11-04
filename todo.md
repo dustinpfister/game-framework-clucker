@@ -28,8 +28,11 @@
 /demos/header-app: 
 * (done) make art system for making a grid with values that are effected by page content
 * (done) use grid of values to set positions of units
-* have a shipDeathParticles pool to be used for ship deaths
-* have a shipDeathExplosions pool to be used for ship deaths
+
+* start a /demos/header-app/lib/particles.js file to be used to create explostion and particles pools
+* have a explosions pool to be used for shot hits, and ship deaths
+* have a particles pool to be used for ship deaths
+
 * see about adding a light layer that will be a current amount of ambent light
 * have ship deaths effect ambient light
 * shot accuracy
