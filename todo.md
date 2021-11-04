@@ -23,22 +23,32 @@
 ## 0.7.x - Storage.js started
 <!-- ########## ########## -->
 
-### (  ) - 0.7.1 - header-app content map, and effect pools 
-* (done) header-app: make art system for making a grid with values that are effected by page content
-* (done) header-app: use grid of values to set positions of units
+### (  ) - 0.7.1 - header-app content map, effect pools, root js folder
 
-* header-app: have a shipDeathParticles pool to be used for ship deaths
-* header-app: have a shipDeathExplosions pool to be used for ship deaths
-* header-app: see about adding a light layer that will be a current amount of ambent light
-* header-app: have ship deaths effect ambient light
+/demos/header-app: 
+* (done) make art system for making a grid with values that are effected by page content
+* (done) use grid of values to set positions of units
+* have a shipDeathParticles pool to be used for ship deaths
+* have a shipDeathExplosions pool to be used for ship deaths
+* see about adding a light layer that will be a current amount of ambent light
+* have ship deaths effect ambient light
+* shot accuracy
+* move shot methods in game.js into shot.js
+* shot homingActive and homingTarget data values 
 
-* header-app: shot accuracy
-* header-app: move shot methods in game.js into shot.js
-* header-app: shot homingActive and homingTarget data values 
+/js/article folder:
+* make the artical.js file from header-app be its own thing in the new js folder
+* have header-app use the artical.js at the new /js folder location
 
+/js/standard-states/saves-menu/save-menu.js:
+* started a new nested folder in the /js folder called 'standard-states' 
+* a standard state project will create and return state objects that can be used in final game projects
+* start out with a 'save-menu' standard-states project for quickly createing a save state menu for a game
+
+/lib/object-pool:
 * make getDistanceToObj method in header-app part of the objectPool library
-* have a public method than can be used to create and return a built in menu for save states 
-* use built in menu system for the storage demo
+* new 0.7.1 build for clucker and use it for header-app
+* use new Clcuker built in getDistanceToObj method
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
