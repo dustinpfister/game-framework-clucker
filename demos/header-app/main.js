@@ -1,6 +1,4 @@
-
 console.log('Using clucker v' + Clucker.ver);
-
 // main state machine object
 var sm = Clucker.createMain({
     appName: 'header-app',
@@ -17,7 +15,6 @@ var sm = Clucker.createMain({
         }
     }
 });
-
 // main game state
 Clucker.pushState(sm, {
     name: 'game',
@@ -31,10 +28,8 @@ Clucker.pushState(sm, {
         var art = articleMod.getArtObj({
             wordGrades: [500, 1200, 5000]
         });
-
-
+        // creating a map for unit positons using the articalMod.createMap method
         var unitMap = articleMod.createMap(art);
-
         // try to get a save state for startMoney
         var save = Clucker.storage.get(sm.appName),
         startMoney = 0;
@@ -43,8 +38,6 @@ Clucker.pushState(sm, {
         }else{
             startMoney = save.money;
         }
-
-        console.log('hashPer: ' + art.hashPer);
         sm.game = gameMod.create({
            unitCells: unitMap.cells,
            money: startMoney,
