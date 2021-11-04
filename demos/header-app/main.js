@@ -41,8 +41,8 @@ Clucker.pushState(sm, {
         sm.game = gameMod.create({
            unitCells: unitMap.cells,
            money: startMoney,
-           shipCountPer: 0.8,
-           shipHPPer: 0.6,
+           shipCountPer: 1,
+           shipHPPer: 0.1, //0.6,
            shipSpeedPer: 0.2,
            shipMoneyPer: art.wordPers[2],
            unitCountPer: art.wordPers[0],
@@ -92,6 +92,7 @@ Clucker.pushState(sm, {
             }
         }});
         canvasMod.draw(layers, 'pool-solid', 1, sm.game.shots);
+        canvasMod.draw(layers, 'pool-solid', 1, sm.game.particles);
         // draw money
         var dispText = { fillStyle: 'yellow', fontSize: 15};
         canvasMod.draw(layers, 'print', 1, Clucker.utils.formatNumber(sm.game.money), 10, canvas.height - 25, dispText);

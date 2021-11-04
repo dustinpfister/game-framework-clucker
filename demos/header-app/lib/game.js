@@ -131,6 +131,9 @@
             stat.hp = stat.hp < 0 ? 0 : stat.hp;
             if(stat.hp === 0){
                 sm.game.money += stat.money;
+                // spawn partciles
+                particlesMod.spawn(sm.game.particles, { sx: ship.x + ship.w / 2, sy: ship.y  + ship.h / 2 }, sm);
+                // purge the ship
                 Clucker.poolMod.purge(sm.game.ships, ship, sm);
             }
             shot.lifespan = 0;
@@ -288,6 +291,7 @@
             ships: createShips(opt),
             units: createUnits(opt),
             shots: createShots(opt),
+            particles: particlesMod.create(),
             unitCellIndex: 0,
             unitCells: opt.unitCells || [],
             cx: 400,
@@ -304,6 +308,7 @@
         Clucker.poolMod.update(game.ships, secs, sm);
         Clucker.poolMod.update(game.units, secs, sm);
         Clucker.poolMod.update(game.shots, secs, sm);
+        particlesMod.update(game.particles, secs, sm);
         // spawn
         game.spawnSecs += secs;
         if(game.spawnSecs >= SHIP_SPAWN_RATE){

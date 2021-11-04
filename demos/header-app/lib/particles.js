@@ -1,7 +1,7 @@
 
 (function(gameMod){
 
-
+    var DEFAULT_POOL_SIZE = 100;
 
 
     // create particles object pool helper
@@ -10,13 +10,20 @@
         return Clucker.poolMod.create({
             count: DEFAULT_POOL_SIZE,
             secsCap: 0.25,
-            spawn: function(obj, pool, sm, opt){
-                obj.x = 0;
-                obj.y = 0;
-                obj.pps = 32;
-                obj.heading = 0;
+            spawn: function(part, pool, sm, opt){
+
+
+
+                part.data.sx = opt.sx === undefined ? 0 : opt.sx;
+                part.data.sy = opt.sy === undefined ? 0 : opt.sy;
+                part.x = part.data.sx;
+                part.y = part.data.sy;
+
+                part.pps = 32;
+                part.heading = 0;
             },
-            update: function (obj, pool, sm, secs){
+            update: function (part, pool, sm, secs){
+                Clucker.poolMod.moveByPPS(part, secs);
             }
         });
     };
@@ -34,13 +41,13 @@
 
     // public update method
     particlesMod.update = function(particles, secs, sm){
-
+        Clucker.poolMod.update(particles, secs, sm);
     };
 
     // spawn partciles
-    particlesMod.spawn = function(partciles, sm, opt){
+    particlesMod.spawn = function(particles, opt, sm){
          opt = opt || {};
          Clucker.poolMod.spawn(particles, sm, opt);
-    }
+    };
 
 }(this['particlesMod'] = {}));
