@@ -19,7 +19,7 @@
                 part.w = 8;
                 part.h = 8;
                 part.pps = 32;
-                part.heading = 0;
+                part.heading = Math.PI * 2 * Math.random();
             },
             update: function (part, pool, sm, secs){
                 Clucker.poolMod.moveByPPS(part, secs);
@@ -46,7 +46,10 @@
     // spawn partciles
     particlesMod.spawn = function(particles, opt, sm){
          opt = opt || {};
-         Clucker.poolMod.spawn(particles, sm, opt);
+         var i = opt.count = opt.count || 10;
+         while(i--){
+             Clucker.poolMod.spawn(particles, sm, opt);
+         }
     };
 
 }(this['particlesMod'] = {}));
