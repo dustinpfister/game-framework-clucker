@@ -11,14 +11,14 @@
             count: DEFAULT_POOL_SIZE,
             secsCap: 0.25,
             spawn: function(part, pool, sm, opt){
-                part.lifespan = 1;
+                part.lifespan = 0.5 + Math.random() * 2;
                 part.data.sx = opt.sx === undefined ? 0 : opt.sx;
                 part.data.sy = opt.sy === undefined ? 0 : opt.sy;
                 part.x = part.data.sx;
                 part.y = part.data.sy;
                 part.w = 8;
                 part.h = 8;
-                part.pps = 32;
+                part.pps = 28 + Math.round(100 * Math.random());
                 part.heading = Math.PI * 2 * Math.random();
             },
             update: function (part, pool, sm, secs){
