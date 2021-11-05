@@ -7,7 +7,7 @@
 
     // debris effect
     EFFECTS.debris = function (opt) {
-        var i = opt.count = opt.count === undefined ? 10 : opt.count,
+        var i = opt.partCount = opt.partCount === undefined ? 10 : opt.partCount,
         partOptions = [];
         while (i--) {
             partOptions.push({
@@ -40,7 +40,7 @@
     };
 
     EFFECTS.death = function (opt) {
-        var i = opt.count = opt.count === undefined ? 10 : opt.count,
+        var i = opt.partCount,
         partOptions = EFFECTS.explosion(opt);
         return partOptions.concat(EFFECTS.debris(opt));
     };
@@ -113,7 +113,7 @@
     // spawn particles
     particlesMod.spawn = function (particles, opt, sm) {
         opt = opt || {};
-        var i = opt.count = opt.count || 10,
+        var i = opt.partCount = opt.partCount || 9,
         partOptions = EFFECTS[opt.effectType || 'death'](opt);
         while (i--) {
             Clucker.poolMod.spawn(particles, sm, partOptions[i]);

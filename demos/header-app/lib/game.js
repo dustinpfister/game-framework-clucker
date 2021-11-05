@@ -131,7 +131,7 @@
             stat.hp = stat.hp < 0 ? 0 : stat.hp;
             if(stat.hp === 0){
                 sm.game.money += stat.money;
-                // spawn partciles
+                // spawn particles
                 particlesMod.spawn(sm.game.particles, { sx: ship.x + ship.w / 2, sy: ship.y  + ship.h / 2 }, sm);
                 // purge the ship
                 Clucker.poolMod.purge(sm.game.ships, ship, sm);
