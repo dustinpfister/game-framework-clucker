@@ -30,10 +30,9 @@
 * (done) use grid of values to set positions of units
 * (done) start a /demos/header-app/lib/particles.js file to be used to create explostion and particles pools
 * (done) have a particles pool to be used for ship deaths and shot hits
-* (done) can set a Degress Per Second value for a particle
+* (done) can set a Degrees Per Second value for a particle
 * (done) particle alpha effect
-
-* have an EFFECTS object that will contain a number of functions that are used for the particlesMod.spawn method
+* (done) have an EFFECTS object that will contain a number of functions that are used for the particlesMod.spawn method
 
 * see about adding a light layer that will be a current amount of ambent light
 * have ship deaths effect ambient light
@@ -41,7 +40,7 @@
 * move shot methods in game.js into shot.js
 * shot homingActive and homingTarget data values 
 
-/js/article folder:
+/js/article:
 * make the artical.js file from header-app be its own thing in the new js folder
 * have header-app use the artical.js at the new /js folder location
 
@@ -50,10 +49,13 @@
 * a standard state project will create and return state objects that can be used in final game projects
 * start out with a 'save-menu' standard-states project for quickly createing a save state menu for a game
 
+/lib/canvas/plugins/mod-pool.jd
+* (done) new circle, and pool-circles methods
+* (done) new 0.7.1 build for Clucker and use it for header-app
+* (done) use new Clucker built in getDistanceToObj method
+
 /lib/object-pool:
 * make getDistanceToObj method in header-app part of the objectPool library
-* new 0.7.1 build for clucker and use it for header-app
-* use new Clcuker built in getDistanceToObj method
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
