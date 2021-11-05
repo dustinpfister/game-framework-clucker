@@ -15,6 +15,7 @@
                 pps: 28 + Math.round(100 * Math.random()),
                 heading: Math.PI * 2 * Math.random(),
                 DPS: -180 + Math.round(360 * Math.random()),
+				sizeChange: false,
                 sx: opt.sx,
                 sy: opt.sy,
                 maxSize: 6,
@@ -25,21 +26,23 @@
         return partOptions;
     };
 
+    // explosion effect
     EFFECTS.explosion = function (opt) {
-        var i = opt.count = opt.count === undefined ? 1 : opt.count,
-        partOptions = [];
-        while (i--) {
-            partOptions.push({
-                maxLifespan: 1,
-                sx: opt.sx,
-                sy: opt.sy,
-                sizeChange: true,
-                maxSize: 64,
-                w: 0,
-                h: 0
-            });
-        }
-        return partOptions;
+        return [{
+            maxLifespan: 1,
+            sx: opt.sx,
+            sy: opt.sy,
+            sizeChange: true,
+            maxSize: 64,
+            w: 0,
+            h: 0
+        }];
+    };
+
+    EFFECTS.death = function (opt) {
+        var i = opt.count = opt.count === undefined ? 10 : opt.count,
+        partOptions = EFFECTS.explosion(opt);
+        return partOptions.concat(EFFECTS.debris(opt));
     };
 
     // create particles object pool helper
@@ -110,8 +113,8 @@
     // spawn particles
     particlesMod.spawn = function (particles, opt, sm) {
         opt = opt || {};
-        var i = opt.count = opt.count || 1,
-        partOptions = EFFECTS[opt.effectType || 'explosion'](opt);
+        var i = opt.count = opt.count || 10,
+        partOptions = EFFECTS[opt.effectType || 'death'](opt);
         while (i--) {
             Clucker.poolMod.spawn(particles, sm, partOptions[i]);
         }
