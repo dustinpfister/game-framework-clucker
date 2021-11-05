@@ -11,17 +11,25 @@
             count: DEFAULT_POOL_SIZE,
             secsCap: 0.25,
             spawn: function(part, pool, sm, opt){
-                part.lifespan = 0.5 + Math.random() * 2;
+                // setting lifespan
+                part.data.maxLifespan = 0.5 + Math.random() * 2;
+                part.lifespan = part.data.maxLifespan;
+                // start position
                 part.data.sx = opt.sx === undefined ? 0 : opt.sx;
                 part.data.sy = opt.sy === undefined ? 0 : opt.sy;
                 part.x = part.data.sx;
                 part.y = part.data.sy;
+                // size
                 part.w = 8;
                 part.h = 8;
+                // speed and heading
                 part.pps = 28 + Math.round(100 * Math.random());
                 part.heading = Math.PI * 2 * Math.random();
             },
             update: function (part, pool, sm, secs){
+                // alpha effect
+                var alpha = part.lifespan / part.data.maxLifespan;
+                part.data.fillStyle = 'rgba(255,255,255,' + alpha + ')';
                 Clucker.poolMod.moveByPPS(part, secs);
             }
         });
