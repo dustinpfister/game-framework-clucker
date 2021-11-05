@@ -5,16 +5,20 @@
 
     var EFFECTS = {};
 
-    // 
+    // debris effect
     EFFECTS.debris = function(opt){
-        var i = opt.count = opt.count || 10, partOptions = [];
+        var i = opt.count = opt.count === undefined ? 10 : opt.count, 
+        partOptions = [];
         while(i--){
             partOptions.push(            {
                 maxLifespan: 0.5 + Math.random() * 2,
+                pps: 28 + Math.round(100 * Math.random()),
+                heading: Math.PI * 2 * Math.random(),
+                DPS: -180 + Math.round(360 * Math.random()),
                 sx: opt.sx,
                 sy: opt.sy,
-                w: 4,
-                h: 4
+                w: 6,
+                h: 6
             });
         }
         return partOptions;
@@ -37,13 +41,13 @@
                 part.x = part.data.sx;
                 part.y = part.data.sy;
                 // size
-                part.w = opt.w || 1;
-                part.h = opt.h || 1;
+                part.w = opt.w || 0;
+                part.h = opt.h || 0;
                 // speed and heading
-                part.pps = 28 + Math.round(100 * Math.random());
-                part.heading = Math.PI * 2 * Math.random();
+                part.pps = opt.pps || 0;
+                part.heading = opt.heading || 0;
                 // Degrees Per Second
-                part.data.DPS = -180 + Math.round(360 * Math.random());
+                part.data.DPS = opt.DPS || 0;
             },
             update: function (part, pool, sm, secs){
                 // alpha effect
