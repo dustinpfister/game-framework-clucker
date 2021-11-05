@@ -25,11 +25,15 @@
                 // speed and heading
                 part.pps = 28 + Math.round(100 * Math.random());
                 part.heading = Math.PI * 2 * Math.random();
+                // Degrees Per Second
+                part.data.DPS = -180 + Math.round(360 * Math.random());
             },
             update: function (part, pool, sm, secs){
                 // alpha effect
                 var alpha = part.lifespan / part.data.maxLifespan;
-                part.data.fillStyle = 'rgba(255,255,255,' + alpha + ')';
+                part.data.fillStyle = 'rgba(255,0,0,' + alpha + ')';
+                part.heading += Math.PI / 180 * part.data.DPS * secs;
+                // move by pps
                 Clucker.poolMod.moveByPPS(part, secs);
             }
         });
