@@ -28,10 +28,12 @@
 /demos/header-app: 
 * (done) make art system for making a grid with values that are effected by page content
 * (done) use grid of values to set positions of units
+* (done) start a /demos/header-app/lib/particles.js file to be used to create explostion and particles pools
+* (done) have a particles pool to be used for ship deaths and shot hits
+* (done) can set a Degress Per Second value for a particle
+* (done) particle alpha effect
 
-* start a /demos/header-app/lib/particles.js file to be used to create explostion and particles pools
-* have a explosions pool to be used for shot hits, and ship deaths
-* have a particles pool to be used for ship deaths
+* have an EFFECTS object that will contain a number of functions that are used for the particlesMod.spawn method
 
 * see about adding a light layer that will be a current amount of ambent light
 * have ship deaths effect ambient light
