@@ -130,7 +130,10 @@
             stat.hp -= 1;
             stat.hp = stat.hp < 0 ? 0 : stat.hp;
             if(stat.hp === 0){
+                // step money
                 sm.game.money += stat.money;
+                // call on ship death method
+                sm.game.onShipDeath(sm.game, ship, sm);
                 // spawn particles
                 particlesMod.spawn(sm.game.particles, { sx: ship.x + ship.w / 2, sy: ship.y  + ship.h / 2 }, sm);
                 // purge the ship
@@ -294,6 +297,7 @@
             particles: particlesMod.create(),
             unitCellIndex: 0,
             unitCells: opt.unitCells || [],
+            onShipDeath: opt.onShipDeath || function(game){},
             cx: 400,
             cy: 150,
             spawnSecs: 0

@@ -33,6 +33,7 @@
 * (done) can set a Degrees Per Second value for a particle
 * (done) particle alpha effect
 * (done) have an EFFECTS object that will contain a number of functions that are used for the particlesMod.spawn method
+* (done) game state save on each ship death
 
 * see about adding a light layer that will be a current amount of ambent light
 * have ship deaths effect ambient light

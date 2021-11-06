@@ -47,7 +47,11 @@ Clucker.pushState(sm, {
            shipMoneyPer: art.wordPers[2],
            unitCountPer: art.wordPers[0],
            unitRangePer: art.wordPers[1],
-           shotSpeedPer: 1
+           shotSpeedPer: 1,
+           onShipDeath : function(game, ship, sm){
+               console.log('ship death, saving...');
+               Clucker.storage.set(sm.appName, { money: game.money });
+           }
         });
         // draw background and overlay once on start hook
         canvasMod.draw(sm.layers, 'background', 0, sm.layers.images[0]);
