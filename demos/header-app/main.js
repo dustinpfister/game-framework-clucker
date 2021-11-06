@@ -1,4 +1,33 @@
 console.log('Using clucker v' + Clucker.ver);
+
+
+(function(screenShake){
+
+   // create a screen shake object with the given canvas stack and options
+   screenShake.create = function(stack, opt){
+       opt = opt || {};
+       var shakeObj = {
+           stack: stack,
+           secs: 0,
+           radius: 32
+       };
+       return stack;
+   };
+
+   // reset transform in all ctx refs of all canvas elements in a stack
+   screenShake.resetStack = function(stack){
+        var i = stack.length;
+        while(i--){
+           var ctx = stack[i].ctx;
+           ctx.setTransform(1, 0, 0, 1, 0, 0);
+        }
+   };
+
+   
+
+
+}( this['screenShake'] = {} ));
+
 // main state machine object
 var sm = Clucker.createMain({
     appName: 'header-app',
@@ -73,6 +102,18 @@ Clucker.pushState(sm, {
     },
     draw: function(sm, layers, canvasMod){
         var canvas = layers[1].canvas;
+
+
+        var i = layers.length;
+        while(i--){
+           var ctx = layers[i].ctx;
+           ctx.setTransform(1, 0, 0, 1, 0, 0);
+           var r = 2,
+           x = r * -1 + ( r * 2) * Math.random(),
+           y = r * -1 + ( r * 2) * Math.random();
+           ctx.translate(x, y);
+        }
+
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.units, { spriteDraw: function(unit, ctx){
             if(unit.active){
@@ -101,6 +142,7 @@ Clucker.pushState(sm, {
         var dispText = { fillStyle: 'yellow', fontSize: 15};
         canvasMod.draw(layers, 'print', 1, Clucker.utils.formatNumber(sm.game.money), 10, canvas.height - 25, dispText);
         // state buttons
+        canvasMod.draw(layers, 'clear', 2);
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     },
     events: {
