@@ -1,8 +1,7 @@
 console.log('Using clucker v' + Clucker.ver);
 
-
+/*
 (function(screenShake){
-
    // create a screen shake object with the given canvas stack and options
    screenShake.create = function(stack, opt){
        opt = opt || {};
@@ -13,7 +12,6 @@ console.log('Using clucker v' + Clucker.ver);
        };
        return stack;
    };
-
    // reset transform in all ctx refs of all canvas elements in a stack
    screenShake.resetStack = function(stack){
         var i = stack.length;
@@ -22,11 +20,8 @@ console.log('Using clucker v' + Clucker.ver);
            ctx.setTransform(1, 0, 0, 1, 0, 0);
         }
    };
-
-   
-
-
 }( this['screenShake'] = {} ));
+*/
 
 // main state machine object
 var sm = Clucker.createMain({
@@ -53,6 +48,12 @@ Clucker.pushState(sm, {
         }}
     },
     start: function(sm, canvasMod){
+        // shake
+        sm.shakeObj = {
+            secs: 1,
+            secsMax: 1,
+            maxRadius: 16
+        };
         // using the hashPer to set the number of ships
         var art = articleMod.getArtObj({
             wordGrades: [500, 1200, 5000]
@@ -80,6 +81,7 @@ Clucker.pushState(sm, {
            onShipDeath : function(game, ship, sm){
                console.log('ship death, saving...');
                Clucker.storage.set(sm.appName, { money: game.money });
+               sm.shakeObj.secs = sm.shakeObj.secsMax;
            }
         });
         // draw background and overlay once on start hook
@@ -99,20 +101,30 @@ Clucker.pushState(sm, {
             sm.fps = 30;
             gameMod.update(sm, secs);
         }
+
+        var i = sm.layers.length;
+        sm.shakeObj.secs -= secs;
+        sm.shakeObj.secs = sm.shakeObj.secs < 0 ? 0 : sm.shakeObj.secs;
+        if(sm.shakeObj.secs > 0){
+            while(i--){
+                var ctx = sm.layers[i].ctx;
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                var maxRadius = sm.shakeObj.maxRadius,
+                r = maxRadius * (sm.shakeObj.secs / sm.shakeObj.secsMax),
+                x = r * -1 + ( r * 2) * Math.random(),
+                y = r * -1 + ( r * 2) * Math.random();
+                ctx.translate(x, y);
+            }
+        }else{
+            while(i--){
+                var ctx = sm.layers[i].ctx;
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+            }
+        }
+
     },
     draw: function(sm, layers, canvasMod){
         var canvas = layers[1].canvas;
-
-
-        var i = layers.length;
-        while(i--){
-           var ctx = layers[i].ctx;
-           ctx.setTransform(1, 0, 0, 1, 0, 0);
-           var r = 2,
-           x = r * -1 + ( r * 2) * Math.random(),
-           y = r * -1 + ( r * 2) * Math.random();
-           ctx.translate(x, y);
-        }
 
         canvasMod.draw(layers, 'clear', 1);
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.units, { spriteDraw: function(unit, ctx){

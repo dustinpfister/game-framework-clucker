@@ -34,14 +34,16 @@
 * (done) particle alpha effect
 * (done) have an EFFECTS object that will contain a number of functions that are used for the particlesMod.spawn method
 * (done) game state save on each ship death
-
-* screen shake method in main.js
+* (done) screen shake method in main.js
 
 * see about adding a light layer that will be a current amount of ambent light
 * have ship deaths effect ambient light
 * shot accuracy
 * move shot methods in game.js into shot.js
 * shot homingActive and homingTarget data values 
+
+/js/screen-shake/screen-shake.js
+* start a stand alone module for the screen shake feature that I have made for header-app.
 
 /js/article:
 * make the artical.js file from header-app be its own thing in the new js folder
