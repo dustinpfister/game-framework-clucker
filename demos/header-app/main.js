@@ -100,30 +100,29 @@ Clucker.pushState(sm, {
         }else{
             // else if not pause set fps to 30 and update game state
             sm.fps = 30;
+            // update game
             gameMod.update(sm, secs);
-        }
-
-        //var i = sm.layers.length;
-        var i = sm.shakeObj.layers.length;
-        sm.shakeObj.secs -= secs;
-        sm.shakeObj.secs = sm.shakeObj.secs < 0 ? 0 : sm.shakeObj.secs;
-        if(sm.shakeObj.secs > 0){
-            while(i--){
-                var ctx = sm.layers[ sm.shakeObj.layers[i] ].ctx;
-                ctx.setTransform(1, 0, 0, 1, 0, 0);
-                var maxRadius = sm.shakeObj.maxRadius,
-                r = maxRadius * (sm.shakeObj.secs / sm.shakeObj.secsMax),
-                x = r * -1 + ( r * 2) * Math.random(),
-                y = r * -1 + ( r * 2) * Math.random();
-                ctx.translate(x, y);
+            // screen shake update
+            var i = sm.shakeObj.layers.length;
+            sm.shakeObj.secs -= secs;
+            sm.shakeObj.secs = sm.shakeObj.secs < 0 ? 0 : sm.shakeObj.secs;
+            if(sm.shakeObj.secs > 0){
+                while(i--){
+                    var ctx = sm.layers[ sm.shakeObj.layers[i] ].ctx;
+                    ctx.setTransform(1, 0, 0, 1, 0, 0);
+                    var maxRadius = sm.shakeObj.maxRadius,
+                    r = maxRadius * (sm.shakeObj.secs / sm.shakeObj.secsMax),
+                    x = r * -1 + ( r * 2) * Math.random(),
+                    y = r * -1 + ( r * 2) * Math.random();
+                    ctx.translate(x, y);
+                }
+            }else{
+                while(i--){
+                    var ctx = sm.layers[ sm.shakeObj.layers[i] ].ctx;
+                    ctx.setTransform(1, 0, 0, 1, 0, 0);
+                }
             }
-        }else{
-            while(i--){
-                var ctx = sm.layers[ sm.shakeObj.layers[i] ].ctx;
-                ctx.setTransform(1, 0, 0, 1, 0, 0);
-            }
         }
-
     },
     draw: function(sm, layers, canvasMod){
         var canvas = layers[1].canvas;
