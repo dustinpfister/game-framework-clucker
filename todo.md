@@ -60,6 +60,10 @@
 * (done) new 0.7.1 build for Clucker and use it for header-app
 * (done) use new Clucker built in getDistanceToObj method
 
+/lib/gameframe/grameframe.js
+* (done) change background color of built in image loader
+* (done) have a new progress bar design for the built in loader
+
 /lib/object-pool:
 * make getDistanceToObj method in header-app part of the objectPool library
 

@@ -1081,7 +1081,7 @@ canvasMod.load({
                 // make sure data.loaded = 0;
                 sm.states.loader.data.loaded = 0;
                 // background
-                canvasMod.draw(sm.layers, 'background', 0);
+                canvasMod.draw(sm.layers, 'background', 0, '#101010');
                 // set up images array
                 sm.images = [];
                 var images = sm.layers.images = [];
@@ -1135,20 +1135,33 @@ canvasMod.load({
                 canvas = layers[1].canvas,
                 cx = canvas.width / 2,
                 cy = canvas.height / 2,
-                loaded = sm.states.loader.data.loaded;
+                loaded = sm.states.loader.data.loaded,
+                proBar = {
+                    x: canvas.width * 0.25,
+                    y: cy - 10,
+                    w: canvas.width * 0.5,
+                    h: 10,
+                    per: loaded / sm.loader.images.count
+                };
                 // clear
                 canvasMod.draw(layers, 'clear', 1);
                 // if images
                 if (sm.loader.images) {
-                    ctx.fillStyle = 'white'
-                        ctx.strokeStyle = 'black';
+                    ctx.strokeStyle = 'black';
                     ctx.beginPath();
-                    ctx.rect(0, cy - 10, canvas.width * (loaded / sm.loader.images.count), 10);
+                    ctx.fillStyle = '#2a2a2a';
+                    ctx.rect(proBar.x, proBar.y, proBar.w, proBar.h);
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.fillStyle = 'white';
+                    ctx.rect(proBar.x, proBar.y, proBar.w * proBar.per, proBar.h);                    
+                    //ctx.rect(0, cy - 10, canvas.width * (loaded / sm.loader.images.count), 10);
                     ctx.fill();
                     ctx.stroke();
                     canvasMod.draw(layers, 'print', 1, loaded + ' / ' + sm.loader.images.count, cx, cy + 15, {
                         align: 'center',
-                        fontSize: 30
+                        fontSize: 30,
+                        fillStyle: '#afafaf'
                     });
                 }
             }
