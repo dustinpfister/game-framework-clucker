@@ -129,6 +129,7 @@ Clucker.pushState(sm, {
         var canvas = layers[1].canvas;
 
         canvasMod.draw(layers, 'clear', 1);
+
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.units, { spriteDraw: function(unit, ctx){
             if(unit.active){
                 ctx.strokeStyle = 'rgba(255,255,255,0.1)';
@@ -152,6 +153,12 @@ Clucker.pushState(sm, {
         }});
         canvasMod.draw(layers, 'pool-circles', 1, sm.game.shots);
         canvasMod.draw(layers, 'pool-circles', 1, sm.game.particles);
+
+        // light effect
+        var lightPer = (0.5 * (sm.shakeObj.secs / sm.shakeObj.secsMax)).toFixed(2);
+        canvasMod.draw(sm.layers, 'background', 1, 'rgba(255,64,0,' + lightPer + ')');
+
+
         // draw money
         var dispText = { fillStyle: 'yellow', fontSize: 15};
         canvasMod.draw(layers, 'print', 1, Clucker.utils.formatNumber(sm.game.money), 10, canvas.height - 25, dispText);

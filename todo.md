@@ -35,8 +35,9 @@
 * (done) have an EFFECTS object that will contain a number of functions that are used for the particlesMod.spawn method
 * (done) game state save on each ship death
 * (done) screen shake method in main.js
+* (done) can set what layers to shake
+* (done) see about adding a light layer that will be a current amount of ambent light
 
-* see about adding a light layer that will be a current amount of ambent light
 * have ship deaths effect ambient light
 * shot accuracy
 * move shot methods in game.js into shot.js
