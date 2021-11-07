@@ -52,7 +52,8 @@ Clucker.pushState(sm, {
         sm.shakeObj = {
             secs: 1,
             secsMax: 1,
-            maxRadius: 16
+            maxRadius: 8,
+            layers:[1]
         };
         // using the hashPer to set the number of ships
         var art = articleMod.getArtObj({
@@ -102,12 +103,13 @@ Clucker.pushState(sm, {
             gameMod.update(sm, secs);
         }
 
-        var i = sm.layers.length;
+        //var i = sm.layers.length;
+        var i = sm.shakeObj.layers.length;
         sm.shakeObj.secs -= secs;
         sm.shakeObj.secs = sm.shakeObj.secs < 0 ? 0 : sm.shakeObj.secs;
         if(sm.shakeObj.secs > 0){
             while(i--){
-                var ctx = sm.layers[i].ctx;
+                var ctx = sm.layers[ sm.shakeObj.layers[i] ].ctx;
                 ctx.setTransform(1, 0, 0, 1, 0, 0);
                 var maxRadius = sm.shakeObj.maxRadius,
                 r = maxRadius * (sm.shakeObj.secs / sm.shakeObj.secsMax),
@@ -117,7 +119,7 @@ Clucker.pushState(sm, {
             }
         }else{
             while(i--){
-                var ctx = sm.layers[i].ctx;
+                var ctx = sm.layers[ sm.shakeObj.layers[i] ].ctx;
                 ctx.setTransform(1, 0, 0, 1, 0, 0);
             }
         }
