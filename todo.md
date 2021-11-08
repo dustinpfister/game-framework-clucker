@@ -37,9 +37,10 @@
 * (done) screen shake method in main.js
 * (done) can set what layers to shake
 * (done) see about adding a light layer that will be a current amount of ambent light
+* (done) have ship deaths effect ambient light
 
-* have ship deaths effect ambient light
-* shot accuracy
+* explosions for shots
+
 * move shot methods in game.js into shot.js
 * shot homingActive and homingTarget data values 
 
