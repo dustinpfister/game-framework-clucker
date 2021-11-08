@@ -124,7 +124,7 @@
 
     // check if a shot hit something
     var hitCheck = function(shot, sm){
-        var hit = Clucker.poolMod.getOverlaping(shot, sm.game.ships);
+        var hit = Clucker.poolMod.getOverlaping(shot, sm.game.ships), partOpt;
         hit.forEach(function(ship){
             var stat = ship.stat;
             stat.hp -= 1;
@@ -135,7 +135,8 @@
                 // call on ship death method
                 sm.game.onShipDeath(sm.game, ship, sm);
                 // spawn particles
-                particlesMod.spawn(sm.game.particles, { sx: ship.x + ship.w / 2, sy: ship.y  + ship.h / 2 }, sm);
+                partOpt = { sx: ship.x + ship.w / 2, sy: ship.y  + ship.h / 2, colors: [255, 0, 0] }
+                particlesMod.spawn(sm.game.particles, partOpt, sm);
                 // purge the ship
                 Clucker.poolMod.purge(sm.game.ships, ship, sm);
             }

@@ -50,7 +50,7 @@ Clucker.pushState(sm, {
     start: function(sm, canvasMod){
         // shake
         sm.shakeObj = {
-            secs: 1,
+            secs: 0,
             secsMax: 1,
             maxRadius: 8,
             layers:[1]

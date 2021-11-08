@@ -11,6 +11,7 @@
         partOptions = [];
         while (i--) {
             partOptions.push({
+                colors: opt.colors || [0,255,0],
                 maxLifespan: 0.5 + Math.random() * 2,
                 pps: 28 + Math.round(100 * Math.random()),
                 heading: Math.PI * 2 * Math.random(),
@@ -29,6 +30,7 @@
     // explosion effect
     EFFECTS.explosion = function (opt) {
         return [{
+            colors: opt.colors || [0,255,0],
             maxLifespan: 1,
             sx: opt.sx,
             sy: opt.sy,
@@ -52,6 +54,8 @@
             count: DEFAULT_POOL_SIZE,
             secsCap: 0.25,
             spawn: function (part, pool, sm, opt) {
+                // colors
+                part.data.colors = opt.colors || [255,255,255];
                 // setting lifespan
                 part.data.maxLifespan = opt.maxLifespan === undefined ? 1 : opt.maxLifespan;
                 part.lifespan = part.data.maxLifespan;
@@ -79,7 +83,8 @@
                 var lifePer = part.lifespan / part.data.maxLifespan;
                 // alpha effect
                 var alpha = lifePer;
-                part.data.fillStyle = 'rgba(255,0,0,' + alpha + ')';
+                var cArr = part.data.colors;
+                part.data.fillStyle = 'rgba(' + cArr[0] + ',' + cArr[1] + ',' + cArr[2] + ',' + alpha + ')';
                 part.heading += Math.PI / 180 * part.data.DPS * secs;
                 // move by pps
                 Clucker.poolMod.moveByPPS(part, secs);
