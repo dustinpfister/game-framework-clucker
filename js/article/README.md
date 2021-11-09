@@ -1,0 +1,3 @@
+# article.js
+
+This is a librray of methods that can be used to create an object with values that are based off of the text content of a web page. The idea here is to use the text of a page as a means to go about doing things such as creating the starting state of a map in a game, or changing various app settings within some kind of applaction so that the state of the applaction will be a little different from one page to another if the applaction is deployed to every page. With that said the first demo that I have made that makes use of this would be my header-app demo.

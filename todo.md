@@ -45,11 +45,17 @@
 * shot homingActive and homingTarget data values 
 
 /js/article:
-* make the artical.js file from header-app be its own thing in the new js folder
-* have header-app use the artical.js at the new /js folder location
+* (done) make the artical.js file from header-app be its own thing in the new js folder
+* (done) have header-app use the artical.js at the new /js folder location
+
+/js/particles:
+* (done) make the particles.js file from header-app be its own thing in the new js folder
 
 /js/screen-shake/screen-shake.js
 * start a stand alone module for the screen shake feature that I have made for header-app.
+
+/js/shot-homing/
+* start a stand alone module for cerating a shot pool with homing features
 
 /js/standard-states/saves-menu/save-menu.js:
 * started a new nested folder in the /js folder called 'standard-states' 
