@@ -16,7 +16,7 @@
                 pps: 28 + Math.round(100 * Math.random()),
                 heading: Math.PI * 2 * Math.random(),
                 DPS: -180 + Math.round(360 * Math.random()),
-				sizeChange: false,
+		sizeChange: false,
                 sx: opt.sx,
                 sy: opt.sy,
                 maxSize: 6,
@@ -35,7 +35,7 @@
             sx: opt.sx,
             sy: opt.sy,
             sizeChange: true,
-            maxSize: 64,
+            maxSize: opt.maxSize || 64,
             w: 0,
             h: 0
         }];
