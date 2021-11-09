@@ -39,18 +39,17 @@
 * (done) see about adding a light layer that will be a current amount of ambent light
 * (done) have ship deaths effect ambient light
 * (done) explosions for shots
-
-* maxSize option for parts
+* (done) maxSize option for parts
 
 * move shot methods in game.js into shot.js
 * shot homingActive and homingTarget data values 
 
-/js/screen-shake/screen-shake.js
-* start a stand alone module for the screen shake feature that I have made for header-app.
-
 /js/article:
 * make the artical.js file from header-app be its own thing in the new js folder
 * have header-app use the artical.js at the new /js folder location
+
+/js/screen-shake/screen-shake.js
+* start a stand alone module for the screen shake feature that I have made for header-app.
 
 /js/standard-states/saves-menu/save-menu.js:
 * started a new nested folder in the /js folder called 'standard-states' 
