@@ -18,20 +18,6 @@
 
 
 /********* ********** **********
-  OBJECT POOL
-********** ********** *********/
-
-/*
-    var getDistanceToObj = function(obj1, obj2){
-        var x1 = obj2.x + obj2.w / 2,
-        y1 = obj2.y + obj2.h / 2,
-        x2 = obj1.x + obj1.w / 2,
-        y2 = obj1.y + obj1.h / 2;
-        return Clucker.utils.distance(x1, y1, x2, y2);
-    };
-*/
-
-/********* ********** **********
   SHIPS
 ********** ********** *********/
 
@@ -296,8 +282,7 @@
 
     // user clicked
     gameMod.clickAt = function(sm, pos){
-        //var clickShot = {w:1, h:1, x: pos.x, y: pos.y, active: true};
-        //hitCheck(clickShot, sm);
+
     };
 
 }(this['gameMod'] = {}));

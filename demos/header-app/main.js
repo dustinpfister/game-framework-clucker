@@ -1,28 +1,5 @@
 console.log('Using clucker v' + Clucker.ver);
 
-/*
-(function(screenShake){
-   // create a screen shake object with the given canvas stack and options
-   screenShake.create = function(stack, opt){
-       opt = opt || {};
-       var shakeObj = {
-           stack: stack,
-           secs: 0,
-           radius: 32
-       };
-       return stack;
-   };
-   // reset transform in all ctx refs of all canvas elements in a stack
-   screenShake.resetStack = function(stack){
-        var i = stack.length;
-        while(i--){
-           var ctx = stack[i].ctx;
-           ctx.setTransform(1, 0, 0, 1, 0, 0);
-        }
-   };
-}( this['screenShake'] = {} ));
-*/
-
 // main state machine object
 var sm = Clucker.createMain({
     appName: 'header-app',
