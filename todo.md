@@ -11,9 +11,6 @@
 ### (  ) - 0.8.0 - Starting Grid Module
 * Start a new grid module for clucker.js
 * Start a grid-basic demo
-* update readme.
-* create a /dist/0.6.0/clucker.js and clucker.min.js at this state
-* create a 0.6.0 tag
 
 /js/shot-homing/
 * have a feature where shots home in on targets
