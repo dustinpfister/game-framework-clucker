@@ -19,7 +19,13 @@
 * have a feature where shots home in on targets
 * shot homingActive and homingTarget data values
 
+/js/screen-shake/screen-shake.js
+* start a stand alone module for the screen shake feature that I have made for header-app.
 
+/js/standard-states/saves-menu/save-menu.js:
+* started a new nested folder in the /js folder called 'standard-states' 
+* a standard state project will create and return state objects that can be used in final game projects
+* start out with a 'save-menu' standard-states project for quickly createing a save state menu for a game
 
 
 
@@ -58,16 +64,6 @@
 * (done) shotMod.createPool method that will create and return an Object pool for shots
 * (done) use shotMod.createPool in the game.js of header-app
 
-/js/screen-shake/screen-shake.js
-* start a stand alone module for the screen shake feature that I have made for header-app.
-
-
-
-/js/standard-states/saves-menu/save-menu.js:
-* started a new nested folder in the /js folder called 'standard-states' 
-* a standard state project will create and return state objects that can be used in final game projects
-* start out with a 'save-menu' standard-states project for quickly createing a save state menu for a game
-
 /lib/canvas/plugins/mod-pool.jd
 * (done) new circle, and pool-circles methods
 * (done) new 0.7.1 build for Clucker and use it for header-app
@@ -76,6 +72,7 @@
 /lib/gameframe/grameframe.js
 * (done) change background color of built in image loader
 * (done) have a new progress bar design for the built in loader
+
 
 /lib/object-pool:
 * make getDistanceToObj method in header-app part of the objectPool library
