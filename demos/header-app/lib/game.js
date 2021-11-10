@@ -124,6 +124,7 @@
 ********** ********** *********/
 
     // check if a shot hit something
+/*
     var hitCheck = function(shot, sm){
         var hit = Clucker.poolMod.getOverlaping(shot, sm.game.ships), partOpt;
         hit.forEach(function(ship){
@@ -147,6 +148,7 @@
             shot.lifespan = 0;
         });
     };
+*/
 
     // create shots object pool helper
     var createShots = function(opt){
@@ -284,7 +286,29 @@
                             y: unit.y + unit.h / 2 - 5,
                             a: shotMod.getShootAtAngle(unit, target),
                             unit: unit,
-                            targetPool: sm.game.ships
+                            targetPool: sm.game.ships,
+                            onTargetHit: function(ship, shot){
+                                console.log('custom hit');
+                                var stat = ship.stat;
+            stat.hp -= 1;
+            stat.hp = stat.hp < 0 ? 0 : stat.hp;
+            // spawn part for shot explosion
+            partOpt = { effectType: 'explosion', maxSize: 32, sx: shot.x + shot.w / 2, sy: shot.y  + shot.h / 2, colors: [255, 255, 255] };
+            particlesMod.spawn(sm.game.particles, partOpt, sm);
+            if(stat.hp === 0){
+                // step money
+                sm.game.money += stat.money;
+                // call on ship death method
+                sm.game.onShipDeath(sm.game, ship, sm);
+                // spawn particles for ship death
+                partOpt = { effectType: 'death', maxSize: 128, sx: ship.x + ship.w / 2, sy: ship.y  + ship.h / 2, colors: [255, 0, 0] };
+                particlesMod.spawn(sm.game.particles, partOpt, sm);
+                // purge the ship
+                Clucker.poolMod.purge(sm.game.ships, ship, sm);
+            }
+            shot.lifespan = 0;
+                                return true;
+                            }
                         });
                     }
                 }
@@ -334,8 +358,8 @@
 
     // user clicked
     gameMod.clickAt = function(sm, pos){
-        var clickShot = {w:1, h:1, x: pos.x, y: pos.y, active: true};
-        hitCheck(clickShot, sm);
+        //var clickShot = {w:1, h:1, x: pos.x, y: pos.y, active: true};
+        //hitCheck(clickShot, sm);
     };
 
 }(this['gameMod'] = {}));

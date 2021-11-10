@@ -105,6 +105,8 @@ UNIT_SIZE = 32;
                 //obj.data.sheetKey = 'ship-type-one';
                 // start pos
                 obj.data.targetPool = spawnOpt.targetPool || null;
+                obj.data.onTargetHit = spawnOpt.onTargetHit || opt.onTargetHit || function(ship, shot){ console.log('hit');};
+
                 obj.data.unit = spawnOpt.unit || {};
                 obj.x = spawnOpt.x || 0;
                 obj.y = spawnOpt.y || 0;
@@ -121,9 +123,8 @@ UNIT_SIZE = 32;
                 shot.lifespan = 2;
                 // hit check
                 var targetPool = shot.data.targetPool || opt.targetPool || null;
-                hitCheck(shot, targetPool, function(){
-                    console.log('hit');
-                });
+                //onTargetHit = shot.data.onTargetHit || opt.onTargetHit || function(ship, shot){ console.log('hit');};
+                hitCheck(shot, targetPool, shot.data.onTargetHit);
                 // purge shot if distance is to far
                 var d = getDistanceToObj(shot, shot.data.unit);
                 if(d > shot.data.unit.stat.range * UNIT_SIZE){
