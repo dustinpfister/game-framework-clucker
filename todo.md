@@ -73,10 +73,9 @@
 * (done) change background color of built in image loader
 * (done) have a new progress bar design for the built in loader
 
-
 /lib/object-pool:
 * (done) make getDistanceToObj method in header-app part of the objectPool library
-* use new getDistanceToObj method in header-app gameMod
+* (done) use new getDistanceToObj method in header-app gameMod
 * (done) use new getDistanceToObj method in shot-homing.js
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
