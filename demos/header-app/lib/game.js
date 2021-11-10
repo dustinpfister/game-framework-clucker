@@ -145,76 +145,11 @@
         return true;
     };
 
-    // check if a shot hit something
-/*
-    var hitCheck = function(shot, sm){
-        var hit = Clucker.poolMod.getOverlaping(shot, sm.game.ships), partOpt;
-        hit.forEach(function(ship){
-            var stat = ship.stat;
-            stat.hp -= 1;
-            stat.hp = stat.hp < 0 ? 0 : stat.hp;
-            // spawn part for shot explosion
-            partOpt = { effectType: 'explosion', maxSize: 32, sx: shot.x + shot.w / 2, sy: shot.y  + shot.h / 2, colors: [255, 255, 255] };
-            particlesMod.spawn(sm.game.particles, partOpt, sm);
-            if(stat.hp === 0){
-                // step money
-                sm.game.money += stat.money;
-                // call on ship death method
-                sm.game.onShipDeath(sm.game, ship, sm);
-                // spawn particles for ship death
-                partOpt = { effectType: 'death', maxSize: 128, sx: ship.x + ship.w / 2, sy: ship.y  + ship.h / 2, colors: [255, 0, 0] };
-                particlesMod.spawn(sm.game.particles, partOpt, sm);
-                // purge the ship
-                Clucker.poolMod.purge(sm.game.ships, ship, sm);
-            }
-            shot.lifespan = 0;
-        });
-    };
-*/
 
     // create shots object pool helper
     var createShots = function(opt){
         return shotMod.createPool();
     };
-/*
-    var createShots = function(opt){
-        opt = opt || {};
-        return Clucker.poolMod.create({
-            count: SHOTS_COUNT_MAX,
-            secsCap: 0.25,
-            //disableLifespan: true,
-            spawn: function(obj, pool, sm, opt){
-                obj.data.fillStyle = 'rgba(64,64,64,0.7)';
-                // stats
-                var stat = obj.stat = {};
-                // sheetkey
-                //obj.data.cellIndex = 0;
-                //obj.data.sheetKey = 'ship-type-one';
-                // start pos
-                obj.data.unit = opt.unit || {};
-                obj.x = opt.x || 0;
-                obj.y = opt.y || 0;
-                obj.w = 10;
-                obj.h = 10;
-                obj.heading = opt.a || 0;
-                obj.pps = obj.data.unit.stat.shotPPS || 32;
-                obj.lifespan = 2;
-            },
-            update: function (shot, pool, sm, secs){
-                var canvas = sm.layers[0].canvas;
-                Clucker.poolMod.moveByPPS(shot, secs);
-                Clucker.poolMod.wrap(shot, canvas, 32);
-                shot.lifespan = 2;
-                // hit check
-                hitCheck(shot, sm);
-                var d = getDistanceToObj(shot, shot.data.unit);
-                if(d > shot.data.unit.stat.range * UNIT_SIZE){
-                    shot.lifespan = 0;
-                }
-            }
-        });
-    };
-*/
 
 
 /********* ********** **********

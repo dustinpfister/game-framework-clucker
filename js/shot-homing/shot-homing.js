@@ -87,9 +87,7 @@ UNIT_SIZE = 32;
 
     // create and return an object pool for shots
     shotMod.createPool = function(opt){
-
         opt = opt || {};
-
         return Clucker.poolMod.create({
             count: opt.count || DEFAULT_SHOT_POOL_COUNT,
             secsCap: 0.25,
