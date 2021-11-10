@@ -21,6 +21,7 @@
   OBJECT POOL
 ********** ********** *********/
 
+/*
     var getDistanceToObj = function(obj1, obj2){
         var x1 = obj2.x + obj2.w / 2,
         y1 = obj2.y + obj2.h / 2,
@@ -28,6 +29,7 @@
         y2 = obj1.y + obj1.h / 2;
         return Clucker.utils.distance(x1, y1, x2, y2);
     };
+*/
 
 /********* ********** **********
   SHIPS
@@ -187,7 +189,7 @@
         var ships = Clucker.poolMod.getActiveObjects(sm.game.ships),
         maxDist = UNIT_SIZE * unit.stat.range;   
         return ships.filter(function(ship){
-            return getDistanceToObj(unit, ship) < maxDist;
+            return Clucker.poolMod.getDistanceToObj(unit, ship) < maxDist;
         });
     };
 
