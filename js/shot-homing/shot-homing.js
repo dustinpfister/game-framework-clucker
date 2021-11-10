@@ -4,7 +4,7 @@
     var DEFAULT_SHOT_POOL_COUNT = 100,
 UNIT_SIZE = 32;
 
-
+/*
     var getDistanceToObj = function(obj1, obj2){
         var x1 = obj2.x + obj2.w / 2,
         y1 = obj2.y + obj2.h / 2,
@@ -12,7 +12,7 @@ UNIT_SIZE = 32;
         y2 = obj1.y + obj1.h / 2;
         return Clucker.utils.distance(x1, y1, x2, y2);
     };
-
+*/
 
     // get target angle
     var getTargetAngle = function(unit, target){
@@ -121,7 +121,7 @@ UNIT_SIZE = 32;
                 //onTargetHit = shot.data.onTargetHit || opt.onTargetHit || function(ship, shot){ console.log('hit');};
                 hitCheck(shot, targetPool, shot.data.onTargetHit);
                 // purge shot if distance is to far
-                var d = getDistanceToObj(shot, shot.data.unit);
+                var d = Clucker.poolMod.getDistanceToObj(shot, shot.data.unit);
                 if(d > shot.data.unit.stat.range * UNIT_SIZE){
                     shot.lifespan = 0;
                 }

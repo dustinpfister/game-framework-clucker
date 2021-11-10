@@ -76,6 +76,8 @@
 
 /lib/object-pool:
 * make getDistanceToObj method in header-app part of the objectPool library
+* use new getDistanceToObj method in header-app gameMod
+* use new getDistanceToObj method in shot-homing.js
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
