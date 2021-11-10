@@ -55,7 +55,7 @@
 * start a stand alone module for the screen shake feature that I have made for header-app.
 
 /js/shot-homing/
-* start a stand alone module for cerating a shot pool with homing features
+* start a stand alone module for cerating a shot pool with homing features starting with shot.js
 
 /js/standard-states/saves-menu/save-menu.js:
 * started a new nested folder in the /js folder called 'standard-states' 
