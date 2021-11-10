@@ -15,6 +15,11 @@
 * create a /dist/0.6.0/clucker.js and clucker.min.js at this state
 * create a 0.6.0 tag
 
+/js/shot-homing/
+* have a feature where shots home in on targets
+* shot homingActive and homingTarget data values
+
+
 
 
 
@@ -50,11 +55,8 @@
 
 /js/shot-homing/
 * (done) start a stand alone module for cerating a shot pool with homing features starting with shot.js
-* shotMod.createPool method that will create and return an Object pool for shots
-* use shotMod.createPool in the game.js of header-app
-
-
-* shot homingActive and homingTarget data values
+* (done) shotMod.createPool method that will create and return an Object pool for shots
+* (done) use shotMod.createPool in the game.js of header-app
 
 /js/screen-shake/screen-shake.js
 * start a stand alone module for the screen shake feature that I have made for header-app.
