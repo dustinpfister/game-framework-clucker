@@ -67,17 +67,14 @@ UNIT_SIZE = 32;
 
     // hit check helper used in the update method of a shot pool
     var hitCheck = function(shot, targetPool, onTargetHit){
-
         // get a collection of hit targets
         if(targetPool){
             var hitTargets = Clucker.poolMod.getOverlaping(shot, targetPool),
             i = hitTargets.length, target;
-
             // loop hitTargets array
             while(i--){
                 // current hit target
                 target = hitTargets[i];
-
                 // call onTargetHit method for this target
                 if(onTargetHit(target, shot)){
                      // true return value of onTargetHit method
