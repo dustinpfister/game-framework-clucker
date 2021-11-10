@@ -50,7 +50,10 @@
 
 /js/shot-homing/
 * (done) start a stand alone module for cerating a shot pool with homing features starting with shot.js
-* move shot methods in game.js into shot.js
+* shotMod.createPool method that will create and return an Object pool for shots
+* use shotMod.createPool in the game.js of header-app
+
+
 * shot homingActive and homingTarget data values
 
 /js/screen-shake/screen-shake.js

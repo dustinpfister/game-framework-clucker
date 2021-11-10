@@ -66,6 +66,7 @@
     };
 
     // create ships object pool helper
+
     var createShips = function(opt){
         opt = opt || {};
         opt.shipCountPer = opt.shipCountPer === undefined ? 1 : opt.shipCountPer;
@@ -149,6 +150,10 @@
 
     // create shots object pool helper
     var createShots = function(opt){
+        return shotMod.createPool();
+    };
+/*
+    var createShots = function(opt){
         opt = opt || {};
         return Clucker.poolMod.create({
             count: SHOTS_COUNT_MAX,
@@ -185,6 +190,7 @@
             }
         });
     };
+*/
 
 
 /********* ********** **********
@@ -277,7 +283,8 @@
                             x: unit.x + unit.w / 2 - 5,
                             y: unit.y + unit.h / 2 - 5,
                             a: shotMod.getShootAtAngle(unit, target),
-                            unit: unit
+                            unit: unit,
+                            targetPool: sm.game.ships
                         });
                     }
                 }
