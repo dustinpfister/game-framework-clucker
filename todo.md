@@ -41,9 +41,6 @@
 * (done) explosions for shots
 * (done) maxSize option for parts
 
-* move shot methods in game.js into shot.js
-* shot homingActive and homingTarget data values 
-
 /js/article:
 * (done) make the artical.js file from header-app be its own thing in the new js folder
 * (done) have header-app use the artical.js at the new /js folder location
@@ -51,11 +48,15 @@
 /js/particles:
 * (done) make the particles.js file from header-app be its own thing in the new js folder
 
+/js/shot-homing/
+* (done) start a stand alone module for cerating a shot pool with homing features starting with shot.js
+* move shot methods in game.js into shot.js
+* shot homingActive and homingTarget data values
+
 /js/screen-shake/screen-shake.js
 * start a stand alone module for the screen shake feature that I have made for header-app.
 
-/js/shot-homing/
-* start a stand alone module for cerating a shot pool with homing features starting with shot.js
+
 
 /js/standard-states/saves-menu/save-menu.js:
 * started a new nested folder in the /js folder called 'standard-states' 

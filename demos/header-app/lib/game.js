@@ -272,13 +272,11 @@
                     if(allTargets.length > 0){
                         // just select first target for now
                         var target = allTargets[0];
-                        //x = ( target.x + target.w / 2 ) - ( unit.x + unit.w / 2 ),
-                        //y = ( target.y + target.h / 2 ) - ( unit.y + unit.h / 2 );
                         // fire a shot
                         Clucker.poolMod.spawn(sm.game.shots, sm, {
                             x: unit.x + unit.w / 2 - 5,
                             y: unit.y + unit.h / 2 - 5,
-                            a: shotMod.getShootAtAngle(unit, target), //Math.atan2(y, x),
+                            a: shotMod.getShootAtAngle(unit, target),
                             unit: unit
                         });
                     }

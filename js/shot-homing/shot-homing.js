@@ -16,7 +16,7 @@
         });
     };
 
-    // THE GET SHOOT AT ANGLE HELPER
+    // THE GET SHOOT AT ANGLE METHODS
     var getShootAtMethods = {
         // method1 is just basicly using Math.atan2 with adjusted values
         method1 : function(unit, target){
@@ -44,6 +44,7 @@
   PUBLIC METHODS
 ********** ********** *********/
 
+    // get a shoot at angle
     shotMod.getShootAtAngle = function(unit, target, methodName){
          methodName = methodName || 'method2';
          var method = getShootAtMethods[methodName];
