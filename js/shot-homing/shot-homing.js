@@ -115,8 +115,7 @@
             if(h.target.active){
                 var att = getTargetAngle(shot, h.target); // Angle To Target
                 var dir = shortestDirection(shot.heading, att);
-                var dps = 360 * (angleDistance(shot.heading, normalize(h.target.heading)) / Math.PI);
-
+                var dps = shot.data.maxDPS -  shot.data.maxDPS * (angleDistance(shot.heading, normalize(h.target.heading)) / Math.PI);
                 shot.heading += Math.PI / 180 * dps * secs * dir;
                 shot.heading = normalize(shot.heading);
             }else{
