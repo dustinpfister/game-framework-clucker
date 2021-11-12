@@ -13,8 +13,7 @@
 * Start a grid-basic demo
 
 /js/shot-homing/
-* have a feature where shots home in on targets
-* shot homingActive and homingTarget data values
+
 
 /js/screen-shake/screen-shake.js
 * start a stand alone module for the screen shake feature that I have made for header-app.
@@ -56,11 +55,6 @@
 /js/particles:
 * (done) make the particles.js file from header-app be its own thing in the new js folder
 
-/js/shot-homing/
-* (done) start a stand alone module for cerating a shot pool with homing features starting with shot.js
-* (done) shotMod.createPool method that will create and return an Object pool for shots
-* (done) use shotMod.createPool in the game.js of header-app
-
 /lib/canvas/plugins/mod-pool.jd
 * (done) new circle, and pool-circles methods
 * (done) new 0.7.1 build for Clucker and use it for header-app
@@ -74,6 +68,14 @@
 * (done) make getDistanceToObj method in header-app part of the objectPool library
 * (done) use new getDistanceToObj method in header-app gameMod
 * (done) use new getDistanceToObj method in shot-homing.js
+
+/js/shot-homing/
+* (done) start a stand alone module for cerating a shot pool with homing features starting with shot.js
+* (done) shotMod.createPool method that will create and return an Object pool for shots
+* (done) use shotMod.createPool in the game.js of header-app
+
+* shot.data.homing object with target and active props
+* have a homingUpdate helper that will adjust angle based on goming.target position
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
