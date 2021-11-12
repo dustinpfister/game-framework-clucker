@@ -73,9 +73,10 @@
 * (done) start a stand alone module for cerating a shot pool with homing features starting with shot.js
 * (done) shotMod.createPool method that will create and return an Object pool for shots
 * (done) use shotMod.createPool in the game.js of header-app
+* (done) shot.data.homing object with target and active props
+* (done) have a homingUpdate helper that will adjust angle based on goming.target position
+* (done) fix the isshue with having a UNIT SIZE const in shot-homing.js
 
-* shot.data.homing object with target and active props
-* have a homingUpdate helper that will adjust angle based on goming.target position
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js

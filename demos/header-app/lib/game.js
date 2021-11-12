@@ -169,7 +169,7 @@
         var ships = Clucker.poolMod.getActiveObjects(sm.game.ships),
         maxDist = UNIT_SIZE * unit.stat.range;   
         return ships.filter(function(ship){
-            return Clucker.poolMod.getDistanceToObj(unit, ship) < maxDist;
+            return Clucker.poolMod.getDistanceToObj(unit, ship) < maxDist && ship.y > 0 && ship.x > 0;
         });
     };
 
@@ -228,7 +228,9 @@
                             targetPool: sm.game.ships,
                             onTargetHit: onTargetHit,
                             homingActive: true,
-                            homingTarget: target
+                            homingTarget: target,
+                            maxDist: unit.stat.range * UNIT_SIZE,
+                            maxDPS: 180
                         });
                     }
                 }

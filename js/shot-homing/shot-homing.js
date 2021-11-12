@@ -1,8 +1,7 @@
 
 (function(shotMod){
 
-    var DEFAULT_SHOT_POOL_COUNT = 100,
-    UNIT_SIZE = 50;
+    var DEFAULT_SHOT_POOL_COUNT = 100;
 
 
     // get target angle
@@ -76,6 +75,12 @@
         }
     };
 
+
+    var normalize = function(n) {
+      var c = Math.PI * 2;
+      return Clucker.utils.mod(n, c);
+    };
+
     var normalizeHalf = function(n) {
       var c = Math.PI * 2;
       var h = c / 2;
@@ -110,11 +115,10 @@
             if(h.target.active){
                 var att = getTargetAngle(shot, h.target); // Angle To Target
                 var dir = shortestDirection(shot.heading, att);
-                var dps = 360 * (angleDistance(shot.heading, h.target.heading) / Math.PI * 2);
-
-Clucker.utils.logOnce(dps);
+                var dps = 360 * (angleDistance(shot.heading, normalize(h.target.heading)) / Math.PI);
 
                 shot.heading += Math.PI / 180 * dps * secs * dir;
+                shot.heading = normalize(shot.heading);
             }else{
                 h.active = false;
             }
@@ -145,13 +149,15 @@ Clucker.utils.logOnce(dps);
                     active: spawnOpt.homingActive || false,
                     target: spawnOpt.homingTarget || null
                 };
+                shot.data.maxDist = spawnOpt.maxDist || 0;
+                shot.data.maxDPS = spawnOpt.maxDPS === undefined ? 90 : spawnOpt.maxDPS;
 
                 shot.data.unit = spawnOpt.unit || {};
                 shot.x = spawnOpt.x || 0;
                 shot.y = spawnOpt.y || 0;
                 shot.w = 10;
                 shot.h = 10;
-                shot.heading = spawnOpt.a || 0;
+                shot.heading = normalize(spawnOpt.a) || 0;
                 shot.pps = shot.data.unit.stat.shotPPS || 32;
                 shot.lifespan = 2;
             },
@@ -168,7 +174,8 @@ Clucker.utils.logOnce(dps);
                 hitCheck(shot, targetPool, shot.data.onTargetHit);
                 // purge shot if distance is to far
                 var d = Clucker.poolMod.getDistanceToObj(shot, shot.data.unit);
-                if(d > shot.data.unit.stat.range * UNIT_SIZE){
+                //if(d > shot.data.unit.stat.range * UNIT_SIZE){
+                if(d > shot.data.maxDist){
                     shot.lifespan = 0;
                 }
             }
