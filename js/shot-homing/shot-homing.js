@@ -75,37 +75,61 @@
         }
     };
 
+    var updateHoming = function(shot, secs){
+        var h = shot.data.homing;
+        // if active AND we have a target
+        if(h.active && h.target){
+
+            // if target is still active
+            if(h.target.active){
+                shot.heading = getTargetAngle(shot, h.target);
+            }else{
+                h.active = false;
+            }
+        }else{
+            h.active = false;
+        }
+    };
+
     // create and return an object pool for shots
     shotMod.createPool = function(opt){
         opt = opt || {};
         return Clucker.poolMod.create({
             count: opt.count || DEFAULT_SHOT_POOL_COUNT,
             secsCap: 0.25,
-            spawn: function(obj, pool, sm, spawnOpt){
-                obj.data.fillStyle = 'rgba(64,64,64,0.7)';
+            spawn: function(shot, pool, sm, spawnOpt){
+                shot.data.fillStyle = 'rgba(128,128,128,1)';
                 // stats
-                var stat = obj.stat = {};
+                var stat = shot.stat = {};
                 // sheetkey
                 //obj.data.cellIndex = 0;
                 //obj.data.sheetKey = 'ship-type-one';
                 // start pos
-                obj.data.targetPool = spawnOpt.targetPool || null;
-                obj.data.onTargetHit = spawnOpt.onTargetHit || opt.onTargetHit || function(ship, shot){ console.log('hit');};
+                shot.data.targetPool = spawnOpt.targetPool || null;
+                shot.data.onTargetHit = spawnOpt.onTargetHit || opt.onTargetHit || function(ship, shot){ console.log('hit');};
 
-                obj.data.unit = spawnOpt.unit || {};
-                obj.x = spawnOpt.x || 0;
-                obj.y = spawnOpt.y || 0;
-                obj.w = 10;
-                obj.h = 10;
-                obj.heading = spawnOpt.a || 0;
-                obj.pps = obj.data.unit.stat.shotPPS || 32;
-                obj.lifespan = 2;
+                // homing
+                shot.data.homing = {
+                    active: spawnOpt.homingActive || false,
+                    target: spawnOpt.homingTarget || null
+                };
+
+                shot.data.unit = spawnOpt.unit || {};
+                shot.x = spawnOpt.x || 0;
+                shot.y = spawnOpt.y || 0;
+                shot.w = 10;
+                shot.h = 10;
+                shot.heading = spawnOpt.a || 0;
+                shot.pps = shot.data.unit.stat.shotPPS || 32;
+                shot.lifespan = 2;
             },
             update: function (shot, pool, sm, secs){
                 var canvas = sm.layers[0].canvas;
                 Clucker.poolMod.moveByPPS(shot, secs);
                 Clucker.poolMod.wrap(shot, canvas, 32);
                 shot.lifespan = 2;
+                // homing
+                updateHoming(shot, secs);
                 // hit check
                 var targetPool = shot.data.targetPool || opt.targetPool || null;
                 //onTargetHit = shot.data.onTargetHit || opt.onTargetHit || function(ship, shot){ console.log('hit');};
