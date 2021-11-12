@@ -134,12 +134,6 @@
     };
 
 
-    // create shots object pool helper
-    var createShots = function(opt){
-        return shotMod.createPool();
-    };
-
-
 /********* ********** **********
   UNITS
 ********** ********** *********/
@@ -250,7 +244,7 @@
             money: opt.money || 0,
             ships: createShips(opt),
             units: createUnits(opt),
-            shots: createShots(opt),
+            shots: shotMod.createPool(opt),
             particles: particlesMod.create(),
             unitCellIndex: 0,
             unitCells: opt.unitCells || [],
