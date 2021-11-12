@@ -2,7 +2,8 @@
 (function(shotMod){
 
     var DEFAULT_SHOT_POOL_COUNT = 100,
-    UNIT_SIZE = 32;
+    UNIT_SIZE = 50;
+
 
     // get target angle
     var getTargetAngle = function(unit, target){
@@ -75,14 +76,45 @@
         }
     };
 
+    var normalizeHalf = function(n) {
+      var c = Math.PI * 2;
+      var h = c / 2;
+      return Clucker.utils.mod(n + h, c) - h;
+    };
+
+    var shortestDirection = function(from, to) {
+      var z = from - to;
+      if (from === to) {
+        return 0;
+      } else if (normalizeHalf(z) < 0) {
+        return +1; // Left
+      } else {
+        return -1; // Right
+      }
+    };
+    var angleDistance = function(a, b){
+      var m = Math.PI * 2;
+      var h = m / 2;
+      var diff = normalizeHalf(a - b);
+      if (diff > h){
+        diff = diff - m;
+      }
+      return Math.abs(diff); 
+    };
+
     var updateHoming = function(shot, secs){
         var h = shot.data.homing;
         // if active AND we have a target
         if(h.active && h.target){
-
             // if target is still active
             if(h.target.active){
-                shot.heading = getTargetAngle(shot, h.target);
+                var att = getTargetAngle(shot, h.target); // Angle To Target
+                var dir = shortestDirection(shot.heading, att);
+                var dps = 360 * (angleDistance(shot.heading, h.target.heading) / Math.PI * 2);
+
+Clucker.utils.logOnce(dps);
+
+                shot.heading += Math.PI / 180 * dps * secs * dir;
             }else{
                 h.active = false;
             }

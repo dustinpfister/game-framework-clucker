@@ -223,7 +223,7 @@
                         Clucker.poolMod.spawn(sm.game.shots, sm, {
                             x: unit.x + unit.w / 2 - 5,
                             y: unit.y + unit.h / 2 - 5,
-                            a: shotMod.getShootAtAngle(unit, target, 'method1') + Math.PI,
+                            a: shotMod.getShootAtAngle(unit, target, 'method1'),
                             unit: unit,
                             targetPool: sm.game.ships,
                             onTargetHit: onTargetHit,
