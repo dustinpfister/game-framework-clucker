@@ -32,22 +32,6 @@
 
 ### (  ) - 0.7.1 - header-app content map, effect pools, root js folder
 
-/demos/header-app: 
-* (done) make art system for making a grid with values that are effected by page content
-* (done) use grid of values to set positions of units
-* (done) start a /demos/header-app/lib/particles.js file to be used to create explostion and particles pools
-* (done) have a particles pool to be used for ship deaths and shot hits
-* (done) can set a Degrees Per Second value for a particle
-* (done) particle alpha effect
-* (done) have an EFFECTS object that will contain a number of functions that are used for the particlesMod.spawn method
-* (done) game state save on each ship death
-* (done) screen shake method in main.js
-* (done) can set what layers to shake
-* (done) see about adding a light layer that will be a current amount of ambent light
-* (done) have ship deaths effect ambient light
-* (done) explosions for shots
-* (done) maxSize option for parts
-
 /js/article:
 * (done) make the artical.js file from header-app be its own thing in the new js folder
 * (done) have header-app use the artical.js at the new /js folder location
@@ -77,6 +61,27 @@
 * (done) have a homingUpdate helper that will adjust angle based on goming.target position
 * (done) fix the isshue with having a UNIT SIZE const in shot-homing.js
 
+/demos/header-app: 
+* (done) make art system for making a grid with values that are effected by page content
+* (done) use grid of values to set positions of units
+* (done) start a /demos/header-app/lib/particles.js file to be used to create explostion and particles pools
+* (done) have a particles pool to be used for ship deaths and shot hits
+* (done) can set a Degrees Per Second value for a particle
+* (done) particle alpha effect
+* (done) have an EFFECTS object that will contain a number of functions that are used for the particlesMod.spawn method
+* (done) game state save on each ship death
+* (done) screen shake method in main.js
+* (done) can set what layers to shake
+* (done) see about adding a light layer that will be a current amount of ambent light
+* (done) have ship deaths effect ambient light
+* (done) explosions for shots
+* (done) maxSize option for parts
+
+* have a sheet for units with rest and fire animation
+* start a sheet for buttons, and have a pause button cell
+
+* ships have an evadePer value
+* when a ship is hit a roll is compared to evadePer, and if roll is lower, the ship does not take damage
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
