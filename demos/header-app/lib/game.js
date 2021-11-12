@@ -1,7 +1,7 @@
 
 (function(gameMod){
 
-    var SHIP_SPEEDS = [30, 60, 100, 150],
+    var SHIP_SPEEDS = [30, 45, 75, 100],
     SHIP_COUNT_MAX = 60,
     SHIP_HP_MIN = 1,
     SHIP_HP_MAX = 25,
@@ -13,8 +13,9 @@
     UNIT_SIZE = 50,
     UNIT_RANGE_MIN = 1.5,
     UNIT_RANGE_MAX = 5,
+    UNIT_FIRE_RATE = 1,
     SHOTS_COUNT_MAX = 50,
-    SHOTS_SPEEDS = [100, 150, 200]
+    SHOTS_SPEEDS = [50, 70, 120]
 
 
 /********* ********** **********
@@ -188,7 +189,7 @@
                 obj.data.fillStyle = 'rgba(0,255,128,0.5)';
                 // stats
                 var stat = obj.stat = {};
-                stat.fireRate = 0.5;
+                stat.fireRate = UNIT_FIRE_RATE;
                 var shotIndex = Math.round( (SHOTS_SPEEDS.length - 1) * opt.shotSpeedPer );
                 stat.shotPPS = SHOTS_SPEEDS[shotIndex];
                 stat.range = UNIT_RANGE_MIN + Math.round( (UNIT_RANGE_MAX - UNIT_RANGE_MIN) * opt.unitRangePer );
