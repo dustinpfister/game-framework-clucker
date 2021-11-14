@@ -3,6 +3,7 @@
 
     var SHIP_SPEEDS = [30, 45, 75, 100],
     SHIP_COUNT_MAX = 60,
+    SHIP_CELL_SIZE = 48,
     SHIP_HP_MIN = 1,
     SHIP_HP_MAX = 25,
     SHIP_MONEY_MIN = 1,                     // min and max money values for ships
@@ -85,6 +86,8 @@
                 var dist = SHIP_SPAWN_DIST_FROM_CENTER;
                 obj.x = game.cx - dist + Math.round(dist * 2 * Math.random());
                 obj.y = obj.h * -1;
+                obj.w = SHIP_CELL_SIZE;
+                obj.h = SHIP_CELL_SIZE;
                 // speed and heading
                 //obj.pps = SHIP_SPEEDS[Math.floor(Math.random() * SHIP_SPEEDS.length)];
                 obj.pps = SHIP_SPEEDS[ Math.round( (SHIP_SPEEDS.length - 1) * opt.shipSpeedPer ) ];
