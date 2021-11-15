@@ -2,7 +2,7 @@
 (function(gameMod){
 
     var SHIP_SPEEDS = [30, 45, 75, 100],
-    SHIP_COUNT_MAX = 60,
+    SHIP_COUNT_MAX = 40,
     SHIP_CELL_SIZE = 48,
     SHIP_HP_MIN = 1,
     SHIP_HP_MAX = 25,
@@ -76,6 +76,7 @@
                 stat.hpMax = SHIP_HP_MIN + Math.round( (SHIP_HP_MAX - SHIP_HP_MIN) * opt.shipHPPer );
                 stat.hp = stat.hpMax;
                 stat.money = SHIP_MONEY_MIN + Math.round( (SHIP_MONEY_MAX - SHIP_MONEY_MIN) * opt.shipMoneyPer );
+                stat.evade = 0.05; // evade
                 // sheetkey
                 obj.data.cellIndex = 0;
                 obj.data.sheetKey = 'ship-type-one';
@@ -119,7 +120,7 @@
         var stat = ship.stat;
         // evadeRoll
         var evadeRoll = Math.random();
-        if(evadeRoll < 0.15){
+        if(evadeRoll < ship.stat.evade){
             // if evade
         }else{
             stat.hp -= 1;
