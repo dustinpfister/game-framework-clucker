@@ -11,6 +11,7 @@
         partOptions = [];
         while (i--) {
             partOptions.push({
+                effect: 'debris',
                 colors: opt.colors || [0,255,0],
                 maxLifespan: 0.5 + Math.random() * 2,
                 pps: 28 + Math.round(100 * Math.random()),
@@ -30,6 +31,7 @@
     // explosion effect
     EFFECTS.explosion = function (opt) {
         return [{
+            effect: 'explosion',
             colors: opt.colors || [0,255,0],
             maxLifespan: 1,
             sx: opt.sx,
@@ -51,14 +53,17 @@
     // message effect
     EFFECTS.mess = function (opt) {
         return [{
+            effect: 'mess',
             colors: opt.colors || [255,255,0],
+            pps: 32,
+            heading: Math.PI * 1.5,
             maxLifespan: 1,
             sx: opt.sx,
             sy: opt.sy,
             mess: opt.mess || 'None',
             sizeChange: false,
-            w: opt.w || 128,
-            h: opt.h || 16
+            w: opt.w || 32,
+            h: opt.h || 32
         }];
     };
 
@@ -69,6 +74,8 @@
             count: DEFAULT_POOL_SIZE,
             secsCap: 0.25,
             spawn: function (part, pool, sm, opt) {
+                part.data.effect = opt.effect || '';
+                part.data.mess = opt.mess || '';
                 // colors
                 part.data.colors = opt.colors || [255,255,255];
                 // setting lifespan
