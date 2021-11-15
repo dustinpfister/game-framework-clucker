@@ -77,11 +77,13 @@
 * (done) explosions for shots
 * (done) maxSize option for parts
 
+* ships have an evadePer value
+* when a ship is hit a roll is compared to evadePer, and if roll is lower, the ship does not take damage
+
 * have a sheet for units with rest and fire animation
 * start a sheet for buttons, and have a pause button cell
 
-* ships have an evadePer value
-* when a ship is hit a roll is compared to evadePer, and if roll is lower, the ship does not take damage
+
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js

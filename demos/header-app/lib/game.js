@@ -16,7 +16,7 @@
     UNIT_RANGE_MAX = 5,
     UNIT_FIRE_RATE = 1,
     SHOTS_COUNT_MAX = 50,
-    SHOTS_SPEEDS = [50, 70, 120]
+    SHOTS_SPEEDS = [50, 70, 120];
 
 
 /********* ********** **********
@@ -56,7 +56,6 @@
     };
 
     // create ships object pool helper
-
     var createShips = function(opt){
         opt = opt || {};
         opt.shipCountPer = opt.shipCountPer === undefined ? 1 : opt.shipCountPer;
@@ -115,23 +114,30 @@
   SHOTS
 ********** ********** *********/
 
+    // on target hit method
     var onTargetHit = function(ship, shot){
         var stat = ship.stat;
-        stat.hp -= 1;
-        stat.hp = stat.hp < 0 ? 0 : stat.hp;
-        // spawn part for shot explosion
-        partOpt = { effectType: 'explosion', maxSize: 32, sx: shot.x + shot.w / 2, sy: shot.y  + shot.h / 2, colors: [255, 255, 255] };
-        particlesMod.spawn(sm.game.particles, partOpt, sm);
-        if(stat.hp === 0){
-            // step money
-            sm.game.money += stat.money;
-            // call on ship death method
-            sm.game.onShipDeath(sm.game, ship, sm);
-            // spawn particles for ship death
-            partOpt = { effectType: 'death', maxSize: 128, sx: ship.x + ship.w / 2, sy: ship.y  + ship.h / 2, colors: [255, 0, 0] };
+        // evadeRoll
+        var evadeRoll = Math.random();
+        if(evadeRoll < 0.15){
+            // if evade
+        }else{
+            stat.hp -= 1;
+            stat.hp = stat.hp < 0 ? 0 : stat.hp;
+            // spawn part for shot explosion
+            partOpt = { effectType: 'explosion', maxSize: 32, sx: shot.x + shot.w / 2, sy: shot.y  + shot.h / 2, colors: [255, 255, 255] };
             particlesMod.spawn(sm.game.particles, partOpt, sm);
-            // purge the ship
-            Clucker.poolMod.purge(sm.game.ships, ship, sm);
+            if(stat.hp === 0){
+                // step money
+                sm.game.money += stat.money;
+                // call on ship death method
+                sm.game.onShipDeath(sm.game, ship, sm);
+                // spawn particles for ship death
+                partOpt = { effectType: 'death', maxSize: 128, sx: ship.x + ship.w / 2, sy: ship.y  + ship.h / 2, colors: [255, 0, 0] };
+                particlesMod.spawn(sm.game.particles, partOpt, sm);
+                // purge the ship
+                Clucker.poolMod.purge(sm.game.ships, ship, sm);
+            }
         }
         shot.lifespan = 0;
         return true;
