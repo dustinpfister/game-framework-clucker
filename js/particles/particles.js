@@ -57,7 +57,7 @@
             colors: opt.colors || [255,255,0],
             pps: 32,
             heading: Math.PI * 1.5,
-            maxLifespan: 1,
+            maxLifespan: opt.maxLifespan === undefined ? 1.5 : opt.maxLifespan,
             sx: opt.sx,
             sy: opt.sy,
             mess: opt.mess || 'None',
