@@ -36,9 +36,6 @@
 * (done) make the artical.js file from header-app be its own thing in the new js folder
 * (done) have header-app use the artical.js at the new /js folder location
 
-/js/particles:
-* (done) make the particles.js file from header-app be its own thing in the new js folder
-
 /lib/canvas/plugins/mod-pool.jd
 * (done) new circle, and pool-circles methods
 * (done) new 0.7.1 build for Clucker and use it for header-app
@@ -83,6 +80,9 @@
 * have a sheet for units with rest and fire animation
 * start a sheet for buttons, and have a pause button cell
 
+/js/particles:
+* (done) make the particles.js file from header-app be its own thing in the new js folder
+* new message EFFECT that can be used to display a message like 'EVADE', 'CRIT HIT', as well as damage and money amounts
 
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
