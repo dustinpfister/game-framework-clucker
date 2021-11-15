@@ -41,10 +41,25 @@
         }];
     };
 
+    // ship death effect
     EFFECTS.death = function (opt) {
         var i = opt.partCount,
         partOptions = EFFECTS.explosion(opt);
         return partOptions.concat(EFFECTS.debris(opt));
+    };
+
+    // message effect
+    EFFECTS.mess = function (opt) {
+        return [{
+            colors: opt.colors || [255,255,0],
+            maxLifespan: 1,
+            sx: opt.sx,
+            sy: opt.sy,
+            mess: opt.mess || 'None',
+            sizeChange: false,
+            w: opt.w || 128,
+            h: opt.h || 16
+        }];
     };
 
     // create particles object pool helper

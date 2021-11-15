@@ -128,7 +128,11 @@ Clucker.pushState(sm, {
             }
         }});
         canvasMod.draw(layers, 'pool-circles', 1, sm.game.shots);
-        canvasMod.draw(layers, 'pool-circles', 1, sm.game.particles);
+        canvasMod.draw(layers, 'pool-circles', 1, sm.game.particles, { spriteDraw: function(part, ctx){
+            if(part.active){
+                
+            }
+        }});
 
         // light effect
         var lightPer = (0.5 * (sm.shakeObj.secs / sm.shakeObj.secsMax)).toFixed(2);
