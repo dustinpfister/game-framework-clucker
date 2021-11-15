@@ -58,6 +58,12 @@
 * (done) have a homingUpdate helper that will adjust angle based on goming.target position
 * (done) fix the isshue with having a UNIT SIZE const in shot-homing.js
 
+/js/particles:
+* (done) make the particles.js file from header-app be its own thing in the new js folder
+* (done) new mess EFFECT that can be used to display a message like 'EVADE', 'CRIT HIT', as well as damage and money amounts
+* (done) new canvas plug in for particles.js
+
+
 /demos/header-app: 
 * (done) make art system for making a grid with values that are effected by page content
 * (done) use grid of values to set positions of units
@@ -73,16 +79,12 @@
 * (done) have ship deaths effect ambient light
 * (done) explosions for shots
 * (done) maxSize option for parts
-
-* ships have an evadePer value
-* when a ship is hit a roll is compared to evadePer, and if roll is lower, the ship does not take damage
+* (done) ships have an evade stat value
+* (done) when a ship is hit a roll is compared to evadePer, and if roll is lower, the ship does not take damage
 
 * have a sheet for units with rest and fire animation
 * start a sheet for buttons, and have a pause button cell
 
-/js/particles:
-* (done) make the particles.js file from header-app be its own thing in the new js folder
-* new message EFFECT that can be used to display a message like 'EVADE', 'CRIT HIT', as well as damage and money amounts
 
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
