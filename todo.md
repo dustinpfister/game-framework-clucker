@@ -90,10 +90,9 @@
     * (done) maxSize option for parts
     * (done) ships have an evade stat value
     * (done) when a ship is hit a roll is compared to evadePer, and if roll is lower, the ship does not take damage
+    * (done) start a sheet for buttons, and have a pause button cell
 
-    * start a sheet for buttons, and have a pause button cell
     * have a sheet for units with rest and fire animation
-
 
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
