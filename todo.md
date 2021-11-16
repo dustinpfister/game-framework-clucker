@@ -63,7 +63,6 @@
 * (done) new mess EFFECT that can be used to display a message like 'EVADE', 'CRIT HIT', as well as damage and money amounts
 * (done) new canvas plug in for particles.js
 
-
 /demos/header-app: 
 * (done) make art system for making a grid with values that are effected by page content
 * (done) use grid of values to set positions of units
@@ -85,6 +84,9 @@
 * have a sheet for units with rest and fire animation
 * start a sheet for buttons, and have a pause button cell
 
+/lib/canvas/plugins/buttons.js
+* button draw method looks for an imageIndex in button object and in the event there is one uses that in place of ctx.rect
+* button.imageStats object for buttons
 
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app

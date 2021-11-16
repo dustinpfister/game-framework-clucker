@@ -20,9 +20,17 @@ var sm = Clucker.createMain({
 Clucker.pushState(sm, {
     name: 'game',
     buttons: {
-        pause: {x: 800 - 64 - 8, y: 200, w: 64, h: 64, desc: 'pause', onClick: function(e, pos, sm){ 
-            sm.pause = !sm.pause; 
-        }}
+        pause: {
+            x: 800 - 64 - 8, 
+            y: 200, 
+            w: 64, 
+            h: 64, desc: 'pause',
+            imageIndex: 0,
+            imageStats: {x:32, y:0, w:32, h:32}, 
+            onClick: function(e, pos, sm){ 
+                sm.pause = !sm.pause; 
+            }
+        }
     },
     start: function(sm, canvasMod){
         // shake
@@ -103,9 +111,9 @@ Clucker.pushState(sm, {
     },
     draw: function(sm, layers, canvasMod){
         var canvas = layers[1].canvas;
-
+        // clear layer 1
         canvasMod.draw(layers, 'clear', 1);
-
+        // draw units
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.units, { spriteDraw: function(unit, ctx){
             if(unit.active){
                 ctx.strokeStyle = 'rgba(255,255,255,0.1)';
@@ -117,7 +125,7 @@ Clucker.pushState(sm, {
                 ctx.lineWidth = 1;
             }
         }});
-        // using new spriteDraw method to draw hpbars
+        // draw ships
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.ships, { spriteDraw: function(ship, ctx){
             if(ship.active){
                 ctx.fillStyle = 'rgba(128,128,128, 0.5)';
@@ -127,19 +135,17 @@ Clucker.pushState(sm, {
                 ctx.fillRect(ship.x, ship.y, Math.round(stat.hp / stat.hpMax * 16), 3);
             }
         }});
+        // shots
         canvasMod.draw(layers, 'pool-circles', 1, sm.game.shots);
-        //canvasMod.draw(layers, 'pool-circles', 1, sm.game.particles);
+        // particles
         canvasMod.draw(layers, 'part-pool', 1, sm.game.particles);
-
         // light effect
         var lightPer = (0.5 * (sm.shakeObj.secs / sm.shakeObj.secsMax)).toFixed(2);
         canvasMod.draw(sm.layers, 'background', 1, 'rgba(255,64,0,' + lightPer + ')');
-
-
         // draw money
         var dispText = { fillStyle: 'yellow', fontSize: 15};
         canvasMod.draw(layers, 'print', 1, Clucker.utils.formatNumber(sm.game.money), 10, canvas.height - 25, dispText);
-        // state buttons
+        // state buttons on layer 2
         canvasMod.draw(layers, 'clear', 2);
         canvasMod.draw(layers, 'stateButtons', 2, sm);
     },
