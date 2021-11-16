@@ -32,61 +32,68 @@
 
 ### (  ) - 0.7.1 - header-app content map, effect pools, root js folder
 
-/js/article:
-* (done) make the artical.js file from header-app be its own thing in the new js folder
-* (done) have header-app use the artical.js at the new /js folder location
+* Clucker Core (/lib): 
 
-/lib/canvas/plugins/mod-pool.jd
-* (done) new circle, and pool-circles methods
-* (done) new 0.7.1 build for Clucker and use it for header-app
-* (done) use new Clucker built in getDistanceToObj method
+    /lib/canvas/plugins/mod-pool.jd
+    * (done) new circle, and pool-circles methods
+    * (done) new 0.7.1 build for Clucker and use it for header-app
+    * (done) use new Clucker built in getDistanceToObj method
 
-/lib/gameframe/grameframe.js
-* (done) change background color of built in image loader
-* (done) have a new progress bar design for the built in loader
+    /lib/gameframe/grameframe.js
+    * (done) change background color of built in image loader
+    * (done) have a new progress bar design for the built in loader
 
-/lib/object-pool:
-* (done) make getDistanceToObj method in header-app part of the objectPool library
-* (done) use new getDistanceToObj method in header-app gameMod
-* (done) use new getDistanceToObj method in shot-homing.js
+    /lib/object-pool:
+    * (done) make getDistanceToObj method in header-app part of the objectPool library
+    * (done) use new getDistanceToObj method in header-app gameMod
+    * (done) use new getDistanceToObj method in shot-homing.js
 
-/js/shot-homing/
-* (done) start a stand alone module for cerating a shot pool with homing features starting with shot.js
-* (done) shotMod.createPool method that will create and return an Object pool for shots
-* (done) use shotMod.createPool in the game.js of header-app
-* (done) shot.data.homing object with target and active props
-* (done) have a homingUpdate helper that will adjust angle based on goming.target position
-* (done) fix the isshue with having a UNIT SIZE const in shot-homing.js
+    /lib/canvas/plugins/buttons.js
+    * (done) button draw method looks for an imageIndex in button object and in the event there is one uses that in place of ctx.rect
+    * (done) button.imageStats object for buttons
 
-/js/particles:
-* (done) make the particles.js file from header-app be its own thing in the new js folder
-* (done) new mess EFFECT that can be used to display a message like 'EVADE', 'CRIT HIT', as well as damage and money amounts
-* (done) new canvas plug in for particles.js
+* optional modules (/js):
 
-/demos/header-app: 
-* (done) make art system for making a grid with values that are effected by page content
-* (done) use grid of values to set positions of units
-* (done) start a /demos/header-app/lib/particles.js file to be used to create explostion and particles pools
-* (done) have a particles pool to be used for ship deaths and shot hits
-* (done) can set a Degrees Per Second value for a particle
-* (done) particle alpha effect
-* (done) have an EFFECTS object that will contain a number of functions that are used for the particlesMod.spawn method
-* (done) game state save on each ship death
-* (done) screen shake method in main.js
-* (done) can set what layers to shake
-* (done) see about adding a light layer that will be a current amount of ambent light
-* (done) have ship deaths effect ambient light
-* (done) explosions for shots
-* (done) maxSize option for parts
-* (done) ships have an evade stat value
-* (done) when a ship is hit a roll is compared to evadePer, and if roll is lower, the ship does not take damage
+    /js/shot-homing/
+    * (done) start a stand alone module for cerating a shot pool with homing features starting with shot.js
+    * (done) shotMod.createPool method that will create and return an Object pool for shots
+    * (done) use shotMod.createPool in the game.js of header-app
+    * (done) shot.data.homing object with target and active props
+    * (done) have a homingUpdate helper that will adjust angle based on goming.target position
+    * (done) fix the isshue with having a UNIT SIZE const in shot-homing.js
 
-* have a sheet for units with rest and fire animation
-* start a sheet for buttons, and have a pause button cell
+    /js/article:
+    * (done) make the artical.js file from header-app be its own thing in the new js folder
+    * (done) have header-app use the artical.js at the new /js folder location
 
-/lib/canvas/plugins/buttons.js
-* button draw method looks for an imageIndex in button object and in the event there is one uses that in place of ctx.rect
-* button.imageStats object for buttons
+    /js/particles:
+    * (done) make the particles.js file from header-app be its own thing in the new js folder
+    * (done) new mess EFFECT that can be used to display a message like 'EVADE', 'CRIT HIT', as well as damage and money amounts
+    * (done) new canvas plug in for particles.js
+
+* Demos (/demos)
+
+    /demos/header-app: 
+    * (done) make art system for making a grid with values that are effected by page content
+    * (done) use grid of values to set positions of units
+    * (done) start a /demos/header-app/lib/particles.js file to be used to create explostion and particles pools
+    * (done) have a particles pool to be used for ship deaths and shot hits
+    * (done) can set a Degrees Per Second value for a particle
+    * (done) particle alpha effect
+    * (done) have an EFFECTS object that will contain a number of functions that are used for the particlesMod.spawn method
+    * (done) game state save on each ship death
+    * (done) screen shake method in main.js
+    * (done) can set what layers to shake
+    * (done) see about adding a light layer that will be a current amount of ambent light
+    * (done) have ship deaths effect ambient light
+    * (done) explosions for shots
+    * (done) maxSize option for parts
+    * (done) ships have an evade stat value
+    * (done) when a ship is hit a roll is compared to evadePer, and if roll is lower, the ship does not take damage
+
+    * start a sheet for buttons, and have a pause button cell
+    * have a sheet for units with rest and fire animation
+
 
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
