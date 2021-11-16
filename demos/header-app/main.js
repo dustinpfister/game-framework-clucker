@@ -29,8 +29,9 @@ Clucker.pushState(sm, {
             desc: '',
             imageIndex: 2,
             imageStats: {x:0, y:0, w:32, h:32}, 
-            onClick: function(e, pos, sm){ 
-                sm.pause = !sm.pause; 
+            onClick: function(e, pos, sm, button){ 
+                sm.pause = !sm.pause;
+                button.imageStats.x = sm.pause ? 32 : 0;
             }
         }
     },
