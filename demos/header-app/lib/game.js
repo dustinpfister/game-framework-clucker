@@ -213,9 +213,10 @@
                 stat.range = UNIT_RANGE_MIN + Math.round( (UNIT_RANGE_MAX - UNIT_RANGE_MIN) * opt.unitRangePer );
                 // fire secs to find out if the unit will fire or not
                 obj.data.fireSecs = 0;
+                obj.data.fireActive = false;
                 // sheetkey
-                //obj.data.cellIndex = 0;
-                //obj.data.sheetKey = 'ship-type-one';
+                obj.data.cellIndex = 0;
+                obj.data.sheetKey = 'unit-type-one';
                 // start pos
                 var cell = sm.game.unitCells[sm.game.unitCellIndex];
                 if(cell){
@@ -236,23 +237,41 @@
                     unit.data.fireSecs %= unit.stat.fireRate;
                     var allTargets = getShipsInRange(unit, sm);
                     if(allTargets.length > 0){
-                        // just select first target for now
-                        var target = allTargets[0];
-                        // fire a shot
-                        Clucker.poolMod.spawn(sm.game.shots, sm, {
-                            x: unit.x + unit.w / 2 - 5,
-                            y: unit.y + unit.h / 2 - 5,
-                            a: shotMod.getShootAtAngle(unit, target, 'method1'),
-                            unit: unit,
-                            targetPool: sm.game.ships,
-                            onTargetHit: onTargetHit,
-                            homingActive: true,
-                            homingTarget: target,
-                            maxDist: unit.stat.range * UNIT_SIZE,
-                            maxDPS: 180
-                        });
+                        unit.data.fireActive = true;
+                        unit.data.cellIndex = 0;
                     }
                 }
+                // if fire active
+                if(unit.data.fireActive && unit.data.cellIndex === 3){
+                   
+                    
+                        var allTargets = getShipsInRange(unit, sm);
+                        if(allTargets.length > 0){
+                            // just select first target for now
+                            var target = allTargets[0];
+                            // fire a shot
+                            Clucker.poolMod.spawn(sm.game.shots, sm, {
+                                x: unit.x + unit.w / 2 - 5,
+                                y: unit.y + unit.h / 2 - 5,
+                                a: shotMod.getShootAtAngle(unit, target, 'method1'),
+                                unit: unit,
+                                targetPool: sm.game.ships,
+                                onTargetHit: onTargetHit,
+                                homingActive: true,
+                                homingTarget: target,
+                                maxDist: unit.stat.range * UNIT_SIZE,
+                                maxDPS: 180
+                            });
+                        }
+                        unit.data.fireActive = false;
+                        unit.data.cellIndex = 0;
+                    
+                }
+                var ci = unit.data.cellIndex;
+                unit.data.cellIndex = unit.data.fireActive ? ci += 1: ci -= 1;
+                unit.data.cellIndex = unit.data.cellIndex < 0 ? 0 : unit.data.cellIndex;
+                unit.data.cellIndex = unit.data.cellIndex > 3 ? 3 : unit.data.cellIndex;
+                
             }
         });
     };
