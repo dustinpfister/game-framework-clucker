@@ -242,13 +242,24 @@
                     ud.fireActive = true;
                 }
 
-                ud.cellIndex = 3;
+                //ud.cellIndex = 3;
+                ud.cellSecs += secs;
+                if(ud.cellSecs >= 1 / 2){
+                    if(ud.fireActive && ud.cellIndex < 3){
+                       ud.cellIndex += 1;
+                    }
+                    if(!ud.fireActive && ud.cellIndex > 0){
+                       ud.cellIndex -= 1;
+                    }
+                    ud.cellSecs = 0;
+                }
 
                 //ud.cellSecs += secs;
                 //if(ud.cellSecs >= 1 / 20){
                 //    ci = ud.cellIndex = ud.fireActive ? ci += 1: ci -= 1;
                 //    ud.cellIndex = ci < 0 ? 0 : ci;
                 //    ud.cellIndex = ci > 3 ? 3 : ci;
+                //    ud.cellSecs = 0;
                 //}
 
                 if(ud.fireActive && ud.cellIndex === 3){
