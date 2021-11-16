@@ -91,9 +91,9 @@
     * (done) ships have an evade stat value
     * (done) when a ship is hit a roll is compared to evadePer, and if roll is lower, the ship does not take damage
     * (done) start a sheet for buttons, and have a pause button cell
+    * (done) have a sheet for units with rest and fire animation
 
-    * have a sheet for units with rest and fire animation
-
+    * see about fixing bug with unit doors
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
