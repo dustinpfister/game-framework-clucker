@@ -93,8 +93,9 @@
     * (done) start a sheet for buttons, and have a pause button cell
     * (done) have a sheet for units with rest and fire animation
     * (done) see about fixing bug with unit doors
+    * (done) have more than one page with differing states of content, and update the nav bar up top
+    * (done) have a page-zero.html file that is a page with no content to test what happens when header-app runs on a page like that
 
-    * have more than one page with differing states of content, and update the nav bar up top
     * have a total kills count as part of the display
     * have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
     * have all values such as ship count, unit count and so forth be based on this single 'pageQuality' value
