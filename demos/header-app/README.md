@@ -2,18 +2,22 @@
 
 This is my first header-app demo, to which I think I will want to make at least a few of. One of these might be a demo that I will embed into the header of my website, or at least that is the idea with this. For now the general idea is to start out with something very basic to start out with that will serve as a nice clean starting point for this sort of thing when it comes to making additional projects based off of this.
 
-The features that should be working for this header-app:
+The actualy nature of this demo will then be a kind of true idle game that will just start and run in the header of a website. The game will take inot account the text content of the page that is is running on and use that to adjust various features of the game. So the sate of things will chnage from one page to another, but should always work the same on the same page, at least with certian things. Fot this header-app demo the general idea is to just have a number of attacking 'units' that spawn at various locations, and then a bunch of 'ships' that spawn from outside of the canvas. The ships then randomly move around, and the units attach the ships with 'shots'. I will want to refine things a little more beyond just that of course sense I do intend to make this at least a canadate for deplyment to my site. 
 
-* have an article module that can be used to create stats based on page content
-* use article stats to set certian values of the header-app such as the number of ships
-* have a logo layer that will be like the background layer, only it will be a logo overlay for the site
-* have a pause button for this that when clicked will case the game to stop
-* make sure that sm.fps is adjusted to be real low when paused, and set higher when not
-* I will want to use images for this, have a /img/ships/ folder for the first set of images
-* have an background image for image 0.png
-* have an overlay image for 1.png
-* images 3.png forward will then change depeding on the header-app demo for this one it will be sprites for the ships
-* have buttons images 
-* make sure to use an image to skin the pause button
+## basic features working
+
+The basic starting features that should be working for this header-app:
+
+* (done) have an article module that can be used to create stats based on page content
+* (done) use article stats to set certian values of the header-app such as the number of ships
+* (done) have a logo layer that will be like the background layer, only it will be a logo overlay for the site
+* (done) have a pause button for this that when clicked will case the game to stop
+* (done) make sure that sm.fps is adjusted to be real low when paused, and set higher when not
+* (done) I will want to use images for this, have a /img/ships/ folder for the first set of images
+* (done) have an background image for image 0.png
+* (done) have an overlay image for 1.png
+* (done) images 3.png forward will then change depeding on the header-app demo for this one it will be sprites for the ships
+* (done) have buttons images 
+* (done) make sure to use an image to skin the pause button
 
 
