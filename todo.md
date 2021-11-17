@@ -94,6 +94,11 @@
     * (done) have a sheet for units with rest and fire animation
     * (done) see about fixing bug with unit doors
 
+    * have more than one page with differing states of content, and update the nav bar up top
+    * have a total kills count as part of the display
+    * have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
+    * have all values such as ship count, unit count and so forth be based on this single 'pageQuality' value
+
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
 * (done) start out with just localStorage as a means to store save states
