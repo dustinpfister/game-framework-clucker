@@ -40,6 +40,13 @@
         var str = rawText(art);
         return trim(str.split(/[\W|_]+/));
     };
+    // get single page quality index in form of 0 to 1 value
+    var getPageQuality = function(art){
+        var maxWC = art.wordGrades.length > 0 ? art.wordGrades[art.wordGrades.length -1] : 10000,
+        per = art.wordCount / maxWC;
+        return per > 1 ? 1 : per;
+    };
+
     // get a main art object from the current document
     articleMod.getArtObj = function(opt){
         opt = opt || {};
@@ -62,6 +69,8 @@
             var per = art.wordCount / wc;
             return parseFloat( (per > 1 ? 1 : per).toFixed(4) );
         });
+        // single over all pageQuality index 0-1
+        art.pageQuality = getPageQuality(art);
         return art;
     };
     // new cell helper

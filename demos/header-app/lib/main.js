@@ -45,8 +45,9 @@ Clucker.pushState(sm, {
         };
         // using the hashPer to set the number of ships
         var art = articleMod.getArtObj({
-            wordGrades: [500, 1200, 5000]
+            wordGrades: [500, 1200, 6000]
         });
+        console.log(art.pageQuality);
         // creating a map for unit positons using the articalMod.createMap method
         var unitMap = articleMod.createMap(art);
         // try to get a save state for startMoney

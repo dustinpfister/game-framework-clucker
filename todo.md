@@ -65,6 +65,7 @@
     /js/article:
     * (done) make the article.js file from header-app be its own thing in the new js folder
     * (done) have header-app use the article.js at the new /js folder location
+    * (done) have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
 
     /js/particles:
     * (done) make the particles.js file from header-app be its own thing in the new js folder
@@ -96,10 +97,9 @@
     * (done) have more than one page with differing states of content, and update the nav bar up top
     * (done) have a page-zero.html file that is a page with no content to test what happens when header-app runs on a page like that
     * (done) have a total kills count as part of the display
+    * (done) save kill count as part of game save state
+    * (done) have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
 
-    * save kill count as part of game save state
-
-    * have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
     * have all values such as ship count, unit count and so forth be based on this single 'pageQuality' value
     * display a pageQualy bar as part of the bottom display
 
