@@ -342,7 +342,7 @@
     gameMod.create = function(opt){
         var game = {
             money: opt.money || 0,
-            kills: 0,
+            kills: opt.kills || 0,
             ships: createShips(opt),
             units: createUnits(opt),
             shots: shotMod.createPool(opt),

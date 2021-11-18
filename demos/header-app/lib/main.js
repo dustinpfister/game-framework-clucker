@@ -51,15 +51,18 @@ Clucker.pushState(sm, {
         var unitMap = articleMod.createMap(art);
         // try to get a save state for startMoney
         var save = Clucker.storage.get(sm.appName),
-        startMoney = 0;
+        startMoney = 0,
+        kills = 0;
         if(!save){
-            Clucker.storage.set(sm.appName, { money: startMoney });
+            Clucker.storage.set(sm.appName, { money: startMoney, kills: 0 });
         }else{
-            startMoney = save.money;
+            startMoney = save.money === undefined ? startMoney : save.money;
+            kills = save.kills === undefined ? kills : save.kills;
         }
         sm.game = gameMod.create({
            unitCells: unitMap.cells,
            money: startMoney,
+           kills: kills,
            shipCountPer: 1,
            shipHPPer: 0.1, //0.6,
            shipSpeedPer: 0.2,
@@ -69,7 +72,7 @@ Clucker.pushState(sm, {
            shotSpeedPer: 1,
            onShipDeath : function(game, ship, sm){
                console.log('ship death, saving...');
-               Clucker.storage.set(sm.appName, { money: game.money });
+               Clucker.storage.set(sm.appName, { money: game.money, kills: game.kills });
                sm.shakeObj.secs = sm.shakeObj.secsMax;
            }
         });
