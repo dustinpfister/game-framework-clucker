@@ -106,9 +106,11 @@
     * (done) display a pageQuality bar as part of the bottom display
     * (done) pageQuality bar label
 
+    * have an addtional page-long.html file
     * have a sheet for shots that is a simple 4 cell animation
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
     * use rangeByPer helper for all relavent values for ships and units
+    * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
 
 
 * Root (/)
