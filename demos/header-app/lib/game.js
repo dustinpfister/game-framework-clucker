@@ -285,7 +285,11 @@
                             maxDist: unit.stat.range * UNIT_SIZE,
                             maxDPS: 180,
                             sheetKey: 'shot-type-one',
-                            cellIndex: 0
+                            cellIndex: 0,
+                            cellIndexUpdate: function(shot, secs){
+                                shot.data.cellIndex += 1;
+                                shot.data.cellIndex %= 4;
+                            }
                         }); 
                     }
                 }

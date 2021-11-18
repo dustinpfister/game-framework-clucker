@@ -137,8 +137,9 @@
                 // stats
                 var stat = shot.stat = {};
                 // sheetkey
-                shot.data.cellIndex = spawnOpt.sheetKey || 0;
+                shot.data.cellIndex = spawnOpt.cellIndex || 0;
                 shot.data.sheetKey = spawnOpt.sheetKey || null;
+                shot.data.cellIndexUpdate = spawnOpt.cellIndexUpdate || function(shot, secs, sm, pool){ return 0; };
                 // start pos
                 shot.data.targetPool = spawnOpt.targetPool || null;
                 shot.data.onTargetHit = spawnOpt.onTargetHit || opt.onTargetHit || function(ship, shot){ console.log('hit');};
@@ -175,6 +176,9 @@
                 //if(d > shot.data.unit.stat.range * UNIT_SIZE){
                 if(d > shot.data.maxDist){
                     shot.lifespan = 0;
+                }
+                if(shot.data.sheetKey){
+                    shot.data.cellIndexUpdate(shot, secs, sm, pool);
                 }
             }
         });
