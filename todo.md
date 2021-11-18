@@ -55,16 +55,16 @@
 * optional modules (/js):
 
     /js/shot-homing/
-    * (done) start a stand alone module for cerating a shot pool with homing features starting with shot.js
+    * (done) start a stand alone module for creating a shot pool with homing features starting with shot.js
     * (done) shotMod.createPool method that will create and return an Object pool for shots
     * (done) use shotMod.createPool in the game.js of header-app
     * (done) shot.data.homing object with target and active props
-    * (done) have a homingUpdate helper that will adjust angle based on goming.target position
-    * (done) fix the isshue with having a UNIT SIZE const in shot-homing.js
+    * (done) have a homingUpdate helper that will adjust angle based on target position
+    * (done) fix the issue with having a UNIT SIZE const in shot-homing.js
 
     /js/article:
-    * (done) make the artical.js file from header-app be its own thing in the new js folder
-    * (done) have header-app use the artical.js at the new /js folder location
+    * (done) make the article.js file from header-app be its own thing in the new js folder
+    * (done) have header-app use the article.js at the new /js folder location
 
     /js/particles:
     * (done) make the particles.js file from header-app be its own thing in the new js folder
@@ -76,7 +76,7 @@
     /demos/header-app: 
     * (done) make art system for making a grid with values that are effected by page content
     * (done) use grid of values to set positions of units
-    * (done) start a /demos/header-app/lib/particles.js file to be used to create explostion and particles pools
+    * (done) start a /demos/header-app/lib/particles.js file to be used to create explosion and particles pools
     * (done) have a particles pool to be used for ship deaths and shot hits
     * (done) can set a Degrees Per Second value for a particle
     * (done) particle alpha effect
@@ -84,7 +84,7 @@
     * (done) game state save on each ship death
     * (done) screen shake method in main.js
     * (done) can set what layers to shake
-    * (done) see about adding a light layer that will be a current amount of ambent light
+    * (done) see about adding a light layer that will be a current amount of ambient light
     * (done) have ship deaths effect ambient light
     * (done) explosions for shots
     * (done) maxSize option for parts
@@ -99,6 +99,7 @@
     * have a total kills count as part of the display
     * have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
     * have all values such as ship count, unit count and so forth be based on this single 'pageQuality' value
+    * the display for the logo layer and all layers needs to be reactive when changing the size of the window
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
