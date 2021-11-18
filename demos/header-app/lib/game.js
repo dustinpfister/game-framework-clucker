@@ -287,8 +287,17 @@
                             sheetKey: 'shot-type-one',
                             cellIndex: 0,
                             cellIndexUpdate: function(shot, secs){
-                                shot.data.cellIndex += 1;
-                                shot.data.cellIndex %= 4;
+                                var sd = shot.data;
+                                sd.cellDir = sd.cellDir === undefined ? 1 : sd.cellDir;
+                                sd.cellIndex += 1 * sd.cellDir;
+                                if(sd.cellIndex >= 4){
+                                    sd.cellIndex = 3;
+                                    sd.cellDir = -1;
+                                }
+                                if(sd.cellIndex <= -1){
+                                    sd.cellIndex = 0;
+                                    sd.cellDir = 1;
+                                }
                             }
                         }); 
                     }
