@@ -2,7 +2,7 @@
 (function(gameMod){
 
     var SHIP_SPEEDS = [30, 45, 75, 100],
-    SHIP_COUNT_MAX = 40,
+    SHIP_COUNT_MAX = 20,
     SHIP_CELL_SIZE = 48,
     SHIP_HP_MIN = 1,
     SHIP_HP_MAX = 25,
@@ -74,9 +74,9 @@
                 obj.data.dirDelta = shipDirDelta();
                 // stats
                 var stat = obj.stat = {};
-                stat.hpMax = SHIP_HP_MIN + Math.round( (SHIP_HP_MAX - SHIP_HP_MIN) * opt.shipHPPer );
+                stat.hpMax = SHIP_HP_MIN + Math.round( (SHIP_HP_MAX - SHIP_HP_MIN) * opt.quality );
                 stat.hp = stat.hpMax;
-                stat.money = SHIP_MONEY_MIN + Math.round( (SHIP_MONEY_MAX - SHIP_MONEY_MIN) * opt.shipMoneyPer );
+                stat.money = SHIP_MONEY_MIN + Math.round( (SHIP_MONEY_MAX - SHIP_MONEY_MIN) * opt.quality );
                 stat.evade = SHIP_EVADE_MIN; // evade
                 // sheetkey
                 obj.data.cellIndex = 0;
@@ -91,7 +91,7 @@
                 obj.h = SHIP_CELL_SIZE;
                 // speed and heading
                 //obj.pps = SHIP_SPEEDS[Math.floor(Math.random() * SHIP_SPEEDS.length)];
-                obj.pps = SHIP_SPEEDS[ Math.round( (SHIP_SPEEDS.length - 1) * opt.shipSpeedPer ) ];
+                obj.pps = SHIP_SPEEDS[ Math.round( (SHIP_SPEEDS.length - 1) * opt.quality ) ];
                 obj.heading =  (Math.PI * 2) / 8 * obj.data.dir;
             },
             update: function (obj, pool, sm, secs){
@@ -202,7 +202,7 @@
         opt.shotSpeedPer = opt.shotSpeedPer === undefined ? 1 : opt.shotSpeedPer;
         return Clucker.poolMod.create({
             //count: UNIT_COUNT_MAX,
-            count: 1 + Math.round(opt.unitCountPer * (UNIT_COUNT_MAX - 1)),
+            count: 1 + Math.round(opt.quality * (UNIT_COUNT_MAX - 1)),
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool, sm){
@@ -210,9 +210,9 @@
                 // stats
                 var stat = obj.stat = {};
                 stat.fireRate = UNIT_FIRE_RATE;
-                var shotIndex = Math.round( (SHOTS_SPEEDS.length - 1) * opt.shotSpeedPer );
+                var shotIndex = Math.round( (SHOTS_SPEEDS.length - 1) * opt.quality );
                 stat.shotPPS = SHOTS_SPEEDS[shotIndex];
-                stat.range = UNIT_RANGE_MIN + Math.round( (UNIT_RANGE_MAX - UNIT_RANGE_MIN) * opt.unitRangePer );
+                stat.range = UNIT_RANGE_MIN + Math.round( (UNIT_RANGE_MAX - UNIT_RANGE_MIN) * opt.quality );
                 // fire secs to find out if the unit will fire or not
                 obj.data.fireSecs = 0;
                 obj.data.fireActive = false;
@@ -340,6 +340,8 @@
 
     // public create game state method
     gameMod.create = function(opt){
+        opt = opt || {};
+        opt.quality = opt.quality || 0;
         var game = {
             money: opt.money || 0,
             kills: opt.kills || 0,

@@ -64,13 +64,14 @@ Clucker.pushState(sm, {
            unitCells: unitMap.cells,
            money: startMoney,
            kills: kills,
-           shipCountPer: 1,
-           shipHPPer: 0.1, //0.6,
-           shipSpeedPer: 0.2,
-           shipMoneyPer: art.wordPers[2],
-           unitCountPer: art.wordPers[0],
-           unitRangePer: art.wordPers[1],
-           shotSpeedPer: 1,
+           quality: art.pageQuality,
+           //shipCountPer: 1,
+           //shipHPPer: 0.1, //0.6,
+           //shipSpeedPer: 0.2,
+           //shipMoneyPer: art.wordPers[2],
+           //unitCountPer: art.wordPers[0],
+           //unitRangePer: art.wordPers[1],
+           //shotSpeedPer: 1,
            onShipDeath : function(game, ship, sm){
                console.log('ship death, saving...');
                Clucker.storage.set(sm.appName, { money: game.money, kills: game.kills });
