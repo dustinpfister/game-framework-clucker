@@ -99,8 +99,8 @@
     * (done) have a total kills count as part of the display
     * (done) save kill count as part of game save state
     * (done) have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
+    * (done) have all values such as ship count, unit count and so forth be based on this single 'pageQuality' value
 
-    * have all values such as ship count, unit count and so forth be based on this single 'pageQuality' value
     * display a pageQualy bar as part of the bottom display
 
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
