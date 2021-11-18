@@ -45,7 +45,7 @@ Clucker.pushState(sm, {
         };
         // using the hashPer to set the number of ships
         var art = articleMod.getArtObj({
-            wordGrades: [500, 1200, 1800]
+            wordGrades: [100, 250, 1000]
         });
         console.log(art.pageQuality);
         // creating a map for unit positons using the articalMod.createMap method
@@ -119,7 +119,8 @@ Clucker.pushState(sm, {
         }
     },
     draw: function(sm, layers, canvasMod){
-        var canvas = layers[1].canvas;
+        var canvas = layers[1].canvas,
+        ctx = layers[1].ctx;
         // clear layer 1
         canvasMod.draw(layers, 'clear', 1);
         // draw units
@@ -152,10 +153,19 @@ Clucker.pushState(sm, {
         var lightPer = (0.5 * (sm.shakeObj.secs / sm.shakeObj.secsMax)).toFixed(2);
         canvasMod.draw(sm.layers, 'background', 1, 'rgba(255,64,0,' + lightPer + ')');
         // draw disp text
-        var dispText = { fillStyle: 'rgba(255,255,0,0.7)', fontSize: 12 };
+        var dispText = { fillStyle: 'rgba(255,255,0,0.7)', fontSize: 10 };
         var disp_money = Clucker.utils.formatNumber(sm.game.money);
+        canvasMod.draw(layers, 'print', 1, 'Money: ' + disp_money + ', Kills: ' + sm.game.kills, 10, canvas.height - 30, dispText);
 
-        canvasMod.draw(layers, 'print', 1, 'Money: ' + disp_money + ', Kills: ' + sm.game.kills, 10, canvas.height - 25, dispText);
+        // page quality bar
+        ctx.fillStyle = '#2a2a2a';
+        ctx.fillRect(10, canvas.height - 15, 100, 10);
+
+        ctx.fillStyle = '#8a8a00';
+        ctx.fillRect(10, canvas.height - 15, 100 * sm.game.quality, 10);
+
+        
+
         // state buttons on layer 2
         canvasMod.draw(layers, 'clear', 2);
         canvasMod.draw(layers, 'stateButtons', 2, sm);

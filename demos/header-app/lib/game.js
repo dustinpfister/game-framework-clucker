@@ -1,25 +1,25 @@
 
 (function(gameMod){
 
-    var SHIP_SPEEDS = [30, 45, 75, 100],
+    var SHIP_SPEEDS = [30, 45, 75, 90],
     SHIP_COUNT_MIN = 5,
     SHIP_COUNT_MAX = 30,
     SHIP_CELL_SIZE = 48,
     SHIP_HP_MIN = 1,
-    SHIP_HP_MAX = 25,
+    SHIP_HP_MAX = 10,
     SHIP_MONEY_MIN = 1,                     // min and max money values for ships
     SHIP_MONEY_MAX = 1000,
     SHIP_SPAWN_DIST_FROM_CENTER = 200,
     SHIP_SPAWN_RATE = 1.25,                 // spawn rate in secs
     SHIP_EVADE_MIN = 0.1,
     UNIT_COUNT_MIN = 3                     // MIN UNIT POOL SIZE (1 to 40) && <= UNIT_COUNT_MAX
-    UNIT_COUNT_MAX = 30,                    // MAX UNIT POOL SIZE (1 to 40)
+    UNIT_COUNT_MAX = 10,                    // MAX UNIT POOL SIZE (1 to 40)
     UNIT_SIZE = 50,
     UNIT_RANGE_MIN = 1.5,
     UNIT_RANGE_MAX = 5,
     UNIT_FIRE_RATE = 1,
     SHOTS_COUNT_MAX = 50,
-    SHOTS_SPEEDS = [70, 100, 120];
+    SHOTS_SPEEDS = [75, 100, 125];
 
 /********* ********** **********
   HELPERS
@@ -360,6 +360,7 @@
         var game = {
             money: opt.money || 0,
             kills: opt.kills || 0,
+            quality: opt.quality || 0,
             ships: createShips(opt),
             units: createUnits(opt),
             shots: shotMod.createPool(opt),
