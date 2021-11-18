@@ -2,7 +2,7 @@
 (function(gameMod){
 
     var SHIP_SPEEDS = [30, 45, 75, 100],
-    SHIP_COUNT_MAX = 20,
+    SHIP_COUNT_MAX = 30,
     SHIP_CELL_SIZE = 48,
     SHIP_HP_MIN = 1,
     SHIP_HP_MAX = 25,
@@ -64,7 +64,7 @@
         opt.shipMoneyPer = opt.shipMoneyPer === undefined ? 1 : opt.shipMoneyPer;
         opt.shipSpeedPer = opt.shipSpeedPer === undefined ? 1 : opt.shipSpeedPer;
         return Clucker.poolMod.create({
-            count: 1 + Math.round(opt.shipCountPer * (SHIP_COUNT_MAX - 1)),
+            count: 1 + Math.round(opt.quality * (SHIP_COUNT_MAX - 1)),
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool, sm){
