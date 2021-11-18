@@ -95,8 +95,7 @@
     * (done) add a 5.png that wil be used to skin shots
     * (done) have a shot sheet and use shot sheet with shots
     * (done) animate shot sheet
-
-    * have an addtional page-long.html file that will have a word count that is the high.
+    * (done) have an addtional page-long.html file that will have a word count that is the high.
 
     * use rangeByPer helper for all relavent values for ships and units
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
