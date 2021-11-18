@@ -12,13 +12,14 @@
     SHIP_SPAWN_DIST_FROM_CENTER = 200,
     SHIP_SPAWN_RATE = 1.25,                 // spawn rate in secs
     SHIP_EVADE_MIN = 0.1,
-    UNIT_COUNT_MAX = 10,                    // MAX UNIT POOL SIZE (1 to 40)
+    UNIT_COUNT_MIN = 3                     // MIN UNIT POOL SIZE (1 to 40) && <= UNIT_COUNT_MAX
+    UNIT_COUNT_MAX = 30,                    // MAX UNIT POOL SIZE (1 to 40)
     UNIT_SIZE = 50,
     UNIT_RANGE_MIN = 1.5,
     UNIT_RANGE_MAX = 5,
     UNIT_FIRE_RATE = 1,
     SHOTS_COUNT_MAX = 50,
-    SHOTS_SPEEDS = [50, 70, 120];
+    SHOTS_SPEEDS = [70, 100, 120];
 
 /********* ********** **********
   HELPERS
@@ -28,7 +29,7 @@
         per = per === undefined ? 0 : per;
         nMin = nMin === undefined ? 0 : nMin;
         nMax = nMax === undefined ? 1 : nMax;
-        return nMin + Math.round(per * (nMin - nMax));
+        return nMin + Math.round(per * (nMax - nMin));
     };
 
 
@@ -215,7 +216,8 @@
         opt.shotSpeedPer = opt.shotSpeedPer === undefined ? 1 : opt.shotSpeedPer;
         return Clucker.poolMod.create({
             //count: UNIT_COUNT_MAX,
-            count: 1 + Math.round(opt.quality * (UNIT_COUNT_MAX - 1)),
+            //count: 1 + Math.round(opt.quality * (UNIT_COUNT_MAX - 1)),
+            count: rangeByPer(opt.quality, UNIT_COUNT_MIN, UNIT_COUNT_MAX), 
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool, sm){
@@ -369,6 +371,9 @@
             cy: 150,
             spawnSecs: 0
         };
+
+console.log(game.units.objects.length);
+
         return game;
     };
 
