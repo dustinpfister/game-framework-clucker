@@ -101,6 +101,9 @@
     * have all values such as ship count, unit count and so forth be based on this single 'pageQuality' value
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
 
+* Root (/)
+    * update README.md to reflect Clucker 0.7.1
+
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
 * (done) start out with just localStorage as a means to store save states
