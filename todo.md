@@ -12,8 +12,11 @@
 * Start a new grid module for clucker.js
 * Start a grid-basic demo
 
-/js/shot-homing/
 
+* optional modules (/js):
+
+/js/grid-core/grid.js
+* start a new grid module
 
 /js/screen-shake/screen-shake.js
 * start a stand alone module for the screen shake feature that I have made for header-app.
@@ -23,7 +26,11 @@
 * a standard state project will create and return state objects that can be used in final game projects
 * start out with a 'save-menu' standard-states project for quickly createing a save state menu for a game
 
+* Demos (/demos):
 
+    /demos/header-app-green-world
+    * using header-app as a quide start a all new header-app that will involve a 2d map
+    * use new grid module for this
 
 
 <!-- ########## ########## -->
@@ -52,7 +59,7 @@
     * (done) new mess EFFECT that can be used to display a message like 'EVADE', 'CRIT HIT', as well as damage and money amounts
     * (done) new canvas plug in for particles.js
 
-* Demos (/demos)
+* Demos (/demos):
 
     /demos/header-app: 
     * (done) make art system for making a grid with values that are effected by page content
@@ -94,6 +101,13 @@
 
     * set custom header-app-layer className using new canvasMod prop
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
+
+    /demos/header-app-space-war
+    * start out with header-app source to create new project bassed off of that
+    * do away with random positioning of units in the event of zero page content in favor of a set pattern for units
+    * new units.js file
+    * two unit types 0-blaster, and 1-silo (old unit from header-app)
+
 
 * Clucker Core (/lib): 
 
