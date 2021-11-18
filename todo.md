@@ -92,6 +92,10 @@
     * (done) UNIT-COUNT-MIN and using rangeByPer helper for unit count
     * (done) display a pageQuality bar as part of the bottom display
     * (done) pageQuality bar label
+    * (done) add a 5.png that wil be used to skin shots
+    * (done) have a shot sheet and use shot sheet with shots
+
+    * animate shot sheet
 
     * have an addtional page-long.html file
     * have a sheet for shots that is a simple 4 cell animation

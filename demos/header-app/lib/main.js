@@ -11,9 +11,9 @@ var sm = Clucker.createMain({
     loader: {
         startState: 'game',
         images: {
-            // 0.png-background, 1.png-logo, 2.png-buttons, 3.png-ships 4.png-units
+            // 0.png-background, 1.png-logo, 2.png-buttons, 3.png-ships, 4.png-units, 5.png-shots
             baseURL: '/demos/header-app/img/ships',
-            count: 5
+            count: 6
         }
     }
 });
@@ -75,6 +75,7 @@ Clucker.pushState(sm, {
         // sprite sheet
         canvasMod.createSpriteSheetGrid(sm.layers, 'ship-type-one', 3, 32, 32);
         canvasMod.createSpriteSheetGrid(sm.layers, 'unit-type-one', 4, 32, 32);
+        canvasMod.createSpriteSheetGrid(sm.layers, 'shot-type-one', 5, 32, 32);
         // sm.pause
         sm.pause = false;
     },
@@ -137,7 +138,7 @@ Clucker.pushState(sm, {
             }
         }});
         // shots
-        canvasMod.draw(layers, 'pool-circles', 1, sm.game.shots);
+        canvasMod.draw(layers, 'pool-sprite', 1, sm.game.shots);
         // particles
         canvasMod.draw(layers, 'part-pool', 1, sm.game.particles);
         // light effect

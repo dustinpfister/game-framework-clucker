@@ -137,8 +137,8 @@
                 // stats
                 var stat = shot.stat = {};
                 // sheetkey
-                //obj.data.cellIndex = 0;
-                //obj.data.sheetKey = 'ship-type-one';
+                shot.data.cellIndex = spawnOpt.sheetKey || 0;
+                shot.data.sheetKey = spawnOpt.sheetKey || null;
                 // start pos
                 shot.data.targetPool = spawnOpt.targetPool || null;
                 shot.data.onTargetHit = spawnOpt.onTargetHit || opt.onTargetHit || function(ship, shot){ console.log('hit');};
@@ -169,7 +169,6 @@
                 updateHoming(shot, secs);
                 // hit check
                 var targetPool = shot.data.targetPool || opt.targetPool || null;
-                //onTargetHit = shot.data.onTargetHit || opt.onTargetHit || function(ship, shot){ console.log('hit');};
                 hitCheck(shot, targetPool, shot.data.onTargetHit);
                 // purge shot if distance is to far
                 var d = Clucker.poolMod.getDistanceToObj(shot, shot.data.unit);

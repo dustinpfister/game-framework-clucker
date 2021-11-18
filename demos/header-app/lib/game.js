@@ -283,7 +283,9 @@
                             homingActive: true,
                             homingTarget: target,
                             maxDist: unit.stat.range * UNIT_SIZE,
-                            maxDPS: 180
+                            maxDPS: 180,
+                            sheetKey: 'shot-type-one',
+                            cellIndex: 0
                         }); 
                     }
                 }
@@ -305,7 +307,9 @@
             quality: opt.quality || 0,
             ships: createShips(opt),
             units: createUnits(opt),
-            shots: shotMod.createPool(opt),
+            shots: shotMod.createPool({
+                count: 100
+            }),
             particles: particlesMod.create(),
             unitCellIndex: 0,
             unitCells: opt.unitCells || [],
