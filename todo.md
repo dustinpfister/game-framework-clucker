@@ -104,11 +104,12 @@
     * (done) SHIP-COUNT-MIN and using rangeByPer helper for ship count
     * (done) UNIT-COUNT-MIN and using rangeByPer helper for unit count
     * (done) display a pageQuality bar as part of the bottom display
+    * (done) pageQuality bar label
 
-    * pageQuality bar label and relavent info displayed
-
+    * have a sheet for shots that is a simple 4 cell animation
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
     * use rangeByPer helper for all relavent values for ships and units
+
 
 * Root (/)
     * update README.md to reflect Clucker 0.7.1
