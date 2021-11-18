@@ -100,15 +100,15 @@
     * (done) save kill count as part of game save state
     * (done) have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
     * (done) have all values such as ship count, unit count and so forth be based on this single 'pageQuality' value
-
-
     * (done) rangeByPer helper that will return a number given a 0-1 value with a min and max as arguments
     * (done) SHIP-COUNT-MIN and using rangeByPer helper for ship count
-    * UNIT-COUNT-MIN and using rangeByPer helper for unit count
+    * (done) UNIT-COUNT-MIN and using rangeByPer helper for unit count
+    * (done) display a pageQuality bar as part of the bottom display
 
-    * display a pageQualy bar as part of the bottom display
+    * pageQuality bar label and relavent info displayed
 
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
+    * use rangeByPer helper for all relavent values for ships and units
 
 * Root (/)
     * update README.md to reflect Clucker 0.7.1

@@ -158,17 +158,18 @@ Clucker.pushState(sm, {
         canvasMod.draw(layers, 'print', 1, 'Money: ' + disp_money + ', Kills: ' + sm.game.kills, 10, canvas.height - 30, dispText);
 
         // page quality bar
+        canvasMod.draw(layers, 'print', 1, 'Page Quality: ', 10, canvas.height - 15, dispText);
         ctx.fillStyle = '#000000';
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.rect(10, canvas.height - 15, 100, 10);
+        ctx.rect(75, canvas.height - 15, 100, 10);
         ctx.fill();
         ctx.stroke();
         ctx.fillStyle = '#8a8a00';
         ctx.strokeStyle = '#ffff00';
         ctx.beginPath();
-        ctx.rect(10, canvas.height - 15, 100 * sm.game.quality, 10);
+        ctx.rect(75, canvas.height - 15, 100 * sm.game.quality, 10);
         ctx.fill();
         ctx.stroke();
         
