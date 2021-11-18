@@ -45,9 +45,8 @@ Clucker.pushState(sm, {
         };
         // using the hashPer to set the number of ships
         var art = articleMod.getArtObj({
-            wordGrades: [100, 250, 1000]
+            wordGrades: [500, 1000, 1800, 2400]
         });
-        console.log(art.pageQuality);
         // creating a map for unit positons using the articalMod.createMap method
         var unitMap = articleMod.createMap(art);
         // try to get a save state for startMoney
@@ -65,15 +64,7 @@ Clucker.pushState(sm, {
            money: startMoney,
            kills: kills,
            quality: art.pageQuality,
-           //shipCountPer: 1,
-           //shipHPPer: 0.1, //0.6,
-           //shipSpeedPer: 0.2,
-           //shipMoneyPer: art.wordPers[2],
-           //unitCountPer: art.wordPers[0],
-           //unitRangePer: art.wordPers[1],
-           //shotSpeedPer: 1,
            onShipDeath : function(game, ship, sm){
-               console.log('ship death, saving...');
                Clucker.storage.set(sm.appName, { money: game.money, kills: game.kills });
                sm.shakeObj.secs = sm.shakeObj.secsMax;
            }
