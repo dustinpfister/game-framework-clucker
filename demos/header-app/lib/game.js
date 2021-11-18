@@ -137,6 +137,8 @@
             if(stat.hp === 0){
                 // step money
                 sm.game.money += stat.money;
+                // step kills
+                sm.game.kills += 1;
                 // call on ship death method
                 sm.game.onShipDeath(sm.game, ship, sm);
                 // spawn particles for ship death
@@ -340,6 +342,7 @@
     gameMod.create = function(opt){
         var game = {
             money: opt.money || 0,
+            kills: 0,
             ships: createShips(opt),
             units: createUnits(opt),
             shots: shotMod.createPool(opt),

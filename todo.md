@@ -95,10 +95,14 @@
     * (done) see about fixing bug with unit doors
     * (done) have more than one page with differing states of content, and update the nav bar up top
     * (done) have a page-zero.html file that is a page with no content to test what happens when header-app runs on a page like that
+    * (done) have a total kills count as part of the display
 
-    * have a total kills count as part of the display
+    * save kill count as part of game save state
+
     * have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
     * have all values such as ship count, unit count and so forth be based on this single 'pageQuality' value
+    * display a pageQualy bar as part of the bottom display
+
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
 
 * Root (/)

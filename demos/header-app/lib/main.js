@@ -146,9 +146,11 @@ Clucker.pushState(sm, {
         // light effect
         var lightPer = (0.5 * (sm.shakeObj.secs / sm.shakeObj.secsMax)).toFixed(2);
         canvasMod.draw(sm.layers, 'background', 1, 'rgba(255,64,0,' + lightPer + ')');
-        // draw money
-        var dispText = { fillStyle: 'yellow', fontSize: 15};
-        canvasMod.draw(layers, 'print', 1, Clucker.utils.formatNumber(sm.game.money), 10, canvas.height - 25, dispText);
+        // draw disp text
+        var dispText = { fillStyle: 'rgba(255,255,0,0.7)', fontSize: 12 };
+        var disp_money = Clucker.utils.formatNumber(sm.game.money);
+
+        canvasMod.draw(layers, 'print', 1, 'Money: ' + disp_money + ', Kills: ' + sm.game.kills, 10, canvas.height - 25, dispText);
         // state buttons on layer 2
         canvasMod.draw(layers, 'clear', 2);
         canvasMod.draw(layers, 'stateButtons', 2, sm);
