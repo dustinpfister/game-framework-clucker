@@ -32,26 +32,6 @@
 
 ### (  ) - 0.7.1 - header-app content map, effect pools, root js folder
 
-* Clucker Core (/lib): 
-
-    /lib/canvas/plugins/mod-pool.jd
-    * (done) new circle, and pool-circles methods
-    * (done) new 0.7.1 build for Clucker and use it for header-app
-    * (done) use new Clucker built in getDistanceToObj method
-
-    /lib/gameframe/grameframe.js
-    * (done) change background color of built in image loader
-    * (done) have a new progress bar design for the built in loader
-
-    /lib/object-pool:
-    * (done) make getDistanceToObj method in header-app part of the objectPool library
-    * (done) use new getDistanceToObj method in header-app gameMod
-    * (done) use new getDistanceToObj method in shot-homing.js
-
-    /lib/canvas/plugins/buttons.js
-    * (done) button draw method looks for an imageIndex in button object and in the event there is one uses that in place of ctx.rect
-    * (done) button.imageStats object for buttons
-
 * optional modules (/js):
 
     /js/shot-homing/
@@ -108,10 +88,35 @@
 
     * have an addtional page-long.html file
     * have a sheet for shots that is a simple 4 cell animation
-    * the display for the logo layer and all layers needs to be reactive when changing the size of the window
+
     * use rangeByPer helper for all relavent values for ships and units
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
 
+    * set custom header-app-layer className using new canvasMod prop
+    * the display for the logo layer and all layers needs to be reactive when changing the size of the window
+
+* Clucker Core (/lib): 
+
+    /lib/canvas/plugins/mod-pool.jd
+    * (done) new circle, and pool-circles methods
+    * (done) new 0.7.1 build for Clucker and use it for header-app
+    * (done) use new Clucker built in getDistanceToObj method
+
+    /lib/gameframe/grameframe.js
+    * (done) change background color of built in image loader
+    * (done) have a new progress bar design for the built in loader
+
+    /lib/object-pool:
+    * (done) make getDistanceToObj method in header-app part of the objectPool library
+    * (done) use new getDistanceToObj method in header-app gameMod
+    * (done) use new getDistanceToObj method in shot-homing.js
+
+    /lib/canvas/plugins/buttons.js
+    * (done) button draw method looks for an imageIndex in button object and in the event there is one uses that in place of ctx.rect
+    * (done) button.imageStats object for buttons
+
+    /lib/canvas/canvas.js
+    * option for canvasMod.createLayerStack that can be be used to set the className for all layer dom element
 
 * Root (/)
     * update README.md to reflect Clucker 0.7.1
