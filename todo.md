@@ -39,7 +39,31 @@
 
 ### (  ) - 0.7.1 - header-app content map, effect pools, root js folder
 
-* optional modules (/js):
+* Clucker Core (/lib): 
+
+    /lib/canvas/plugins/mod-pool.jd
+    * (done) new circle, and pool-circles methods
+    * (done) new 0.7.1 build for Clucker and use it for header-app
+    * (done) use new Clucker built in getDistanceToObj method
+
+    /lib/gameframe/grameframe.js
+    * (done) change background color of built in image loader
+    * (done) have a new progress bar design for the built in loader
+    * (done) added an option for smCreateMain that allows for setting a custom class name for layers when creating the main sm object
+
+    /lib/object-pool:
+    * (done) make getDistanceToObj method in header-app part of the objectPool library
+    * (done) use new getDistanceToObj method in header-app gameMod
+    * (done) use new getDistanceToObj method in shot-homing.js
+
+    /lib/canvas/plugins/buttons.js
+    * (done) button draw method looks for an imageIndex in button object and in the event there is one uses that in place of ctx.rect
+    * (done) button.imageStats object for buttons
+
+    /lib/canvas/canvas.js
+    * (done) option for canvasMod.createLayerStack that can be be used to set the className for all layer dom elements
+
+* Optional Modules (/js):
 
     /js/shot-homing/
     * (done) start a stand alone module for creating a shot pool with homing features starting with shot.js
@@ -97,12 +121,13 @@
     * (done) animate shot sheet
     * (done) have an addtional page-long.html file that will have a word count that is the high.
 
+* TODO: Demos (/demos)
+
+    /demos/header-app/
     * use rangeByPer helper for all relavent values for ships and units
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
-
     * set custom header-app-layer className using new canvasMod prop
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
-
     * adjust death explosion so that it is centered with the ship sprite
 
     /demos/header-app-space-war
@@ -111,31 +136,7 @@
     * new units.js file
     * two unit types 0-blaster, and 1-silo (old unit from header-app)
 
-
-* Clucker Core (/lib): 
-
-    /lib/canvas/plugins/mod-pool.jd
-    * (done) new circle, and pool-circles methods
-    * (done) new 0.7.1 build for Clucker and use it for header-app
-    * (done) use new Clucker built in getDistanceToObj method
-
-    /lib/gameframe/grameframe.js
-    * (done) change background color of built in image loader
-    * (done) have a new progress bar design for the built in loader
-
-    /lib/object-pool:
-    * (done) make getDistanceToObj method in header-app part of the objectPool library
-    * (done) use new getDistanceToObj method in header-app gameMod
-    * (done) use new getDistanceToObj method in shot-homing.js
-
-    /lib/canvas/plugins/buttons.js
-    * (done) button draw method looks for an imageIndex in button object and in the event there is one uses that in place of ctx.rect
-    * (done) button.imageStats object for buttons
-
-    /lib/canvas/canvas.js
-    * option for canvasMod.createLayerStack that can be be used to set the className for all layer dom element
-
-* Root (/)
+* TODO: Root (/)
     * update README.md to reflect Clucker 0.7.1
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app

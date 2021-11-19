@@ -3,10 +3,11 @@ console.log('Using clucker v' + Clucker.ver);
 // main state machine object
 var sm = Clucker.createMain({
     appName: 'header-app',
+    layerClassName: 'canvas_layer_header_app',
     canvasContainer: '#logo-wrap', //'#banner',
     width: 800,
     height: 300,
-    canvasLayers: 4, // 0-background, 1-forground, 2-buttons, 3-logo
+    canvasLayers: 4, // 0-background, 1-foreground, 2-buttons, 3-logo
     game: {},
     loader: {
         startState: 'game',
@@ -36,6 +37,9 @@ Clucker.pushState(sm, {
         }
     },
     start: function(sm, canvasMod){
+		
+		console.log(sm.layers[0].canvas.className);
+		
         // shake
         sm.shakeObj = {
             secs: 0,

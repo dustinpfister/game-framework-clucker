@@ -661,7 +661,7 @@ try{
         layer.canvas = document.createElement('canvas');
         layer.ctx = layer.canvas.getContext('2d');
         // assign the 'canvas_layer' className
-        layer.canvas.className = 'canvas_layer';
+        layer.canvas.className = opt.layerClassName || '';
         // set native width
         layer.canvas.width = opt.width === undefined ? 320 : opt.width;
         layer.canvas.height = opt.height === undefined ? 240 : opt.height;
@@ -703,7 +703,8 @@ try{
             container: stack.container,
             append: true,
             width: opt.width || 320,
-            height: opt.height || 240
+            height: opt.height || 240,
+            layerClassName: opt.layerClassName || 'canvas_layer'
         };
         // create layers for the stack
         var i = 0;
@@ -1217,7 +1218,8 @@ canvasMod.load({
                 events: sm.events,
                 state: sm,
                 width: opt.width,
-                height: opt.height
+                height: opt.height,
+                layerClassName: opt.layerClassName
             });
         sm.debugMode = opt.debugMode || false;
         // value that should not be set by options
