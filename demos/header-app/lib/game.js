@@ -72,13 +72,8 @@
     // create ships object pool helper
     var createShips = function(opt){
         opt = opt || {};
-        opt.shipCountPer = opt.shipCountPer === undefined ? 1 : opt.shipCountPer;
-        opt.shipHPPer = opt.shipHPPer === undefined ? 1 : opt.shipHPPer;
-        opt.shipMoneyPer = opt.shipMoneyPer === undefined ? 1 : opt.shipMoneyPer;
-        opt.shipSpeedPer = opt.shipSpeedPer === undefined ? 1 : opt.shipSpeedPer;
         return Clucker.poolMod.create({
-            count: rangeByPer(opt.quality, SHIP_COUNT_MIN, SHIP_COUNT_MAX), 
-            //count: SHIP_COUNT_MIN + Math.round(opt.quality * (SHIP_COUNT_MAX - SHIP_COUNT_MIN)),
+            count: rangeByPer(opt.quality, SHIP_COUNT_MIN, SHIP_COUNT_MAX),
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool, sm){
@@ -89,10 +84,8 @@
                 // stats
                 var stat = obj.stat = {};
                 stat.hpMax = rangeByPer(opt.quality, SHIP_HP_MIN, SHIP_HP_MAX);
-              //stat.hpMax = SHIP_HP_MIN + Math.round( (SHIP_HP_MAX - SHIP_HP_MIN) * opt.quality );
                 stat.hp = stat.hpMax;
                 stat.money = rangeByPer(opt.quality, SHIP_MONEY_MIN, SHIP_MONEY_MAX);
-              //stat.money = SHIP_MONEY_MIN + Math.round( (SHIP_MONEY_MAX - SHIP_MONEY_MIN) * opt.quality );
                 stat.evade = SHIP_EVADE_MIN; // evade
                 // sheetkey
                 obj.data.cellIndex = 0;
@@ -106,7 +99,6 @@
                 obj.w = SHIP_CELL_SIZE;
                 obj.h = SHIP_CELL_SIZE;
                 // speed and heading
-                //obj.pps = SHIP_SPEEDS[Math.floor(Math.random() * SHIP_SPEEDS.length)];
                 obj.pps = SHIP_SPEEDS[ Math.round( (SHIP_SPEEDS.length - 1) * opt.quality ) ];
                 obj.heading =  (Math.PI * 2) / 8 * obj.data.dir;
             },
@@ -213,12 +205,7 @@
     // create units object pool helper
     var createUnits = function(opt){
         opt = opt || {};
-        opt.unitCountPer = opt.unitCountPer === undefined ? 1 : opt.unitCountPer;
-        opt.unitRangePer = opt.unitRangePer === undefined ? 1 : opt.unitRangePer;
-        opt.shotSpeedPer = opt.shotSpeedPer === undefined ? 1 : opt.shotSpeedPer;
         return Clucker.poolMod.create({
-            //count: UNIT_COUNT_MAX,
-            //count: 1 + Math.round(opt.quality * (UNIT_COUNT_MAX - 1)),
             count: rangeByPer(opt.quality, UNIT_COUNT_MIN, UNIT_COUNT_MAX), 
             secsCap: 0.25,
             disableLifespan: true,
@@ -230,7 +217,6 @@
                 var shotIndex = Math.round( (SHOTS_SPEEDS.length - 1) * opt.quality );
                 stat.shotPPS = SHOTS_SPEEDS[shotIndex];
                 stat.range = rangeByPer(opt.quality, UNIT_RANGE_MIN, UNIT_RANGE_MAX);
-              //stat.range = UNIT_RANGE_MIN + Math.round( (UNIT_RANGE_MAX - UNIT_RANGE_MIN) * opt.quality );
                 // fire secs to find out if the unit will fire or not
                 obj.data.fireSecs = 0;
                 obj.data.fireActive = false;
