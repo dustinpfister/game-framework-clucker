@@ -88,9 +88,11 @@
                 obj.data.dirDelta = shipDirDelta();
                 // stats
                 var stat = obj.stat = {};
-                stat.hpMax = SHIP_HP_MIN + Math.round( (SHIP_HP_MAX - SHIP_HP_MIN) * opt.quality );
+                stat.hpMax = rangeByPer(opt.quality, SHIP_HP_MIN, SHIP_HP_MAX);
+              //stat.hpMax = SHIP_HP_MIN + Math.round( (SHIP_HP_MAX - SHIP_HP_MIN) * opt.quality );
                 stat.hp = stat.hpMax;
-                stat.money = SHIP_MONEY_MIN + Math.round( (SHIP_MONEY_MAX - SHIP_MONEY_MIN) * opt.quality );
+                stat.money = rangeByPer(opt.quality, SHIP_MONEY_MIN, SHIP_MONEY_MAX);
+              //stat.money = SHIP_MONEY_MIN + Math.round( (SHIP_MONEY_MAX - SHIP_MONEY_MIN) * opt.quality );
                 stat.evade = SHIP_EVADE_MIN; // evade
                 // sheetkey
                 obj.data.cellIndex = 0;
@@ -227,7 +229,8 @@
                 stat.fireRate = UNIT_FIRE_RATE;
                 var shotIndex = Math.round( (SHOTS_SPEEDS.length - 1) * opt.quality );
                 stat.shotPPS = SHOTS_SPEEDS[shotIndex];
-                stat.range = UNIT_RANGE_MIN + Math.round( (UNIT_RANGE_MAX - UNIT_RANGE_MIN) * opt.quality );
+                stat.range = rangeByPer(opt.quality, UNIT_RANGE_MIN, UNIT_RANGE_MAX);
+              //stat.range = UNIT_RANGE_MIN + Math.round( (UNIT_RANGE_MAX - UNIT_RANGE_MIN) * opt.quality );
                 // fire secs to find out if the unit will fire or not
                 obj.data.fireSecs = 0;
                 obj.data.fireActive = false;
