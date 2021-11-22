@@ -121,11 +121,12 @@
     * (done) animate shot sheet
     * (done) have an addtional page-long.html file that will have a word count that is the high.
     * (done) set custom header-app-layer className using new canvasMod prop
+    * (done) use rangeByPer helper for all relavent values for ships and units
+    * (done) new const value for unit cell fps
 
 * TODO: Demos (/demos)
 
     /demos/header-app/
-    * use rangeByPer helper for all relavent values for ships and units
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
     * adjust death explosion so that it is centered with the ship sprite

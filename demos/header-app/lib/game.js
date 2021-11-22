@@ -17,6 +17,7 @@
     UNIT_SIZE = 50,
     UNIT_RANGE_MIN = 1.5,
     UNIT_RANGE_MAX = 5,
+    UNIT_CELL_FPS = 12,
     UNIT_FIRE_RATE = 1,
     SHOTS_COUNT_MAX = 50,
     SHOTS_SPEEDS = [75, 100, 125];
@@ -247,7 +248,7 @@
                     ud.fireActive = true;
                 }
                 ud.cellSecs += secs;
-                if(ud.cellSecs >= 1 / 2){
+                if(ud.cellSecs >= 1 / UNIT_CELL_FPS){
                     if(ud.fireActive && ud.cellIndex < 3){
                        ud.cellIndex += 1;
                     }
