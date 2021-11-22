@@ -1,7 +1,7 @@
 
 (function(gameMod){
 
-    var SHIP_SPEEDS = [30, 45, 75, 90],
+    var SHIP_SPEEDS = [30, 45, 65, 80],
     SHIP_COUNT_MIN = 5,
     SHIP_COUNT_MAX = 30,
     SHIP_CELL_SIZE = 48,
@@ -20,7 +20,7 @@
     UNIT_CELL_FPS = 12,
     UNIT_FIRE_RATE = 1,
     SHOTS_COUNT_MAX = 50,
-    SHOTS_SPEEDS = [75, 100, 125];
+    SHOTS_SPEEDS = [85, 110, 135];
 
 /********* ********** **********
   HELPERS
