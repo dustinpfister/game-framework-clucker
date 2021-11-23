@@ -126,8 +126,12 @@
 
 * TODO: Demos (/demos)
 
+    /lib/utils/
+    * utils.valueByRange based off of rangeByPer helper
+
     /demos/header-app/
     * have a lib/ships.js file to be used in game.js
+    * use Clucker.utils.valueByRange in ships.js
     * have a lib/units.js file to be used in game.js
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window

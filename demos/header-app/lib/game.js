@@ -37,7 +37,7 @@
 /********* ********** **********
   SHIPS
 ********** ********** *********/
-
+/*
     // set ship dir
     var shipSetDir = function(ship, dir){
         dir = Clucker.utils.mod(dir, 8);
@@ -120,7 +120,7 @@
             }
         });
     };
-
+*/
 /********* ********** **********
   SHOTS
 ********** ********** *********/
@@ -308,7 +308,13 @@
             money: opt.money || 0,
             kills: opt.kills || 0,
             quality: opt.quality || 0,
-            ships: createShips(opt),
+            ships: shipsMod.createShips({
+                quality: opt.quality,
+                SHIP_COUNT_MIN: SHIP_COUNT_MIN,
+                SHIP_COUNT_MAX: SHIP_COUNT_MAX,
+                SHIP_HP_MIN: SHIP_HP_MIN,
+                SHIP_HP_MAX: SHIP_HP_MAX
+            }),
             units: createUnits(opt),
             shots: shotMod.createPool({
                 count: 100
