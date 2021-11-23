@@ -128,12 +128,24 @@
     * (done) new const value for unit cell fps
     * (done) have a lib/ships.js file to be used in game.js
     * (done) use Clucker.utils.valueByRange in ships.js
+    * (done) have a lib/units.js file to be used in game.js
 
+
+* TODO: Optional Modules (/js):
+
+    /js/shot-homing/
+    * have a shotMod.fire public method that abstracts away a lot from what is needed to set up a shot
 
 * TODO: Demos (/demos)
 
     /demos/header-app/
-    * have a lib/units.js file to be used in game.js
+    * make it so that I am just using the const values in game.js like I did with ships.js
+    * start a UNIT-TYPES const in game.js
+    * pass UNIT-TYPES to the createUnits method of units.js
+    * a UNIT-TYPES object should have an update method
+    * have just a type 0-blank and type 1-silo unit types
+    * the update method of unit type 0-blank is just the logic needed to change to type 1-silo
+    * use shotMod.fire to fire a shot in units.js for type 1-silo
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
     * adjust death explosion so that it is centered with the ship sprite
