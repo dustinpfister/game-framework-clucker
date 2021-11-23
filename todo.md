@@ -141,8 +141,13 @@
     /demos/header-app-space-war
     * start out with header-app source to create new project bassed off of that
     * do away with random positioning of units in the event of zero page content in favor of a set pattern for units
-    * new units.js file
-    * two unit types 0-blaster, and 1-silo (old unit from header-app)
+    * in units.js file start out with three unit types 0-blank, 1-blaster, and 2-silo (old unit from header-app)
+    * have it so that all units default to type 0-blank
+    * in game.js the 'player' builds unit types with money
+    * start money value
+    * money over time
+    * units have hit points also, and thus can be destroyed also like ships
+    * ships fire back at units
 
 * TODO: Root (/)
     * update README.md to reflect Clucker 0.7.1
