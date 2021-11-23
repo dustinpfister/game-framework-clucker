@@ -41,6 +41,13 @@
 
 * Clucker Core (/lib): 
 
+    /lib/canvas/canvas.js
+    * (done) option for canvasMod.createLayerStack that can be be used to set the className for all layer dom elements
+
+    /lib/canvas/plugins/buttons.js
+    * (done) button draw method looks for an imageIndex in button object and in the event there is one uses that in place of ctx.rect
+    * (done) button.imageStats object for buttons
+
     /lib/canvas/plugins/mod-pool.jd
     * (done) new circle, and pool-circles methods
     * (done) new 0.7.1 build for Clucker and use it for header-app
@@ -56,12 +63,8 @@
     * (done) use new getDistanceToObj method in header-app gameMod
     * (done) use new getDistanceToObj method in shot-homing.js
 
-    /lib/canvas/plugins/buttons.js
-    * (done) button draw method looks for an imageIndex in button object and in the event there is one uses that in place of ctx.rect
-    * (done) button.imageStats object for buttons
-
-    /lib/canvas/canvas.js
-    * (done) option for canvasMod.createLayerStack that can be be used to set the className for all layer dom elements
+    /lib/utils/
+    * (done) utils.valueByRange based off of rangeByPer helper
 
 * Optional Modules (/js):
 
@@ -123,16 +126,15 @@
     * (done) set custom header-app-layer className using new canvasMod prop
     * (done) use rangeByPer helper for all relavent values for ships and units
     * (done) new const value for unit cell fps
+    * (done) have a lib/ships.js file to be used in game.js
+    * (done) use Clucker.utils.valueByRange in ships.js
+
 
 * TODO: Demos (/demos)
 
-    /lib/utils/
-    * utils.valueByRange based off of rangeByPer helper
-
     /demos/header-app/
-    * have a lib/ships.js file to be used in game.js
-    * use Clucker.utils.valueByRange in ships.js
     * have a lib/units.js file to be used in game.js
+    * have a lib/shots.js file to be used in game.js
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
     * adjust death explosion so that it is centered with the ship sprite

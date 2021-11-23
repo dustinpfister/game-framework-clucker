@@ -4,12 +4,7 @@
   HELPERS
 ********** ********** *********/
 
-    var rangeByPer = function(per, nMin, nMax){
-        per = per === undefined ? 0 : per;
-        nMin = nMin === undefined ? 0 : nMin;
-        nMax = nMax === undefined ? 1 : nMax;
-        return nMin + Math.round(per * (nMax - nMin));
-    };
+    var rangeByPer = Clucker.utils.valueByRange;
 
 
 /********* ********** **********
