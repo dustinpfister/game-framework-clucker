@@ -134,7 +134,6 @@
 
     /demos/header-app/
     * have a lib/units.js file to be used in game.js
-    * have a lib/shots.js file to be used in game.js
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
     * adjust death explosion so that it is centered with the ship sprite
