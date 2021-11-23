@@ -50,24 +50,19 @@
     // create ships object pool helper
     shipsMod.createShips = function(opt){
         opt = opt || {};
+        // ships pool options
         opt.quality = opt.quality === undefined ? 0 : opt.quality;
         opt.SHIP_COUNT_MIN = opt.SHIP_COUNT_MIN === undefined ? 1 : opt.SHIP_COUNT_MIN;
         opt.SHIP_COUNT_MAX = opt.SHIP_COUNT_MAX === undefined ? 5 : opt.SHIP_COUNT_MAX;
-
         opt.SHIP_HP_MIN = opt.SHIP_HP_MIN === undefined ? 1 : opt.SHIP_HP_MIN;
         opt.SHIP_HP_MAX = opt.SHIP_HP_MAX === undefined ? 5 : opt.SHIP_HP_MAX;
-
         opt.SHIP_MONEY_MIN = opt.SHIP_MONEY_MIN === undefined ? 1 : opt.SHIP_MONEY_MIN;
         opt.SHIP_MONEY_MAX = opt.SHIP_MONEY_MAX === undefined ? 100 : opt.SHIP_MONEY_MAX;
-
         opt.SHIP_SPEEDS = opt.SHIP_SPEEDS || [ 32 ];
-
-var SHIP_EVADE_MIN = 0.1,
-SHIP_SPAWN_DIST_FROM_CENTER = 200,
-SHIP_CELL_SIZE = 48;
-
-console.log(opt);
-
+        opt.SHIP_EVADE_MIN = opt.SHIP_EVADE_MIN || 0;
+        opt.SHIP_SPAWN_DIST_FROM_CENTER = opt.SHIP_SPAWN_DIST_FROM_CENTER || 0,
+        opt.SHIP_CELL_SIZE = opt.SHIP_CELL_SIZE || 16;
+        // return pool
         return Clucker.poolMod.create({
             count: rangeByPer(opt.quality, opt.SHIP_COUNT_MIN, opt.SHIP_COUNT_MAX),
             secsCap: 0.25,
@@ -82,18 +77,18 @@ console.log(opt);
                 stat.hpMax = rangeByPer(opt.quality, opt.SHIP_HP_MIN, opt.SHIP_HP_MAX);
                 stat.hp = stat.hpMax;
                 stat.money = rangeByPer(opt.quality, opt.SHIP_MONEY_MIN, opt.SHIP_MONEY_MAX);
-                stat.evade = SHIP_EVADE_MIN; // evade
+                stat.evade = opt.SHIP_EVADE_MIN; // evade
                 // sheetkey
                 obj.data.cellIndex = 0;
                 obj.data.sheetKey = 'ship-type-one';
                 // start dir
                 shipSetDir(obj, Math.floor(Math.random() * 8));
                 // start out of bounds
-                var dist = SHIP_SPAWN_DIST_FROM_CENTER;
+                var dist = opt.SHIP_SPAWN_DIST_FROM_CENTER;
                 obj.x = game.cx - dist + Math.round(dist * 2 * Math.random());
                 obj.y = obj.h * -1;
-                obj.w = SHIP_CELL_SIZE;
-                obj.h = SHIP_CELL_SIZE;
+                obj.w = opt.SHIP_CELL_SIZE;
+                obj.h = opt.SHIP_CELL_SIZE;
                 // speed and heading
                 obj.pps = opt.SHIP_SPEEDS[ Math.round( (opt.SHIP_SPEEDS.length - 1) * opt.quality ) ];
                 obj.heading =  (Math.PI * 2) / 8 * obj.data.dir;
