@@ -81,6 +81,7 @@
     * (done) shot.data.homing object with target and active props
     * (done) have a homingUpdate helper that will adjust angle based on target position
     * (done) fix the issue with having a UNIT SIZE const in shot-homing.js
+    * (done) have a shotMod.fire public method that abstracts away a lot from what is needed to set up a shot
 
     /js/article:
     * (done) make the article.js file from header-app be its own thing in the new js folder
@@ -135,12 +136,6 @@
     * (done) have a lib/ships.js file to be used in game.js
     * (done) use Clucker.utils.valueByRange in ships.js
     * (done) have a lib/units.js file to be used in game.js
-
-
-* TODO: Optional Modules (/js):
-
-    /js/shot-homing/
-    * have a shotMod.fire public method that abstracts away a lot from what is needed to set up a shot
 
 * TODO: Demos (/demos)
 
