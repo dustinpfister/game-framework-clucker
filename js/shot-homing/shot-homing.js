@@ -192,13 +192,13 @@
         opt.unit = opt.unit || {};
         opt.target = opt.target || {};
         opt.targetPool = opt.targetPool || {};
-
         // might also want to give these options in most use cases
         opt.update = opt.update || function(shot, secs, sm, pool){shot.data.cellIndex = 0;};
         opt.sheetKey = opt.sheetKey || '';
         opt.maxDist = opt.maxDist === undefined ? 100 : opt.maxDist;
         opt.onTargetHit = opt.onTargetHit || function(target, shot){};
         opt.sm = opt.sm || {};
+        // spawn the shot
         Clucker.poolMod.spawn(shots, opt.sm, {
             x: opt.unit.x + opt.unit.w / 2 - 5,
             y: opt.unit.y + opt.unit.h / 2 - 5,
