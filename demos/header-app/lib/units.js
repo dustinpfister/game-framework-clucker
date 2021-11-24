@@ -159,7 +159,7 @@
                            onTargetHit: onTargetHit,
                            maxDist: unit.stat.range * UNIT_SIZE,
                            sheetKey: 'shot-type-one',
-                           cellIndexUpdate: function(shot, secs){
+                           update: function(shot, secs){
                                 var sd = shot.data;
                                 sd.cellDir = sd.cellDir === undefined ? 1 : sd.cellDir;
                                 sd.cellIndex += 1 * sd.cellDir;

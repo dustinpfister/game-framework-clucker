@@ -139,7 +139,7 @@
                 // sheetkey
                 shot.data.cellIndex = spawnOpt.cellIndex || 0;
                 shot.data.sheetKey = spawnOpt.sheetKey || null;
-                shot.data.cellIndexUpdate = spawnOpt.cellIndexUpdate || function(shot, secs, sm, pool){ return 0; };
+                shot.data.update = spawnOpt.update || function(shot, secs, sm, pool){ return 0; };
                 // start pos
                 shot.data.targetPool = spawnOpt.targetPool || null;
                 shot.data.onTargetHit = spawnOpt.onTargetHit || opt.onTargetHit || function(ship, shot){ console.log('hit');};
@@ -178,7 +178,7 @@
                     shot.lifespan = 0;
                 }
                 if(shot.data.sheetKey){
-                    shot.data.cellIndexUpdate(shot, secs, sm, pool);
+                    shot.data.update(shot, secs, sm, pool);
                 }
             }
         });
@@ -194,7 +194,7 @@
         opt.targetPool = opt.targetPool || {};
 
         // might also want to give these options in most use cases
-        opt.cellIndexUpdate = opt.cellIndexUpdate || function(){return 0};
+        opt.update = opt.update || function(shot, secs, sm, pool){shot.data.cellIndex = 0;};
         opt.sheetKey = opt.sheetKey || '';
         opt.maxDist = opt.maxDist === undefined ? 100 : opt.maxDist;
         opt.onTargetHit = opt.onTargetHit || function(target, shot){};
@@ -212,7 +212,7 @@
             maxDPS: 180,
             sheetKey: opt.sheetKey,
             cellIndex: 0,
-            cellIndexUpdate: opt.cellIndexUpdate
+            update: opt.update
         }); 
     };
 
