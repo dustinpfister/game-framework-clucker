@@ -1,7 +1,8 @@
 (function(unitsMod){
 
-    var UNIT_COUNT_MIN = 3                     // MIN UNIT POOL SIZE (1 to 40) && <= UNIT_COUNT_MAX
-    UNIT_COUNT_MAX = 10,                    // MAX UNIT POOL SIZE (1 to 40)
+    // these need to not be here but in game.js only
+    var UNIT_COUNT_MIN = 3,
+    UNIT_COUNT_MAX = 10,
     UNIT_SIZE = 50,
     UNIT_RANGE_MIN = 1.5,
     UNIT_RANGE_MAX = 5,
