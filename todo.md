@@ -29,9 +29,15 @@
 * Demos (/demos):
 
     /demos/header-app-green-world
-    * using header-app as a quide start a all new header-app that will involve a 2d map
+    * using header-app as a guide start a all new header-app that will involve a 2d map
     * use new grid module for this
 
+    /demos/header-app-lone-defender
+    * new header-app involving a single defensive unit at the center of the header
+    * additional player units spawn around the single defensive unit that generate energy
+    * energy is used to fire shots, and built player units that are to be defined
+    * enemy ships spawn from outside the canvas and move to a player unit
+    * enemy ships attack player units
 
 <!-- ########## ########## -->
 ## 0.7.x - Storage.js started
