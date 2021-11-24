@@ -152,20 +152,14 @@
                         ud.fireSecs %= unit.stat.fireRate;
                         var target = allTargets[0];
                         // fire a shot
-                        Clucker.poolMod.spawn(sm.game.shots, sm, {
-                            x: unit.x + unit.w / 2 - 5,
-                            y: unit.y + unit.h / 2 - 5,
-                            a: shotMod.getShootAtAngle(unit, target, 'method1'),
-                            unit: unit,
-                            targetPool: sm.game.ships,
-                            onTargetHit: onTargetHit,
-                            homingActive: true,
-                            homingTarget: target,
-                            maxDist: unit.stat.range * UNIT_SIZE,
-                            maxDPS: 180,
-                            sheetKey: 'shot-type-one',
-                            cellIndex: 0,
-                            cellIndexUpdate: function(shot, secs){
+                       shotMod.fire(sm.game.shots, {
+                           unit: unit,
+                           target: target,
+                           targetPool: sm.game.ships,
+                           onTargetHit: onTargetHit,
+                           maxDist: unit.stat.range * UNIT_SIZE,
+                           sheetKey: 'shot-type-one',
+                           cellIndexUpdate: function(shot, secs){
                                 var sd = shot.data;
                                 sd.cellDir = sd.cellDir === undefined ? 1 : sd.cellDir;
                                 sd.cellIndex += 1 * sd.cellDir;
@@ -178,7 +172,7 @@
                                     sd.cellDir = 1;
                                 }
                             }
-                        }); 
+                       });
                     }
                 }
             }
