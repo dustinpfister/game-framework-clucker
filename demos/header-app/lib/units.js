@@ -54,10 +54,6 @@
         return true;
     };
 
-/********* ********** **********
-  UNITS
-********** ********** *********/
-
     // get current unit pool positions where a unit can be placed
     var getUnitPositions = function(units){
         var cellX = 0, cellY = 0, x, y,
@@ -93,14 +89,25 @@
         });
     };
 
-    // create units object pool helper
-    unitsMod.createUnits = function(opt){
-        opt = opt || {};
-        return Clucker.poolMod.create({
-            count: rangeByPer(opt.quality, UNIT_COUNT_MIN, UNIT_COUNT_MAX), 
-            secsCap: 0.25,
-            disableLifespan: true,
+
+/********* ********** **********
+  UNIT TYPES
+********** ********** *********/
+
+    var UNIT_TYPES = {
+        // blank unit
+        0 : {
+            key: 0,
+            desc: 'blank',
             spawn: function(obj, pool, sm){
+            },
+            update: function(unit, pool, sm, secs){}
+        },
+        // silo unit
+        1 : {
+            key: 1,
+            desc: 'silo',
+            spawn: function(obj, pool, sm, opt){
                 obj.data.fillStyle = 'rgba(0,255,128,0.5)';
                 // stats
                 var stat = obj.stat = {};
@@ -126,10 +133,9 @@
                     var positions = getUnitPositions(pool);
                     var pos = positions[Math.floor(positions.length * Math.random())];
                 }
-
                 obj.x = pos.x; obj.y = pos.y; obj.w = UNIT_SIZE; obj.h = UNIT_SIZE;
             },
-            update: function (unit, pool, sm, secs){
+            update: function(unit, pool, sm, secs){
                 var ud = unit.data,
                 allTargets = getShipsInRange(unit, sm),
                 ci = ud.cellIndex;
@@ -176,6 +182,26 @@
                        });
                     }
                 }
+            }
+        }
+    };
+
+/********* ********** **********
+  PUBLIC METHODS
+********** ********** *********/
+
+    // create units object pool helper
+    unitsMod.createUnits = function(opt){
+        opt = opt || {};
+        return Clucker.poolMod.create({
+            count: rangeByPer(opt.quality, UNIT_COUNT_MIN, UNIT_COUNT_MAX), 
+            secsCap: 0.25,
+            disableLifespan: true,
+            spawn: function(obj, pool, sm){
+UNIT_TYPES[1].spawn(obj, pool, sm, opt);
+            },
+            update: function (unit, pool, sm, secs){
+UNIT_TYPES[1].update(unit, pool, sm, secs);                
             }
         });
     };
