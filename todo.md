@@ -136,17 +136,17 @@
     * (done) have a lib/ships.js file to be used in game.js
     * (done) use Clucker.utils.valueByRange in ships.js
     * (done) have a lib/units.js file to be used in game.js
+    * (done) start a UNIT-TYPES const in units.js
+    * (done) a UNIT-TYPES object should have an update method
+    * (done) have just a type 0-blank and type 1-silo unit types for now
 
 * TODO: Demos (/demos)
 
     /demos/header-app/
-
-    * start a UNIT-TYPES const in game.js
-    * pass UNIT-TYPES to the createUnits method of units.js
-    * a UNIT-TYPES object should have an update method
-    * have just a type 0-blank and type 1-silo unit types
     * the update method of unit type 0-blank is just the logic needed to change to type 1-silo
     * use shotMod.fire to fire a shot in units.js for type 1-silo
+    * have a unitsMod.setType public method for units.js
+    * use unitsMod.setType in game.js to set logic for 0-blank and 1-silo types and have just a default blank type in units.js
 
     * make it so that I am just using the const values in game.js like I did with ships.js
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
