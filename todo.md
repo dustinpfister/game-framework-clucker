@@ -9,24 +9,33 @@
 * start a grid-path-detection demo
 
 ### (  ) - 0.8.0 - Starting Grid Module
-* Start a new grid module for clucker.js
-* Start a grid-basic demo
 
+* TODO Clucker Core (/lib): 
 
-* optional modules (/js):
+    /lib/buttons/buttons.js
+    * new stand alone buttons.js file in place of buttons code dumped togetaher in gameframe.js
+    * have more than one type of button 'toggle', 'state-change', 'upgrade', ect
 
-/js/grid-core/grid.js
-* start a new grid module
+    /lib/canvas/plugins/buttons.js
+    * make need changes to work with new button types
 
-/js/screen-shake/screen-shake.js
-* start a stand alone module for the screen shake feature that I have made for header-app.
+    /lib/canvas/gameframe/gameframe.js
+    * remove old button code as it is not part of buttons.js
 
-/js/standard-states/saves-menu/save-menu.js:
-* started a new nested folder in the /js folder called 'standard-states' 
-* a standard state project will create and return state objects that can be used in final game projects
-* start out with a 'save-menu' standard-states project for quickly createing a save state menu for a game
+* TODO Optional Modules (/js):
 
-* Demos (/demos):
+    /js/grid-core/grid.js
+    * start a new grid module
+
+    /js/screen-shake/screen-shake.js
+    * start a stand alone module for the screen shake feature that I have made for header-app.
+
+    /js/standard-states/saves-menu/save-menu.js:
+    * started a new nested folder in the /js folder called 'standard-states' 
+    * a standard state project will create and return state objects that can be used in final game projects
+    * start out with a 'save-menu' standard-states project for quickly createing a save state menu for a game
+
+* TODO Demos (/demos):
 
     /demos/header-app-green-world
     * using header-app as a guide start a all new header-app that will involve a 2d map
@@ -38,6 +47,29 @@
     * energy is used to fire shots, and built player units that are to be defined
     * enemy ships spawn from outside the canvas and move to a player unit
     * enemy ships attack player units
+
+    /demos/header-app
+
+    /demos/header-app-space-war
+    * start out with header-app source to create new project bassed off of that
+    * do away with random positioning of units in the event of zero page content in favor of a set pattern for units
+    * in units.js file start out with three unit types 0-blank, 1-blaster, and 2-silo (old unit from header-app)
+    * have it so that all units default to type 0-blank
+    * in game.js the 'player' builds unit types with money
+    * start money value
+    * money over time
+    * units have hit points also, and thus can be destroyed also like ships
+    * ships fire back at units
+
+* TODO: node (/node)
+
+    /node/bin/build
+    * new folder for the '$ clucker build' sub command
+
+    /node/bin/posts
+    * new folder for the '$ clucker posts' sub command
+    * posts command can be used to create a \_posts folder from a posts.md file at root
+    * posts command can be used to create a posts.md file from a \_posts folder
 
 <!-- ########## ########## -->
 ## 0.7.x - Storage.js started
@@ -71,27 +103,6 @@
 
     /lib/utils/
     * (done) utils.valueByRange based off of rangeByPer helper
-
-* Optional Modules (/js):
-
-    /js/shot-homing/
-    * (done) start a stand alone module for creating a shot pool with homing features starting with shot.js
-    * (done) shotMod.createPool method that will create and return an Object pool for shots
-    * (done) use shotMod.createPool in the game.js of header-app
-    * (done) shot.data.homing object with target and active props
-    * (done) have a homingUpdate helper that will adjust angle based on target position
-    * (done) fix the issue with having a UNIT SIZE const in shot-homing.js
-    * (done) have a shotMod.fire public method that abstracts away a lot from what is needed to set up a shot
-
-    /js/article:
-    * (done) make the article.js file from header-app be its own thing in the new js folder
-    * (done) have header-app use the article.js at the new /js folder location
-    * (done) have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
-
-    /js/particles:
-    * (done) make the particles.js file from header-app be its own thing in the new js folder
-    * (done) new mess EFFECT that can be used to display a message like 'EVADE', 'CRIT HIT', as well as damage and money amounts
-    * (done) new canvas plug in for particles.js
 
 * Demos (/demos):
 
@@ -140,6 +151,29 @@
     * (done) a UNIT-TYPES object should have an update method
     * (done) have just a type 0-blank and type 1-silo unit types for now
 
+* Optional Modules (/js):
+
+    /js/shot-homing/
+    * (done) start a stand alone module for creating a shot pool with homing features starting with shot.js
+    * (done) shotMod.createPool method that will create and return an Object pool for shots
+    * (done) use shotMod.createPool in the game.js of header-app
+    * (done) shot.data.homing object with target and active props
+    * (done) have a homingUpdate helper that will adjust angle based on target position
+    * (done) fix the issue with having a UNIT SIZE const in shot-homing.js
+    * (done) have a shotMod.fire public method that abstracts away a lot from what is needed to set up a shot
+
+    /js/article:
+    * (done) make the article.js file from header-app be its own thing in the new js folder
+    * (done) have header-app use the article.js at the new /js folder location
+    * (done) have a single 'pageQuality' index value on a 0 to 1 scale based on just word count for now
+
+    /js/particles:
+    * (done) make the particles.js file from header-app be its own thing in the new js folder
+    * (done) new mess EFFECT that can be used to display a message like 'EVADE', 'CRIT HIT', as well as damage and money amounts
+    * (done) new canvas plug in for particles.js
+
+* Node (/node):
+
 * TODO: Demos (/demos)
 
     /demos/header-app/
@@ -153,18 +187,24 @@
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
     * adjust death explosion so that it is centered with the ship sprite
 
-    /demos/header-app-space-war
-    * start out with header-app source to create new project bassed off of that
-    * do away with random positioning of units in the event of zero page content in favor of a set pattern for units
-    * in units.js file start out with three unit types 0-blank, 1-blaster, and 2-silo (old unit from header-app)
-    * have it so that all units default to type 0-blank
-    * in game.js the 'player' builds unit types with money
-    * start money value
-    * money over time
-    * units have hit points also, and thus can be destroyed also like ships
-    * ships fire back at units
+* TODO: node (/node)
+
+    /node/bin
+    * start a new bin folder
+    * have a main index.js file for the bin folder
+
+    /node/bin/default
+    * bin folder for what the default should be for '$ clucker' command
+
+    /node/bin/init
+    * new folder for the '$ clucker init' sub command
+
+    /node/bin/server
+    * new folder for the '$ clucker server' sub command
+    
 
 * TODO: Root (/)
+    * bin key in package.json for main /node/bin/index.js
     * update README.md to reflect Clucker 0.7.1
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
