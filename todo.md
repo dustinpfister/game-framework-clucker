@@ -64,7 +64,7 @@
 * TODO: node (/node)
 
     /node/bin/build
-    * new folder for the '$ clucker build' sub command
+    * (done) new folder for the '$ clucker build' sub command
 
     /node/bin/posts
     * new folder for the '$ clucker posts' sub command
@@ -174,6 +174,13 @@
 
 * Node (/node):
 
+    /node/bin
+    * (done) start a new bin folder
+    * (done) have a main index.js file for the bin folder
+
+    /node/bin/default
+    * (done) bin folder for what the default should be for '$ clucker' command
+
 * TODO: Demos (/demos)
 
     /demos/header-app/
@@ -188,13 +195,6 @@
     * adjust death explosion so that it is centered with the ship sprite
 
 * TODO: node (/node)
-
-    /node/bin
-    * start a new bin folder
-    * have a main index.js file for the bin folder
-
-    /node/bin/default
-    * bin folder for what the default should be for '$ clucker' command
 
     /node/bin/init
     * new folder for the '$ clucker init' sub command
