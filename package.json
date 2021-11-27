@@ -3,6 +3,9 @@
   "version": "0.7.1",
   "description": "A game framework called clucker",
   "main": "index.js",
+  "bin": {
+    "clucker": "./node/bin/index.js"
+  },
   "directories": {
     "lib": "lib"
   },

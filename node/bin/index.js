@@ -1,3 +1,4 @@
+#!/bin/node
 const path = require('path');
 // argv array
 let argv = process.argv.slice(2, process.argv.length);
