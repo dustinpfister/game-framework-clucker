@@ -4,6 +4,59 @@ When I have an idea for a new feature for this project I start out by writing it
 comes to actual lined up revisions of the over all framework.
 
 <!-- ########## ########## -->
+## Take Clucker in the direction of also being a platform to create websites
+<!-- ########## ########## -->
+
+### 0.9.0 - posts.md file format
+* have a standard for storing all the posts for a site in a single large file.
+* have a nodejs posts-md tool that can me used to split a posts.md file into a \_posts folder
+* posts-md should also be able to create a posts.md file from a _posts folder
+The format for a single posts.md file can be like this:
+```html
+<!-- POST_#0 -->
+---
+title: First Post
+filename: blog-first-post
+date: 2021-11-26 09:00:00
+tags: [blog]
+layout: post
+categories: blog
+id: 0
+updated: 2021-11-26 09:00:30
+version: 1.0
+---
+
+This is my first post
+
+<!-- more -->
+
+## First section on the subject of a first post
+
+This is the content on the first section of the first post.
+
+<!-- POST_#1 -->
+---
+title: Second Post
+filename: blog-second-post
+date: 2021-11-27 09:00:00
+tags: [blog]
+layout: post
+categories: blog
+id: 1
+updated: 2021-11-27 09:00:30
+version: 1.0
+---
+
+This is the second post
+
+<!-- more -->
+
+## First section on the second post
+```
+
+
+
+<!-- ########## ########## -->
 ## More Work on upgrades.js
 <!-- ########## ########## -->
 
