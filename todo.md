@@ -201,6 +201,7 @@
 
    game project folder
 ```
+  /src/img/
   /src/js/modname/mod.js
   /src/js/main.js
   /public/js/clucker/0.7.1/clucker.min.js
