@@ -199,6 +199,20 @@
     /node/bin/init
     * new folder for the '$ clucker init' sub command
 
+   game project folder
+```
+  /src/js/modname/mod.js
+  /src/js/main.js
+  /public/js/clucker/0.7.1/clucker.min.js
+  /public/game.js
+  /public/index.html
+  /server.js
+  /start.sh
+  /start.bat
+  /README.md
+    
+```
+
     /node/bin/server
     * new folder for the '$ clucker server' sub command
     
