@@ -25,7 +25,7 @@
 * TODO Optional Modules (/js):
 
     /js/grid-core/grid.js
-    * start a new grid module
+    * start a new grid module based off of what I started for my js-array post on the multidim arrays section
 
     /js/screen-shake/screen-shake.js
     * start a stand alone module for the screen shake feature that I have made for header-app.
