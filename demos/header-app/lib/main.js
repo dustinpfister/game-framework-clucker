@@ -64,6 +64,7 @@ Clucker.pushState(sm, {
             kills = save.kills === undefined ? kills : save.kills;
         }
         sm.game = gameMod.create({
+           sm: sm,
            unitCells: unitMap.cells,
            money: startMoney,
            kills: kills,

@@ -32,6 +32,7 @@
         opt = opt || {};
         opt.quality = opt.quality || 0;
         var game = {
+            sm: opt.sm || {},
             money: opt.money || 0,
             kills: opt.kills || 0,
             quality: opt.quality || 0,
@@ -59,6 +60,10 @@
             cy: 150,
             spawnSecs: 0
         };
+
+        // spawn unit
+        //Clucker.poolMod.spawnAll(game.units, game.sm, {typeIndex: 0, quality: game.quality});
+
         return game;
     };
 
@@ -77,7 +82,7 @@
             game.spawnSecs = 0;
         }
         // spawn unit
-        Clucker.poolMod.spawn(game.units, sm, {typeIndex: 0, quality: sm.game.quality});
+        Clucker.poolMod.spawnAll(game.units, sm, {typeIndex: 0, quality: game.quality});
     };
 
     // user clicked

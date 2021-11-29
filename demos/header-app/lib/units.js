@@ -135,7 +135,7 @@
         },
         update: function(unit, pool, sm, secs){
             unit.data.blankTime += secs;
-            if(unit.data.blankTime >= 3){
+            if(unit.data.blankTime >= 1){
                 // just change to type 1
                 unit.data.typeIndex = 1;
                 UNIT_TYPES[unit.data.typeIndex].spawn(unit, pool, sm, unit.data.spawnOptions);
