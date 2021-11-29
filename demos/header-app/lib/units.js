@@ -109,7 +109,7 @@
         obj.data.cellSecs = 0;
         // sheetkey
         obj.data.cellIndex = 0;
-        obj.data.sheetKey = 'unit-type-one';
+        obj.data.sheetKey = null; //'unit-type-one';
         // start pos
         var cell = sm.game.unitCells[sm.game.unitCellIndex];
         if(cell){
@@ -124,68 +124,78 @@
         obj.x = pos.x; obj.y = pos.y; obj.w = UNIT_SIZE; obj.h = UNIT_SIZE;
     };
 
-    var UNIT_TYPES = {
-        // blank unit
-        0 : {
-            key: 0,
-            desc: 'blank',
-            spawn: function(obj, pool, sm){},
-            update: function(unit, pool, sm, secs){
+    var UNIT_TYPES = {};
+
+    // blank unit
+    UNIT_TYPES[0] = {
+        key: 0,
+        desc: 'blank',
+        spawn: function(obj, pool, sm){
+            obj.data.blankTime = 0;
+        },
+        update: function(unit, pool, sm, secs){
+            unit.data.blankTime += secs;
+            if(unit.data.blankTime >= 3){
+                // just change to type 1
                 unit.data.typeIndex = 1;
                 UNIT_TYPES[unit.data.typeIndex].spawn(unit, pool, sm, unit.data.spawnOptions);
             }
+        }
+    };
+
+    // silo unit
+    UNIT_TYPES[1] = {
+        key: 1,
+        desc: 'silo',
+        spawn: function(obj, pool, sm, opt){
+            obj.data.cellIndex = 0;
+            obj.data.sheetKey = 'unit-type-one';
         },
-        // silo unit
-        1 : {
-            key: 1,
-            desc: 'silo',
-            spawn: function(obj, pool, sm, opt){},
-            update: function(unit, pool, sm, secs){
-                var ud = unit.data,
-                allTargets = getShipsInRange(unit, sm),
-                ci = ud.cellIndex;
-                ud.fireActive = false;
-                if(allTargets.length > 0){
-                    ud.fireActive = true;
+        update: function(unit, pool, sm, secs){
+            var ud = unit.data,
+            allTargets = getShipsInRange(unit, sm),
+            ci = ud.cellIndex;
+            ud.fireActive = false;
+            if(allTargets.length > 0){
+                ud.fireActive = true;
+            }
+            ud.cellSecs += secs;
+            if(ud.cellSecs >= 1 / UNIT_CELL_FPS){
+                if(ud.fireActive && ud.cellIndex < 3){
+                   ud.cellIndex += 1;
                 }
-                ud.cellSecs += secs;
-                if(ud.cellSecs >= 1 / UNIT_CELL_FPS){
-                    if(ud.fireActive && ud.cellIndex < 3){
-                       ud.cellIndex += 1;
-                    }
-                    if(!ud.fireActive && ud.cellIndex > 0){
-                       ud.cellIndex -= 1;
-                    }
-                    ud.cellSecs = 0;
+                if(!ud.fireActive && ud.cellIndex > 0){
+                   ud.cellIndex -= 1;
                 }
-                if(ud.fireActive && ud.cellIndex === 3){
-                    ud.fireSecs += secs;
-                    if(ud.fireSecs >= unit.stat.fireRate){
-                        ud.fireSecs %= unit.stat.fireRate;
-                        var target = allTargets[0];
-                        // fire a shot
-                       shotMod.fire(sm.game.shots, {
-                           unit: unit,
-                           target: target,
-                           targetPool: sm.game.ships,
-                           onTargetHit: onTargetHit,
-                           maxDist: unit.stat.range * UNIT_SIZE,
-                           sheetKey: 'shot-type-one',
-                           update: function(shot, secs){
-                                var sd = shot.data;
-                                sd.cellDir = sd.cellDir === undefined ? 1 : sd.cellDir;
-                                sd.cellIndex += 1 * sd.cellDir;
-                                if(sd.cellIndex >= 4){
-                                    sd.cellIndex = 3;
-                                    sd.cellDir = -1;
-                                }
-                                if(sd.cellIndex <= -1){
-                                    sd.cellIndex = 0;
-                                    sd.cellDir = 1;
-                                }
+                ud.cellSecs = 0;
+            }
+            if(ud.fireActive && ud.cellIndex === 3){
+                ud.fireSecs += secs;
+                if(ud.fireSecs >= unit.stat.fireRate){
+                    ud.fireSecs %= unit.stat.fireRate;
+                    var target = allTargets[0];
+                    // fire a shot
+                   shotMod.fire(sm.game.shots, {
+                       unit: unit,
+                       target: target,
+                       targetPool: sm.game.ships,
+                       onTargetHit: onTargetHit,
+                       maxDist: unit.stat.range * UNIT_SIZE,
+                       sheetKey: 'shot-type-one',
+                       update: function(shot, secs){
+                            var sd = shot.data;
+                            sd.cellDir = sd.cellDir === undefined ? 1 : sd.cellDir;
+                            sd.cellIndex += 1 * sd.cellDir;
+                            if(sd.cellIndex >= 4){
+                                sd.cellIndex = 3;
+                                sd.cellDir = -1;
                             }
-                       });
-                    }
+                            if(sd.cellIndex <= -1){
+                                sd.cellIndex = 0;
+                                sd.cellDir = 1;
+                            }
+                        }
+                   });
                 }
             }
         }
