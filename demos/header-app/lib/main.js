@@ -121,7 +121,7 @@ Clucker.pushState(sm, {
         canvasMod.draw(layers, 'clear', 1);
         // draw units
         canvasMod.draw(layers, 'pool-sprite', 1, sm.game.units, { spriteDraw: function(unit, ctx){
-            if(unit.active){
+            if(unit.active && unit.data.typeIndex === 1){
                 ctx.strokeStyle = 'rgba(255,255,255,0.1)';
                 ctx.beginPath();
                 ctx.lineWidth = 3;
