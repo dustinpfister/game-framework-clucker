@@ -71,6 +71,27 @@
     * posts command can be used to create a \_posts folder from a posts.md file at root
     * posts command can be used to create a posts.md file from a \_posts folder
 
+    /node/bin/init
+    * new folder for the '$ clucker init' sub command
+
+    game project folder
+```
+  /src/img/
+  /src/js/modname/mod.js
+  /src/js/main.js
+  /public/js/clucker/0.7.1/clucker.min.js
+  /public/game.js
+  /public/index.html
+  /server.js
+  /start.sh
+  /start.bat
+  /README.md
+    
+```
+
+    /node/bin/server
+    * new folder for the '$ clucker server' sub command
+
 <!-- ########## ########## -->
 ## 0.7.x - Storage.js started
 <!-- ########## ########## -->
@@ -181,6 +202,9 @@
     /node/bin/default
     * (done) bin folder for what the default should be for '$ clucker' command
 
+* Root (/)
+    * (done) bin key in package.json for main /node/bin/index.js
+
 * TODO: Demos (/demos)
 
     /demos/header-app/
@@ -194,34 +218,8 @@
     * the display for the logo layer and all layers needs to be reactive when changing the size of the window
     * adjust death explosion so that it is centered with the ship sprite
 
-* TODO: node (/node)
-
-    /node/bin/init
-    * new folder for the '$ clucker init' sub command
-
-   game project folder
-```
-  /src/img/
-  /src/js/modname/mod.js
-  /src/js/main.js
-  /public/js/clucker/0.7.1/clucker.min.js
-  /public/game.js
-  /public/index.html
-  /server.js
-  /start.sh
-  /start.bat
-  /README.md
-    
-```
-
-    /node/bin/server
-    * new folder for the '$ clucker server' sub command
-    
-
 * TODO: Root (/)
-    * bin key in package.json for main /node/bin/index.js
-    * update README.md to reflect Clucker 0.7.1
-    * commit '0.7.1' and create tag
+    * update README.md to reflect Clucker 0.7.1, commit '0.7.1' and create tag
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
