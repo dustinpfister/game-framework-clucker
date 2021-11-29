@@ -171,6 +171,10 @@
     * (done) start a UNIT-TYPES const in units.js
     * (done) a UNIT-TYPES object should have an update method
     * (done) have just a type 0-blank and type 1-silo unit types for now
+    * (done) unit spawn helper that is called for all types
+    * (done) spawn options used in main spawn method of unit pool
+    * (done) the update method of unit type 0-blank is just the logic needed to change to type 1-silo
+    * (done) use shotMod.fire to fire a shot in units.js for type 1-silo
 
 * Optional Modules (/js):
 
@@ -208,8 +212,6 @@
 * TODO: Demos (/demos)
 
     /demos/header-app/
-    * the update method of unit type 0-blank is just the logic needed to change to type 1-silo
-    * use shotMod.fire to fire a shot in units.js for type 1-silo
     * have a unitsMod.setType public method for units.js
     * use unitsMod.setType in game.js to set logic for 0-blank and 1-silo types and have just a default blank type in units.js
 

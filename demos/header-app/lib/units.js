@@ -203,10 +203,9 @@
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool, sm, spawnOpt){
-console.log(spawnOpt);
                 obj.data.typeIndex = spawnOpt.typeIndex || 0;
-                UNIT_TYPES_BASE_SPAWN(obj, pool, sm, opt);
-                UNIT_TYPES[obj.data.typeIndex].spawn(obj, pool, sm, opt);
+                UNIT_TYPES_BASE_SPAWN(obj, pool, sm, spawnOpt);
+                UNIT_TYPES[obj.data.typeIndex].spawn(obj, pool, sm, spawnOpt);
             },
             update: function (unit, pool, sm, secs){
                 UNIT_TYPES[unit.data.typeIndex].update(unit, pool, sm, secs);

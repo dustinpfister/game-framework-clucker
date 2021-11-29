@@ -77,7 +77,7 @@
             game.spawnSecs = 0;
         }
         // spawn unit
-        Clucker.poolMod.spawn(game.units, sm);
+        Clucker.poolMod.spawn(game.units, sm, {typeIndex: 0, quality: sm.game.quality});
     };
 
     // user clicked
