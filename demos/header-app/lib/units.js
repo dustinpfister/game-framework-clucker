@@ -129,22 +129,7 @@
         0 : {
             key: 0,
             desc: 'blank',
-            spawn: function(obj, pool, sm){
-/*
-                // start pos
-                var cell = sm.game.unitCells[sm.game.unitCellIndex];
-                if(cell){
-                    var pos = {};
-                    pos.x = cell.x * UNIT_SIZE;
-                    pos.y = cell.y * UNIT_SIZE;
-                    sm.game.unitCellIndex += 1;
-                }else{
-                    var positions = getUnitPositions(pool);
-                    var pos = positions[Math.floor(positions.length * Math.random())];
-                }
-                obj.x = pos.x; obj.y = pos.y; obj.w = UNIT_SIZE; obj.h = UNIT_SIZE;
-*/
-            },
+            spawn: function(obj, pool, sm){},
             update: function(unit, pool, sm, secs){
                 unit.data.typeIndex = 1;
                 UNIT_TYPES[unit.data.typeIndex].spawn(unit, pool, sm, unit.data.spawnOptions);
@@ -154,36 +139,7 @@
         1 : {
             key: 1,
             desc: 'silo',
-            spawn: function(obj, pool, sm, opt){
-/*
-                obj.data.fillStyle = 'rgba(0,255,128,0.5)';
-                // stats
-                var stat = obj.stat = {};
-                stat.fireRate = UNIT_FIRE_RATE;
-                var shotIndex = Math.round( (UNIT_SHOTS_SPEEDS.length - 1) * opt.quality );
-                stat.shotPPS = UNIT_SHOTS_SPEEDS[shotIndex];
-                stat.range = rangeByPer(opt.quality, UNIT_RANGE_MIN, UNIT_RANGE_MAX);
-                // fire secs to find out if the unit will fire or not
-                obj.data.fireSecs = 0;
-                obj.data.fireActive = false;
-                obj.data.cellSecs = 0;
-                // sheetkey
-                obj.data.cellIndex = 0;
-                obj.data.sheetKey = 'unit-type-one';
-                // start pos
-                var cell = sm.game.unitCells[sm.game.unitCellIndex];
-                if(cell){
-                    var pos = {};
-                    pos.x = cell.x * UNIT_SIZE;
-                    pos.y = cell.y * UNIT_SIZE;
-                    sm.game.unitCellIndex += 1;
-                }else{
-                    var positions = getUnitPositions(pool);
-                    var pos = positions[Math.floor(positions.length * Math.random())];
-                }
-                obj.x = pos.x; obj.y = pos.y; obj.w = UNIT_SIZE; obj.h = UNIT_SIZE;
-*/
-            },
+            spawn: function(obj, pool, sm, opt){},
             update: function(unit, pool, sm, secs){
                 var ud = unit.data,
                 allTargets = getShipsInRange(unit, sm),
