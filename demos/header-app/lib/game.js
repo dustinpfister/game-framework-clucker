@@ -23,6 +23,8 @@
     SHOTS_SPEEDS = [85, 110, 135];
 
 
+    var rangeByPer = Clucker.utils.valueByRange;
+
 /********* ********** **********
   PUBLIC METHODS
 ********** ********** *********/
@@ -47,7 +49,8 @@
                 SHIP_CELL_SIZE: SHIP_CELL_SIZE
             }),
             units: unitsMod.createUnits({
-               quality: opt.quality
+               quality: opt.quality,
+               count: rangeByPer(opt.quality, UNIT_COUNT_MIN, UNIT_COUNT_MAX)
             }),
             shots: shotMod.createPool({
                 count: 100

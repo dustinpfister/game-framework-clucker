@@ -213,8 +213,6 @@
 * TODO: Demos (/demos)
 
     /demos/header-app/
-    * have a unitsMod.setType public method for units.js
-    * use unitsMod.setType in game.js to set logic for 0-blank and 1-silo types and have just a default blank type in units.js
     * make it so that I am just using the const values in game.js like I did with ships.js
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
     * adjust death explosion so that it is centered with the ship sprite

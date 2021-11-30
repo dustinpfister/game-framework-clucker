@@ -47,9 +47,6 @@ Clucker.pushState(sm, {
         }
     },
     start: function(sm, canvasMod){
-		
-		console.log(sm.layers[0].canvas.className);
-		
         // shake
         sm.shakeObj = {
             secs: 0,
@@ -180,7 +177,6 @@ Clucker.pushState(sm, {
         ctx.rect(75, canvas.height - 15, 100 * sm.game.quality, 10);
         ctx.fill();
         ctx.stroke();
-        
 
         // state buttons on layer 2
         canvasMod.draw(layers, 'clear', 2);

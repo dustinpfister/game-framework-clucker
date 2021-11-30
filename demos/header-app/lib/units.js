@@ -1,9 +1,9 @@
 (function(unitsMod){
 
     // these need to not be here but in game.js only
-    var UNIT_COUNT_MIN = 3,
-    UNIT_COUNT_MAX = 10,
-    UNIT_SIZE = 50,
+    //var UNIT_COUNT_MIN = 3,
+    //UNIT_COUNT_MAX = 10,
+    var UNIT_SIZE = 50,
     UNIT_RANGE_MIN = 1.5,
     UNIT_RANGE_MAX = 5,
     UNIT_CELL_FPS = 12,
@@ -209,7 +209,7 @@
     unitsMod.createUnits = function(opt){
         opt = opt || {};
         return Clucker.poolMod.create({
-            count: rangeByPer(opt.quality, UNIT_COUNT_MIN, UNIT_COUNT_MAX), 
+            count: opt.count || 1, //rangeByPer(opt.quality, UNIT_COUNT_MIN, UNIT_COUNT_MAX), 
             secsCap: 0.25,
             disableLifespan: true,
             spawn: function(obj, pool, sm, spawnOpt){
