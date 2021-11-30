@@ -51,7 +51,9 @@
             units: unitsMod.createUnits({
                quality: opt.quality,
                count: rangeByPer(opt.quality, UNIT_COUNT_MIN, UNIT_COUNT_MAX),
-               unitSize: UNIT_SIZE
+               unitSize: UNIT_SIZE,
+               unitRangeMin: UNIT_RANGE_MIN,
+               unitRangeMax: UNIT_RANGE_MAX
             }),
             shots: shotMod.createPool({
                 count: 100

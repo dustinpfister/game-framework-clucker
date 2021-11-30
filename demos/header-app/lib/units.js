@@ -4,9 +4,9 @@
     //var UNIT_COUNT_MIN = 3,
     //UNIT_COUNT_MAX = 10,
     //var UNIT_SIZE = 50,
-    var UNIT_RANGE_MIN = 1.5,
-    UNIT_RANGE_MAX = 5,
-    UNIT_CELL_FPS = 12,
+    //var UNIT_RANGE_MIN = 1.5,
+    //UNIT_RANGE_MAX = 5,
+    var UNIT_CELL_FPS = 12,
     UNIT_FIRE_RATE = 1,
     UNIT_SHOTS_SPEEDS = [85, 110, 135];
 
@@ -104,7 +104,7 @@
         stat.fireRate = UNIT_FIRE_RATE;
         var shotIndex = Math.round( (UNIT_SHOTS_SPEEDS.length - 1) * opt.quality );
         stat.shotPPS = UNIT_SHOTS_SPEEDS[shotIndex];
-        stat.range = rangeByPer(opt.quality, UNIT_RANGE_MIN, UNIT_RANGE_MAX);
+        stat.range = rangeByPer(opt.quality, obj.data.UNIT_RANGE_MIN, obj.data.UNIT_RANGE_MAX);
         // fire secs to find out if the unit will fire or not
         obj.data.fireSecs = 0;
         obj.data.fireActive = false;
@@ -218,6 +218,8 @@
                 obj.data.typeIndex = spawnOpt.typeIndex || 0;
 
                 obj.data.UNIT_SIZE = opt.unitSize || 32;
+                obj.data.UNIT_RANGE_MIN = opt.unitRangeMin || 1;
+                obj.data.UNIT_RANGE_MAX = opt.unitRangeMax || 2;
 
                 UNIT_TYPES_BASE_SPAWN(obj, pool, sm, spawnOpt);
                 UNIT_TYPES[obj.data.typeIndex].spawn(obj, pool, sm, spawnOpt);
