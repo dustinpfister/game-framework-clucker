@@ -2,6 +2,8 @@
 
 This is a game framework based off of what I have made for my [blog post on the topic of a basic game framework](https://dustinpfister.github.io/2021/09/03/js-javascript-example-game-framework/). The example started to get at least a little complex to the point that writing a single blog post on the source code would result in a blog post that is way to long. So I thought it would be a good idea to copy the source code for the framework, and the demos thus far, into a stand alone repository and continue working on it there.
 
+Thus far I have a few demos that are starting to look like finished games, but I think that I still need to put a little more work into thus thing before I start publishing any kind of real project based off of this. There is not just adding more features to the core of what the framework is, but also expanding the collection of additional options javaScript files that I can just grap at for various things. I am sure that I am also going to want to expand the collection of nodejs scripts as I start to turn this project into something more than just another game framework.
+
 ## 1 - Setup, run the server, and building a version of clucker
 
 For now there is just cloning down a copy of the repo, and then doing an npm install.

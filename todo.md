@@ -198,7 +198,7 @@
 
 * Root (/)
     * (done) bin key in package.json for main /node/bin/index.js
-    * update README.md to reflect Clucker 0.7.1, commit '0.7.1' and create tag
+    * (done) update README.md to reflect Clucker 0.7.1, commit '0.7.1' and create tag
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app
 * (done) start a save state system as a new lib called storage.js
