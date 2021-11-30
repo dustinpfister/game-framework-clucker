@@ -175,6 +175,7 @@
     * (done) spawn options used in main spawn method of unit pool
     * (done) the update method of unit type 0-blank is just the logic needed to change to type 1-silo
     * (done) use shotMod.fire to fire a shot in units.js for type 1-silo
+    * (done) the display for the logo layer and all layers needs to be reactive when changing the size of the window
 
 * Optional Modules (/js):
 
@@ -214,10 +215,8 @@
     /demos/header-app/
     * have a unitsMod.setType public method for units.js
     * use unitsMod.setType in game.js to set logic for 0-blank and 1-silo types and have just a default blank type in units.js
-
     * make it so that I am just using the const values in game.js like I did with ships.js
     * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
-    * the display for the logo layer and all layers needs to be reactive when changing the size of the window
     * adjust death explosion so that it is centered with the ship sprite
 
 * TODO: Root (/)
