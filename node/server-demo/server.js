@@ -69,7 +69,7 @@ let createPathInfoObject = (url) => {
 let createHTML = (pInfo) => {
     var html = '<html><head><title>Index of - ' + pInfo.url + '</title></head><body>';
     pInfo.contents.forEach((itemName)=>{
-        let itemURL = pInfo.url + '/' + itemName;
+        let itemURL = pInfo.url + '/' + itemName + '/';
         html += '<a href=\"' + itemURL + '\" >' +  itemName + '</a><br>'
     });
     html += '</body></html>';

@@ -23,7 +23,8 @@ var sm = Clucker.createMain({
     6.png : unit1 ( silo ) 
 */
             
-            baseURL: '/demos/header-app/img/ships',
+            //baseURL: '/demos/header-app/img/ships',
+            baseURL: 'img/ships',
             count: 7
         }
     }
