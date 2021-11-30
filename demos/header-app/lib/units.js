@@ -1,11 +1,6 @@
 (function(unitsMod){
 
-    // these need to not be here but in game.js only
-    //var UNIT_COUNT_MIN = 3,
-    //UNIT_COUNT_MAX = 10,
-    //var UNIT_SIZE = 50,
-    //var UNIT_RANGE_MIN = 1.5,
-    //UNIT_RANGE_MAX = 5,
+    // these may be moved to game.js in the future
     var UNIT_CELL_FPS = 12,
     UNIT_FIRE_RATE = 1,
     UNIT_SHOTS_SPEEDS = [85, 110, 135];

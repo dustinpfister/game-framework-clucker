@@ -4,14 +4,29 @@ When I have an idea for a new feature for this project I start out by writing it
 comes to actual lined up revisions of the over all framework.
 
 <!-- ########## ########## -->
-## Take Clucker in the direction of also being a platform to create websites
+## 0.9.x - ???
 <!-- ########## ########## -->
 
-### 0.9.0 - posts.md file format
+* TODO Demos (/demos):
+
+    /demos/header-app-green-world
+    * using header-app as a guide start a all new header-app that will involve a 2d map
+    * use new grid module for this
+
+    /demos/header-app-lone-defender
+    * new header-app involving a single defensive unit at the center of the header
+    * additional player units spawn around the single defensive unit that generate energy
+    * energy is used to fire shots, and built player units that are to be defined
+    * enemy ships spawn from outside the canvas and move to a player unit
+    * enemy ships attack player units
+
+
+
 * have a standard for storing all the posts for a site in a single large file.
 * have a nodejs posts-md tool that can me used to split a posts.md file into a \_posts folder
 * posts-md should also be able to create a posts.md file from a _posts folder
 The format for a single posts.md file can be like this:
+
 ```html
 <!-- POST_#0 -->
 ---

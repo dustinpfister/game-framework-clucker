@@ -1,12 +1,9 @@
 # game-framework-clucker todo list
 
+
 <!-- ########## ########## -->
 ## 0.8.x - Grid Module
 <!-- ########## ########## -->
-
-### (  ) - 0.8.1 - Path detection
-* add a path detection feature for the grid module
-* start a grid-path-detection demo
 
 ### (  ) - 0.8.0 - Starting Grid Module
 
@@ -37,18 +34,9 @@
 
 * TODO Demos (/demos):
 
-    /demos/header-app-green-world
-    * using header-app as a guide start a all new header-app that will involve a 2d map
-    * use new grid module for this
-
-    /demos/header-app-lone-defender
-    * new header-app involving a single defensive unit at the center of the header
-    * additional player units spawn around the single defensive unit that generate energy
-    * energy is used to fire shots, and built player units that are to be defined
-    * enemy ships spawn from outside the canvas and move to a player unit
-    * enemy ships attack player units
-
-    /demos/header-app
+    /demos/header-app/
+    * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
+    * adjust death explosion so that it is centered with the ship sprite
 
     /demos/header-app-space-war
     * start out with header-app source to create new project bassed off of that
@@ -176,6 +164,7 @@
     * (done) the update method of unit type 0-blank is just the logic needed to change to type 1-silo
     * (done) use shotMod.fire to fire a shot in units.js for type 1-silo
     * (done) the display for the logo layer and all layers needs to be reactive when changing the size of the window
+    * (done) using many of the const values in game.js like I did with ships.js
 
 * Optional Modules (/js):
 
@@ -209,13 +198,6 @@
 
 * Root (/)
     * (done) bin key in package.json for main /node/bin/index.js
-
-* TODO: Demos (/demos)
-
-    /demos/header-app/
-    * make it so that I am just using the const values in game.js like I did with ships.js
-    * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
-    * adjust death explosion so that it is centered with the ship sprite
 
 * TODO: Root (/)
     * update README.md to reflect Clucker 0.7.1, commit '0.7.1' and create tag

@@ -16,11 +16,12 @@
     UNIT_COUNT_MAX = 10,                    // MAX UNIT POOL SIZE (1 to 40)
     UNIT_SIZE = 50,
     UNIT_RANGE_MIN = 1.5,
-    UNIT_RANGE_MAX = 5,
-    UNIT_CELL_FPS = 12,
-    UNIT_FIRE_RATE = 1,
-    SHOTS_COUNT_MAX = 50,
-    SHOTS_SPEEDS = [85, 110, 135];
+    UNIT_RANGE_MAX = 5;
+    // these values are still set in units.js
+    //UNIT_CELL_FPS = 12,
+    //UNIT_FIRE_RATE = 1;
+    //SHOTS_COUNT_MAX = 50,
+    //SHOTS_SPEEDS = [85, 110, 135];
 
 
     var rangeByPer = Clucker.utils.valueByRange;
