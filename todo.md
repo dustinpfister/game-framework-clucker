@@ -84,7 +84,7 @@
 ## 0.7.x - Storage.js started
 <!-- ########## ########## -->
 
-### (  ) - 0.7.1 - header-app content map, effect pools, root js folder
+### ( done 11/30/2021  ) - 0.7.1 - header-app content map, effect pools, root js folder
 
 * Clucker Core (/lib): 
 
@@ -198,8 +198,6 @@
 
 * Root (/)
     * (done) bin key in package.json for main /node/bin/index.js
-
-* TODO: Root (/)
     * update README.md to reflect Clucker 0.7.1, commit '0.7.1' and create tag
 
 ### ( done 11/03/2021 ) - 0.7.0 - save state system, new storage demo, header-app

@@ -1,6 +1,6 @@
 # game-framework-clucker
 
-This is a basic game framework based off of what I have made for my [blog post on the topic of a basic game framework](https://dustinpfister.github.io/2021/09/03/js-javascript-example-game-framework/). The example started to get at least a little complex to the point that writing a single blog post on the source code would result in a blog post that is way to long. So I thought it would be a good idea to copy the source code for the framework, and then demos thus far into a stand alone repository and continue working on it there.
+This is a game framework based off of what I have made for my [blog post on the topic of a basic game framework](https://dustinpfister.github.io/2021/09/03/js-javascript-example-game-framework/). The example started to get at least a little complex to the point that writing a single blog post on the source code would result in a blog post that is way to long. So I thought it would be a good idea to copy the source code for the framework, and the demos thus far, into a stand alone repository and continue working on it there.
 
 ## 1 - Setup, run the server, and building a version of clucker
 
