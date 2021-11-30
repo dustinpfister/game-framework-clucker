@@ -109,7 +109,7 @@
         obj.data.cellSecs = 0;
         // sheetkey
         obj.data.cellIndex = 0;
-        obj.data.sheetKey = null; //'unit-type-one';
+        obj.data.sheetKey = 'unit-type-zero';
         // start pos
         var cell = sm.game.unitCells[sm.game.unitCellIndex];
         if(cell){
