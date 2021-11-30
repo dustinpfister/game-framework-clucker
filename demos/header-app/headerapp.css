@@ -1,16 +1,24 @@
 .canvas_layer_header_app {
   position: absolute;
-  top: -130px;
+  top: 0px;
   left: 0px; 
   right: 0px;
   margin-left: auto; 
   margin-right: auto;
+  margin-top: auto; 
+  margin-bottom: auto;
 }
 
+#header-title{
+  top:20px;
+  height:100%;
+}
 @media (max-width: 799px) {
   .canvas_layer_header_app {
     width: 100%;
+    height: 100%;
   }
+
 }
 @media (min-width: 800px) {
   .canvas_layer_header_app {
