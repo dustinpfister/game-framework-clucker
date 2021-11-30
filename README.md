@@ -4,6 +4,10 @@ This is a game framework based off of what I have made for my [blog post on the 
 
 Thus far I have a few demos that are starting to look like finished games, but I think that I still need to put a little more work into thus thing before I start publishing any kind of real project based off of this. There is not just adding more features to the core of what the framework is, but also expanding the collection of additional options javaScript files that I can just grap at for various things. I am sure that I am also going to want to expand the collection of nodejs scripts as I start to turn this project into something more than just another game framework.
 
+## Development
+
+As of 0.8.0 I am now thinking in terms of just revision numbers as I move forward with this, and maybe only putting out a new revision once every one to three months. In other words just bumping the minor number forward and technically staying in a state of perpetual alpha, as I am still not fully sure what the public API of the Clucker core should be, and I am also not sure as to what the general direction is with this project just yet.
+
 ## 1 - Setup, run the server, and building a version of clucker
 
 For now there is just cloning down a copy of the repo, and then doing an npm install.
