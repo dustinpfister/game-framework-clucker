@@ -12,10 +12,17 @@ var sm = Clucker.createMain({
     loader: {
         startState: 'game',
         images: {
-            // old
-            // 0.png-background, 1.png-logo, 2.png-buttons, 3.png-ships, 4.png-units, 5.png-shots
-            // new
-            // 0.png-background, 1.png-logo, 2.png-buttons, 3.png-ships, 4.png-shots, 5.png-unit_0_blank, 6.png-unit_0_silo, 
+/*
+    Image file name  : what it is for
+    0.png : background
+    1.png : logo 
+    2.png : buttons
+    3.png : ship0 
+    4.png : shot0 
+    5.png : unit0 ( blank ) 
+    6.png : unit1 ( silo ) 
+*/
+            
             baseURL: '/demos/header-app/img/ships',
             count: 7
         }
