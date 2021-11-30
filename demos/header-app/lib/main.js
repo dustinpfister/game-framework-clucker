@@ -4,7 +4,7 @@ console.log('Using clucker v' + Clucker.ver);
 var sm = Clucker.createMain({
     appName: 'header-app',
     layerClassName: 'canvas_layer_header_app',
-    canvasContainer: '#logo-wrap', //'#banner',
+    canvasContainer: '#header-title', //'#logo-wrap', //'#banner',
     width: 800,
     height: 300,
     canvasLayers: 4, // 0-background, 1-foreground, 2-buttons, 3-logo
