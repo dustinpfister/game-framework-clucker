@@ -3,8 +3,8 @@
     // these need to not be here but in game.js only
     //var UNIT_COUNT_MIN = 3,
     //UNIT_COUNT_MAX = 10,
-    var UNIT_SIZE = 50,
-    UNIT_RANGE_MIN = 1.5,
+    //var UNIT_SIZE = 50,
+    var UNIT_RANGE_MIN = 1.5,
     UNIT_RANGE_MAX = 5,
     UNIT_CELL_FPS = 12,
     UNIT_FIRE_RATE = 1,
@@ -56,6 +56,7 @@
 
     // get current unit pool positions where a unit can be placed
     var getUnitPositions = function(units){
+        var UNIT_SIZE = units.objects[0].data.UNIT_SIZE || 32;
         var cellX = 0, cellY = 0, x, y,
         positions = [];
         while(cellY <= 3){
@@ -83,7 +84,7 @@
     // get ships in range of unit
     var getShipsInRange = function(unit, sm){
         var ships = Clucker.poolMod.getActiveObjects(sm.game.ships),
-        maxDist = UNIT_SIZE * unit.stat.range;   
+        maxDist = unit.data.UNIT_SIZE * unit.stat.range;   
         return ships.filter(function(ship){
             return Clucker.poolMod.getDistanceToObj(unit, ship) < maxDist && ship.y > 0 && ship.x > 0;
         });
@@ -96,6 +97,7 @@
 
     // base spawn method for all types
     var UNIT_TYPES_BASE_SPAWN = function(obj, pool, sm, opt){
+        var UNIT_SIZE = obj.data.UNIT_SIZE;
         obj.data.fillStyle = 'rgba(0,255,128,0.5)';
         // stats
         var stat = obj.stat = {};
@@ -180,7 +182,7 @@
                        target: target,
                        targetPool: sm.game.ships,
                        onTargetHit: onTargetHit,
-                       maxDist: unit.stat.range * UNIT_SIZE,
+                       maxDist: unit.stat.range * unit.data.UNIT_SIZE,
                        sheetKey: 'shot-type-one',
                        update: function(shot, secs){
                             var sd = shot.data;
@@ -214,6 +216,9 @@
             disableLifespan: true,
             spawn: function(obj, pool, sm, spawnOpt){
                 obj.data.typeIndex = spawnOpt.typeIndex || 0;
+
+                obj.data.UNIT_SIZE = opt.unitSize || 32;
+
                 UNIT_TYPES_BASE_SPAWN(obj, pool, sm, spawnOpt);
                 UNIT_TYPES[obj.data.typeIndex].spawn(obj, pool, sm, spawnOpt);
             },
