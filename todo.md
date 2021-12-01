@@ -35,7 +35,8 @@
 * TODO Demos (/demos):
 
     /demos/header-app/
-    * with page quality display: units: 4/10, ships: 8/30, shipMoney: $8-$20 
+    * (done) with page quality display: ships x/y
+    * with page quality display: units: 4/10, shipMoney: $8-$20 
     * adjust death explosion so that it is centered with the ship sprite
 
     /demos/header-app-space-war
