@@ -41,7 +41,7 @@
             quality: opt.quality || 0,
             stats:{
                 activeShips : 0,
-                totalShips: 10
+                totalShips: 0
             },
             ships: shipsMod.createShips({
                 quality: opt.quality,
@@ -72,6 +72,7 @@
             spawnSecs: 0
         };
 
+        game.stats.totalShips = game.ships.objects.length;
         // spawn unit
         //Clucker.poolMod.spawnAll(game.units, game.sm, {typeIndex: 0, quality: game.quality});
 
