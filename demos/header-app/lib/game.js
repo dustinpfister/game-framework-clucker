@@ -87,6 +87,9 @@
         Clucker.poolMod.update(game.units, secs, sm);
         Clucker.poolMod.update(game.shots, secs, sm);
         particlesMod.update(game.particles, secs, sm);
+
+        game.stats.activeShips = Clucker.poolMod.getActiveCount(game.ships);
+
         // spawn
         game.spawnSecs += secs;
         if(game.spawnSecs >= SHIP_SPAWN_RATE){
