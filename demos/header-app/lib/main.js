@@ -178,6 +178,8 @@ Clucker.pushState(sm, {
         ctx.rect(75, canvas.height - 15, 100 * sm.game.quality, 10);
         ctx.fill();
         ctx.stroke();
+        var s = sm.game.stats;
+        canvasMod.draw(layers, 'print', 1, 'Ships: ' + s.activeShips + ' / ' + s.totalShips, 200, canvas.height - 15, dispText);
 
         // state buttons on layer 2
         canvasMod.draw(layers, 'clear', 2);

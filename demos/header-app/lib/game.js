@@ -39,6 +39,10 @@
             money: opt.money || 0,
             kills: opt.kills || 0,
             quality: opt.quality || 0,
+            stats:{
+                activeShips : 0,
+                totalShips: 10
+            },
             ships: shipsMod.createShips({
                 quality: opt.quality,
                 SHIP_COUNT_MIN: SHIP_COUNT_MIN,
